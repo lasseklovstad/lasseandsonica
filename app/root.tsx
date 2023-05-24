@@ -9,6 +9,7 @@ import {
 } from "@remix-run/react";
 import stylesheet from "~/tailwind.css";
 import { HeaderAndNaviagtion } from "./components/HeaderAndNavigation";
+import { Typography } from "./components/Typography";
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: "Lasse & Sonica" }];
@@ -35,7 +36,9 @@ export default function App() {
             <Outlet />
           </main>
           <footer className="mt-auto">
-            <div className="text-sm">Laget av Lasse & Sonica</div>
+            <Typography variant="body-small">
+              Laget av Lasse & Sonica
+            </Typography>
           </footer>
         </div>
         <ScrollRestoration />
