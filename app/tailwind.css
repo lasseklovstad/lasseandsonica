@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: "Cursive-1";
+    src: url("/AlexBrush-Regular.ttf");
+  }
+}

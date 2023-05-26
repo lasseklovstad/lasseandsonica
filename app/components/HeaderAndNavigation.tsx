@@ -9,7 +9,7 @@ const links = [
     to: `/${routes.home}`,
   },
   {
-    name: "Vår Historie",
+    name: "Vår historie",
     to: `/${routes.ourStory}`,
   },
   {
@@ -21,7 +21,7 @@ const links = [
     to: `/${routes.navigation}`,
   },
   {
-    name: "Våre fantistiske venner og familie",
+    name: "Venner og familie",
     to: `/${routes.friendsAndFamily}`,
   },
   {
@@ -37,7 +37,7 @@ const links = [
     to: `/${routes.wishlist}`,
   },
   {
-    name: "Q + A",
+    name: "Q+A",
     to: `/${routes.qa}`,
   },
 ];
@@ -48,23 +48,29 @@ export const HeaderAndNaviagtion = () => {
   const [days, hours, minutes, seconds] = useCountdown(startDate);
   return (
     <>
-      <header className="flex flex-col items-center gap-4 my-4">
-        <Typography variant="h1">Lasse & Sonica</Typography>
+      <header className="flex flex-col items-center gap-4 w-full bg-red-50 py-4">
+        <Typography
+          variant="h1"
+          className="font-cursive font-normal text-6xl md:text-8xl"
+        >
+          Sonica & Lasse
+        </Typography>
         <Typography variant="h4" as="div">
           {startDate
             .toLocaleDateString(undefined, {
               year: "numeric",
               month: "long",
+              day: "numeric",
             })
             .toUpperCase()}{" "}
-          • OSLO, NORWAY
+          • ASKER / OSLO
         </Typography>
         <Typography>
           {days} dager, {hours} timer, {minutes} minutter, {seconds} sekunder
         </Typography>
       </header>
-      <nav>
-        <ul className="md:flex flex-row gap-2 hidden">
+      <nav className="py-4">
+        <ul className="md:flex flex-row gap-4 hidden">
           {links.map((link) => {
             return (
               <li key={link.to}>
@@ -74,7 +80,11 @@ export const HeaderAndNaviagtion = () => {
                     `${isActive ? "border-black border-b-2" : ""}`
                   }
                 >
-                  <Typography className="pb-4 p-1" as="span">
+                  <Typography
+                    variant="body-small"
+                    className="pb-4 p-1"
+                    as="span"
+                  >
                     {link.name}
                   </Typography>
                 </NavLink>

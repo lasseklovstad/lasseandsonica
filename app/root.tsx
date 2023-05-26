@@ -32,12 +32,12 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <div className="p-2 flex items-center flex-col gap-4 min-h-screen">
+        <div className="flex items-center flex-col min-h-screen">
           <HeaderAndNaviagtion />
-          <main>
+          <main className="md:min-w-[500px] min-w-full mb-2">
             <Outlet />
           </main>
-          <footer className="mt-auto">
+          <footer className="mt-auto h-10 bg-red-50 w-full text-center p-2">
             <Typography variant="body-small">
               Laget av Lasse & Sonica
             </Typography>

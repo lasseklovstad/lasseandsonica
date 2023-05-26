@@ -48,5 +48,9 @@ export const Typography = ({
   const sizeClasses = sizes[variant];
   const Tag = as || tags[variant];
 
-  return <Tag className={`${sizeClasses} ${className}`}>{children}</Tag>;
+  return (
+    <Tag className={`${sizeClasses}${className ? " " + className : ""}`}>
+      {children}
+    </Tag>
+  );
 };
