@@ -1,4 +1,4 @@
-import { ElementType } from "react";
+import type { ElementType } from "react";
 
 type Variant =
   | "h1"
@@ -33,7 +33,7 @@ const sizes: Record<Variant, string> = {
   h2: "md:text-4xl font-bold text-3xl",
   h3: "md:text-3xl font-bold text-2xl",
   h4: "md:text-2xl font-bold text-1xl",
-  h5: "md:text-xl font-bold text-lg",
+  h5: "md:text-xl font-semibold text-lg",
   body: "md:text-lg text-md",
   "body-small": "md:text-md text-sm",
   small: "md:text-sm text-xs",

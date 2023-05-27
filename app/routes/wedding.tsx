@@ -1,5 +1,7 @@
 import type { LoaderArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
+import { Outlet } from "@remix-run/react";
+import { PageLayout } from "~/components/PageLayout";
 import { routes } from "~/types/routes";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
@@ -8,5 +10,13 @@ export const loader = async ({ request }: LoaderArgs) => {
   if (!isLoggedIn) {
     return redirect(`/${routes.login}`);
   }
-  return redirect(`/${routes.wedding.root}/${routes.wedding.home}`);
+  return {};
 };
+
+export default function Root() {
+  return (
+    <PageLayout showNavigation showLogout>
+      <Outlet />
+    </PageLayout>
+  );
+}

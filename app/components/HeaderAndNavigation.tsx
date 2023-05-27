@@ -1,98 +1,68 @@
-import { NavLink } from "@remix-run/react";
-import { useCountdown } from "~/hooks/useCountdown";
 import { routes } from "~/types/routes";
-import { Typography } from "./Typography";
+import { Header } from "./Header";
+import { WeddingLink } from "./WeddingLink";
 
-const links = [
+export const links = [
   {
     name: "Hjem",
-    to: `/${routes.home}`,
+    to: `${routes.wedding.home}`,
   },
   {
     name: "Vår historie",
-    to: `/${routes.ourStory}`,
+    to: `${routes.wedding.ourStory}`,
   },
   {
     name: "Program",
-    to: `/${routes.program}`,
+    to: `${routes.wedding.program}`,
   },
   {
     name: "Veibeskrivelse",
-    to: `/${routes.navigation}`,
+    to: `${routes.wedding.navigation}`,
   },
   {
     name: "Venner og familie",
-    to: `/${routes.friendsAndFamily}`,
+    to: `${routes.wedding.friendsAndFamily}`,
   },
   {
     name: "Dresscode",
-    to: `/${routes.dresscode}`,
+    to: `${routes.wedding.dresscode}`,
   },
   {
     name: "RSVP",
-    to: `/${routes.rsvp}`,
+    to: `${routes.wedding.rsvp}`,
   },
   {
     name: "Ønskeliste",
-    to: `/${routes.wishlist}`,
+    to: `${routes.wedding.wishlist}`,
   },
   {
     name: "Q+A",
-    to: `/${routes.qa}`,
+    to: `${routes.wedding.qa}`,
   },
 ];
 
-const startDate = new Date(2023, 7, 11, 12, 30);
-
-export const HeaderAndNaviagtion = () => {
-  const [days, hours, minutes, seconds] = useCountdown(startDate);
+export const HeaderAndNaviagtion = ({
+  showNavigation,
+}: {
+  showNavigation: boolean;
+}) => {
   return (
     <>
-      <header className="flex flex-col items-center gap-4 w-full bg-red-50 py-4">
-        <Typography
-          variant="h1"
-          className="font-cursive font-normal text-6xl md:text-8xl"
-        >
-          Sonica & Lasse
-        </Typography>
-        <Typography variant="h4" as="div">
-          {startDate
-            .toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-            .toUpperCase()}{" "}
-          • ASKER / OSLO
-        </Typography>
-        <Typography>
-          {days} dager, {hours} timer, {minutes} minutter, {seconds} sekunder
-        </Typography>
-      </header>
-      <nav className="py-4">
-        <ul className="md:flex flex-row gap-4 hidden">
-          {links.map((link) => {
-            return (
-              <li key={link.to}>
-                <NavLink
-                  to={link.to}
-                  className={({ isActive }) =>
-                    `${isActive ? "border-black border-b-2" : ""}`
-                  }
-                >
-                  <Typography
-                    variant="body-small"
-                    className="pb-4 p-1"
-                    as="span"
-                  >
-                    {link.name}
-                  </Typography>
-                </NavLink>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+      <Header showSideBar={showNavigation} />
+
+      {showNavigation && (
+        <nav className="py-4">
+          <ul className="md:flex flex-row gap-4 hidden">
+            {links.map((link) => {
+              return (
+                <li key={link.to}>
+                  <WeddingLink link={link} />
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
     </>
   );
 };

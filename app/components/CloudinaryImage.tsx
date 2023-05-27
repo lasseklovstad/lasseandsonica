@@ -1,4 +1,4 @@
-import { TransformerOption } from "@cld-apis/types";
+import type { TransformerOption } from "@cld-apis/types";
 import { buildImageUrl } from "cloudinary-build-url";
 
 type Props = {
@@ -36,7 +36,7 @@ export const CloudinaryImage = ({
             sizes: [280, 560, 840, 1100, 1650, 2500, 2100, 3100],
             transformations,
           })}
-          sizes="(max-width:1023px) 80vw, (min-width:1024px) and (max-width:1620px) 67vw, 1100px"
+          sizes="(max-width:768px) 95vw, (min-width:767px) and (max-width:1024px) 67vw, 800px"
         />
       </div>
     </div>
