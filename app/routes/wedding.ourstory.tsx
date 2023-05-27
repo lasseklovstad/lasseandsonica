@@ -48,7 +48,14 @@ const timeline: TimelineEvent[] = [
     title: "Første date",
     content: [
       {
-        text: "Tacokveld hos Lasse",
+        text: "Lasse hadde invitert til Taco-date oss han. Han var svært usikker på om Sonica spiste kjøtt ettersom hun kom fra en indisk familie. Etter en melding på facebook fant han fort ut at Sonica spiste hva som helst.",
+        images: [
+          {
+            imageUrl: "v1685207369/taco_ji7gmn.png",
+            imageAlt: "Taco",
+            className: "md:max-w-[200px] max-w-[100px]",
+          },
+        ],
       },
     ],
   },
@@ -58,6 +65,13 @@ const timeline: TimelineEvent[] = [
     content: [
       {
         text: "Sonica spurte Lasse... Det blei offisielt på face",
+        images: [
+          {
+            imageUrl: "Bryllup/59AF94DE-051A-4F6E-AD14-63BBDDDA6375_garffo.jpg",
+            imageAlt: "Selfie av oss kvelden vi ble kjærester",
+            className: "max-w-md",
+          },
+        ],
       },
     ],
   },
