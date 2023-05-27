@@ -1,38 +1,47 @@
 import { Link } from "@remix-run/react";
+import { PropsWithChildren } from "react";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { Typography } from "~/components/Typography";
 
 export default function FriendsAndFamily() {
   return (
-    <div className="flex gap-2 flex-col md:flex-row mx-4">
-      <Link to="sonica" className="relative hover:opacity-80">
-        <Typography
-          variant="h1"
-          as="div"
-          className="text-white absolute top-[50%] left-[30%]"
-        >
-          Sonica
-        </Typography>
-        <CloudinaryImage
-          imageAlt="Sonica"
-          imageUrl="Bryllup/08481929-523D-4779-ACB5-A6E5993257DD_gd71i8.jpg"
-          className="shadow-md"
-        />
-      </Link>
-      <Link to="lasse" className="relative hover:opacity-80">
-        <Typography
-          variant="h1"
-          as="div"
-          className="text-white absolute top-[50%] left-[32%]"
-        >
-          Lasse
-        </Typography>
-        <CloudinaryImage
-          imageAlt="Lasse"
-          imageUrl="Bryllup/9B40BCB2-B3D0-4035-B729-703A84877C50_kjnzcm.jpg"
-          className="shadow-md"
-        />
-      </Link>
-    </div>
+    <>
+      <Typography variant="h2" className="text-center">
+        Venner og familie
+      </Typography>
+      <Typography className="text-center my-4">
+        Trykk på bildene for å oppdage mer.
+      </Typography>
+      <div className="flex gap-4 md:gap-16 mx-4 justify-center">
+        <Link to="sonica" className="relative w-[300px]">
+          <TextOverImage>Sonica</TextOverImage>
+          <CloudinaryImage
+            imageAlt="Sonica"
+            imageUrl="Bryllup/sonica_squar_tmyspn.jpg"
+            className="shadow-md rounded-[50%] overflow-auto"
+          />
+        </Link>
+        <Link to="lasse" className="relative  w-[300px]">
+          <TextOverImage>Lasse</TextOverImage>
+          <CloudinaryImage
+            imageAlt="Lasse"
+            imageUrl="Bryllup/lasse_squar_nb1kto.jpg"
+            className="shadow-md rounded-[50%] overflow-auto"
+          />
+        </Link>
+      </div>
+    </>
   );
 }
+
+const TextOverImage = ({ children }: PropsWithChildren) => {
+  return (
+    <Typography
+      variant="h3"
+      as="div"
+      className="text-white absolute top-0 h-full flex items-center w-full justify-center"
+    >
+      {children}
+    </Typography>
+  );
+};
