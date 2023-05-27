@@ -90,6 +90,13 @@ const timeline: TimelineEvent[] = [
     content: [
       {
         text: "Lasse ordner til en veldig romantisk aften hjemme. Han setter seg ned på kne og spør om Sonica vil gifte seg med han. Hun nøler litt... men blir nødt til å si ja.",
+        images: [
+          {
+            imageUrl: "Bryllup/986C7902-25E2-4DB6-B711-C170A3D450CC_zolx3n.jpg",
+            imageAlt: "Lasse frir",
+            className: "max-w-md",
+          },
+        ],
       },
     ],
   },
@@ -115,7 +122,7 @@ export default function OurStory() {
                 <Typography
                   variant="body-small"
                   key={date.valueOf()}
-                  className="bg-red-50 p-1 rounded-sm font-medium text-center"
+                  className="bg-red-50 p-1 sm:px-4 rounded-sm font-medium text-center"
                 >
                   {date.toLocaleDateString(undefined, {
                     year: "numeric",
