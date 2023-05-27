@@ -104,7 +104,7 @@ export default function Pictures() {
           <Link
             to={{ search: `?pictureIndex=${pictureIndexAsNumber + 1}` }}
             preventScrollReset
-            aria-label="Forrige bilde"
+            aria-label="Neste bilde"
             className="inline-flex items-center p-0.5 m-2 text-black rounded-lg focus:outline-none focus:ring-2 hover:ring-2"
           >
             <svg
@@ -124,7 +124,11 @@ export default function Pictures() {
       ) : (
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2 items-center">
           {pictures.map((p, i) => (
-            <Link key={i} to={{ search: `?pictureIndex=${i}` }}>
+            <Link
+              key={i}
+              to={{ search: `?pictureIndex=${i}` }}
+              aria-label="Se bilde i større størrelse"
+            >
               <CloudinaryImage imageUrl={p.imageUrl} imageAlt={p.imageAlt} />
             </Link>
           ))}
