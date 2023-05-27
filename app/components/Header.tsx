@@ -1,11 +1,11 @@
-import { useCountdown } from "~/hooks/useCountdown";
-import { Typography } from "./Typography";
+import type { PropsWithChildren } from "react";
 import { SideBar } from "./SideBar";
+import { Typography } from "./Typography";
 
-const startDate = new Date(2023, 7, 11, 12, 30);
-
-export const Header = ({ showSideBar }: { showSideBar: boolean }) => {
-  const [days, hours, minutes, seconds] = useCountdown(startDate);
+export const Header = ({
+  showSideBar,
+  children,
+}: PropsWithChildren<{ showSideBar: boolean }>) => {
   return (
     <header
       className={`flex flex-col items-center w-full bg-red-50 ${
@@ -20,19 +20,7 @@ export const Header = ({ showSideBar }: { showSideBar: boolean }) => {
         >
           Sonica & Lasse
         </Typography>
-        <Typography variant="h4" as="div">
-          {startDate
-            .toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "long",
-              day: "numeric",
-            })
-            .toUpperCase()}{" "}
-          • ASKER / OSLO
-        </Typography>
-        <Typography>
-          {days} dager, {hours} timer, {minutes} minutter, {seconds} sekunder
-        </Typography>
+        {children}
       </div>
     </header>
   );

@@ -1,6 +1,7 @@
 import { routes } from "~/types/routes";
 import { Header } from "./Header";
 import { WeddingLink } from "./WeddingLink";
+import { ReactNode } from "react";
 
 export const links = [
   {
@@ -43,12 +44,14 @@ export const links = [
 
 export const HeaderAndNaviagtion = ({
   showNavigation,
+  headerContent,
 }: {
   showNavigation: boolean;
+  headerContent: ReactNode;
 }) => {
   return (
     <>
-      <Header showSideBar={showNavigation} />
+      <Header showSideBar={showNavigation}>{headerContent}</Header>
 
       {showNavigation && (
         <nav className="py-4">

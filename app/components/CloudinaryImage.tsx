@@ -1,10 +1,9 @@
 import type { TransformerOption } from "@cld-apis/types";
 import { buildImageUrl } from "cloudinary-build-url";
 
-type Props = {
+export type CloudinaryImageProps = {
   imageUrl: string;
   className?: string;
-  aspectRatio: { w: number; h: number };
   imageAlt: string;
   transformations?: TransformerOption;
 };
@@ -12,18 +11,12 @@ type Props = {
 export const CloudinaryImage = ({
   imageUrl,
   className,
-  aspectRatio,
   imageAlt,
   transformations,
-}: Props) => {
-  const gcd = getGCD(aspectRatio.h, aspectRatio.w);
+}: CloudinaryImageProps) => {
   return (
     <div className={className}>
-      <div
-        className={`aspect-h-${aspectRatio.h / gcd} aspect-w-${
-          aspectRatio.w / gcd
-        }`}
-      >
+      <div>
         <img
           alt={imageAlt}
           src={getCloudinaryImageUrl({

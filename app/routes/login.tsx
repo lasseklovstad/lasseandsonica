@@ -33,7 +33,15 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function Login() {
   const actionData = useActionData<typeof action>();
   return (
-    <PageLayout showNavigation={false} showLogout={false}>
+    <PageLayout
+      showNavigation={false}
+      showLogout={false}
+      headerContent={
+        <Typography variant="h3" as="h2" className="font-normal">
+          Velkommen
+        </Typography>
+      }
+    >
       <div className="flex flex-col items-center">
         <Form method="POST" className="my-4 flex gap-4 flex-col">
           <div>
