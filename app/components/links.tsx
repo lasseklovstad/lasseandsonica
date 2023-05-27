@@ -22,11 +22,12 @@ export const links = [
     to: `${routes.wedding.rsvp}`,
   },
   {
-    name: "Q+A",
-    to: `${routes.wedding.qa}`,
-  },
-  {
     name: "Bilder",
     to: `${routes.wedding.pictures}`,
+  },
+
+  {
+    name: "Q+A",
+    to: `${routes.wedding.qa}`,
   },
 ];

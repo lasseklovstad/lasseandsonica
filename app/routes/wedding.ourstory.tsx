@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
+import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 
 type TimelineEvent = {
@@ -121,9 +122,10 @@ const timeline: TimelineEvent[] = [
 export default function OurStory() {
   return (
     <div className="flex flex-col items-center">
-      <Typography variant="h2" className="mb-4">
-        Vår historie
-      </Typography>
+      <PageTitle
+        title="Vår historie"
+        subtitle={["Her kan dere lese om vår reise fra vi møttes."]}
+      />
 
       <div className="grid grid-cols-4">
         {timeline.map(({ content, date, title }) => {
