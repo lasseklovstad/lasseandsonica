@@ -81,6 +81,17 @@ const timeline: TimelineEvent[] = [
     content: [
       {
         text: "Ivar måtte flytte ut og gi plass til søtpoteten. Det ble store endringer i leiligheten. Sonica ville pusse opp og fjerne alle minner av et guttekolektiv.",
+        images: [
+          {
+            imageUrl: "Bryllup/317DA76E-42EA-4C4F-B1D6-06CF34112B3D_jenavt.jpg",
+            imageAlt: "Sonica pusser opp",
+            className: "max-w-sm",
+          },
+          {
+            imageUrl: "Bryllup/067E0DAC-5DAD-4D42-BC80-B7B2BEDDECE4_jojzh3.jpg",
+            imageAlt: "Sonica pusser på en stige",
+          },
+        ],
       },
     ],
   },
@@ -122,7 +133,7 @@ export default function OurStory() {
                 <Typography
                   variant="body-small"
                   key={date.valueOf()}
-                  className="bg-red-50 p-1 sm:px-4 rounded-sm font-medium text-center"
+                  className="text-gray-500 p-1 sm:px-4 rounded-sm font-medium text-center"
                 >
                   {date.toLocaleDateString(undefined, {
                     year: "numeric",
@@ -130,7 +141,7 @@ export default function OurStory() {
                     day: "numeric",
                   })}
                 </Typography>
-                <div className="w-[2px] h-full bg-red-300" />
+                <div className="w-[2px] h-full bg-red-200" />
               </div>
               <div className="col-span-3 pb-8 px-2">
                 <Typography variant="h5" className="font-semibold">

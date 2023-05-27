@@ -1,46 +1,8 @@
 import { routes } from "~/types/routes";
 import { Header } from "./Header";
 import { WeddingLink } from "./WeddingLink";
-import { ReactNode } from "react";
-
-export const links = [
-  {
-    name: "Hjem",
-    to: `${routes.wedding.home}`,
-  },
-  {
-    name: "Vår historie",
-    to: `${routes.wedding.ourStory}`,
-  },
-  {
-    name: "Program",
-    to: `${routes.wedding.program}`,
-  },
-  {
-    name: "Veibeskrivelse",
-    to: `${routes.wedding.navigation}`,
-  },
-  {
-    name: "Venner og familie",
-    to: `${routes.wedding.friendsAndFamily}`,
-  },
-  {
-    name: "Dresscode",
-    to: `${routes.wedding.dresscode}`,
-  },
-  {
-    name: "RSVP",
-    to: `${routes.wedding.rsvp}`,
-  },
-  {
-    name: "Ønskeliste",
-    to: `${routes.wedding.wishlist}`,
-  },
-  {
-    name: "Q+A",
-    to: `${routes.wedding.qa}`,
-  },
-];
+import type { ReactNode } from "react";
+import { links } from "./links";
 
 export const HeaderAndNaviagtion = ({
   showNavigation,

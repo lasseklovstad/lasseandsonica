@@ -1,7 +1,7 @@
 import { useNavigation } from "@remix-run/react";
 import { useEffect, useRef } from "react";
-import { links } from "./HeaderAndNavigation";
 import { WeddingLink } from "./WeddingLink";
+import { links } from "./links";
 
 export const SideBar = () => {
   const navigation = useNavigation();

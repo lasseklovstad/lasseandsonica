@@ -18,6 +18,7 @@ export const CloudinaryImage = ({
     <div className={className}>
       <div>
         <img
+          title={imageAlt}
           alt={imageAlt}
           src={getCloudinaryImageUrl({
             relativeUrl: imageUrl,
@@ -72,11 +73,4 @@ function getCloudinaryImageUrl({
       },
     },
   })} ${size}w`;
-}
-
-function getGCD(a: number, b: number): number {
-  if (!b) {
-    return a;
-  }
-  return getGCD(b, a % b);
 }
