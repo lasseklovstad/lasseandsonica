@@ -135,7 +135,7 @@ export default function OurStory() {
                 <Typography
                   variant="body-small"
                   key={date.valueOf()}
-                  className="text-gray-500 p-1 sm:px-4 rounded-sm font-medium text-center"
+                  className="text-gray-500 p-1 sm:px-4 rounded-sm font-medium text-center whitespace-nowrap"
                 >
                   {date.toLocaleDateString(undefined, {
                     year: "numeric",

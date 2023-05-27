@@ -21,7 +21,6 @@ export const SideBar = () => {
         aria-label="Åpne sidemeny"
         className="inline-flex items-center p-2 m-2 text-sm text-black rounded-lg md:hidden focus:outline-none focus:ring-2 hover:ring-2"
       >
-        <span className="sr-only">Open sidebar</span>
         <svg viewBox="0 0 100 80" width="25" height="25" fill="currentColor">
           <rect width="100" height="12"></rect>
           <rect y="30" width="100" height="12"></rect>
