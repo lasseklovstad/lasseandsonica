@@ -1,5 +1,6 @@
 import { Fragment } from "react";
 import { Typography } from "./Typography";
+import { Divider } from "./Divider";
 
 export const PageTitle = ({
   title,
@@ -21,7 +22,7 @@ export const PageTitle = ({
           </Fragment>
         ))}
       </Typography>
-      <div className="w-44 border-2 mb-4" />
+      <Divider />
     </div>
   );
 };

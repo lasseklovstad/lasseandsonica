@@ -1,7 +1,6 @@
-import { routes } from "~/types/routes";
+import type { ReactNode } from "react";
 import { Header } from "./Header";
 import { WeddingLink } from "./WeddingLink";
-import type { ReactNode } from "react";
 import { links } from "./links";
 
 export const HeaderAndNaviagtion = ({

@@ -11,7 +11,7 @@ export const RoundedImage = ({
   role: string;
 }) => {
   return (
-    <div className="w-[200px] text-center">
+    <div className="w-[200px] p-2 flex flex-col items-center">
       <CloudinaryImage
         imageAlt={name}
         imageUrl={imageUrl}
@@ -21,7 +21,7 @@ export const RoundedImage = ({
       <Typography
         as="div"
         variant="h3"
-        className="text-center font-cursive font-thin"
+        className="text-center font-cursive font-thin max-w-[120px]"
       >
         {role}
       </Typography>
