@@ -30,7 +30,7 @@ export const SideBar = () => {
 
       <dialog
         ref={dialogRef}
-        className={`fixed top-0 left-0 w-64 h-screen m-0 p-0 max-h-full backdrop:bg-gray-300 backdrop:opacity-50`}
+        className={`fixed top-0 left-0 w-40 h-screen m-0 p-0 max-h-full backdrop:bg-gray-300 backdrop:opacity-50`}
         onClick={(e) => {
           if (!dialogRef.current) return;
           const dialogDimensions = dialogRef.current.getBoundingClientRect();

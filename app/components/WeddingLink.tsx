@@ -10,11 +10,11 @@ export const WeddingLink = ({
     <NavLink
       to={link.to}
       className={({ isActive }) =>
-        `${isActive ? "border-black border-b-2" : ""}`
+        `${isActive ? "border-black border-b-2" : ""} w-full inline-flex`
       }
       prefetch="intent"
     >
-      <Typography variant="body-small" className="pb-4 p-1" as="span">
+      <Typography variant="body-small" className="p-1" as="span">
         {link.name}
       </Typography>
     </NavLink>
