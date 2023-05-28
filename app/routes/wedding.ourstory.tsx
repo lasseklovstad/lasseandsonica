@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { Fragment } from "react";
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
@@ -5,14 +6,39 @@ import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 
 type TimelineEvent = {
-  date: Date;
+  date: ReactNode;
   title: string;
   content: { text: string; images?: CloudinaryImageProps[] }[];
 };
 
+const months = [
+  "jan.",
+  "feb.",
+  "mars",
+  "april",
+  "mai",
+  "juni",
+  "juli",
+  "aug.",
+  "sept.",
+  "okt.",
+  "nov.",
+  "des.",
+];
+const TimelineDate = ({ date }: { date: Date }) => {
+  return (
+    <div className="flex flex-col">
+      <span>
+        {date.getDate()} {months[date.getMonth()]}
+      </span>
+      <span>{date.getFullYear()}</span>
+    </div>
+  );
+};
+
 const timeline: TimelineEvent[] = [
   {
-    date: new Date(2018, 11, 7),
+    date: <TimelineDate date={new Date(2018, 11, 7)} />,
     title: "Møttes for første gang",
     content: [
       {
@@ -21,7 +47,7 @@ const timeline: TimelineEvent[] = [
     ],
   },
   {
-    date: new Date(2020, 4, 27),
+    date: <TimelineDate date={new Date(2020, 4, 27)} />,
     title: "Første gnist",
     content: [
       {
@@ -45,7 +71,7 @@ const timeline: TimelineEvent[] = [
     ],
   },
   {
-    date: new Date(2020, 5, 21),
+    date: <TimelineDate date={new Date(2020, 5, 21)} />,
     title: "Første date",
     content: [
       {
@@ -61,7 +87,7 @@ const timeline: TimelineEvent[] = [
     ],
   },
   {
-    date: new Date(2020, 6, 11),
+    date: <TimelineDate date={new Date(2020, 6, 11)} />,
     title: "Offisielt kjærester",
     content: [
       {
@@ -77,7 +103,7 @@ const timeline: TimelineEvent[] = [
     ],
   },
   {
-    date: new Date(2021, 4, 10),
+    date: <TimelineDate date={new Date(2021, 4, 10)} />,
     title: "Flytter sammen",
     content: [
       {
@@ -97,7 +123,7 @@ const timeline: TimelineEvent[] = [
     ],
   },
   {
-    date: new Date(2023, 3, 19),
+    date: <TimelineDate date={new Date(2023, 3, 19)} />,
     title: "Frieri",
     content: [
       {
@@ -113,7 +139,7 @@ const timeline: TimelineEvent[] = [
     ],
   },
   {
-    date: new Date(2023, 7, 11),
+    date: <TimelineDate date={new Date(2023, 7, 11)} />,
     title: "Blir gift",
     content: [{ text: "Ingen data tilgjengelig" }],
   },
@@ -127,32 +153,29 @@ export default function OurStory() {
         subtitle={["Her kan dere lese om vår reise fra vi møttes."]}
       />
 
-      <div className="grid grid-cols-4">
-        {timeline.map(({ content, date, title }) => {
+      <div className="flex flex-col w-full">
+        {timeline.map(({ content, date, title }, i) => {
           return (
-            <Fragment key={date.valueOf()}>
-              <div className="col-span-1 items-center flex flex-col">
+            <div className="flex w-full gap-2 sm:gap-24" key={i}>
+              <div className="flex flex-col items-center w-[65px]">
                 <Typography
                   variant="body-small"
-                  key={date.valueOf()}
-                  className="text-gray-500 p-1 sm:px-4 rounded-sm font-medium text-center whitespace-nowrap"
+                  className="text-gray-500 sm:px-4 rounded-sm font-medium text-center whitespace-nowrap"
                 >
-                  {date.toLocaleDateString(undefined, {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
+                  {date}
                 </Typography>
                 <div className="w-[2px] h-full bg-red-200" />
               </div>
-              <div className="col-span-3 pb-8 px-2">
+              <div className="pb-8 px-2 w-full">
                 <Typography variant="h5" className="font-semibold">
                   {title}
                 </Typography>
                 {content.map((c, i) => {
                   return (
                     <div key={i}>
-                      <Typography className="my-4">{c.text}</Typography>
+                      <Typography variant="body-small" className="my-4">
+                        {c.text}
+                      </Typography>
                       {c.images?.map((image, i) => (
                         <CloudinaryImage key={i} {...image} />
                       ))}
@@ -160,7 +183,7 @@ export default function OurStory() {
                   );
                 })}
               </div>
-            </Fragment>
+            </div>
           );
         })}
       </div>
