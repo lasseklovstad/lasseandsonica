@@ -7,6 +7,7 @@ import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 
 type TimelineEvent = {
+  size?: "large" | "normal";
   date: ReactNode;
   title: string;
   content: { text: string; images?: CloudinaryImageProps[] }[];
@@ -14,11 +15,22 @@ type TimelineEvent = {
 
 const timeline: TimelineEvent[] = [
   {
-    date: <>12:30</>,
-    title: "Velkommen til indisk vielse og lunsj i Slemmestad",
+    date: <>12:30-15:30</>,
+    size: "large",
+    title:
+      "Del 1: Velkommen til lunsj og vielse på Sanathan Mandir Sabha i Asker",
     content: [
       {
-        text: "Tar av på sko. Mandir. Det blir servert indiske vegetarretter av en indisk kokk.",
+        text: "Vi møtes til lunsj og indisk vielse på det indiske tempelet i Slemmestad. Det tar ca. 45 minutter å kjøre fra Oslo, og det er en stor parkeringsplass utenfor. Det er vanlig å ta av seg skoene når man kommer inn i tempelet, og det finnes garderobe og toaletter der.",
+      },
+    ],
+  },
+  {
+    date: <>12:30</>,
+    title: "Lunsj",
+    content: [
+      {
+        text: "Det blir lunsjbuffet med indiske vegetarretter laget av en indisk kokk (husk å gi beskjed på forhånd om du har noen allergier).",
       },
     ],
   },
@@ -27,7 +39,16 @@ const timeline: TimelineEvent[] = [
     title: "Indisk vielse",
     content: [
       {
-        text: "Vi setter oss ned og Lasse og Sonica blir viet av en indisk prest.",
+        text: "Vi setter oss ned, og Lasse og Sonica blir viet av en indisk prest. Varighet er ca 1,5-2 timer.",
+      },
+    ],
+  },
+  {
+    date: <>15:15</>,
+    title: "Photoshoot",
+    content: [
+      {
+        text: "Etter vielsen må vi selvfølgelig ha en liten photoshoot med de nygifte, familie og venner.",
       },
     ],
   },
@@ -36,16 +57,26 @@ const timeline: TimelineEvent[] = [
     title: "Avreise mot Oslo",
     content: [
       {
-        text: "Vi setter oss ned i transportmidler og får tid til å skifte, parkere bil og sjekke inn på hotell før middagen starter.",
+        text: "Vi reiser (tilbake) til Oslo, parkerer biler hjemme/sjekker inn på hotell, skifter og fresher oss opp til middagen.",
+      },
+    ],
+  },
+  {
+    date: <>17:00-23:30</>,
+    size: "large",
+    title: "Del 2: Velkommen til middag og fest på hotell Continental i Oslo",
+    content: [
+      {
+        text: "Vi møtes til bryllupsmiddag på Hotell Continental, som ligger rett ved Nationaltheatret. Vi skal være i tredje etasje, i et lokale som heter Salen.",
       },
     ],
   },
   {
     date: <>17:00</>,
-    title: "Velkommen til hotell Continental",
+    title: "Aperitif",
     content: [
       {
-        text: "Vi starter med mingling og apperetiff i lobbyen",
+        text: "Vi starter med mingling og aperitif i forstuen.",
       },
     ],
   },
@@ -54,25 +85,25 @@ const timeline: TimelineEvent[] = [
     title: "Middag",
     content: [
       {
-        text: "Vi setter oss til bords og det blir servert 3 retters middag. Underveis skåler vi.",
+        text: "Vi setter oss til bords, og blir servert en 3-retters middag. Det vil ikke være en formell toastmaster, men det er veldig hyggelig om noen ønsker å si noen ord underveis i middagen.",
       },
     ],
   },
   {
     date: <>20:00</>,
-    title: "Fest og leker",
+    title: "Fest og underholdning",
     content: [
       {
-        text: "Vi setter oss til bords og det blir servert 3 retters middag. Underveis skåler vi.",
+        text: "Etter middagen fortsetter vi kvelden med fest og underholdning. Her er det fritt frem til å lede an quiz, aktiviteter og andre innslag.",
       },
     ],
   },
   {
-    date: <>24:00</>,
+    date: <>23:30</>,
     title: "Takk for i kveld",
     content: [
       {
-        text: "De som ønsker å feste videre kan gå ned til baren.",
+        text: "De som ønsker å feste videre kan forflytte seg til Bar Boman nede i første etasje.",
       },
     ],
   },
@@ -83,12 +114,12 @@ export default function Program() {
     <div>
       <PageTitle title="Program" subtitle={["Her er program for dagen."]} />
       <div className="flex flex-col w-full">
-        {timeline.map(({ content, date, title }, i) => {
+        {timeline.map(({ content, date, title, size }, i) => {
           return (
             <div className="flex w-full gap-2 sm:gap-24" key={i}>
               <div className="flex flex-col items-center w-[65px]">
                 <Typography
-                  variant="body-small"
+                  variant={size === "large" ? "h5" : "body-small"}
                   className="text-gray-500 sm:px-4 rounded-sm font-medium text-center whitespace-nowrap"
                 >
                   {date}
@@ -96,7 +127,10 @@ export default function Program() {
                 <div className="w-[2px] h-full bg-red-200" />
               </div>
               <div className="pb-8 px-2 w-full">
-                <Typography variant="h5" className="font-semibold">
+                <Typography
+                  variant={size === "large" ? "h4" : "h5"}
+                  className="font-semibold"
+                >
                   {title}
                 </Typography>
                 {content.map((c, i) => {

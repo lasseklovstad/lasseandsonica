@@ -38,10 +38,10 @@ const TimelineDate = ({ date }: { date: Date }) => {
 const timeline: TimelineEvent[] = [
   {
     date: <TimelineDate date={new Date(2018, 11, 7)} />,
-    title: "Møttes for første gang",
+    title: "Første møte",
     content: [
       {
-        text: "Julebord med jobb...",
+        text: "Lasse og Sonica møttes for første gang på julebordet til Experis (Ciber den gang). Lasse danset morsom skulderdans på dansegulvet, Sonica spurte hvorfor han danset slik. Lasse svarte: Jeg gjør det for damene. Sonica var ikke helt overbevist, men syntes det var veldig gøy!",
       },
     ],
   },
@@ -50,7 +50,7 @@ const timeline: TimelineEvent[] = [
     title: "Første gnist",
     content: [
       {
-        text: "Mangekamp med jobb startet igjen etter en lang pause med Corona. Da fant Sonica ut at hun hadde savnet meg, selv om vi ikke var kjærester.",
+        text: "Etter flere uker med sosial nedstengning var det plutselig ekstra hyggelig å se hverandre under mangekamp med jobb.",
         images: [
           {
             imageUrl: "Bryllup/slackline_ovgmfq.jpg",
@@ -59,7 +59,7 @@ const timeline: TimelineEvent[] = [
         ],
       },
       {
-        text: "Vi satt i parken og grillet sammen med andre fra jobb. Vi var der til sent på kveld og satt ganske nærme hverandre.",
+        text: "Selv om Lasse ikke imponerte stort i slackline...",
         images: [
           {
             imageUrl: "Bryllup/IMG_20200527_180005_azyfrh.jpg",
@@ -74,7 +74,7 @@ const timeline: TimelineEvent[] = [
     title: "Første date",
     content: [
       {
-        text: "Lasse hadde invitert til Taco-date oss han. Han var svært usikker på om Sonica spiste kjøtt ettersom hun kom fra en indisk familie. Etter en melding på facebook fant han fort ut at Sonica spiste hva som helst.",
+        text: "Det ble ingen 'øl ute', ettersom Lasse imponerte og inviterte til tacomiddag, med Kløvstad-salsa og rødvin.",
         images: [
           {
             imageUrl: "v1685207369/taco_ji7gmn.png",
@@ -90,7 +90,7 @@ const timeline: TimelineEvent[] = [
     title: "Offisielt kjærester",
     content: [
       {
-        text: "Sonica spurte Lasse... Det blei offisielt på face",
+        text: "Var ingen grunn til å vente lenger når alt føltes riktig - og vi ble offisielt kjærester!",
         images: [
           {
             imageUrl: "Bryllup/59AF94DE-051A-4F6E-AD14-63BBDDDA6375_garffo.jpg",
@@ -106,11 +106,11 @@ const timeline: TimelineEvent[] = [
     title: "Flytter sammen",
     content: [
       {
-        text: "Ivar måtte flytte ut og gi plass til søtpoteten. Det ble store endringer i leiligheten. Sonica ville pusse opp og fjerne alle minner av et guttekolektiv.",
+        text: "Vi ble lei av å reise opp og ned mellom Alexander Kiellandsplass og Solli Plass. Sonica kjøpte seg inn, og Ivar måtte dessverre flytte litt lenger nedi gata. Det ble store endringer i leiligheten, ettersom Sonica ville pusse opp og fjerne alle minner av et guttekollektiv. Lasse måtte bli med å bo i leiligheten på Solli mens vi pusset opp, og vi fikk tilslutt flytte inn i vår nyoppussede leilighet på Kiellands.",
         images: [
           {
-            imageUrl: "Bryllup/317DA76E-42EA-4C4F-B1D6-06CF34112B3D_jenavt.jpg",
-            imageAlt: "Sonica pusser opp",
+            imageUrl: "Bryllup/30D7B25C-FCB1-4748-947F-BAF0282E3EF1_vonek3.jpg",
+            imageAlt: "Lasse pusser opp på en stige",
             className: "max-w-sm",
           },
           {
@@ -123,10 +123,10 @@ const timeline: TimelineEvent[] = [
   },
   {
     date: <TimelineDate date={new Date(2023, 3, 19)} />,
-    title: "Frieri",
+    title: "Frieriet",
     content: [
       {
-        text: "Lasse ordner til en veldig romantisk aften hjemme. Han setter seg ned på kne og spør om Sonica vil gifte seg med han. Hun nøler litt... men blir nødt til å si ja.",
+        text: "Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en 'vanlig' onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring på fingeren.",
         images: [
           {
             imageUrl: "Bryllup/986C7902-25E2-4DB6-B711-C170A3D450CC_zolx3n.jpg",
@@ -139,8 +139,17 @@ const timeline: TimelineEvent[] = [
   },
   {
     date: <TimelineDate date={new Date(2023, 7, 11)} />,
-    title: "Blir gift",
-    content: [{ text: "Ingen data tilgjengelig" }],
+    title: "Bryllup!",
+    content: [{ text: "Bryllup med våre nærmeste venner og familie." }],
+  },
+  {
+    date: <TimelineDate date={new Date(2025, 7, 11)} />,
+    title: "Bryllupsfeiring",
+    content: [
+      {
+        text: "Bryllupsfeiring med alle våre fantastiske venner og familie er under planlegging - stay tuned.",
+      },
+    ],
   },
 ];
 
