@@ -15,8 +15,8 @@ export const HeaderAndNaviagtion = ({
       <Header showSideBar={showNavigation}>{headerContent}</Header>
 
       {showNavigation && (
-        <nav className="py-4">
-          <ul className="md:flex flex-row gap-4 hidden">
+        <nav className="md:py-4">
+          <ul className="md:flex flex-row hidden">
             {links.map((link) => {
               return (
                 <li key={link.to}>

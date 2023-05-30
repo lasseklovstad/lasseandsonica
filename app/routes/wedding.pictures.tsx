@@ -1,12 +1,12 @@
 import { Link, useSearchParams } from "@remix-run/react";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
+import { IconButton } from "~/components/IconButton";
+import { LeftArrow } from "~/components/icons/LeftArrow";
 import { PageTitle } from "~/components/PageTitle";
+import { RightArrow } from "~/components/icons/RightArrow";
+import { routes } from "~/types/routes";
 
 const pictures = [
-  {
-    imageUrl: "Bryllup/936C0B28-0267-4512-B66A-E7E30D7CD401_vqta6e.jpg",
-    imageAlt: "",
-  },
   {
     imageUrl: "Bryllup/5BD31EF8-4641-481B-B3A5-5CDB9601859C_zfwhu2.jpg",
     imageAlt: "Sonica på huske ved akerselva",
@@ -24,10 +24,6 @@ const pictures = [
     imageAlt: "Sonica og Lasse på vei til brylupp",
   },
   {
-    imageUrl: "Bryllup/C987F085-ECD0-40DE-AE60-9FA21A561221_rbgj89.jpg",
-    imageAlt: "Sonica og Lasse på fest",
-  },
-  {
     imageUrl: "Bryllup/1E228DA5-7255-48DE-AEBA-1A38274C04B2_jvtqrn.jpg",
     imageAlt: "Sonica og Lasse i London",
   },
@@ -36,28 +32,70 @@ const pictures = [
     imageAlt: "Sonica og Lasse i bryllup",
   },
   {
-    imageUrl: "Bryllup/991EAE0E-34D6-459F-8315-CED736F78B07_wlkzws.jpg",
+    imageUrl: "Bryllup/991EAE0E-34D6-459F-8315-CED736F78B07_wlkzws_kxoxbf.jpg",
     imageAlt: "Sonica og Lasse med Olivia",
   },
   {
     imageUrl: "Bryllup/6024367F-CF06-44BC-A60A-37FCE41F4114_junxcn.jpg",
     imageAlt: "Sonica og Lasse i Paris",
   },
-  {
-    imageUrl: "Bryllup/5C340B65-FCCC-415F-8EEC-D2EFAB325DD7_x7aykj.jpg",
-    imageAlt: "Sonica og Lasse på hotellrom i Paris",
-  },
+
   {
     imageUrl: "Bryllup/617B8EC1-7A36-401D-91F2-9E2F1DDB3AB3_icnszf.jpg",
     imageAlt: "Sonica og Lasse på tur i Norge et sted",
   },
-  {
-    imageUrl: "Bryllup/DBA9E8B2-A1EC-4742-B439-7C34F7D1D95E_v7spbg.jpg",
-    imageAlt: "Sonica og Lasse er kule",
-  },
+
   {
     imageUrl: "Bryllup/3467CE7B-71AD-462C-A299-A4E502466333_yvwxdd.jpg",
     imageAlt: "Lasse i Baker Street",
+  },
+  {
+    imageUrl: "Bryllup/EDE940EB-52E5-4B0B-BB86-494BE1BBAC33_smlzvg.jpg",
+    imageAlt: "Sonica og Lasse i Åndalsnes",
+  },
+  {
+    imageUrl: "Bryllup/DBA9E8B2-A1EC-4742-B439-7C34F7D1D95E_v7spbg_dlls5k.jpg",
+    imageAlt: "Sonica og Lasse er kule",
+  },
+  {
+    imageUrl: "Bryllup/5C340B65-FCCC-415F-8EEC-D2EFAB325DD7_x7aykj_ksqr5v.jpg",
+    imageAlt: "Sonica og Lasse på hotellrom i Paris",
+  },
+  {
+    imageUrl: "Bryllup/20220714_083137250_iOS_pxpnv8.jpg",
+    imageAlt: "Sonica koser seg i teltet på vei til Besseggen",
+  },
+  {
+    imageUrl: "Bryllup/20200816_175136558_iOS_vupcbj.jpg",
+    imageAlt: "Lasse på togstasjon med hjemmebrygg",
+  },
+  {
+    imageUrl: "Bryllup/20220714_094700598_iOS_sec5ae.heic",
+    imageAlt: "Sonica gjør seg klar til zip line",
+  },
+  {
+    imageUrl: "Bryllup/20210517_145932411_iOS_qo2yjd.heic",
+    imageAlt: "Lasse og Sonica på 17.mai",
+  },
+  {
+    imageUrl: "Bryllup/20201106_160216991_iOS_gajej0.heic",
+    imageAlt: "Lasse og Sonica er på utsiktspunkt på Grefsenkollen",
+  },
+  {
+    imageUrl: "Bryllup/20211203_133807935_iOS_d4vlsb.heic",
+    imageAlt: "Lasse og Sonica i Gøteborg",
+  },
+  {
+    imageUrl: "Bryllup/20220715_072121388_iOS_jqs07y.heic",
+    imageAlt: "Sonica på Besseggen",
+  },
+  {
+    imageUrl: "Bryllup/20200723_160347811_iOS_yjnjkj.heic",
+    imageAlt: "Sonica på Sipp & Paint",
+  },
+  {
+    imageUrl: "Bryllup/20220417_104704285_iOS_ejdmbg.heic",
+    imageAlt: "Sonica og Lasse på orienteringstur i Sandefjord",
   },
 ];
 
@@ -70,56 +108,46 @@ export default function Pictures() {
     <div>
       <PageTitle
         title="Bilder av oss"
+        nextLink={{
+          to: `../${routes.wedding.qa}`,
+          name: `Q+A`,
+        }}
+        backLink={{
+          to: `../${routes.wedding.rsvp}`,
+          name: `RSVP`,
+        }}
         subtitle={[
           "Her ser du bilder av oss gjennom tidene sammen.",
           "Trykk på bildene for å se dem i større størrelse.",
         ]}
       />
       {typeof pictureIndexAsNumber === "number" && selectedPicture ? (
-        <div className="flex justify-around w-full items-start">
-          <Link
-            preventScrollReset
-            to={{ search: `?pictureIndex=${pictureIndexAsNumber - 1}` }}
-            aria-label="Forrige bilde"
-            className="inline-flex items-center p-0.5 m-2 text-black rounded-lg focus:outline-none focus:ring-2 hover:ring-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              viewBox="3 3 10 10"
+        <div className="w-full flex justify-center">
+          <div className="relative max-w-[500px]">
+            <IconButton
+              as={Link}
+              preventScrollReset
+              to={{ search: `?pictureIndex=${pictureIndexAsNumber - 1}` }}
+              aria-label="Forrige bilde"
+              className="absolute top-0 left-0 bg-gray-200"
             >
-              <path
-                fill-rule="evenodd"
-                d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"
-              ></path>
-            </svg>
-          </Link>
-          <CloudinaryImage
-            imageUrl={selectedPicture.imageUrl}
-            imageAlt={selectedPicture.imageAlt}
-            className="max-w-[500px]"
-          />
-          <Link
-            to={{ search: `?pictureIndex=${pictureIndexAsNumber + 1}` }}
-            preventScrollReset
-            aria-label="Neste bilde"
-            className="inline-flex items-center p-0.5 m-2 text-black rounded-lg focus:outline-none focus:ring-2 hover:ring-2"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              viewBox="3 3 10 10"
+              <LeftArrow />
+            </IconButton>
+            <CloudinaryImage
+              imageUrl={selectedPicture.imageUrl}
+              imageAlt={selectedPicture.imageAlt}
+              showDescription
+            />
+            <IconButton
+              as={Link}
+              to={{ search: `?pictureIndex=${pictureIndexAsNumber + 1}` }}
+              preventScrollReset
+              aria-label="Neste bilde"
+              className="absolute top-0 right-0 bg-gray-200"
             >
-              <path
-                fill-rule="evenodd"
-                d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"
-              ></path>
-            </svg>
-          </Link>
+              <RightArrow />
+            </IconButton>
+          </div>
         </div>
       ) : (
         <div className="grid grid-cols-3 md:grid-cols-6 gap-2 items-center">

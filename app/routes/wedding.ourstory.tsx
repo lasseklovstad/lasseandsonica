@@ -3,6 +3,7 @@ import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
+import { routes } from "~/types/routes";
 
 type TimelineEvent = {
   date: ReactNode;
@@ -158,6 +159,14 @@ export default function OurStory() {
     <div className="flex flex-col items-center">
       <PageTitle
         title="Vår historie"
+        nextLink={{
+          to: `../${routes.wedding.program}`,
+          name: `Program`,
+        }}
+        backLink={{
+          to: `../${routes.wedding.home}`,
+          name: `Hjem`,
+        }}
         subtitle={["Her kan dere lese om vår reise fra vi møttes."]}
       />
 

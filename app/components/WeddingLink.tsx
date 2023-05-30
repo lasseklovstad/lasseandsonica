@@ -10,7 +10,9 @@ export const WeddingLink = ({
     <NavLink
       to={link.to}
       className={({ isActive }) =>
-        `${isActive ? "border-black border-b-2" : ""} w-full inline-flex`
+        `${
+          isActive ? "border-black border-b-2 bg-slate-50" : ""
+        } w-full inline-flex px-2`
       }
       prefetch="intent"
     >

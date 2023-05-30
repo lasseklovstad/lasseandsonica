@@ -1,11 +1,13 @@
 import type { TransformerOption } from "@cld-apis/types";
 import { buildImageUrl } from "cloudinary-build-url";
+import { Typography } from "./Typography";
 
 export type CloudinaryImageProps = {
   imageUrl: string;
   className?: string;
   imageAlt: string;
   transformations?: TransformerOption;
+  showDescription?: boolean;
 };
 
 export const CloudinaryImage = ({
@@ -13,6 +15,7 @@ export const CloudinaryImage = ({
   className,
   imageAlt,
   transformations,
+  showDescription,
 }: CloudinaryImageProps) => {
   return (
     <div className={className}>
@@ -31,6 +34,11 @@ export const CloudinaryImage = ({
         })}
         sizes="(max-width:768px) 95vw, (min-width:767px) and (max-width:1024px) 67vw, 800px"
       />
+      {showDescription && (
+        <Typography variant="body-small" className="text-center my-4">
+          {imageAlt}
+        </Typography>
+      )}
     </div>
   );
 };

@@ -2,6 +2,8 @@ import { useNavigation } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 import { WeddingLink } from "./WeddingLink";
 import { links } from "./links";
+import { Menu } from "./icons/Menu";
+import { IconButton } from "./IconButton";
 
 export const SideBar = () => {
   const navigation = useNavigation();
@@ -15,18 +17,14 @@ export const SideBar = () => {
 
   return (
     <div className="w-full">
-      <button
+      <IconButton
         onClick={() => dialogRef.current?.showModal()}
         type="button"
         aria-label="Åpne sidemeny"
-        className="inline-flex items-center p-2 m-2 text-sm text-black rounded-lg md:hidden focus:outline-none focus:ring-2 hover:ring-2"
+        className="md:hidden"
       >
-        <svg viewBox="0 0 100 80" width="25" height="25" fill="currentColor">
-          <rect width="100" height="12"></rect>
-          <rect y="30" width="100" height="12"></rect>
-          <rect y="60" width="100" height="12"></rect>
-        </svg>
-      </button>
+        <Menu />
+      </IconButton>
 
       <dialog
         ref={dialogRef}

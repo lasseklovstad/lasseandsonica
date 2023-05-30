@@ -1,11 +1,16 @@
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
+import { routes } from "~/types/routes";
 
 export default function Home() {
   return (
     <div className="flex flex-col items-center">
       <PageTitle
         title="Velkommen"
+        nextLink={{
+          to: `../${routes.wedding.ourStory}`,
+          name: `Vår historie`,
+        }}
         subtitle={[
           "Vi gifter oss 11. august 2023 og håper dere vil bli med på feiringen!",
         ]}

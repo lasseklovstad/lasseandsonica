@@ -5,6 +5,7 @@ import {
 } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
+import { routes } from "~/types/routes";
 
 type TimelineEvent = {
   size?: "large" | "normal";
@@ -112,21 +113,32 @@ const timeline: TimelineEvent[] = [
 export default function Program() {
   return (
     <div>
-      <PageTitle title="Program" subtitle={["Her er program for dagen."]} />
+      <PageTitle
+        title="Program"
+        nextLink={{
+          to: `../${routes.wedding.friendsAndFamily}`,
+          name: `Venner og familie`,
+        }}
+        backLink={{
+          to: `../${routes.wedding.ourStory}`,
+          name: `Vår historie`,
+        }}
+        subtitle={["Her er program for dagen."]}
+      />
       <div className="flex flex-col w-full">
         {timeline.map(({ content, date, title, size }, i) => {
           return (
-            <div className="flex w-full gap-2 sm:gap-24" key={i}>
-              <div className="flex flex-col items-center w-[65px]">
+            <div className="flex w-full md:gap-20" key={i}>
+              <div className="flex flex-col items-center w-[135px]">
                 <Typography
                   variant={size === "large" ? "h5" : "body-small"}
-                  className="text-gray-500 sm:px-4 rounded-sm font-medium text-center whitespace-nowrap"
+                  className="text-gray-500 rounded-sm font-medium text-center w-full"
                 >
                   {date}
                 </Typography>
                 <div className="w-[2px] h-full bg-red-200" />
               </div>
-              <div className="pb-8 px-2 w-full">
+              <div className="pb-8 px-1 w-full">
                 <Typography
                   variant={size === "large" ? "h4" : "h5"}
                   className="font-semibold"

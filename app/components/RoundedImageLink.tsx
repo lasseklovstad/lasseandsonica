@@ -29,6 +29,7 @@ export const RoundedImageLink = ({
   return (
     <NavLink
       to={to}
+      preventScrollReset
       className={({ isActive }) =>
         `relative duration-500 transition ease-in-out w-[325px] ${
           isActive ? "scale-105 brightness-100" : "scale-100 brightness-75"
