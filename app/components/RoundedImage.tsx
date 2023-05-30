@@ -21,7 +21,7 @@ export const RoundedImage = ({
       <Typography
         as="div"
         variant="h3"
-        className="text-center font-cursive font-thin max-w-[120px]"
+        className="text-center font-cursive font-thin max-w-[140px]"
       >
         {role}
       </Typography>

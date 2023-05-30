@@ -75,7 +75,7 @@ const timeline: TimelineEvent[] = [
     title: "Første date",
     content: [
       {
-        text: "Det ble ingen 'øl ute', ettersom Lasse imponerte og inviterte til tacomiddag, med Kløvstad-salsa og rødvin.",
+        text: 'Det ble ingen "øl ute", ettersom Lasse slo til og inviterte til tacomiddag, med Kløvstad-salsa og rødvin.',
         images: [
           {
             imageUrl: "v1685207369/taco_ji7gmn.png",

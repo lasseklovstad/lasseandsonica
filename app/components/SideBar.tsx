@@ -16,12 +16,12 @@ export const SideBar = () => {
   }, [navigation.state]);
 
   return (
-    <div className="w-full">
+    <>
       <IconButton
         onClick={() => dialogRef.current?.showModal()}
         type="button"
         aria-label="Åpne sidemeny"
-        className="md:hidden"
+        className="md:hidden absolute left-0"
       >
         <Menu />
       </IconButton>
@@ -55,6 +55,6 @@ export const SideBar = () => {
           </ul>
         </div>
       </dialog>
-    </div>
+    </>
   );
 };

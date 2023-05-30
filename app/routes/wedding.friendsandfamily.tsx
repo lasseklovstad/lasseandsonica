@@ -1,5 +1,4 @@
 import { Outlet } from "@remix-run/react";
-import { Divider } from "~/components/Divider";
 import { PageTitle } from "~/components/PageTitle";
 import { RoundedImageLink } from "~/components/RoundedImageLink";
 import { routes } from "~/types/routes";

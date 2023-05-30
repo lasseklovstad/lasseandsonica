@@ -1,8 +1,6 @@
 import type { ReactNode } from "react";
-import {
-  CloudinaryImage,
-  CloudinaryImageProps,
-} from "~/components/CloudinaryImage";
+import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
+import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { routes } from "~/types/routes";

@@ -9,10 +9,18 @@ export const Header = ({
   return (
     <header
       className={`flex flex-col items-center w-full bg-red-50 ${
-        showSideBar ? "md:pt-4" : "pt-4"
+        showSideBar ? "md:pt-2" : "pt-2"
       }`}
     >
-      {showSideBar && <SideBar />}
+      <div className="relative flex items-center justify-center w-full p-1">
+        {showSideBar && <SideBar />}
+        <img
+          alt="Bilde av to ringer"
+          className="w-10 sm:w-14"
+          src="/ringer.png"
+        />
+      </div>
+
       <div className="flex flex-col items-center w-full gap-2 mb-4">
         <Typography
           variant="h1"
