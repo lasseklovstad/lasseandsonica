@@ -15,14 +15,26 @@ const questions = [
       <div>
         <Typography className="mb-4">
           Første del av dagen (12.30-15.30) vil være i et indisk tempel som
-          heter Sanathan Mandir Sabha. <br /> Adressen er: Nyveien 6, 3470
-          Slemmestad
+          heter Sanathan Mandir Sabha. <br />
+          <a
+            className="underline"
+            target="_blank"
+            href="https://www.google.com/maps/search/?api=1&query=Sanatan%20Mandir%20Sabha%2C%20Nyveien%2C%20Slemmestad"
+            rel="noreferrer"
+          >
+            Adressen er: Nyveien 6, 3470 Slemmestad
+          </a>
         </Typography>
         <Typography>
           Siste del av dagen (17.00 {"-->"}) vil være på Hotell Continental i
-          Oslo, rett ved Nationaltheatret. <br /> Adressen er:{" "}
-          <a href="geo:59.9261184,10.7118592" target="_blank">
-            Stortingsgata 24/26, 0117 Oslo
+          Oslo, rett ved Nationaltheatret. <br />
+          <a
+            className="underline"
+            href="https://www.google.com/maps/search/?api=1&query=Hotel%20Continental%2C%20Stortingsgata%2C%20Oslo"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Adressen er: Stortingsgata 24/26, 0117 Oslo
           </a>
         </Typography>
       </div>

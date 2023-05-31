@@ -9,7 +9,7 @@ type AccordionProps = {
 export const Accordion = ({ title, content }: AccordionProps) => {
   return (
     <details className="group w-full">
-      <summary className="hover:cursor-pointer hover:bg-gray-100 group-open:bg-gray-100 p-4 flex justify-between items-center focus:ring-2 focus:ring-gray-200 border border-gray-200">
+      <summary className="list-none hover:cursor-pointer hover:bg-gray-100 group-open:bg-gray-100 p-4 flex justify-between items-center focus:ring-2 focus:ring-gray-200 border border-gray-200">
         <Typography variant="h5" as="div">
           {title}
         </Typography>
