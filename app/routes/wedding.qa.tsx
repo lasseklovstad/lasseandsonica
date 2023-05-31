@@ -1,29 +1,44 @@
+import type { ReactNode } from "react";
 import { Accordion } from "~/components/Accordion";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
+import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
+import type { AccessLevel } from "~/utils/siteSecret";
 
-const questions = [
+type Question = {
+  question: string;
+  answer: ReactNode;
+  accessLevels: AccessLevel[];
+};
+
+const LinkSlemmestad = (
+  <a
+    className="underline"
+    target="_blank"
+    href="https://www.google.com/maps/search/?api=1&query=Sanatan%20Mandir%20Sabha%2C%20Nyveien%2C%20Slemmestad"
+    rel="noreferrer"
+  >
+    Adressen er: Nyveien 6, 3470 Slemmestad
+  </a>
+);
+
+const questions: Question[] = [
   {
     question: "🎁 Hva skal man gi i bryllupsgaver?",
+    accessLevels: ["fullAccess"],
     answer:
       "Det er en gave i seg selv å ha dere med på feiringen av denne spesielle dagen vår! Om dere ønsker å gi noe har vi laget ønskelister på disse stedene: Info kommer",
   },
   {
     question: "🗺️ Hvor er feiringen?",
+    accessLevels: ["fullAccess"],
     answer: (
       <div>
         <Typography className="mb-4">
           Første del av dagen (12.30-15.30) vil være i et indisk tempel som
-          heter Sanathan Mandir Sabha. <br />
-          <a
-            className="underline"
-            target="_blank"
-            href="https://www.google.com/maps/search/?api=1&query=Sanatan%20Mandir%20Sabha%2C%20Nyveien%2C%20Slemmestad"
-            rel="noreferrer"
-          >
-            Adressen er: Nyveien 6, 3470 Slemmestad
-          </a>
+          heter Sanatan Mandir Sabha. <br />
+          {LinkSlemmestad}
         </Typography>
         <Typography>
           Siste del av dagen (17.00 {"-->"}) vil være på Hotell Continental i
@@ -41,7 +56,19 @@ const questions = [
     ),
   },
   {
+    question: "🗺️ Hvor er feiringen?",
+    accessLevels: ["limitedAccess"],
+    answer: (
+      <Typography>
+        Vielsen (12.30-15.30) vil være i et indisk tempel som heter Sanatan
+        Mandir Sabha. <br />
+        {LinkSlemmestad}
+      </Typography>
+    ),
+  },
+  {
     question: "👗 Hva skal man ha på seg?",
+    accessLevels: ["fullAccess"],
     answer: (
       <div>
         <Typography className="mb-4">
@@ -58,12 +85,26 @@ const questions = [
     ),
   },
   {
+    question: "👗 Hva skal man ha på seg?",
+    accessLevels: ["limitedAccess"],
+    answer: (
+      <Typography>
+        I vielsen kommer vi til å gå med indiske klær, og vi ønsker at dere skal
+        ha på dere akkurat det dere føler dere fine og komfortable i. Om dere
+        ønsker å gå med indiske klær synes vi det selvfølgelig er veldig
+        hyggelig.
+      </Typography>
+    ),
+  },
+  {
     question: "🛕 Hvordan er en indisk vielse?",
     answer: "Info kommer",
+    accessLevels: ["fullAccess", "limitedAccess"],
   },
 ];
 
 export default function QA() {
+  const { accessLevel } = useWeddingLoaderData();
   return (
     <div className="flex flex-col items-center">
       <PageTitle
@@ -73,13 +114,15 @@ export default function QA() {
           name: `Bilder`,
         }}
         subtitle={[
-          "Her kommer snart nyttige spørsmål og svar.",
+          "Her finner du nyttige spørsmål og svar.",
           "Er det noe annet du lurer på, spør oss.",
         ]}
       />
-      {questions.map(({ question, answer }, i) => (
-        <Accordion key={i} title={question} content={answer} />
-      ))}
+      {questions
+        .filter((q) => q.accessLevels.includes(accessLevel))
+        .map(({ question, answer }, i) => (
+          <Accordion key={i} title={question} content={answer} />
+        ))}
     </div>
   );
 }

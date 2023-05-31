@@ -1,4 +1,5 @@
 import { Link } from "@remix-run/react";
+import type { ReactNode } from "react";
 import { Fragment } from "react";
 import { Divider } from "./Divider";
 import { Typography } from "./Typography";
@@ -14,7 +15,7 @@ export const PageTitle = ({
   backLink,
 }: {
   title: string;
-  subtitle: string[];
+  subtitle: ReactNode[];
   nextLink?: LinkType;
   backLink?: LinkType;
 }) => {

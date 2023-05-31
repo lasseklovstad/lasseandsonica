@@ -1,11 +1,8 @@
 import { NavLink } from "@remix-run/react";
 import { Typography } from "./Typography";
+import type { LinkType } from "~/types/link";
 
-export const WeddingLink = ({
-  link,
-}: {
-  link: { name: string; to: string };
-}) => {
+export const WeddingLink = ({ link }: { link: LinkType }) => {
   return (
     <NavLink
       to={link.to}

@@ -8,3 +8,7 @@
     src: url("/AlexBrush-Regular.ttf");
   }
 }
+
+details > summary::-webkit-details-marker {
+  display: none;
+}

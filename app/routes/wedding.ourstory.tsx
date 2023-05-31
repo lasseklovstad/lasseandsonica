@@ -65,6 +65,7 @@ const timeline: TimelineEvent[] = [
           {
             imageUrl: "Bryllup/IMG_20200527_180005_azyfrh.jpg",
             imageAlt: "Slack line med Lasse",
+            className: "max-w-[400px]",
           },
         ],
       },
@@ -96,7 +97,7 @@ const timeline: TimelineEvent[] = [
           {
             imageUrl: "Bryllup/59AF94DE-051A-4F6E-AD14-63BBDDDA6375_garffo.jpg",
             imageAlt: "Selfie av oss kvelden vi ble kjærester",
-            className: "max-w-md",
+            className: "max-w-[200px]",
           },
         ],
       },
@@ -107,16 +108,17 @@ const timeline: TimelineEvent[] = [
     title: "Flytter sammen",
     content: [
       {
-        text: "Vi ble lei av å reise opp og ned mellom Alexander Kiellandsplass og Solli Plass. Sonica kjøpte seg inn, og Ivar måtte dessverre flytte litt lenger nedi gata. Det ble store endringer i leiligheten, ettersom Sonica ville pusse opp og fjerne alle minner av et guttekollektiv. Lasse måtte bli med å bo i leiligheten på Solli mens vi pusset opp, og vi fikk tilslutt flytte inn i vår nyoppussede leilighet på Kiellands.",
+        text: "Vi ble lei av å reise frem og tilbake mellom Alexander Kiellandsplass og Solli Plass. Sonica kjøpte seg inn, og Ivar måtte dessverre flytte litt lenger ned i gata. Det ble store endringer i leiligheten, ettersom Sonica ville pusse opp og fjerne alle minner av et guttekollektiv. Lasse måtte bli med å bo i leiligheten på Solli mens vi pusset opp, og vi fikk tilslutt flytte inn i vår nyoppussede leilighet på Kiellands.",
         images: [
           {
             imageUrl: "Bryllup/30D7B25C-FCB1-4748-947F-BAF0282E3EF1_vonek3.jpg",
             imageAlt: "Lasse pusser opp på en stige",
-            className: "max-w-sm",
+            className: "max-w-[200px]",
           },
           {
             imageUrl: "Bryllup/067E0DAC-5DAD-4D42-BC80-B7B2BEDDECE4_jojzh3.jpg",
             imageAlt: "Sonica pusser på en stige",
+            className: "max-w-[356px]",
           },
         ],
       },
@@ -127,12 +129,12 @@ const timeline: TimelineEvent[] = [
     title: "Frieriet",
     content: [
       {
-        text: "Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en 'vanlig' onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring på fingeren.",
+        text: 'Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en "vanlig" onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring på fingeren.',
         images: [
           {
             imageUrl: "Bryllup/986C7902-25E2-4DB6-B711-C170A3D450CC_zolx3n.jpg",
             imageAlt: "Lasse frir",
-            className: "max-w-md",
+            className: "max-w-[200px]",
           },
         ],
       },
@@ -193,9 +195,11 @@ export default function OurStory() {
                       <Typography variant="body-small" className="my-4">
                         {c.text}
                       </Typography>
-                      {c.images?.map((image, i) => (
-                        <CloudinaryImage key={i} {...image} />
-                      ))}
+                      <div className="flex justify-between flex-wrap gap-1">
+                        {c.images?.map((image, i) => (
+                          <CloudinaryImage key={i} {...image} />
+                        ))}
+                      </div>
                     </div>
                   );
                 })}

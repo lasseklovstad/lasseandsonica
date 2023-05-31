@@ -1,18 +1,22 @@
 import type { ReactNode } from "react";
 import { Header } from "./Header";
 import { WeddingLink } from "./WeddingLink";
-import { links } from "./links";
+import type { LinkType } from "~/types/link";
 
 export const HeaderAndNaviagtion = ({
   showNavigation,
   headerContent,
+  links,
 }: {
   showNavigation: boolean;
   headerContent: ReactNode;
+  links: LinkType[];
 }) => {
   return (
     <>
-      <Header showSideBar={showNavigation}>{headerContent}</Header>
+      <Header showSideBar={showNavigation} links={links}>
+        {headerContent}
+      </Header>
 
       {showNavigation && (
         <nav className="md:py-4">

@@ -1,8 +1,9 @@
+import { Link } from "@remix-run/react";
 import type { PropsWithChildren, ReactNode } from "react";
+import { routes } from "~/types/routes";
 import { HeaderAndNaviagtion } from "./HeaderAndNavigation";
 import { Typography } from "./Typography";
-import { Link } from "@remix-run/react";
-import { routes } from "~/types/routes";
+import { links } from "./links";
 
 export const PageLayout = ({
   children,
@@ -19,6 +20,7 @@ export const PageLayout = ({
       <HeaderAndNaviagtion
         showNavigation={showNavigation}
         headerContent={headerContent}
+        links={links}
       />
       <main className="md:max-w-[1000px] w-full mb-2 px-1">{children}</main>
       <footer className="mt-auto h-10 bg-red-50 w-full text-center p-2 flex justify-center gap-4">

@@ -1,11 +1,11 @@
 import { useNavigation } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 import { WeddingLink } from "./WeddingLink";
-import { links } from "./links";
 import { Menu } from "./icons/Menu";
 import { IconButton } from "./IconButton";
+import type { LinkType } from "~/types/link";
 
-export const SideBar = () => {
+export const SideBar = ({ links }: { links: LinkType[] }) => {
   const navigation = useNavigation();
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 

@@ -1,5 +1,4 @@
-import type { LoaderArgs } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
+import { LoaderArgs, json, redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import { PageLayout } from "~/components/PageLayout";
 import { WeddingLocationAndCounter } from "~/components/WeddingLocationAndCounter";
@@ -11,7 +10,7 @@ export const loader = async ({ request }: LoaderArgs) => {
   if (!isLoggedIn) {
     return redirect(`/${routes.login}`);
   }
-  return {};
+  return json({ accessLevel: isLoggedIn } as const);
 };
 
 export default function Root() {

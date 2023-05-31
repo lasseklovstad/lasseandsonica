@@ -10,7 +10,7 @@ import { validateSecret, verifyUserIsLoggedIn } from "~/utils/siteSecret";
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
   const secret = formData.get("secret") as string;
-  console.log(secret);
+
   if (validateSecret(secret)) {
     return redirect(`/${routes.wedding.root}/${routes.wedding.home}`, {
       headers: {

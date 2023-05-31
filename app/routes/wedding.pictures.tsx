@@ -117,7 +117,7 @@ export default function Pictures() {
           name: `RSVP`,
         }}
         subtitle={[
-          "Her ser du bilder av oss gjennom tidene sammen.",
+          "Her ser du bilder av oss gjennom tidene.",
           "Trykk på bildene for å se dem i større størrelse.",
         ]}
       />
