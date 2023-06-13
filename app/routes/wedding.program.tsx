@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
+import { LinkSlemmestad } from "~/components/LinkSlemmestad";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
@@ -11,29 +12,47 @@ type TimelineEvent = {
   size?: "large" | "normal";
   date: ReactNode;
   title: string;
-  content: { text: string; images?: CloudinaryImageProps[] }[];
+  content: { text: ReactNode; images?: CloudinaryImageProps[] }[];
   accessLevels: AccessLevel[];
 };
 
 const timeline: TimelineEvent[] = [
   {
-    date: <>12:30-15:30</>,
+    date: <>11:45-15:00</>,
     size: "large",
     title:
-      "Del 1: Velkommen til lunsj og vielse på Sanatan Mandir Sabha i Asker",
+      "Del 1: Velkommen til vielse og lunsj på Sanatan Mandir Sabha i Asker",
     content: [
       {
-        text: "Vi møtes til lunsj og indisk vielse på det indiske tempelet i Slemmestad. Det tar ca. 45 minutter å kjøre fra Oslo, og det er en stor parkeringsplass utenfor. Det er vanlig å ta av seg skoene når man kommer inn i tempelet, og det finnes garderobe og toaletter der.",
+        text: (
+          <>
+            Vi møtes til indisk vielse og lunsj på det indiske tempelet i
+            Slemmestad. <LinkSlemmestad />. Det tar ca. 40 minutter å kjøre fra
+            Oslo, og det er en stor parkeringsplass utenfor. Det er fint om alle
+            er på plass før 12.00. Det er vanlig å ta av seg skoene når man
+            kommer inn i tempelet, og det finnes garderobe og toaletter der.
+          </>
+        ),
       },
     ],
     accessLevels: ["fullAccess", "limitedAccess"],
   },
   {
-    date: <>12:30</>,
+    date: <>12:00</>,
+    title: "Indisk seremoni starter",
+    content: [
+      {
+        text: "Vi står utenfor inngangen og tar imot brudgommen med god stemning. Deretter beveger vi oss inn i tempelet hvor velkomstseremonien fortsetter og bruden dukker opp.",
+      },
+    ],
+    accessLevels: ["fullAccess", "limitedAccess"],
+  },
+  {
+    date: <>12:45</>,
     title: "Lunsj",
     content: [
       {
-        text: "Det blir lunsjbuffet med indiske vegetarretter laget av en indisk kokk (husk å gi beskjed på forhånd om du har noen allergier).",
+        text: "Det blir lunsjbuffet med indiske vegetarretter laget av en indisk kokk (husk å gi beskjed på forhånd om du har noen allergier). Det blir en enkel servering der vi ikke setter oss ned.",
       },
     ],
     accessLevels: ["fullAccess", "limitedAccess"],
@@ -43,17 +62,7 @@ const timeline: TimelineEvent[] = [
     title: "Indisk vielse",
     content: [
       {
-        text: "Vi setter oss ned, og Lasse og Sonica blir viet av en indisk prest. Varighet er ca 1,5-2 timer.",
-      },
-    ],
-    accessLevels: ["fullAccess", "limitedAccess"],
-  },
-  {
-    date: <>15:15</>,
-    title: "Photoshoot",
-    content: [
-      {
-        text: "Etter vielsen må vi selvfølgelig ha en liten photoshoot med de nygifte, familie og venner.",
+        text: "Vi setter oss ned, og Lasse og Sonica blir viet av en indisk prest.",
       },
     ],
     accessLevels: ["fullAccess", "limitedAccess"],
@@ -114,7 +123,7 @@ const timeline: TimelineEvent[] = [
     title: "Takk for i kveld",
     content: [
       {
-        text: "De som ønsker å feste videre kan forflytte seg til Bar Boman nede i første etasje.",
+        text: "De som ønsker å feste videre kan utforske det lokale utelivet.",
       },
     ],
     accessLevels: ["fullAccess"],

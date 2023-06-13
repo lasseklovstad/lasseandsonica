@@ -16,7 +16,7 @@ export default function Sonica() {
         />
         <RoundedImage
           name="Carina"
-          imageUrl="Bryllup/carina-kvadrat_hlanaq.png"
+          imageUrl="Bryllup/Carina_firkant_bmnbvp.jpg"
           role="Brudens søster"
         />
         <RoundedImage

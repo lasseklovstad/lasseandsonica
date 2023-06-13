@@ -146,7 +146,7 @@ const timeline: TimelineEvent[] = [
     content: [{ text: "Bryllup med våre nærmeste venner og familie." }],
   },
   {
-    date: <TimelineDate date={new Date(2025, 7, 11)} />,
+    date: <span className="w-full">TBD.....</span>,
     title: "Bryllupsfeiring",
     content: [
       {
@@ -195,7 +195,7 @@ export default function OurStory() {
                       <Typography variant="body-small" className="my-4">
                         {c.text}
                       </Typography>
-                      <div className="flex justify-between flex-wrap gap-1">
+                      <div className="flex flex-wrap gap-1">
                         {c.images?.map((image, i) => (
                           <CloudinaryImage key={i} {...image} />
                         ))}

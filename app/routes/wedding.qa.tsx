@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Accordion } from "~/components/Accordion";
+import { LinkSlemmestad } from "~/components/LinkSlemmestad";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
@@ -11,17 +12,6 @@ type Question = {
   answer: ReactNode;
   accessLevels: AccessLevel[];
 };
-
-const LinkSlemmestad = (
-  <a
-    className="underline"
-    target="_blank"
-    href="https://www.google.com/maps/search/?api=1&query=Sanatan%20Mandir%20Sabha%2C%20Nyveien%2C%20Slemmestad"
-    rel="noreferrer"
-  >
-    Adressen er: Nyveien 6, 3470 Slemmestad
-  </a>
-);
 
 const questions: Question[] = [
   {
@@ -36,9 +26,9 @@ const questions: Question[] = [
     answer: (
       <div>
         <Typography className="mb-4">
-          Første del av dagen (12.30-15.30) vil være i et indisk tempel som
+          Første del av dagen (11.45-15.00) vil være i et indisk tempel som
           heter Sanatan Mandir Sabha. <br />
-          {LinkSlemmestad}
+          <LinkSlemmestad />
         </Typography>
         <Typography>
           Siste del av dagen (17.00 {"-->"}) vil være på Hotell Continental i
@@ -60,9 +50,9 @@ const questions: Question[] = [
     accessLevels: ["limitedAccess"],
     answer: (
       <Typography>
-        Vielsen (12.30-15.30) vil være i et indisk tempel som heter Sanatan
+        Vielsen (11.45-15.00) vil være i et indisk tempel som heter Sanatan
         Mandir Sabha. <br />
-        {LinkSlemmestad}
+        {<LinkSlemmestad />}
       </Typography>
     ),
   },
@@ -98,7 +88,16 @@ const questions: Question[] = [
   },
   {
     question: "🛕 Hvordan er en indisk vielse?",
-    answer: "Info kommer",
+    answer: (
+      <div className="flex flex-col">
+        <TextRow title="Baraat" description="Brudgom ankommer" />
+        <TextRow
+          title="Jai Mala"
+          description="Utveksling av blomsterkranser og ringer"
+        />
+        Mer info kommer...
+      </div>
+    ),
     accessLevels: ["fullAccess", "limitedAccess"],
   },
 ];
@@ -123,6 +122,22 @@ export default function QA() {
         .map(({ question, answer }, i) => (
           <Accordion key={i} title={question} content={answer} />
         ))}
+    </div>
+  );
+}
+
+type TextRowProps = {
+  title: string;
+  description: string;
+};
+
+function TextRow({ description, title }: TextRowProps) {
+  return (
+    <div className="flex gap-2">
+      <Typography className="font-semibold" as="span">
+        {title}:{" "}
+      </Typography>{" "}
+      <Typography>{description}</Typography>
     </div>
   );
 }
