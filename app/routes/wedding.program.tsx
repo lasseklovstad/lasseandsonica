@@ -68,7 +68,7 @@ const timeline: TimelineEvent[] = [
     accessLevels: ["fullAccess", "limitedAccess"],
   },
   {
-    date: <>15:30</>,
+    date: <>15:00</>,
     title: "Avreise mot Oslo",
     content: [
       {

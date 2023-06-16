@@ -27,7 +27,7 @@ export default function RSVP() {
   return (
     <div>
       <div className="hidden md:block">
-        <PageTitle title="Répondez s'il vous plaît" subtitle={subtitles} />
+        <PageTitle title="Kommer du?" subtitle={subtitles} />
       </div>
       <div className="md:hidden">
         <PageTitle
@@ -39,7 +39,7 @@ export default function RSVP() {
             to: `../${routes.wedding.friendsAndFamily}`,
             name: `Venner og familie`,
           }}
-          title="Répondez s'il vous plaît"
+          title="Kommer du?"
           subtitle={subtitles}
         />
       </div>

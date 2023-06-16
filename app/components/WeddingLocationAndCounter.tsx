@@ -1,7 +1,7 @@
 import { useCountdown } from "~/hooks/useCountdown";
 import { Typography } from "./Typography";
 
-const startDate = new Date(2023, 7, 11, 12, 30);
+const startDate = new Date(2023, 7, 11, 12, 0);
 
 export const WeddingLocationAndCounter = () => {
   const [days, hours, minutes, seconds] = useCountdown(startDate);
