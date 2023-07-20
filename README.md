@@ -51,3 +51,23 @@ rm -rf app
 # copy your app over
 cp -R ../my-old-remix-app/app app
 ```
+
+# Dokku
+
+```bash
+ssh root@gataersamla.no
+
+LOGIN_SECRET_FULL="1"
+LOGIN_SECRET_LIMITED="2"
+CLOUDINARY_NAME="123"
+CLOUDINARY_API_SECRET="123"
+CLOUDINARY_API_KEY="123"
+
+dokku config:set --no-restart lasseandsonica LOGIN_SECRET_FULL=123 LOGIN_SECRET_LIMITED=123 CLOUDINARY_NAME=123 CLOUDINARY_API_SECRET=123 CLOUDINARY_API_KEY=123
+dokku letsencrypt:enable lasseandsonica
+dokku letsencrypt:cron-job --add
+
+
+docker exec "dokku.postgres.gatadatabase" su - postgres -c "dropdb gatadatabase"
+docker exec "dokku.postgres.gatadatabase" su - postgres -c "createdb -E utf8  gatadatabase"
+```

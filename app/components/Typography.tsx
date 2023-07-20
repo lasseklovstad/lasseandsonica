@@ -10,11 +10,11 @@ type Variant =
   | "body-small"
   | "small";
 
-interface Props {
+interface Props<T extends React.ElementType> {
   variant?: Variant;
   children: React.ReactNode;
   className?: string;
-  as?: ElementType;
+  as?: T;
 }
 
 const tags: Record<Variant, ElementType> = {
@@ -39,12 +39,12 @@ const sizes: Record<Variant, string> = {
   small: "md:text-sm text-xs",
 };
 
-export const Typography = ({
+export const Typography = <T extends React.ElementType = "div">({
   variant = "body",
   children,
   className,
   as,
-}: Props) => {
+}: Props<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof Props<T>>) => {
   const sizeClasses = sizes[variant];
   const Tag = as || tags[variant];
 

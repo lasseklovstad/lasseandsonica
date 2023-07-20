@@ -1,6 +1,8 @@
 import type { TransformerOption } from "@cld-apis/types";
 import { buildImageUrl } from "cloudinary-build-url";
 import { Typography } from "./Typography";
+import { Link } from "@remix-run/react";
+import { Button } from "./Button";
 
 export type CloudinaryImageProps = {
   imageUrl: string;
@@ -8,6 +10,7 @@ export type CloudinaryImageProps = {
   imageAlt: string;
   transformations?: TransformerOption;
   showDescription?: boolean;
+  showBackButton?: boolean;
 };
 
 export const CloudinaryImage = ({
@@ -16,6 +19,7 @@ export const CloudinaryImage = ({
   imageAlt,
   transformations,
   showDescription,
+  showBackButton,
 }: CloudinaryImageProps) => {
   return (
     <div className={className}>
@@ -38,6 +42,13 @@ export const CloudinaryImage = ({
         <Typography variant="body-small" className="text-center my-4">
           {imageAlt}
         </Typography>
+      )}
+      {showBackButton && (
+        <div className="flex justify-center">
+          <Button as={Link} to={{ search: "" }}>
+            Tilbake til galleri
+          </Button>
+        </div>
       )}
     </div>
   );

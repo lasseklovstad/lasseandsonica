@@ -1,6 +1,7 @@
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
+import { Button } from "~/components/Button";
 import { PageLayout } from "~/components/PageLayout";
 import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
@@ -64,14 +65,7 @@ export default function Login() {
               </Typography>
             )}
           </div>
-          <button
-            type="submit"
-            className="text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-md px-4 py-2 focus:outline-none"
-          >
-            <Typography as="span" variant="body" className="font-semibold">
-              Logg inn
-            </Typography>
-          </button>
+          <Button type="submit">Logg inn</Button>
         </Form>
       </div>
     </PageLayout>
