@@ -128,7 +128,7 @@ export default function Upload() {
                   key={v.public_id}
                   className={wideVideo ? "col-span-2" : ""}
                 >
-                  <source src={v.secure_url} type={`video/${v.format}`} />
+                  <source src={v.secure_url} />
                 </video>
               );
             })}
