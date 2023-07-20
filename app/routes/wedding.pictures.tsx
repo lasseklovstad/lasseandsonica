@@ -5,6 +5,7 @@ import { LeftArrow } from "~/components/icons/LeftArrow";
 import { PageTitle } from "~/components/PageTitle";
 import { RightArrow } from "~/components/icons/RightArrow";
 import { routes } from "~/types/routes";
+import { ImageLibrary } from "~/components/ImageLibrary";
 
 const pictures = [
   {
@@ -100,10 +101,6 @@ const pictures = [
 ];
 
 export default function Pictures() {
-  const [params] = useSearchParams();
-  const pictureIndex = params.get("pictureIndex");
-  const pictureIndexAsNumber = pictureIndex && parseInt(pictureIndex);
-  const selectedPicture = pictures.find((p, i) => i == pictureIndexAsNumber);
   return (
     <div>
       <PageTitle
@@ -121,47 +118,7 @@ export default function Pictures() {
           "Trykk på bildene for å se dem i større størrelse.",
         ]}
       />
-      {typeof pictureIndexAsNumber === "number" && selectedPicture ? (
-        <div className="w-full flex justify-center">
-          <div className="relative max-w-[500px]">
-            <IconButton
-              as={Link}
-              preventScrollReset
-              to={{ search: `?pictureIndex=${pictureIndexAsNumber - 1}` }}
-              aria-label="Forrige bilde"
-              className="absolute top-0 left-0 bg-gray-200"
-            >
-              <LeftArrow />
-            </IconButton>
-            <CloudinaryImage
-              imageUrl={selectedPicture.imageUrl}
-              imageAlt={selectedPicture.imageAlt}
-              showDescription
-            />
-            <IconButton
-              as={Link}
-              to={{ search: `?pictureIndex=${pictureIndexAsNumber + 1}` }}
-              preventScrollReset
-              aria-label="Neste bilde"
-              className="absolute top-0 right-0 bg-gray-200"
-            >
-              <RightArrow />
-            </IconButton>
-          </div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 items-center">
-          {pictures.map((p, i) => (
-            <Link
-              key={i}
-              to={{ search: `?pictureIndex=${i}` }}
-              aria-label="Se bilde i større størrelse"
-            >
-              <CloudinaryImage imageUrl={p.imageUrl} imageAlt={p.imageAlt} />
-            </Link>
-          ))}
-        </div>
-      )}
+      <ImageLibrary pictures={pictures} />
     </div>
   );
 }
