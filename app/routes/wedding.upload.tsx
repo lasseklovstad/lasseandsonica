@@ -145,12 +145,19 @@ export default function Upload() {
 
 export function ErrorBoundary() {
   const error = useRouteError();
+  if (error instanceof Error) {
+    return (
+      <div>
+        <h1>Error</h1>
+        <p>{error.message}</p>
+        <p>The stack trace is:</p>
+        <pre>{error.stack}</pre>
+      </div>
+    );
+  }
   return (
     <div>
-      <h1>Error</h1>
-      <p>{error.message}</p>
-      <p>The stack trace is:</p>
-      <pre>{error.stack}</pre>
+      <h1>Unknown error</h1>
     </div>
   );
 }

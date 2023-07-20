@@ -1,4 +1,5 @@
-import { LoaderArgs, json, redirect } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
 import { PageLayout } from "~/components/PageLayout";
 import { WeddingLocationAndCounter } from "~/components/WeddingLocationAndCounter";

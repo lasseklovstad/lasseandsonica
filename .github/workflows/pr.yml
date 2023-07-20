@@ -1,0 +1,39 @@
+name: Check
+
+on:
+  pull_request:
+    branches:
+      - "main"
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Linting
+    timeout-minutes: 15
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Download deps
+        uses: bahmutov/npm-install@v1
+        with:
+          node-version: 18
+
+      - name: Run frontend lint
+        run: |
+          npm run lint:ci
+
+      - name: Run frontend typecheck
+        run: |
+          npm run typecheck
