@@ -47,6 +47,7 @@ export default function Upload() {
   const [canSave, setCanSave] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const fetcher = useFetcher();
+  console.log(images);
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data && inputRef.current?.value) {
@@ -125,6 +126,7 @@ export default function Upload() {
               return (
                 <video
                   controls
+                  preload="metadata"
                   key={v.public_id}
                   className={wideVideo ? "col-span-2" : ""}
                 >
