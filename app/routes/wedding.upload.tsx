@@ -47,7 +47,6 @@ export default function Upload() {
   const [canSave, setCanSave] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const fetcher = useFetcher();
-  console.log(images);
 
   useEffect(() => {
     if (fetcher.state === "idle" && fetcher.data && inputRef.current?.value) {
