@@ -67,3 +67,10 @@ dokku config:set --no-restart lasseandsonica LOGIN_SECRET_FULL=123 LOGIN_SECRET_
 dokku letsencrypt:enable lasseandsonica
 dokku letsencrypt:cron-job --add
 ```
+
+## Max upload size nginx
+
+```bash
+dokku nginx:set lasseandsonica client-max-body-size 100m
+dokku proxy:build-config lasseandsonica
+```

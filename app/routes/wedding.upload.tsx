@@ -125,6 +125,7 @@ export default function Upload() {
               return (
                 <video
                   controls
+                  preload="metadata"
                   key={v.public_id}
                   className={wideVideo ? "col-span-2" : ""}
                 >

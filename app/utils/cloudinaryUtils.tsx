@@ -12,12 +12,19 @@ export async function uploadImage(
   data: AsyncIterable<Uint8Array>,
   contentType: string
 ) {
+  const resource_type = contentType.startsWith("video") ? "video" : "image";
+  // Invalidate cache
+  if (resource_type === "video") {
+    cachedVideos = undefined;
+  } else {
+    cachedImages = undefined;
+  }
   const uploadPromise = new Promise<UploadApiResponse>(
     async (resolve, reject) => {
       const uploadStream = cloudinary.v2.uploader.upload_stream(
         {
           folder: "remixImages",
-          resource_type: contentType.startsWith("video") ? "video" : "image",
+          resource_type,
         },
         (error, result) => {
           if (error || !result) {
@@ -33,30 +40,45 @@ export async function uploadImage(
   return uploadPromise;
 }
 
+let cachedImages: ResourceApiResponse | undefined = undefined;
 export async function getImages() {
+  if (cachedImages) {
+    return Promise.resolve(cachedImages);
+  }
   return new Promise<ResourceApiResponse>((resolve, reject) => {
     cloudinary.v2.api.resources(
-      { type: "upload", prefix: "remixImages" },
+      { type: "upload", prefix: "remixImages", max_results: 100 },
       (error, result) => {
         if (error) {
           reject(error);
           return;
         }
+        cachedImages = result;
         resolve(result);
       }
     );
   });
 }
 
+let cachedVideos: ResourceApiResponse | undefined = undefined;
 export async function getVideos() {
+  if (cachedVideos) {
+    return Promise.resolve(cachedVideos);
+  }
   return new Promise<ResourceApiResponse>((resolve, reject) => {
     cloudinary.v2.api.resources(
-      { type: "upload", prefix: "remixImages", resource_type: "video" },
+      {
+        type: "upload",
+        prefix: "remixImages",
+        resource_type: "video",
+        max_results: 20,
+      },
       (error, result) => {
         if (error) {
           reject(error);
           return;
         }
+        cachedVideos = result;
         resolve(result);
       }
     );
