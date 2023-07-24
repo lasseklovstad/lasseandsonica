@@ -157,17 +157,14 @@ export function ErrorBoundary() {
   const error = useRouteError();
   if (error instanceof Error) {
     return (
-      <div>
-        <h1>Error</h1>
-        <p>{error.message}</p>
-        <p>The stack trace is:</p>
-        <pre>{error.stack}</pre>
+      <div className="bg-red-400 p-4 rounded-md">
+        <Typography variant="h4">Feil</Typography>
+        <Typography variant="body">{error.message}</Typography>
       </div>
     );
   }
-  return (
-    <div>
-      <h1>Unknown error</h1>
-    </div>
-  );
+  <div className="bg-red-400 p-4 rounded-md">
+    <Typography variant="h4">Feil</Typography>
+    <Typography variant="body">Ukjent</Typography>
+  </div>;
 }

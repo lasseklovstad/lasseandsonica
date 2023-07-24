@@ -29,8 +29,8 @@ const timeline: TimelineEvent[] = [
             Vi møtes til indisk vielse og lunsj på det indiske tempelet i
             Slemmestad. <LinkSlemmestad />. Det tar ca. 40 minutter å kjøre fra
             Oslo, og det er en stor parkeringsplass utenfor. Det er fint om alle
-            er på plass før 12.00. Det er vanlig å ta av seg skoene når man
-            kommer inn i tempelet, og det finnes garderobe og toaletter der.
+            er på plass før 12.00. Det er ikke tillatt med alkohol eller røyk på
+            tempelet, og det vil derfor ikke serveres alkohol.
           </>
         ),
       },
@@ -39,10 +39,16 @@ const timeline: TimelineEvent[] = [
   },
   {
     date: <>12:00</>,
-    title: "Indisk seremoni starter",
+    title: "Brudgommens parade (Barat) og velkomstseremoni (Swagat/Jaymala)",
     content: [
       {
-        text: "Vi står utenfor inngangen og tar imot brudgommen med god stemning. Deretter beveger vi oss inn i tempelet hvor velkomstseremonien fortsetter og bruden dukker opp.",
+        text: "Brudgommens parade starter på parkeringsplassen. Lasse sine familie og venner møter opp der og blir med i paraden. Indisk tradisjon er at alle fra brudgommens side kommer dansende i paraden og lager god stemning. Brudens familie og venner står utenfor inngangen til tempelet og tar imot brudgommen. Brudens mor ønsker brudgommen velkommen ved å utføre en velsignelsesritual «aarti».",
+      },
+      {
+        text: "Deretter beveger vi oss inn i tempelet. Når vi kommer inn tar alle av seg skoene i hhv. dame- og herregarderober.",
+      },
+      {
+        text: "Etter at alle har tatt av seg på skoene går vi inn i den store salen i tempelet. Her vil bruden ankomme sammen med sine forlovere.        Velkomstseremonien fortsetter mellom brud og brudgom, denne delen ledes av indisk prest (pandit-ji). Her vil Lasse og Sonica utveksle «Jaymala» - blomsterkjeder og ringer.",
       },
     ],
     accessLevels: ["fullAccess", "limitedAccess"],
@@ -52,17 +58,51 @@ const timeline: TimelineEvent[] = [
     title: "Lunsj",
     content: [
       {
-        text: "Det blir lunsjbuffet med indiske vegetarretter laget av en indisk kokk (husk å gi beskjed på forhånd om du har noen allergier). Det blir en enkel servering der vi ikke setter oss ned.",
+        text: "Det blir en lunsjbuffet med indiske vegetarretter. Det blir en enkel servering, hvor dere kan sette dere ned der dere finner plass, evt. stå oppreist å spise. Det er helt i orden å fortsette å spise under vielsen om man ikke er ferdig til 13.30, men pass på å være litt stille.",
       },
     ],
     accessLevels: ["fullAccess", "limitedAccess"],
   },
   {
     date: <>13:30</>,
-    title: "Indisk vielse",
+    title: "Indisk vielse (Shadi ki rasme)",
     content: [
       {
-        text: "Vi setter oss ned, og Lasse og Sonica blir viet av en indisk prest.",
+        text: (
+          <>
+            Vi setter oss ned på stoler i sal nummer 2. Brudeparet, brudens
+            foreldre, brudgommens foreldre og presten setter seg på hver sin
+            side av «mandaap» - bålet. Her vil Sonica og Lasse vies. Det vil
+            utføres tradisjonelle ritualer som:
+            <ol className="list-disc my-2 ml-4">
+              <li>
+                Saat phere: brudeparet går rundt bålet 7 ganger, som
+                symboliserer 7 liv sammen.
+              </li>
+              <li>
+                Mang bahrein: brugdom vil legge rødt pulver i hodet til bruden,
+                som symboliserer at hun nå blir en gift kvinne.
+              </li>
+              <li>Mangalsutra: Brudgom vil gi bruden et halssmykke i gave</li>
+              <li>Kanyadaan: Brudens far «gir bort» hånden til datteren sin</li>
+            </ol>
+          </>
+        ),
+      },
+    ],
+    accessLevels: ["fullAccess", "limitedAccess"],
+  },
+  {
+    date: <>14:40</>,
+    title: "Avskjedsseremoni (Vidai)",
+    content: [
+      {
+        text: (
+          <>
+            Brudens familie sier farvel til sin datter som nå er blitt gift og
+            skal bli med sin ektemann hjem.
+          </>
+        ),
       },
     ],
     accessLevels: ["fullAccess", "limitedAccess"],

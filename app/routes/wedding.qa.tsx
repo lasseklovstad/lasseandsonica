@@ -17,8 +17,15 @@ const questions: Question[] = [
   {
     question: "🎁 Hva skal man gi i bryllupsgaver?",
     accessLevels: ["fullAccess"],
-    answer:
-      "Det er en gave i seg selv å ha dere med på feiringen av denne spesielle dagen vår! Om dere ønsker å gi noe har vi laget ønskelister på disse stedene: Info kommer",
+    answer: (
+      <Typography>
+        Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen
+        gaver nå. Men vi blir veldig glade for koselige hilsener/kort. Om dere
+        gjerne ønsker å gi noe dere tenker passer til oss er det selvfølgelig
+        veldig hyggelig. Men ellers vil vi bruke litt tid på å lage en
+        ønskeliste til ordentlige bryllupsfeiring.
+      </Typography>
+    ),
   },
   {
     question: "🗺️ Hvor er feiringen?",
@@ -61,15 +68,46 @@ const questions: Question[] = [
     accessLevels: ["fullAccess"],
     answer: (
       <div>
-        <Typography className="mb-4">
+        <Typography variant="h5">Indisk tempel</Typography>
+        <Typography>
           Til den første delen av dagen kommer vi til å gå med indiske klær, og
           vi ønsker at dere skal ha på dere akkurat det dere føler dere fine og
           komfortable i. Om dere ønsker å gå med indiske klær synes vi det
-          selvfølgelig er veldig hyggelig.
+          selvfølgelig er veldig hyggelig. Ta kontakt med Sonica om du har lyst
+          til å låne.
         </Typography>
         <Typography>
-          Til den andre delen av dagen vil vi skifte til lang kjole og smoking,
-          så her er dresscode smoking/mørk dress.
+          <Typography className="font-semibold" as="span">
+            Dresskode menn:
+          </Typography>{" "}
+          kortermet/langermet overdel og lange bukser.
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode damer:
+          </Typography>{" "}
+          valgfritt antrekk men er fint å dekke til ben ned til anklene.
+        </Typography>
+        <Typography>
+          NB: Husk at det ikke er tillat med sko innendørs.
+        </Typography>
+        <Typography variant="h5" className="mt-4">
+          Hotell Continental
+        </Typography>
+        <Typography>
+          Til den andre delen av dagen vil vi skifte til finstasen.
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode menn:
+          </Typography>{" "}
+          smoking eller mørk dress
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode damer:
+          </Typography>{" "}
+          knelang eller lang kjole
         </Typography>
       </div>
     ),
@@ -78,24 +116,84 @@ const questions: Question[] = [
     question: "👗 Hva skal man ha på seg?",
     accessLevels: ["limitedAccess"],
     answer: (
-      <Typography>
-        I vielsen kommer vi til å gå med indiske klær, og vi ønsker at dere skal
-        ha på dere akkurat det dere føler dere fine og komfortable i. Om dere
-        ønsker å gå med indiske klær synes vi det selvfølgelig er veldig
-        hyggelig.
-      </Typography>
+      <div>
+        <Typography>
+          I vielsen kommer vi til å gå med indiske klær, og vi ønsker at dere
+          skal ha på dere akkurat det dere føler dere fine og komfortable i. Om
+          dere ønsker å gå med indiske klær synes vi det selvfølgelig er veldig
+          hyggelig. Ta kontakt med Sonica om du har lyst til å låne.
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode menn:
+          </Typography>{" "}
+          kortermet/langermet overdel og lange bukser.
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode damer:
+          </Typography>{" "}
+          valgfritt antrekk men er fint å dekke til ben ned til anklene.
+        </Typography>
+        <Typography>
+          NB: Husk at det ikke er tillat med sko innendørs.
+        </Typography>
+      </div>
     ),
   },
   {
     question: "🛕 Hvordan er en indisk vielse?",
     answer: (
       <div className="flex flex-col">
-        <TextRow title="Baraat" description="Brudgom ankommer" />
-        <TextRow
-          title="Jai Mala"
-          description="Utveksling av blomsterkranser og ringer"
-        />
-        Mer info kommer...
+        <Typography>
+          Her har vi linket til nyttig info hvor dere kan lese om de ulike
+          ritualene:
+        </Typography>
+        {[
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/wedding-barat.html",
+            text: "Barat - Brudgommens ankomstparade",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-rituals/var-mala-ceremony.html",
+            text: "Jaymala - Blomsterkjeder",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-rituals/mandap-ceremony.html",
+            text: "Mandap - Vielsessted med bål",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/seven-vows.html",
+            text: "Saat phere - Syv ekteskapsritualer rundt bålet",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/kanyadaan.html",
+            text: "Kanyadaan - Brudens far gir bort hånden til datter",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/mangalsutra.html",
+            text: "Mangalsutra - Halssmykke i gave fra brudgom",
+          },
+          {
+            href: "",
+            text: "Maang baharai - Rødt pulver som symboliserer gift kvinne",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-rituals/vidai-ceremony.html",
+            text: "Vidai - Avskjedssermoni",
+          },
+        ].map(({ href, text }, i) => (
+          <Typography
+            key={i}
+            as="a"
+            className="underline"
+            target="_blank"
+            href={href}
+            rel="noreferrer"
+          >
+            {text}
+          </Typography>
+        ))}
       </div>
     ),
     accessLevels: ["fullAccess", "limitedAccess"],
@@ -122,22 +220,6 @@ export default function QA() {
         .map(({ question, answer }, i) => (
           <Accordion key={i} title={question} content={answer} />
         ))}
-    </div>
-  );
-}
-
-type TextRowProps = {
-  title: string;
-  description: string;
-};
-
-function TextRow({ description, title }: TextRowProps) {
-  return (
-    <div className="flex gap-2">
-      <Typography className="font-semibold" as="span">
-        {title}:{" "}
-      </Typography>{" "}
-      <Typography>{description}</Typography>
     </div>
   );
 }
