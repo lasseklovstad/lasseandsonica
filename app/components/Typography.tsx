@@ -44,12 +44,16 @@ export const Typography = <T extends React.ElementType = "div">({
   children,
   className,
   as,
+  ...props
 }: Props<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof Props<T>>) => {
   const sizeClasses = sizes[variant];
   const Tag = as || tags[variant];
 
   return (
-    <Tag className={`${sizeClasses}${className ? " " + className : ""}`}>
+    <Tag
+      className={`${sizeClasses}${className ? " " + className : ""}`}
+      {...props}
+    >
       {children}
     </Tag>
   );

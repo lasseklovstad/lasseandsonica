@@ -27,6 +27,7 @@ export async function uploadImage(
           resource_type,
         },
         (error, result) => {
+          reject(new Error("Det oppstod en feil!"));
           if (error || !result) {
             reject(error);
             return;

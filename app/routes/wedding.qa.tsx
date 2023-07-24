@@ -90,12 +90,55 @@ const questions: Question[] = [
     question: "🛕 Hvordan er en indisk vielse?",
     answer: (
       <div className="flex flex-col">
-        <TextRow title="Baraat" description="Brudgom ankommer" />
-        <TextRow
-          title="Jai Mala"
-          description="Utveksling av blomsterkranser og ringer"
-        />
-        Mer info kommer...
+        <Typography>
+          Her har vi linket til nyttig info hvor dere kan lese om de ulike
+          ritualene:
+        </Typography>
+        {[
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/wedding-barat.html",
+            text: "Barat - Brudgommens ankomstparade",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-rituals/var-mala-ceremony.html",
+            text: "Jaymala - Blomsterkjeder",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-rituals/mandap-ceremony.html",
+            text: "Mandap - Vielsessted med bål",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/seven-vows.html",
+            text: "Saat phere - Syv ekteskapsritualer rundt bålet",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/kanyadaan.html",
+            text: "Kanyadaan - Brudens far gir bort hånden til datter",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/mangalsutra.html",
+            text: "Mangalsutra - Halssmykke i gave fra brudgom",
+          },
+          {
+            href: "",
+            text: "Maang baharai - Rødt pulver som symboliserer gift kvinne",
+          },
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-rituals/vidai-ceremony.html",
+            text: "Vidai - Avskjedssermoni",
+          },
+        ].map(({ href, text }, i) => (
+          <Typography
+            key={i}
+            as="a"
+            className="underline"
+            target="_blank"
+            href={href}
+            rel="noreferrer"
+          >
+            {text}
+          </Typography>
+        ))}
       </div>
     ),
     accessLevels: ["fullAccess", "limitedAccess"],
@@ -122,22 +165,6 @@ export default function QA() {
         .map(({ question, answer }, i) => (
           <Accordion key={i} title={question} content={answer} />
         ))}
-    </div>
-  );
-}
-
-type TextRowProps = {
-  title: string;
-  description: string;
-};
-
-function TextRow({ description, title }: TextRowProps) {
-  return (
-    <div className="flex gap-2">
-      <Typography className="font-semibold" as="span">
-        {title}:{" "}
-      </Typography>{" "}
-      <Typography>{description}</Typography>
     </div>
   );
 }
