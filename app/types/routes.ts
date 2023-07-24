@@ -8,6 +8,7 @@ export const routes = {
     rsvp: "rsvp",
     qa: "qa",
     pictures: "pictures",
+    upload: "upload",
   },
   login: "login",
   logout: "logout",

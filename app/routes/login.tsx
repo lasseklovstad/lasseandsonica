@@ -15,7 +15,9 @@ export const action: ActionFunction = async ({ request }) => {
   if (validateSecret(secret)) {
     return redirect(`/${routes.wedding.root}/${routes.wedding.home}`, {
       headers: {
-        "Set-Cookie": await siteSecretCookie.serialize(secret),
+        "Set-Cookie": await siteSecretCookie.serialize(secret, {
+          expires: new Date(Date.now() + 604_800),
+        }),
       },
     });
   }

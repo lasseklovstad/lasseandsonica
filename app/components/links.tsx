@@ -25,7 +25,10 @@ export const links = [
     name: "Bilder",
     to: `${routes.wedding.pictures}`,
   },
-
+  {
+    name: "Last opp",
+    to: `${routes.wedding.upload}`,
+  },
   {
     name: "Q+A",
     to: `${routes.wedding.qa}`,
