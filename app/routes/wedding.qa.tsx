@@ -17,8 +17,15 @@ const questions: Question[] = [
   {
     question: "🎁 Hva skal man gi i bryllupsgaver?",
     accessLevels: ["fullAccess"],
-    answer:
-      "Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen gaver nå. Men vi blir veldig glade for koselige hilsener/kort. Om dere gjerne ønsker å gi noe dere tenker passer til oss er det selvfølgelig veldig hyggelig. Men ellers vil vi bruke litt tid på å lage en ønskeliste til ordentlige bryllupsfeiring.",
+    answer: (
+      <Typography>
+        Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen
+        gaver nå. Men vi blir veldig glade for koselige hilsener/kort. Om dere
+        gjerne ønsker å gi noe dere tenker passer til oss er det selvfølgelig
+        veldig hyggelig. Men ellers vil vi bruke litt tid på å lage en
+        ønskeliste til ordentlige bryllupsfeiring.
+      </Typography>
+    ),
   },
   {
     question: "🗺️ Hvor er feiringen?",
@@ -61,15 +68,46 @@ const questions: Question[] = [
     accessLevels: ["fullAccess"],
     answer: (
       <div>
-        <Typography className="mb-4">
+        <Typography variant="h5">Indisk tempel</Typography>
+        <Typography>
           Til den første delen av dagen kommer vi til å gå med indiske klær, og
           vi ønsker at dere skal ha på dere akkurat det dere føler dere fine og
           komfortable i. Om dere ønsker å gå med indiske klær synes vi det
-          selvfølgelig er veldig hyggelig.
+          selvfølgelig er veldig hyggelig. Ta kontakt med Sonica om du har lyst
+          til å låne.
         </Typography>
         <Typography>
-          Til den andre delen av dagen vil vi skifte til lang kjole og smoking,
-          så her er dresscode smoking/mørk dress.
+          <Typography className="font-semibold" as="span">
+            Dresskode menn:
+          </Typography>{" "}
+          kortermet/langermet overdel og lange bukser.
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode damer:
+          </Typography>{" "}
+          valgfritt antrekk men er fint å dekke til ben ned til anklene.
+        </Typography>
+        <Typography>
+          NB: Husk at det ikke er tillat med sko innendørs.
+        </Typography>
+        <Typography variant="h5" className="mt-4">
+          Hotell Continental
+        </Typography>
+        <Typography>
+          Til den andre delen av dagen vil vi skifte til finstasen.
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode menn:
+          </Typography>{" "}
+          smoking eller mørk dress
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode damer:
+          </Typography>{" "}
+          knelang eller lang kjole
         </Typography>
       </div>
     ),
@@ -78,12 +116,29 @@ const questions: Question[] = [
     question: "👗 Hva skal man ha på seg?",
     accessLevels: ["limitedAccess"],
     answer: (
-      <Typography>
-        I vielsen kommer vi til å gå med indiske klær, og vi ønsker at dere skal
-        ha på dere akkurat det dere føler dere fine og komfortable i. Om dere
-        ønsker å gå med indiske klær synes vi det selvfølgelig er veldig
-        hyggelig.
-      </Typography>
+      <div>
+        <Typography>
+          I vielsen kommer vi til å gå med indiske klær, og vi ønsker at dere
+          skal ha på dere akkurat det dere føler dere fine og komfortable i. Om
+          dere ønsker å gå med indiske klær synes vi det selvfølgelig er veldig
+          hyggelig. Ta kontakt med Sonica om du har lyst til å låne.
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode menn:
+          </Typography>{" "}
+          kortermet/langermet overdel og lange bukser.
+        </Typography>
+        <Typography>
+          <Typography className="font-semibold" as="span">
+            Dresskode damer:
+          </Typography>{" "}
+          valgfritt antrekk men er fint å dekke til ben ned til anklene.
+        </Typography>
+        <Typography>
+          NB: Husk at det ikke er tillat med sko innendørs.
+        </Typography>
+      </div>
     ),
   },
   {
