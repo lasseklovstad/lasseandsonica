@@ -18,7 +18,7 @@ const questions: Question[] = [
     question: "🎁 Hva skal man gi i bryllupsgaver?",
     accessLevels: ["fullAccess"],
     answer:
-      "Det er en gave i seg selv å ha dere med på feiringen av denne spesielle dagen vår! Om dere ønsker å gi noe har vi laget ønskelister på disse stedene: Info kommer",
+      "Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen gaver nå. Men vi blir veldig glade for koselige hilsener/kort. Om dere gjerne ønsker å gi noe dere tenker passer til oss er det selvfølgelig veldig hyggelig. Men ellers vil vi bruke litt tid på å lage en ønskeliste til ordentlige bryllupsfeiring.",
   },
   {
     question: "🗺️ Hvor er feiringen?",
