@@ -101,8 +101,8 @@ export default function Pictures() {
       <PageTitle
         title="Bilder av oss"
         nextLink={{
-          to: `../${routes.wedding.qa}`,
-          name: `Q+A`,
+          to: `../${routes.wedding.upload}`,
+          name: `Last opp`,
         }}
         backLink={{
           to: `../${routes.wedding.rsvp}`,

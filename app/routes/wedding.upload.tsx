@@ -23,10 +23,15 @@ export const loader = async ({ request }: LoaderArgs) => {
   }
   const images = await getImages();
   const videos = await getVideos();
-  return json({ images, videos } as const);
+  return json({ images, videos });
 };
 
 export const action = async ({ request }: ActionArgs) => {
+  const isLoggedIn = await verifyUserIsLoggedIn(request);
+  if (!isLoggedIn) {
+    return new Response("", { status: 401 });
+  }
+
   const uploadHandler = composeUploadHandlers(
     async ({ name, data, contentType }) => {
       if (name !== "multiple_files") {
@@ -39,17 +44,21 @@ export const action = async ({ request }: ActionArgs) => {
 
   await parseMultipartFormData(request, uploadHandler);
 
-  return json({});
+  return json({ ok: true });
 };
 
 export default function Upload() {
   const { images, videos } = useLoaderData<typeof loader>();
   const [canSave, setCanSave] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const fetcher = useFetcher();
+  const fetcher = useFetcher<typeof action>();
 
   useEffect(() => {
-    if (fetcher.state === "idle" && fetcher.data && inputRef.current?.value) {
+    if (
+      fetcher.state === "idle" &&
+      fetcher.data?.ok &&
+      inputRef.current?.value
+    ) {
       inputRef.current.value = "";
       setCanSave(false);
     }
@@ -64,10 +73,10 @@ export default function Upload() {
           name: `Q+A`,
         }}
         backLink={{
-          to: `../${routes.wedding.rsvp}`,
-          name: `RSVP`,
+          to: `../${routes.wedding.pictures}`,
+          name: `Bilder`,
         }}
-        subtitle={[]}
+        subtitle={["Her kan alle laste opp bilder under bryllupsdagen"]}
       />
       <fetcher.Form
         method="post"

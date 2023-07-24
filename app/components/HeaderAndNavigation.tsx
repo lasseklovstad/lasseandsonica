@@ -3,7 +3,7 @@ import { Header } from "./Header";
 import { WeddingLink } from "./WeddingLink";
 import type { LinkType } from "~/types/link";
 
-export const HeaderAndNaviagtion = ({
+export const HeaderAndNavigation = ({
   showNavigation,
   headerContent,
   links,

@@ -1,7 +1,7 @@
 import { Link } from "@remix-run/react";
 import type { PropsWithChildren, ReactNode } from "react";
 import { routes } from "~/types/routes";
-import { HeaderAndNaviagtion } from "./HeaderAndNavigation";
+import { HeaderAndNavigation } from "./HeaderAndNavigation";
 import { Typography } from "./Typography";
 import { links } from "./links";
 
@@ -17,7 +17,7 @@ export const PageLayout = ({
 }>) => {
   return (
     <div className="flex items-center flex-col min-h-screen">
-      <HeaderAndNaviagtion
+      <HeaderAndNavigation
         showNavigation={showNavigation}
         headerContent={headerContent}
         links={links}
