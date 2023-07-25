@@ -45,7 +45,7 @@ const timeline: TimelineEvent[] = [
           <>
             Brudgommens parade starter på parkeringsplassen.{" "}
             <span className="font-semibold">Lasse's familie og venner </span>
-            møtes der og blir med i paraden. I hendhold til indisk tradisjon
+            møtes der og blir med i paraden. I henhold til indisk tradisjon
             kommer alle fra brudgommens side dansende i paraden og lager god
             stemning.
             <br />
@@ -59,7 +59,7 @@ const timeline: TimelineEvent[] = [
             Videre beveger vi oss inn på tempelet, hvor alle må ta av seg skoene
             i garderoben. Vi samles i den store salen, hvor bruden etterhvert
             vil ankomme med sitt brudefølge. Den indiske presten (pandit-ji) vil
-            utføre en velkomstsermoni på brud og brugdom, hvor de utveksler
+            utføre en velkomstseremoni for brud og brudgom, hvor de utveksler
             blomsterkjeder (jaymala) og ringer.
           </>
         ),
@@ -78,7 +78,7 @@ const timeline: TimelineEvent[] = [
             restauranten Nimbu i Bjørvika). Bespisningen blir i en uformell
             setting, hvor man kan velge om man vil sitte eller stå. Om man ikke
             er ferdig til 13.30 er det i orden å spise under vielsen, men da må
-            man huske på å være stille.
+            man passe på å være stille.
           </>
         ),
       },
@@ -93,10 +93,14 @@ const timeline: TimelineEvent[] = [
         text: (
           <>
             Etter lunsj beveger vi oss til den mindre salen. Brudeparet, deres
-            foreldre, og pandit-ji setter seg på hver sin side av mandaap -
-            bålet. Her vil brudeparet vies. Det vil utføres tradisjonelle
+            foreldre, og pandit-ji setter seg på hver sin side av bålet
+            (mandap). Her vil brudeparet vies. Det vil utføres tradisjonelle
             ritualer som:
             <ol className="list-disc my-2 ml-4">
+              <li>
+                Gathbandhan: Brudeparet knyttes sammen med et tøystykke
+                (symboliserer at de nå knyttes sammen for hele livet)
+              </li>
               <li>
                 Saat phere: Brudeparet går syv runder rundt bålet (symboliserer
                 syv ekteskapsløfter)
