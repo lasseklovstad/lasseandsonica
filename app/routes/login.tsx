@@ -2,6 +2,7 @@ import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 import { Button } from "~/components/Button";
+import { Input } from "~/components/Input";
 import { PageLayout } from "~/components/PageLayout";
 import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
@@ -48,17 +49,11 @@ export default function Login() {
       <div className="flex flex-col items-center">
         <Form method="POST" className="my-4 flex gap-4 flex-col">
           <div>
-            <label htmlFor="input-secret" className="block mb-1">
-              <Typography as="span" variant="body">
-                Passord
-              </Typography>
-            </label>
-            <input
-              type="password"
+            <Input
+              label="Passord"
               name="secret"
-              id="input-secret"
+              type="password"
               placeholder="Spør Lasse & Sonica"
-              className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
             />
 
             {actionData?.error && (
