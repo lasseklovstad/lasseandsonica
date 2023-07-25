@@ -56,30 +56,32 @@ const questions: Question[] = [
           Indisk tempel
         </Typography>
         Til den første delen av dagen kommer vi til å gå med indiske klær, og vi
-        ønsker at dere skal ha på dere akkurat det dere føler dere fine og
-        komfortable i. Om dere ønsker å gå med indiske klær synes vi det
-        selvfølgelig er veldig hyggelig. Ta kontakt med Sonica om du har lyst
-        til å låne.
-        <br />
-        <span className="font-semibold">Dresskode menn:</span>{" "}
-        kortermet/langermet overdel og lange bukser.
-        <br />
-        <span className="font-semibold">Dresskode damer:</span> valgfritt
-        antrekk men er fint å dekke til ben ned til anklene.
-        <br />
-        NB: Husk at det ikke er tillat med sko innendørs.
+        ønsker at dere skal ha på det dere føler dere fine og komfortable i. Om
+        noen ønsker å gå med indiske klær er det hyggelig. Ta kontakt med Sonica
+        om du ønsker å låne.
+        <div className="my-2">
+          <span className="font-semibold">Dress code menn:</span>{" "}
+          Kortermet/langermet overdel og lange bukser.
+          <br />
+          <span className="font-semibold">Dress code damer:</span> Valgfritt
+          antrekk som for eksempel en sommerkjole (det er fint å dekke til ben
+          ned til anklene).
+        </div>
+        NB: Husk at sko må tas av i garderroben innendørs.
         {accessLevel === "fullAccess" && (
           <>
             <Typography variant="h5" className="mt-4 mb-1">
               Hotell Continental
             </Typography>
-            Til den andre delen av dagen vil vi skifte til finstasen.
-            <br />
-            <span className="font-semibold">Dresskode menn:</span> smoking eller
-            mørk dress
-            <br />
-            <span className="font-semibold">Dresskode damer:</span> knelang
-            eller lang kjole
+            Til den andre delen av dagen vil vi skifte til finstasen (smoking /
+            lang kjole).
+            <div className="my-2">
+              <span className="font-semibold">Dress code menn:</span> Smoking /
+              Mørk dress
+              <br />
+              <span className="font-semibold">Dress code damer:</span> Knelang
+              kjole / Lang kjole
+            </div>
           </>
         )}
       </div>
@@ -126,7 +128,7 @@ const questions: Question[] = [
           },
         ].map(({ href, text }, i) => (
           <Typography
-            variant="body"
+            variant="body-small"
             key={i}
             as="a"
             className="underline mt-1"
