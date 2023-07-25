@@ -32,8 +32,9 @@ const questions: Question[] = [
     accessLevels: ["fullAccess", "limitedAccess"],
     answer: (accessLevel) => (
       <div>
-        Første del av dagen (11.45-15.00) vil være i et indisk tempel som heter
-        Sanatan Mandir Sabha. <br />
+        {accessLevel === "fullAccess" ? "Første del av dagen" : "Vielsen"}{" "}
+        (11.45-15.00) vil være i et indisk tempel som heter Sanatan Mandir
+        Sabha. <br />
         <LinkSlemmestad />
         {accessLevel === "fullAccess" && (
           <>
@@ -55,10 +56,12 @@ const questions: Question[] = [
         <Typography variant="h5" className="mb-1">
           Indisk tempel
         </Typography>
-        Til den første delen av dagen kommer vi til å gå med indiske klær, og vi
-        ønsker at dere skal ha på det dere føler dere fine og komfortable i. Om
-        noen ønsker å gå med indiske klær er det hyggelig. Ta kontakt med Sonica
-        om du ønsker å låne.
+        {accessLevel === "fullAccess"
+          ? "Til den første delen av dagen"
+          : "I vielsen"}{" "}
+        kommer vi til å gå med indiske klær, og vi ønsker at dere skal ha på det
+        dere føler dere fine og komfortable i. Om noen ønsker å gå med indiske
+        klær er det hyggelig. Ta kontakt med Sonica om du ønsker å låne.
         <div className="my-2">
           <span className="font-semibold">Dress code menn:</span>{" "}
           Kortermet/langermet overdel og lange bukser.
