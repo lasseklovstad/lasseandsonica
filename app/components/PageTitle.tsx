@@ -43,7 +43,7 @@ export const PageTitle = ({
       <Typography variant="h2" className="mb-4 mt-2">
         {title}
       </Typography>
-      <Typography className="mb-4">
+      <Typography className="mb-4 italic">
         {subtitle.map((text, i) => (
           <Fragment key={i}>
             {text}
