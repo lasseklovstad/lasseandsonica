@@ -51,8 +51,8 @@ export const Typography = <T extends React.ElementType = "div">({
 
   return (
     <Tag
-      className={`${sizeClasses}${className ? " " + className : ""}`}
       {...props}
+      className={`${sizeClasses}${className ? " " + className : ""}`}
     >
       {children}
     </Tag>
