@@ -102,8 +102,8 @@ const timeline: TimelineEvent[] = [
                 syv ekteskapsløfter)
               </li>
               <li>
-                Mang bahrein: Brugdommen tar rødt pulver på brudens hoder
-                (symboliserer at hun nå er en gift kvinne)
+                Mang bahrein: Brudgommen tar rødt pulver i brudens hårlinje
+                (symboliserer at de nå blir livspartnere)
               </li>
               <li>
                 Mangalsutra: Brudgommen gir bruden et halssmykke (symboliserer

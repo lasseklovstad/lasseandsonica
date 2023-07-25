@@ -110,6 +110,10 @@ const questions: Question[] = [
             text: "Mandap - Vielsessted med bål",
           },
           {
+            href: "https://www.timesnownews.com/spiritual/religion/article/hindu-marriage-rituals-know-the-significance-of-gathbandhan/690403",
+            text: "Gathbandhan",
+          },
+          {
             href: "https://www.culturalindia.net/weddings/wedding-traditions/seven-vows.html",
             text: "Saat phere - Syv ekteskapsritualer rundt bålet",
           },
@@ -122,7 +126,7 @@ const questions: Question[] = [
             text: "Mangalsutra - Halssmykke i gave fra brudgom",
           },
           {
-            href: "",
+            href: "https://www.timesnownews.com/spiritual/religion/article/hindu-marriage-rituals-know-the-significance-of-sindoor/690726",
             text: "Maang baharai - Rødt pulver som symboliserer gift kvinne",
           },
           {
