@@ -70,7 +70,7 @@ const questions: Question[] = [
           antrekk som for eksempel en sommerkjole (det er fint å dekke til ben
           ned til anklene).
         </div>
-        NB: Husk at sko må tas av i garderroben innendørs.
+        NB: Husk at sko må tas av i garderoben innendørs.
         {accessLevel === "fullAccess" && (
           <>
             <Typography variant="h5" className="mt-4 mb-1">
@@ -110,6 +110,10 @@ const questions: Question[] = [
             text: "Mandap - Vielsessted med bål",
           },
           {
+            href: "https://www.timesnownews.com/spiritual/religion/article/hindu-marriage-rituals-know-the-significance-of-gathbandhan/690403",
+            text: "Gathbandhan - Brudeparet knyttes sammen",
+          },
+          {
             href: "https://www.culturalindia.net/weddings/wedding-traditions/seven-vows.html",
             text: "Saat phere - Syv ekteskapsritualer rundt bålet",
           },
@@ -122,12 +126,12 @@ const questions: Question[] = [
             text: "Mangalsutra - Halssmykke i gave fra brudgom",
           },
           {
-            href: "",
-            text: "Maang baharai - Rødt pulver som symboliserer gift kvinne",
+            href: "https://www.timesnownews.com/spiritual/religion/article/hindu-marriage-rituals-know-the-significance-of-sindoor/690726",
+            text: "Maang baharai - Rødt pulver i hårlinjen til bruden",
           },
           {
             href: "https://www.culturalindia.net/weddings/wedding-rituals/vidai-ceremony.html",
-            text: "Vidai - Avskjedssermoni",
+            text: "Vidai - Avskjedsseremoni",
           },
         ].map(({ href, text }, i) => (
           <Typography
