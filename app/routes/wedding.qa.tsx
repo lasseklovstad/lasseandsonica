@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Accordion } from "~/components/Accordion";
-import { LinkSlemmestad } from "~/components/LinkSlemmestad";
+import { LinkContinental, LinkSlemmestad } from "~/components/LinkSlemmestad";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
@@ -9,135 +9,79 @@ import type { AccessLevel } from "~/utils/siteSecret";
 
 type Question = {
   question: string;
-  answer: ReactNode;
+  answer: ReactNode | ((accessLevel: AccessLevel) => ReactNode);
   accessLevels: AccessLevel[];
 };
 
 const questions: Question[] = [
   {
-    question: "🎁 Hva skal man gi i bryllupsgaver?",
-    accessLevels: ["fullAccess"],
-    answer: (
-      <Typography>
+    question: "🎁 Hva skal man gi i bryllupsgave?",
+    accessLevels: ["fullAccess", "limitedAccess"],
+    answer: () => (
+      <>
         Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen
         gaver nå. Men vi blir veldig glade for koselige hilsener/kort. Om dere
         gjerne ønsker å gi noe dere tenker passer til oss er det selvfølgelig
         veldig hyggelig. Men ellers vil vi bruke litt tid på å lage en
-        ønskeliste til ordentlige bryllupsfeiring.
-      </Typography>
+        ønskeliste til den større bryllupsfeiringen.
+      </>
     ),
   },
   {
     question: "🗺️ Hvor er feiringen?",
-    accessLevels: ["fullAccess"],
-    answer: (
+    accessLevels: ["fullAccess", "limitedAccess"],
+    answer: (accessLevel) => (
       <div>
-        <Typography className="mb-4">
-          Første del av dagen (11.45-15.00) vil være i et indisk tempel som
-          heter Sanatan Mandir Sabha. <br />
-          <LinkSlemmestad />
-        </Typography>
-        <Typography>
-          Siste del av dagen (17.00 {"-->"}) vil være på Hotell Continental i
-          Oslo, rett ved Nationaltheatret. <br />
-          <a
-            className="underline"
-            href="https://www.google.com/maps/search/?api=1&query=Hotel%20Continental%2C%20Stortingsgata%2C%20Oslo"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Adressen er: Stortingsgata 24/26, 0117 Oslo
-          </a>
-        </Typography>
-      </div>
-    ),
-  },
-  {
-    question: "🗺️ Hvor er feiringen?",
-    accessLevels: ["limitedAccess"],
-    answer: (
-      <Typography>
-        Vielsen (11.45-15.00) vil være i et indisk tempel som heter Sanatan
-        Mandir Sabha. <br />
-        {<LinkSlemmestad />}
-      </Typography>
-    ),
-  },
-  {
-    question: "👗 Hva skal man ha på seg?",
-    accessLevels: ["fullAccess"],
-    answer: (
-      <div>
-        <Typography variant="h5">Indisk tempel</Typography>
-        <Typography>
-          Til den første delen av dagen kommer vi til å gå med indiske klær, og
-          vi ønsker at dere skal ha på dere akkurat det dere føler dere fine og
-          komfortable i. Om dere ønsker å gå med indiske klær synes vi det
-          selvfølgelig er veldig hyggelig. Ta kontakt med Sonica om du har lyst
-          til å låne.
-        </Typography>
-        <Typography>
-          <Typography className="font-semibold" as="span">
-            Dresskode menn:
-          </Typography>{" "}
-          kortermet/langermet overdel og lange bukser.
-        </Typography>
-        <Typography>
-          <Typography className="font-semibold" as="span">
-            Dresskode damer:
-          </Typography>{" "}
-          valgfritt antrekk men er fint å dekke til ben ned til anklene.
-        </Typography>
-        <Typography>
-          NB: Husk at det ikke er tillat med sko innendørs.
-        </Typography>
-        <Typography variant="h5" className="mt-4">
-          Hotell Continental
-        </Typography>
-        <Typography>
-          Til den andre delen av dagen vil vi skifte til finstasen.
-        </Typography>
-        <Typography>
-          <Typography className="font-semibold" as="span">
-            Dresskode menn:
-          </Typography>{" "}
-          smoking eller mørk dress
-        </Typography>
-        <Typography>
-          <Typography className="font-semibold" as="span">
-            Dresskode damer:
-          </Typography>{" "}
-          knelang eller lang kjole
-        </Typography>
+        Første del av dagen (11.45-15.00) vil være i et indisk tempel som heter
+        Sanatan Mandir Sabha. <br />
+        <LinkSlemmestad />
+        {accessLevel === "fullAccess" && (
+          <>
+            <br />
+            <br />
+            Siste del av dagen (17.00 {"-->"}) vil være på Hotell Continental i
+            Oslo, rett ved Nationaltheatret. <br />
+            <LinkContinental />
+          </>
+        )}
       </div>
     ),
   },
   {
     question: "👗 Hva skal man ha på seg?",
-    accessLevels: ["limitedAccess"],
-    answer: (
+    accessLevels: ["fullAccess", "limitedAccess"],
+    answer: (accessLevel) => (
       <div>
-        <Typography>
-          I vielsen kommer vi til å gå med indiske klær, og vi ønsker at dere
-          skal ha på dere akkurat det dere føler dere fine og komfortable i. Om
-          dere ønsker å gå med indiske klær synes vi det selvfølgelig er veldig
-          hyggelig. Ta kontakt med Sonica om du har lyst til å låne.
+        <Typography variant="h5" className="mb-1">
+          Indisk tempel
         </Typography>
-        <Typography>
-          <Typography className="font-semibold" as="span">
-            Dresskode menn:
-          </Typography>{" "}
-          kortermet/langermet overdel og lange bukser.
-        </Typography>
-        <Typography>
-          <Typography className="font-semibold" as="span">
-            Dresskode damer:
-          </Typography>{" "}
-          valgfritt antrekk men er fint å dekke til ben ned til anklene.
-        </Typography>
-        <Typography>
-          NB: Husk at det ikke er tillat med sko innendørs.
-        </Typography>
+        Til den første delen av dagen kommer vi til å gå med indiske klær, og vi
+        ønsker at dere skal ha på dere akkurat det dere føler dere fine og
+        komfortable i. Om dere ønsker å gå med indiske klær synes vi det
+        selvfølgelig er veldig hyggelig. Ta kontakt med Sonica om du har lyst
+        til å låne.
+        <br />
+        <span className="font-semibold">Dresskode menn:</span>{" "}
+        kortermet/langermet overdel og lange bukser.
+        <br />
+        <span className="font-semibold">Dresskode damer:</span> valgfritt
+        antrekk men er fint å dekke til ben ned til anklene.
+        <br />
+        NB: Husk at det ikke er tillat med sko innendørs.
+        {accessLevel === "fullAccess" && (
+          <>
+            <Typography variant="h5" className="mt-4 mb-1">
+              Hotell Continental
+            </Typography>
+            Til den andre delen av dagen vil vi skifte til finstasen.
+            <br />
+            <span className="font-semibold">Dresskode menn:</span> smoking eller
+            mørk dress
+            <br />
+            <span className="font-semibold">Dresskode damer:</span> knelang
+            eller lang kjole
+          </>
+        )}
       </div>
     ),
   },
@@ -145,10 +89,8 @@ const questions: Question[] = [
     question: "🛕 Hvordan er en indisk vielse?",
     answer: (
       <div className="flex flex-col">
-        <Typography>
-          Her har vi linket til nyttig info hvor dere kan lese om de ulike
-          ritualene:
-        </Typography>
+        Her har vi linket til nyttig info hvor dere kan lese om de ulike
+        ritualene:
         {[
           {
             href: "https://www.culturalindia.net/weddings/wedding-traditions/wedding-barat.html",
@@ -184,9 +126,10 @@ const questions: Question[] = [
           },
         ].map(({ href, text }, i) => (
           <Typography
+            variant="body"
             key={i}
             as="a"
-            className="underline"
+            className="underline mt-1"
             target="_blank"
             href={href}
             rel="noreferrer"
@@ -218,7 +161,13 @@ export default function QA() {
       {questions
         .filter((q) => q.accessLevels.includes(accessLevel))
         .map(({ question, answer }, i) => (
-          <Accordion key={i} title={question} content={answer} />
+          <Accordion
+            key={i}
+            title={question}
+            content={
+              typeof answer === "function" ? answer(accessLevel) : answer
+            }
+          />
         ))}
     </div>
   );

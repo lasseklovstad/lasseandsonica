@@ -76,7 +76,9 @@ export default function Upload() {
           to: `../${routes.wedding.pictures}`,
           name: `Bilder`,
         }}
-        subtitle={["Her kan alle laste opp bilder under bryllupsdagen"]}
+        subtitle={[
+          "Her kan dere løpende laste opp bilder fra bryllupsdagen 📷",
+        ]}
       />
       <fetcher.Form
         method="post"

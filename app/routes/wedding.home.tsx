@@ -20,8 +20,7 @@ export default function Home() {
               ]
             : [
                 "Vi gifter oss 11. august 2023!",
-                "Denne dagen blir det i hovedsak en liten feiring med familie og forlovere, men dere er hjertelig velkommen til vielsen.",
-                "En ordentlig bryllupsfeiring er under planlegging og vil bli om noen år.",
+                "Denne dagen blir det i hovedsak en liten feiring med familie og forlovere, men dere er hjertelig velkommen til vielsen (12.00-15.00). En ordentlig bryllupsfeiring er under planlegging og vil bli om noen år.",
               ]
         }
       />
