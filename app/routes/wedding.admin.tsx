@@ -1,20 +1,13 @@
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
-import {
-  json,
-  redirect,
-  unstable_composeUploadHandlers as composeUploadHandlers,
-  unstable_createMemoryUploadHandler as createMemoryUploadHandler,
-  unstable_parseMultipartFormData as parseMultipartFormData,
-} from "@remix-run/node";
+import { json, redirect } from "@remix-run/node";
 import { useFetcher, useLoaderData, useRouteError } from "@remix-run/react";
-import { useEffect, useRef, useState } from "react";
 import { Button } from "~/components/Button";
-import { ImageLibrary } from "~/components/ImageLibrary";
 import { Input } from "~/components/Input";
 import { PageTitle } from "~/components/PageTitle";
 import { Radio } from "~/components/Radio";
 import { Typography } from "~/components/Typography";
 import { routes } from "~/types/routes";
+import type { AdminForm } from "~/utils/cloudinaryUtils";
 import { getAdminForm, getUsage, postAdminForm } from "~/utils/cloudinaryUtils";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
@@ -33,9 +26,9 @@ export const action = async ({ request }: ActionArgs) => {
     return new Response("", { status: 401 });
   }
   const formData = await request.formData();
-  const cloudinarySecret = String(formData.get("cloudinarySecret")) as
-    | "lasse.klovstad"
-    | "lklov_50";
+  const cloudinarySecret = String(
+    formData.get("cloudinarySecret")
+  ) as AdminForm["cloudinarySecret"];
 
   postAdminForm({
     cloudinarySecret,

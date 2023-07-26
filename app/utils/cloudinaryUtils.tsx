@@ -19,6 +19,11 @@ function cloudinaryConfig() {
   cloudinary.v2.config(cloudinarySecret[adminForm.cloudinarySecret]);
 }
 
+function resetCache() {
+  cachedImages = undefined;
+  cachedVideos = undefined;
+}
+
 export async function uploadImage(
   data: AsyncIterable<Uint8Array>,
   contentType: string
@@ -123,7 +128,7 @@ export async function getUsage() {
   });
 }
 
-type AdminForm = {
+export type AdminForm = {
   cloudinarySecret: "lasse.klovstad" | "lklov_50";
   maxResultsVideo: number;
   maxResultsImage: number;
@@ -139,5 +144,6 @@ export function getAdminForm() {
 }
 
 export function postAdminForm(newAdminForm: AdminForm) {
+  resetCache();
   adminForm = newAdminForm;
 }
