@@ -248,7 +248,7 @@ export default function Program() {
           to: `../${routes.wedding.ourStory}`,
           name: `Vår historie`,
         }}
-        subtitle={["Her er program for dagen"]}
+        subtitle={["Her er program for dagen."]}
       />
       <div className="flex flex-col w-full">
         {timeline
