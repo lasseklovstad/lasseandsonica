@@ -39,7 +39,7 @@ export const action = async ({ request }: ActionArgs) => {
   return json({ ok: true });
 };
 
-export default function Upload() {
+export default function Admin() {
   const { usage, adminForm } = useLoaderData<typeof loader>();
   const resetDate = new Date(usage.rate_limit_reset_at);
   const fetcher = useFetcher();
@@ -67,9 +67,14 @@ export default function Upload() {
           {usage.rate_limit_remaining} / {usage.rate_limit_allowed} - Resets at{" "}
           {resetDate.toLocaleDateString()} {resetDate.toLocaleTimeString()}
         </Typography>
-        <fetcher.Form className="flex flex-col gap-2 items-start" method="POST">
+        <fetcher.Form
+          className="flex flex-col gap-2 items-start mt-4"
+          method="POST"
+        >
           <fieldset>
-            <legend>Velg hvilken Cloudinary du skal bruke?</legend>
+            <Typography as="legend" className="mb-1">
+              Velg hvilken Cloudinary du skal bruke?
+            </Typography>
             {[
               { label: "Default", value: "lasse.klovstad" },
               { label: "Backup Lasse", value: "lklov_50" },
@@ -100,7 +105,7 @@ export default function Upload() {
             className="my-4"
             pending={fetcher.state !== "idle"}
           >
-            Logg inn
+            Lagre
           </Button>
         </fetcher.Form>
       </div>
