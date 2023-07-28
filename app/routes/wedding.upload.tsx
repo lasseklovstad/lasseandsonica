@@ -1,10 +1,10 @@
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import {
-  json,
-  redirect,
   unstable_composeUploadHandlers as composeUploadHandlers,
   unstable_createMemoryUploadHandler as createMemoryUploadHandler,
+  json,
   unstable_parseMultipartFormData as parseMultipartFormData,
+  redirect,
 } from "@remix-run/node";
 import { useFetcher, useLoaderData, useRouteError } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
@@ -13,7 +13,12 @@ import { ImageLibrary } from "~/components/ImageLibrary";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { routes } from "~/types/routes";
-import { getImages, getVideos, uploadImage } from "~/utils/cloudinaryUtils";
+import {
+  getCurrentCloudName,
+  getImages,
+  getVideos,
+  uploadImage,
+} from "~/utils/cloudinaryUtils";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
 export const loader = async ({ request }: LoaderArgs) => {
@@ -23,7 +28,7 @@ export const loader = async ({ request }: LoaderArgs) => {
   }
   const images = await getImages();
   const videos = await getVideos();
-  return json({ images, videos });
+  return json({ images, videos, cloudName: getCurrentCloudName() });
 };
 
 export const action = async ({ request }: ActionArgs) => {
@@ -48,7 +53,7 @@ export const action = async ({ request }: ActionArgs) => {
 };
 
 export default function Upload() {
-  const { images, videos } = useLoaderData<typeof loader>();
+  const { images, videos, cloudName } = useLoaderData<typeof loader>();
   const [canSave, setCanSave] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const fetcher = useFetcher<typeof action>();
@@ -122,6 +127,7 @@ export default function Upload() {
               imageUrl: r.public_id,
               imageAlt: `Opplastet bilde med id: ${r.asset_id}`,
             }))}
+            cloudName={cloudName}
           />
         </>
       )}

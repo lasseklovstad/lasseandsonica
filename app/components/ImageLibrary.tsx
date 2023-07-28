@@ -6,9 +6,10 @@ import { RightArrow } from "./icons/RightArrow";
 
 type Props = {
   pictures: { imageUrl: string; imageAlt: string }[];
+  cloudName?: string;
 };
 
-export const ImageLibrary = ({ pictures }: Props) => {
+export const ImageLibrary = ({ pictures, cloudName }: Props) => {
   const [params] = useSearchParams();
   const pictureIndex = params.get("pictureIndex");
   const pictureIndexAsNumber = pictureIndex && parseInt(pictureIndex);
@@ -32,6 +33,7 @@ export const ImageLibrary = ({ pictures }: Props) => {
               imageAlt={selectedPicture.imageAlt}
               showDescription
               showBackButton
+              cloudName={cloudName}
             />
             <IconButton
               as={Link}
@@ -52,7 +54,11 @@ export const ImageLibrary = ({ pictures }: Props) => {
               to={{ search: `?pictureIndex=${i}` }}
               aria-label="Se bilde i større størrelse"
             >
-              <CloudinaryImage imageUrl={p.imageUrl} imageAlt={p.imageAlt} />
+              <CloudinaryImage
+                imageUrl={p.imageUrl}
+                imageAlt={p.imageAlt}
+                cloudName={cloudName}
+              />
             </Link>
           ))}
         </div>

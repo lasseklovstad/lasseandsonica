@@ -11,15 +11,16 @@ export const Button = <T extends React.ElementType = "button">({
   type,
   pending,
   as,
+  className,
   ...props
 }: Props<T> & Omit<React.ComponentPropsWithoutRef<T>, keyof Props<T>>) => {
   const Component = as || "button";
   return (
     <Component
       type={type}
-      className={`${
+      className={`${className ? className : ""} ${
         pending ? "text-gray-300" : "text-white"
-      } bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-md px-4 py-2 focus:outline-none`}
+      } bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-md px-4 py-2 focus:outline-none relative`}
       {...props}
     >
       <Typography as="span" variant="body" className="font-semibold">
