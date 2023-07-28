@@ -1,3 +1,4 @@
+import { Link } from "@remix-run/react";
 import type { ReactNode } from "react";
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
@@ -30,6 +31,16 @@ const timeline: TimelineEvent[] = [
             ). Det tar ca. 40 minutter å kjøre fra Oslo, og det er en stor
             parkeringsplass utenfor. Det er fint om alle er på plass før 12.00.
             Det er ikke tillatt med alkohol eller røyk på og utenfor tempelet.
+            <br />
+            <br />
+            <Typography
+              as={Link}
+              variant="body-small"
+              to={`../${routes.wedding.qa}?open=dresscode`}
+              className="underline"
+            >
+              Les mer om antrekk her
+            </Typography>
           </>
         ),
       },
@@ -74,11 +85,10 @@ const timeline: TimelineEvent[] = [
       {
         text: (
           <>
-            Det vil serveres lunsjbuffet med indiske vegetarretter (fra
-            restauranten Nimbu i Bjørvika). Bespisningen blir i en uformell
-            setting, hvor man kan velge om man vil sitte eller stå. Om man ikke
-            er ferdig til 13.30 er det i orden å spise under vielsen, men da må
-            man passe på å være stille.
+            Det vil serveres lunsjbuffet med indiske vegetarretter. Bespisningen
+            blir i en uformell setting, hvor man kan velge om man vil sitte
+            eller stå. Om man ikke er ferdig til 13.30 er det i orden å spise
+            under vielsen, men da må man passe på å være stille.
           </>
         ),
       },
@@ -115,6 +125,15 @@ const timeline: TimelineEvent[] = [
               </li>
               <li>Kanyadaan: Brudens far «gir bort» hånden til datteren sin</li>
             </ol>
+            <br />
+            <Typography
+              as={Link}
+              variant="body-small"
+              to={`../${routes.wedding.qa}?open=ceremony`}
+              className="underline"
+            >
+              Her kan du lese mer om tradisjoner og ritualer
+            </Typography>
           </>
         ),
       },
@@ -173,6 +192,16 @@ const timeline: TimelineEvent[] = [
             <LinkContinental />
             ), som ligger rett ved Nationaltheatret. Vi skal være i tredje
             etasje, i et lokale som heter Salen.
+            <br />
+            <br />
+            <Typography
+              as={Link}
+              variant="body-small"
+              to={`../${routes.wedding.qa}?open=dresscode`}
+              className="underline"
+            >
+              Les mer om antrekk her
+            </Typography>
           </>
         ),
       },
@@ -197,8 +226,14 @@ const timeline: TimelineEvent[] = [
         text: (
           <>
             Vi setter oss til bords, hvor det vil serveres en 3-retters middag.
+            <ul>
+              <li>18:30 - Forrett</li>
+              <li>19:00 - Middag</li>
+              <li>19:45 - Dessert</li>
+            </ul>
             Det vil ikke være en formell toastmaster, men det er veldig hyggelig
-            om noen ønsker å si noen ord underveis i middagen.
+            om noen ønsker å si noen ord underveis i middagen mellom
+            serveringene.
           </>
         ),
       },

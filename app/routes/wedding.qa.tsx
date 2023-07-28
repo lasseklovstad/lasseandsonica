@@ -1,4 +1,5 @@
-import type { ReactNode } from "react";
+import { useSearchParams } from "@remix-run/react";
+import { useRef, type ReactNode, useEffect } from "react";
 import { Accordion } from "~/components/Accordion";
 import { LinkContinental, LinkSlemmestad } from "~/components/LinkSlemmestad";
 import { PageTitle } from "~/components/PageTitle";
@@ -11,25 +12,29 @@ type Question = {
   question: string;
   answer: ReactNode | ((accessLevel: AccessLevel) => ReactNode);
   accessLevels: AccessLevel[];
+  id: string;
 };
 
 const questions: Question[] = [
   {
     question: "🎁 Hva skal man gi i bryllupsgave?",
     accessLevels: ["fullAccess", "limitedAccess"],
+    id: "gift",
     answer: () => (
       <>
         Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen
         gaver nå. Men vi blir veldig glade for koselige hilsener/kort. Om dere
         gjerne ønsker å gi noe dere tenker passer til oss er det selvfølgelig
         veldig hyggelig. Men ellers vil vi bruke litt tid på å lage en
-        ønskeliste til den større bryllupsfeiringen.
+        ønskeliste til den større bryllupsfeiringen. Hvis det fortsatt er
+        ønskelig å gi noe nå ønsker vi oss pengegaver på vipps til sparing.
       </>
     ),
   },
   {
     question: "🗺️ Hvor er feiringen?",
     accessLevels: ["fullAccess", "limitedAccess"],
+    id: "location",
     answer: (accessLevel) => (
       <div>
         {accessLevel === "fullAccess" ? "Første del av dagen" : "Vielsen"}{" "}
@@ -51,6 +56,7 @@ const questions: Question[] = [
   {
     question: "👗 Hva skal man ha på seg?",
     accessLevels: ["fullAccess", "limitedAccess"],
+    id: "dresscode",
     answer: (accessLevel) => (
       <div>
         <Typography variant="h5" className="mb-1">
@@ -92,6 +98,7 @@ const questions: Question[] = [
   },
   {
     question: "🛕 Hvordan er en indisk vielse?",
+    id: "ceremony",
     answer: (
       <div className="flex flex-col">
         Her har vi linket til nyttig info hvor dere kan lese om de ulike
@@ -154,6 +161,21 @@ const questions: Question[] = [
 
 export default function QA() {
   const { accessLevel } = useWeddingLoaderData();
+  const [params] = useSearchParams();
+  const accordionRef = useRef<HTMLDetailsElement[]>([]);
+  const filteredQuestions = questions.filter((q) =>
+    q.accessLevels.includes(accessLevel)
+  );
+  const openAccordionIndex = filteredQuestions.findIndex(
+    (q) => q.id === params.get("open")
+  );
+
+  useEffect(() => {
+    if (openAccordionIndex !== -1) {
+      accordionRef.current[openAccordionIndex].scrollIntoView();
+    }
+  }, [openAccordionIndex]);
+
   return (
     <div className="flex flex-col items-center">
       <PageTitle
@@ -167,17 +189,19 @@ export default function QA() {
           "Er det noe annet du lurer på, spør oss.",
         ]}
       />
-      {questions
-        .filter((q) => q.accessLevels.includes(accessLevel))
-        .map(({ question, answer }, i) => (
-          <Accordion
-            key={i}
-            title={question}
-            content={
-              typeof answer === "function" ? answer(accessLevel) : answer
+      {filteredQuestions.map(({ question, answer }, i) => (
+        <Accordion
+          key={i}
+          ref={(ref) => {
+            if (ref) {
+              accordionRef.current[i] = ref;
             }
-          />
-        ))}
+          }}
+          defaultOpen={i === openAccordionIndex}
+          title={question}
+          content={typeof answer === "function" ? answer(accessLevel) : answer}
+        />
+      ))}
     </div>
   );
 }
