@@ -1,8 +1,8 @@
-import { Link } from "@remix-run/react";
 import type { ReactNode } from "react";
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { LinkContinental, LinkSlemmestad } from "~/components/LinkSlemmestad";
+import { LinkToQa } from "~/components/LinkToQa";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
@@ -33,14 +33,7 @@ const timeline: TimelineEvent[] = [
             Det er ikke tillatt med alkohol eller røyk på og utenfor tempelet.
             <br />
             <br />
-            <Typography
-              as={Link}
-              variant="body-small"
-              to={`../${routes.wedding.qa}?open=dresscode`}
-              className="underline"
-            >
-              Les mer om antrekk her
-            </Typography>
+            <LinkToQa open="dresscode">Les mer om antrekk her</LinkToQa>
           </>
         ),
       },
@@ -126,14 +119,9 @@ const timeline: TimelineEvent[] = [
               <li>Kanyadaan: Brudens far «gir bort» hånden til datteren sin</li>
             </ol>
             <br />
-            <Typography
-              as={Link}
-              variant="body-small"
-              to={`../${routes.wedding.qa}?open=ceremony`}
-              className="underline"
-            >
+            <LinkToQa open="ceremony">
               Her kan du lese mer om tradisjoner og ritualer
-            </Typography>
+            </LinkToQa>
           </>
         ),
       },
@@ -194,14 +182,7 @@ const timeline: TimelineEvent[] = [
             etasje, i et lokale som heter Salen.
             <br />
             <br />
-            <Typography
-              as={Link}
-              variant="body-small"
-              to={`../${routes.wedding.qa}?open=dresscode`}
-              className="underline"
-            >
-              Les mer om antrekk her
-            </Typography>
+            <LinkToQa open="dresscode">Les mer om antrekk her</LinkToQa>
           </>
         ),
       },

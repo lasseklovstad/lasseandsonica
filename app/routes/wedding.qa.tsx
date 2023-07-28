@@ -2,6 +2,7 @@ import { useSearchParams } from "@remix-run/react";
 import { useRef, type ReactNode, useEffect } from "react";
 import { Accordion } from "~/components/Accordion";
 import { LinkContinental, LinkSlemmestad } from "~/components/LinkSlemmestad";
+import type { QaAccordionId } from "~/components/LinkToQa";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
@@ -12,7 +13,7 @@ type Question = {
   question: string;
   answer: ReactNode | ((accessLevel: AccessLevel) => ReactNode);
   accessLevels: AccessLevel[];
-  id: string;
+  id: QaAccordionId;
 };
 
 const questions: Question[] = [
