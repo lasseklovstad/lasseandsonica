@@ -109,17 +109,17 @@ const questions: Question[] = [
     question: "🛕 Hvordan er en indisk vielse?",
     id: "ceremony",
     answer: (
-      <div className="flex flex-col">
-        Her har vi linket til nyttig info hvor dere kan lese mer om de ulike
-        ritualene:
-        <br />
-        <br />
+      <div className="flex flex-col gap-4">
+        <div>
+          Her har vi linket til nyttig info hvor dere kan lese mer om de ulike
+          ritualene:
+        </div>
         {[
           {
             href: "https://www.culturalindia.net/weddings/wedding-traditions/wedding-barat.html",
             title: "Barat",
             description: "Brudgommens ankomstparade",
-            pictures: [],
+            pictures: ["Ceremony/Indian-Baraat-1_gn0boo.jpg"],
           },
           {
             href: "https://www.culturalindia.net/weddings/wedding-rituals/var-mala-ceremony.html",
@@ -164,20 +164,20 @@ const questions: Question[] = [
             href: "https://www.culturalindia.net/weddings/wedding-traditions/seven-vows.html",
             title: "Saat phere",
             description: "Syv ekteskapsritualer rundt bålet",
-            pictures: [],
+            pictures: ["Ceremony/saatphere_gxiw3p.jpg"],
           },
           {
             href: "https://www.culturalindia.net/weddings/wedding-rituals/vidai-ceremony.html",
             title: "Vidai",
             description: "Avskjedsseremoni",
-            pictures: [],
+            pictures: ["Ceremony/vidai_wd3rpn.jpg"],
           },
         ].map(({ href, description, pictures, title }, i) => (
-          <div key={i} className="mb-4">
+          <div key={i}>
             <Typography
               variant="body"
               as="a"
-              className="underline mt-1"
+              className="underline"
               target="_blank"
               href={href}
               rel="noreferrer"
