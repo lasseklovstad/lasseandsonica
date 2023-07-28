@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { LinkContinental, LinkSlemmestad } from "~/components/LinkSlemmestad";
+import { LinkToQa } from "~/components/LinkToQa";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
@@ -30,6 +31,9 @@ const timeline: TimelineEvent[] = [
             ). Det tar ca. 40 minutter å kjøre fra Oslo, og det er en stor
             parkeringsplass utenfor. Det er fint om alle er på plass før 12.00.
             Det er ikke tillatt med alkohol eller røyk på og utenfor tempelet.
+            <br />
+            <br />
+            <LinkToQa open="dresscode">Les mer om antrekk her</LinkToQa>
           </>
         ),
       },
@@ -74,11 +78,10 @@ const timeline: TimelineEvent[] = [
       {
         text: (
           <>
-            Det vil serveres lunsjbuffet med indiske vegetarretter (fra
-            restauranten Nimbu i Bjørvika). Bespisningen blir i en uformell
-            setting, hvor man kan velge om man vil sitte eller stå. Om man ikke
-            er ferdig til 13.30 er det i orden å spise under vielsen, men da må
-            man passe på å være stille.
+            Det vil serveres lunsjbuffet med indiske vegetarretter. Bespisningen
+            blir i en uformell setting, hvor man kan velge om man vil sitte
+            eller stå. Om man ikke er ferdig til 13.30 er det i orden å spise
+            under vielsen, men da må man passe på å være stille.
           </>
         ),
       },
@@ -97,24 +100,28 @@ const timeline: TimelineEvent[] = [
             (mandap). Her vil brudeparet vies. Det vil utføres tradisjonelle
             ritualer som:
             <ol className="list-disc my-2 ml-4">
+              <li>Kanyadaan: Brudens far «gir bort» hånden til datteren sin</li>
               <li>
                 Gathbandhan: Brudeparet knyttes sammen med et tøystykke
                 (symboliserer at de nå knyttes sammen for hele livet)
               </li>
               <li>
-                Saat phere: Brudeparet går syv runder rundt bålet (symboliserer
-                syv ekteskapsløfter)
+                Mangalsutra: Brudgommen gir bruden et halssmykke (symboliserer
+                at hun nå er en gift kvinne)
               </li>
               <li>
                 Mang bahrein: Brudgommen tar rødt pulver i brudens hårlinje
                 (symboliserer at de nå blir livspartnere)
               </li>
               <li>
-                Mangalsutra: Brudgommen gir bruden et halssmykke (symboliserer
-                at hun nå er en gift kvinne)
+                Saat phere: Brudeparet går syv runder rundt bålet (symboliserer
+                syv ekteskapsløfter)
               </li>
-              <li>Kanyadaan: Brudens far «gir bort» hånden til datteren sin</li>
             </ol>
+            <br />
+            <LinkToQa open="ceremony">
+              Her kan du lese mer om tradisjoner og ritualer
+            </LinkToQa>
           </>
         ),
       },
@@ -172,7 +179,12 @@ const timeline: TimelineEvent[] = [
             Vi møtes til bryllupsmiddag på Hotell Continental (
             <LinkContinental />
             ), som ligger rett ved Nationaltheatret. Vi skal være i tredje
-            etasje, i et lokale som heter Salen.
+            etasje, i et lokale som heter Salen. Man kan ta både trapper og heis
+            opp til tredje etasje. Det er en selvbetjent garderobe utenfor
+            rommene vi skal være i.
+            <br />
+            <br />
+            <LinkToQa open="dresscode">Les mer om antrekk her</LinkToQa>
           </>
         ),
       },
@@ -197,8 +209,14 @@ const timeline: TimelineEvent[] = [
         text: (
           <>
             Vi setter oss til bords, hvor det vil serveres en 3-retters middag.
+            <ul>
+              <li>18:30 - Forrett</li>
+              <li>19:00 - Middag</li>
+              <li>19:45 - Dessert</li>
+            </ul>
             Det vil ikke være en formell toastmaster, men det er veldig hyggelig
-            om noen ønsker å si noen ord underveis i middagen.
+            om noen ønsker å si noen ord underveis i middagen mellom
+            serveringene.
           </>
         ),
       },
