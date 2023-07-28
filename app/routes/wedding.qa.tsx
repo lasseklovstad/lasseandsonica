@@ -177,7 +177,7 @@ const questions: Question[] = [
             <Typography
               variant="body"
               as="a"
-              className="underline"
+              className="underline font-semibold"
               target="_blank"
               href={href}
               rel="noreferrer"
