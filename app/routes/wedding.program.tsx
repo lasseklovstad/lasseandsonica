@@ -100,23 +100,23 @@ const timeline: TimelineEvent[] = [
             (mandap). Her vil brudeparet vies. Det vil utføres tradisjonelle
             ritualer som:
             <ol className="list-disc my-2 ml-4">
+              <li>Kanyadaan: Brudens far «gir bort» hånden til datteren sin</li>
               <li>
                 Gathbandhan: Brudeparet knyttes sammen med et tøystykke
                 (symboliserer at de nå knyttes sammen for hele livet)
               </li>
               <li>
-                Saat phere: Brudeparet går syv runder rundt bålet (symboliserer
-                syv ekteskapsløfter)
+                Mangalsutra: Brudgommen gir bruden et halssmykke (symboliserer
+                at hun nå er en gift kvinne)
               </li>
               <li>
                 Mang bahrein: Brudgommen tar rødt pulver i brudens hårlinje
                 (symboliserer at de nå blir livspartnere)
               </li>
               <li>
-                Mangalsutra: Brudgommen gir bruden et halssmykke (symboliserer
-                at hun nå er en gift kvinne)
+                Saat phere: Brudeparet går syv runder rundt bålet (symboliserer
+                syv ekteskapsløfter)
               </li>
-              <li>Kanyadaan: Brudens far «gir bort» hånden til datteren sin</li>
             </ol>
             <br />
             <LinkToQa open="ceremony">
@@ -179,7 +179,9 @@ const timeline: TimelineEvent[] = [
             Vi møtes til bryllupsmiddag på Hotell Continental (
             <LinkContinental />
             ), som ligger rett ved Nationaltheatret. Vi skal være i tredje
-            etasje, i et lokale som heter Salen.
+            etasje, i et lokale som heter Salen. Man kan ta både trapper og heis
+            opp til tredje etasje. Det er en selvbetjent garderobe utenfor
+            rommene vi skal være i.
             <br />
             <br />
             <LinkToQa open="dresscode">Les mer om antrekk her</LinkToQa>

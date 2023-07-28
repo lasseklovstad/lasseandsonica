@@ -1,6 +1,7 @@
 import { useSearchParams } from "@remix-run/react";
-import { useRef, type ReactNode, useEffect } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 import { Accordion } from "~/components/Accordion";
+import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { LinkContinental, LinkSlemmestad } from "~/components/LinkSlemmestad";
 import type { QaAccordionId } from "~/components/LinkToQa";
 import { PageTitle } from "~/components/PageTitle";
@@ -22,14 +23,21 @@ const questions: Question[] = [
     accessLevels: ["fullAccess", "limitedAccess"],
     id: "gift",
     answer: () => (
-      <>
-        Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen
-        gaver nå. Men vi blir veldig glade for koselige hilsener/kort. Om dere
-        gjerne ønsker å gi noe dere tenker passer til oss er det selvfølgelig
-        veldig hyggelig. Men ellers vil vi bruke litt tid på å lage en
-        ønskeliste til den større bryllupsfeiringen. Hvis det fortsatt er
-        ønskelig å gi noe nå ønsker vi oss pengegaver på vipps til sparing.
-      </>
+      <div className="flex flex-col gap-2">
+        <div>
+          Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen
+          gaver nå. Men vi blir veldig glade for koselige hilsener/kort.
+        </div>
+        <div>
+          Om dere gjerne ønsker å gi noe dere tenker passer til oss er det
+          selvfølgelig veldig hyggelig. Men ellers vil vi bruke litt tid på å
+          lage en ønskeliste til den større bryllupsfeiringen.
+        </div>
+        <div>
+          Hvis det fortsatt er ønskelig å gi noe nå ønsker vi oss pengegaver på
+          vipps til sparing.
+        </div>
+      </div>
     ),
   },
   {
@@ -102,57 +110,91 @@ const questions: Question[] = [
     id: "ceremony",
     answer: (
       <div className="flex flex-col">
-        Her har vi linket til nyttig info hvor dere kan lese om de ulike
+        Her har vi linket til nyttig info hvor dere kan lese mer om de ulike
         ritualene:
+        <br />
+        <br />
         {[
           {
             href: "https://www.culturalindia.net/weddings/wedding-traditions/wedding-barat.html",
-            text: "Barat - Brudgommens ankomstparade",
+            title: "Barat",
+            description: "Brudgommens ankomstparade",
+            pictures: [],
           },
           {
             href: "https://www.culturalindia.net/weddings/wedding-rituals/var-mala-ceremony.html",
-            text: "Jaymala - Blomsterkjeder",
+            title: "Jaymala",
+            description: "Blomsterkjeder",
+            pictures: ["Ceremony/jaymala_ghjisx.jpg"],
           },
           {
             href: "https://www.culturalindia.net/weddings/wedding-rituals/mandap-ceremony.html",
-            text: "Mandap - Vielsessted med bål",
-          },
-          {
-            href: "https://www.timesnownews.com/spiritual/religion/article/hindu-marriage-rituals-know-the-significance-of-gathbandhan/690403",
-            text: "Gathbandhan - Brudeparet knyttes sammen",
-          },
-          {
-            href: "https://www.culturalindia.net/weddings/wedding-traditions/seven-vows.html",
-            text: "Saat phere - Syv ekteskapsritualer rundt bålet",
+            title: "Mandap",
+            description: "Vielsessted med bål",
+            pictures: ["Ceremony/mandap_ygb7oi.jpg"],
           },
           {
             href: "https://www.culturalindia.net/weddings/wedding-traditions/kanyadaan.html",
-            text: "Kanyadaan - Brudens far gir bort hånden til datter",
+            title: "Kanyadaan",
+            description: "Brudens far gir bort hånden til datter",
+            pictures: ["Ceremony/kanyadaan_ohsycg.jpg"],
           },
+          {
+            href: "https://www.timesnownews.com/spiritual/religion/article/hindu-marriage-rituals-know-the-significance-of-gathbandhan/690403",
+            title: "Gathbandhan",
+            description: "Brudeparet knyttes sammen",
+            pictures: ["Ceremony/gathbandan_mbqpa9.jpg"],
+          },
+
           {
             href: "https://www.culturalindia.net/weddings/wedding-traditions/mangalsutra.html",
-            text: "Mangalsutra - Halssmykke i gave fra brudgom",
+            title: "Mangalsutra",
+            description: "Halssmykke i gave fra brudgom",
+            pictures: ["Ceremony/mangalsutra_pmzcj7.jpg"],
           },
+
           {
             href: "https://www.timesnownews.com/spiritual/religion/article/hindu-marriage-rituals-know-the-significance-of-sindoor/690726",
-            text: "Maang baharai - Rødt pulver i hårlinjen til bruden",
+            title: "Maang baharai",
+            description: "Rødt pulver i hårlinjen til bruden",
+            pictures: ["Ceremony/mangbahrein_s56szq.jpg"],
+          },
+
+          {
+            href: "https://www.culturalindia.net/weddings/wedding-traditions/seven-vows.html",
+            title: "Saat phere",
+            description: "Syv ekteskapsritualer rundt bålet",
+            pictures: [],
           },
           {
             href: "https://www.culturalindia.net/weddings/wedding-rituals/vidai-ceremony.html",
-            text: "Vidai - Avskjedsseremoni",
+            title: "Vidai",
+            description: "Avskjedsseremoni",
+            pictures: [],
           },
-        ].map(({ href, text }, i) => (
-          <Typography
-            variant="body-small"
-            key={i}
-            as="a"
-            className="underline mt-1"
-            target="_blank"
-            href={href}
-            rel="noreferrer"
-          >
-            {text}
-          </Typography>
+        ].map(({ href, description, pictures, title }, i) => (
+          <div key={i} className="mb-4">
+            <Typography
+              variant="body"
+              as="a"
+              className="underline mt-1"
+              target="_blank"
+              href={href}
+              rel="noreferrer"
+            >
+              {title}
+            </Typography>
+            <Typography variant="body-small">{description}</Typography>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 my-1">
+              {pictures.map((picture) => (
+                <CloudinaryImage
+                  key={picture}
+                  imageAlt={title}
+                  imageUrl={picture}
+                />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
     ),

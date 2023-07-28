@@ -17,6 +17,6 @@ export const LinkToQa = ({
     to={`../${routes.wedding.qa}?open=${open}`}
     className="underline"
   >
-    Her kan du lese mer om tradisjoner og ritualer
+    {children}
   </Typography>
 );
