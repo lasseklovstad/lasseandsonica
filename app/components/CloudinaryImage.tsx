@@ -3,6 +3,7 @@ import { buildImageUrl } from "cloudinary-build-url";
 import { Typography } from "./Typography";
 import { Link } from "@remix-run/react";
 import { Button } from "./Button";
+import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 
 export type CloudinaryImageProps = {
   imageUrl: string;
@@ -11,6 +12,7 @@ export type CloudinaryImageProps = {
   transformations?: TransformerOption;
   showDescription?: boolean;
   showBackButton?: boolean;
+  cloudName?: string;
 };
 
 export const CloudinaryImage = ({
@@ -20,7 +22,9 @@ export const CloudinaryImage = ({
   transformations,
   showDescription,
   showBackButton,
+  cloudName,
 }: CloudinaryImageProps) => {
+  const { mainCloudName } = useWeddingLoaderData();
   return (
     <div className={className}>
       <img
@@ -30,11 +34,13 @@ export const CloudinaryImage = ({
           relativeUrl: imageUrl,
           size: 1100,
           transformations,
+          cloudName: cloudName || mainCloudName,
         })}
         srcSet={getSrcSet({
           relativeUrl: imageUrl,
           sizes: [280, 560, 840, 1100, 1650, 2500, 2100, 3100],
           transformations,
+          cloudName: cloudName || mainCloudName,
         })}
         sizes="(max-width:768px) 95vw, (min-width:767px) and (max-width:1024px) 67vw, 800px"
       />
@@ -58,14 +64,16 @@ function getSrcSet({
   relativeUrl,
   sizes,
   transformations,
+  cloudName,
 }: {
   relativeUrl: string;
   sizes: number[];
   transformations?: TransformerOption;
+  cloudName: string;
 }) {
   return sizes
     .map((size) =>
-      getCloudinaryImageUrl({ size, relativeUrl, transformations })
+      getCloudinaryImageUrl({ size, relativeUrl, transformations, cloudName })
     )
     .join(", ");
 }
@@ -74,13 +82,15 @@ function getCloudinaryImageUrl({
   relativeUrl,
   size,
   transformations,
+  cloudName,
 }: {
   relativeUrl: string;
   size: number;
   transformations?: TransformerOption;
+  cloudName: string;
 }) {
   return `${buildImageUrl(relativeUrl, {
-    cloud: { cloudName: "dsiqlprku" },
+    cloud: { cloudName },
     transformations: {
       quality: "auto",
       ...transformations,

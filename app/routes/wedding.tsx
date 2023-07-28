@@ -11,7 +11,10 @@ export const loader = async ({ request }: LoaderArgs) => {
   if (!isLoggedIn) {
     return redirect(`/${routes.login}`);
   }
-  return json({ accessLevel: isLoggedIn } as const);
+  return json({
+    accessLevel: isLoggedIn,
+    mainCloudName: process.env.CLOUDINARY_NAME,
+  } as const);
 };
 
 export default function Root() {

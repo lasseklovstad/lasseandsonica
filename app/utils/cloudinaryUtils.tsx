@@ -19,6 +19,10 @@ function cloudinaryConfig() {
   cloudinary.v2.config(cloudinarySecret[adminForm.cloudinarySecret]);
 }
 
+export function getCurrentCloudName() {
+  return cloudinarySecret[adminForm.cloudinarySecret].cloud_name;
+}
+
 function resetCache() {
   cachedImages = undefined;
   cachedVideos = undefined;
