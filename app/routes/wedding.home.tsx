@@ -1,5 +1,7 @@
+import { Link } from "@remix-run/react";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
+import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
 
@@ -24,7 +26,7 @@ export default function Home() {
               ]
         }
       />
-
+      <Typography variant="h4" className="mb-6 text-center" as={Link} to={`../${routes.wedding.upload}`}>Vi setter stor pris på om dere vil dele bilder og videoer fra denne dagen med oss, ved å trykke her.</Typography>
       <CloudinaryImage
         imageAlt="Lasse og Sonica på takterrasse 17.mai 2023"
         imageUrl="Bryllup/77B9998B-E0F0-4D8E-A4AE-AE1E501B6E5D_yrfz6t.jpg"
