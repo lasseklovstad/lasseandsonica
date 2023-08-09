@@ -82,7 +82,8 @@ export default function Upload() {
           name: `Bilder`,
         }}
         subtitle={[
-          "Her kan dere løpende laste opp bilder fra bryllupsdagen 📷",
+          <>Her kan dere løpende laste opp bilder fra bryllupsdagen 📷. <br/>
+          Hvis du har problemer med å laste opp kan du sende det på <a className="underline" href="mailto:sonicanarula88@gmail.com">mail til Sonica</a></>
         ]}
       />
       <fetcher.Form
@@ -167,12 +168,13 @@ export function ErrorBoundary() {
     return (
       <div className="bg-red-400 p-4 rounded-md">
         <Typography variant="h4">Feil</Typography>
+        <Typography variant="body">Hvis du har problemer med å laste opp kan du sende det på <a className="underline" href="mailto:sonicanarula88@gmail.com">mail til Sonica</a></Typography>
         <Typography variant="body">{error.message}</Typography>
       </div>
     );
   }
   <div className="bg-red-400 p-4 rounded-md">
     <Typography variant="h4">Feil</Typography>
-    <Typography variant="body">Ukjent</Typography>
+    <Typography variant="body">Hvis du har problemer med å laste opp kan du sende det på <a className="underline" href="mailto:sonicanarula88@gmail.com">mail til Sonica</a></Typography>
   </div>;
 }
