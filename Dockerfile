@@ -1,5 +1,5 @@
 # base node image
-FROM node:18-bullseye-slim as base
+FROM node:20-bullseye-slim as base
 
 # set for base and all layer that inherit from it
 ENV NODE_ENV production
@@ -40,7 +40,7 @@ COPY --from=production-deps /myapp/node_modules /myapp/node_modules
 
 COPY --from=build /myapp/build /myapp/build
 COPY --from=build /myapp/public /myapp/public
-ADD . .
+COPY --from=build /myapp/package.json /myapp/package.json
 
 EXPOSE 3000
 

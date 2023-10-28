@@ -4,7 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "start": "remix-serve build",
+    "start": "remix-serve ./build/index.js",
     "typecheck": "tsc",
     "lint": "eslint ./app --ext .js,.jsx,.ts,.tsx,.mjs,.cjs",
     "lint:ci": "npm run lint -- --max-warnings 0"
