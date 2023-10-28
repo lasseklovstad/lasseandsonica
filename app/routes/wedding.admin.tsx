@@ -1,4 +1,4 @@
-import type { ActionArgs, LoaderArgs } from "@remix-run/node";
+import type { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { useFetcher, useLoaderData, useRouteError } from "@remix-run/react";
 import { Button } from "~/components/Button";
@@ -11,7 +11,7 @@ import type { AdminForm } from "~/utils/cloudinaryUtils";
 import { getAdminForm, getUsage, postAdminForm } from "~/utils/cloudinaryUtils";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
-export const loader = async ({ request }: LoaderArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const isLoggedIn = await verifyUserIsLoggedIn(request);
   if (isLoggedIn !== "fullAccess") {
     return redirect(`/${routes.login}`);
@@ -20,7 +20,7 @@ export const loader = async ({ request }: LoaderArgs) => {
   return json({ usage, adminForm: getAdminForm() });
 };
 
-export const action = async ({ request }: ActionArgs) => {
+export const action = async ({ request }: ActionFunctionArgs) => {
   const isLoggedIn = await verifyUserIsLoggedIn(request);
   if (isLoggedIn !== "fullAccess") {
     return new Response("", { status: 401 });

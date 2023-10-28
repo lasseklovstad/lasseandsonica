@@ -1,9 +1,9 @@
-import type { LoaderArgs } from "@remix-run/node";
+import type { LoaderFunctionArgs } from "@remix-run/node";
 import { redirect } from "@remix-run/node";
 import { routes } from "~/types/routes";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
-export const loader = async ({ request }: LoaderArgs) => {
+export const loader = async ({ request }: LoaderFunctionArgs) => {
   const isLoggedIn = await verifyUserIsLoggedIn(request);
   if (!isLoggedIn) {
     return redirect(`/${routes.login}`);
