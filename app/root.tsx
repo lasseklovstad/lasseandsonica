@@ -1,14 +1,13 @@
 import type { LinksFunction, MetaFunction } from "@remix-run/node";
 import {
   Links,
-  LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useRouteError,
 } from "@remix-run/react";
-import stylesheet from "~/tailwind.css";
+import "./tailwind.css";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Lasse & Sonica" }];
@@ -21,8 +20,7 @@ export const links: LinksFunction = () => [
     href: "/AlexBrush-Regular.ttf",
     type: "font/ttf",
     crossOrigin: "anonymous",
-  },
-  { rel: "stylesheet", href: stylesheet },
+  }
 ];
 
 export default function App() {
@@ -39,7 +37,6 @@ export default function App() {
         <Outlet />
         <ScrollRestoration />
         <Scripts />
-        <LiveReload />
       </body>
     </html>
   );
