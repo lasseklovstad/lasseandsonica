@@ -1,7 +1,5 @@
-import { Link } from "@remix-run/react";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
-import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
 
@@ -18,15 +16,15 @@ export default function Home() {
         subtitle={
           accessLevel === "fullAccess"
             ? [
-                "Vi gifter oss 11. august 2023 og håper dere vil bli med på feiringen!",
+                "Vi giftet oss 11. august 2023 og takk til dere som var med på feiringen!",
+                "En større bryllupsfeiring er under planlegging og vil bli om noen år.",
               ]
             : [
-                "Vi gifter oss 11. august 2023!",
-                "Denne dagen blir det i hovedsak en liten feiring med familie og forlovere, men dere er hjertelig velkommen til vielsen (12.00-15.00). En større bryllupsfeiring er under planlegging og vil bli om noen år.",
+                "Vi giftet oss 11. august 2023!",
+                "En større bryllupsfeiring er under planlegging og vil bli om noen år.",
               ]
         }
       />
-      <Typography variant="h4" className="mb-6 text-center" as={Link} to={`../${routes.wedding.upload}`}>Vi setter stor pris på om dere vil dele bilder og videoer fra denne dagen med oss, ved å trykke her.</Typography>
       <CloudinaryImage
         imageAlt="Lasse og Sonica på takterrasse 17.mai 2023"
         imageUrl="Bryllup/77B9998B-E0F0-4D8E-A4AE-AE1E501B6E5D_yrfz6t.jpg"
