@@ -23,13 +23,13 @@ export default function FriendsAndFamily() {
           title="Sonica"
           imageUrl="Bryllup/sonica_squar_tmyspn.jpg"
           to="sonica"
-          role="Brud"
+          weedingRole="Brud"
         />
         <RoundedImageLink
           title="Lasse"
           imageUrl="Bryllup/lasse_squar_nb1kto.jpg"
           to="lasse"
-          role="Brudgom"
+          weedingRole="Brudgom"
         />
       </div>
       <Outlet />

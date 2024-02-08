@@ -1,4 +1,4 @@
-import { createCookie } from "@remix-run/node";
+import { createCookie } from "@remix-run/cloudflare";
 
 export const siteSecretCookie = createCookie("site-secret", {
   httpOnly: true,

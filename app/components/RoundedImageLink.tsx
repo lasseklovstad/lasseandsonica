@@ -19,12 +19,12 @@ export const RoundedImageLink = ({
   to,
   title,
   imageUrl,
-  role,
+  weedingRole,
 }: {
   to: string;
   title: string;
   imageUrl: string;
-  role: string;
+  weedingRole: string;
 }) => {
   return (
     <NavLink
@@ -47,7 +47,7 @@ export const RoundedImageLink = ({
         variant="h3"
         className="text-center font-cursive font-thin"
       >
-        {role}
+        {weedingRole}
       </Typography>
     </NavLink>
   );

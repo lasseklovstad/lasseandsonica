@@ -178,6 +178,7 @@ export default function OurStory() {
             <div className="flex w-full gap-2 sm:gap-24" key={i}>
               <div className="flex flex-col items-center w-[65px]">
                 <Typography
+                  as="div"
                   variant="body-small"
                   className="text-gray-500 sm:px-4 rounded-sm font-medium text-center whitespace-nowrap"
                 >
@@ -192,7 +193,7 @@ export default function OurStory() {
                 {content.map((c, i) => {
                   return (
                     <div key={i}>
-                      <Typography variant="body-small" className="my-4">
+                      <Typography as="div" variant="body-small" className="my-4">
                         {c.text}
                       </Typography>
                       <div className="flex flex-wrap gap-1">
