@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useNavigation } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 import { WeddingLink } from "./WeddingLink";
@@ -25,13 +27,23 @@ export const SideBar = ({ links }: { links: LinkType[] }) => {
       >
         <Menu />
       </IconButton>
-
-      
       
       <dialog
         ref={dialogRef}
         className={`fixed top-0 left-0 w-40 h-screen m-0 p-0 max-h-full backdrop:bg-gray-300 backdrop:opacity-50`}
         aria-label="Sidebar"
+        onClick={(e) => {
+          if (!dialogRef.current) return;
+          const dialogDimensions = dialogRef.current.getBoundingClientRect();
+          if (
+            e.clientX < dialogDimensions.left ||
+            e.clientX > dialogDimensions.right ||
+            e.clientY < dialogDimensions.top ||
+            e.clientY > dialogDimensions.bottom
+          ) {
+            dialogRef.current.close();
+          }
+        }}
       >
         <div className={`h-full px-3 py-4 overflow-y-auto bg-gray-50`}>
           <ul className="space-y-2">
