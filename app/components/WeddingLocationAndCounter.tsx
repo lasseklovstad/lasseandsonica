@@ -17,7 +17,7 @@ export const WeddingLocationAndCounter = () => {
           .toUpperCase()}{" "}
         • ASKER / OSLO
       </Typography>
-      <Typography>
+      <Typography suppressHydrationWarning>
         {days} dager, {hours} timer, {minutes} minutter, {seconds} sekunder
       </Typography>
     </>

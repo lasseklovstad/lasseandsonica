@@ -1,4 +1,4 @@
-import type { LinksFunction, MetaFunction } from "@remix-run/node";
+import type { LinksFunction, MetaFunction } from "@remix-run/cloudflare";
 import {
   Links,
   Meta,
@@ -46,7 +46,7 @@ export function ErrorBoundary() {
   const error = useRouteError();
   console.error(error);
   return (
-    <html>
+    <html lang="no">
       <head>
         <title>Oh no!</title>
         <Meta />

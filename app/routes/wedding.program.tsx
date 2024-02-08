@@ -48,13 +48,13 @@ const timeline: TimelineEvent[] = [
         text: (
           <>
             Brudgommens parade starter på parkeringsplassen.{" "}
-            <span className="font-semibold">Lasse's familie og venner </span>
+            <span className="font-semibold">Lasse&apos;s familie og venner </span>
             møtes der og blir med i paraden. I henhold til indisk tradisjon
             kommer alle fra brudgommens side dansende i paraden og lager god
             stemning.
             <br />
             <br />
-            <span className="font-semibold">Sonica's familie og venner </span>
+            <span className="font-semibold">Sonica&apos;s familie og venner </span>
             møtes derimot utenfor inngangen til tempelet for å ta imot
             brudgommen og hans følge. Brudens mor ønsker så brudgommen velkommen
             ved å utføre velsignelsesritualet (aarti).
@@ -293,7 +293,7 @@ export default function Program() {
                   {content.map((c, i) => {
                     return (
                       <div key={i}>
-                        <Typography variant="body-small" className="my-4">
+                        <Typography as="div" variant="body-small" className="my-4">
                           {c.text}
                         </Typography>
                         {c.images?.map((image, i) => (

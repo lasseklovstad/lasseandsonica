@@ -4,11 +4,11 @@ import { Typography } from "./Typography";
 export const RoundedImage = ({
   name,
   imageUrl,
-  role,
+  weddingRole,
 }: {
   name: string;
   imageUrl: string;
-  role: string;
+  weddingRole: string;
 }) => {
   return (
     <div className="w-[200px] p-2 flex flex-col items-center">
@@ -23,7 +23,7 @@ export const RoundedImage = ({
         variant="h3"
         className="text-center font-cursive font-thin max-w-[140px]"
       >
-        {role}
+        {weddingRole}
       </Typography>
     </div>
   );

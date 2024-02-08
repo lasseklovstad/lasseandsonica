@@ -1,5 +1,5 @@
-import type { ActionFunction, LoaderFunction } from "@remix-run/node";
-import { json, redirect } from "@remix-run/node";
+import type { ActionFunctionArgs, LoaderFunction } from "@remix-run/cloudflare";
+import { json, redirect } from "@remix-run/cloudflare";
 import { Form, useActionData } from "@remix-run/react";
 import { Button } from "~/components/Button";
 import { Input } from "~/components/Input";
@@ -9,11 +9,11 @@ import { siteSecretCookie } from "~/cookies";
 import { routes } from "~/types/routes";
 import { validateSecret, verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
-export const action: ActionFunction = async ({ request }) => {
+export const action = async ({ request, context }: ActionFunctionArgs) => {
   const formData = await request.formData();
   const secret = formData.get("secret") as string;
 
-  if (validateSecret(secret)) {
+  if (validateSecret(secret, context)) {
     return redirect(`/${routes.wedding.root}/${routes.wedding.home}`, {
       headers: {
         "Set-Cookie": await siteSecretCookie.serialize(secret, {
@@ -26,10 +26,10 @@ export const action: ActionFunction = async ({ request }) => {
   return json({ error: "Feil passord" });
 };
 
-export const loader: LoaderFunction = async ({ request }) => {
-  const isLoggedIn = await verifyUserIsLoggedIn(request);
+export const loader: LoaderFunction = async ({ request, context }) => {
+  const isLoggedIn = await verifyUserIsLoggedIn(request, context);
   if (isLoggedIn) {
-    return redirect("/");
+    throw redirect("/");
   }
   return json(null);
 };

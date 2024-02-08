@@ -224,8 +224,8 @@ export default function QA() {
       <PageTitle
         title="Spørsmål og svar"
         backLink={{
-          to: `../${routes.wedding.upload}`,
-          name: `Last opp`,
+          to: `../${routes.wedding.pictures}`,
+          name: `Bilder`,
         }}
         subtitle={[
           "Her finner du nyttige spørsmål og svar.",
