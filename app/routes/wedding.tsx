@@ -13,7 +13,7 @@ export const loader = async ({ request, context }: LoaderFunctionArgs) => {
   }
   return json({
     accessLevel: isLoggedIn,
-    mainCloudName: context.env.CLOUDINARY_NAME,
+    mainCloudName: context.cloudflare.env.CLOUDINARY_NAME,
   } as const);
 };
 
