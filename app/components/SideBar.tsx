@@ -1,11 +1,11 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useNavigation } from "react-router";
 import { useEffect, useRef } from "react";
-import { WeddingLink } from "./WeddingLink";
-import { Menu } from "./icons/Menu";
-import { IconButton } from "./IconButton";
+import { useNavigation } from "react-router";
+
 import type { LinkType } from "~/types/link";
+
+import { IconButton } from "./IconButton";
+import { Menu } from "./icons/Menu";
+import { WeddingLink } from "./WeddingLink";
 
 export const SideBar = ({ links }: { links: LinkType[] }) => {
   const navigation = useNavigation();
@@ -23,14 +23,14 @@ export const SideBar = ({ links }: { links: LinkType[] }) => {
         onClick={() => dialogRef.current?.showModal()}
         type="button"
         aria-label="Åpne sidemeny"
-        className="md:hidden absolute left-0"
+        className="absolute left-0 md:hidden"
       >
         <Menu />
       </IconButton>
-      
+
       <dialog
         ref={dialogRef}
-        className={`fixed top-0 left-0 w-40 h-screen m-0 p-0 max-h-full backdrop:bg-gray-300 backdrop:opacity-50`}
+        className={`fixed left-0 top-0 m-0 h-screen max-h-full w-40 p-0 backdrop:bg-gray-300 backdrop:opacity-50`}
         aria-label="Sidebar"
         onClick={(e) => {
           if (!dialogRef.current) return;
@@ -45,7 +45,7 @@ export const SideBar = ({ links }: { links: LinkType[] }) => {
           }
         }}
       >
-        <div className={`h-full px-3 py-4 overflow-y-auto bg-gray-50`}>
+        <div className={`h-full overflow-y-auto bg-gray-50 px-3 py-4`}>
           <ul className="space-y-2">
             {links.map((link) => {
               return (

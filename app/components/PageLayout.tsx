@@ -1,9 +1,11 @@
-import { Link } from "react-router";
 import type { PropsWithChildren, ReactNode } from "react";
+import { Link } from "react-router";
+
 import { routes } from "~/types/routes";
+
 import { HeaderAndNavigation } from "./HeaderAndNavigation";
-import { Typography } from "./Typography";
 import { links } from "./links";
+import { Typography } from "./Typography";
 
 export const PageLayout = ({
   children,
@@ -16,14 +18,14 @@ export const PageLayout = ({
   headerContent: ReactNode;
 }>) => {
   return (
-    <div className="flex items-center flex-col min-h-screen">
+    <div className="flex min-h-screen flex-col items-center">
       <HeaderAndNavigation
         showNavigation={showNavigation}
         headerContent={headerContent}
         links={links}
       />
-      <main className="md:max-w-[1000px] w-full mb-2 px-1">{children}</main>
-      <footer className="mt-auto h-10 bg-red-50 w-full text-center p-2 flex justify-center gap-4">
+      <main className="mb-2 w-full px-1 md:max-w-[1000px]">{children}</main>
+      <footer className="mt-auto flex h-10 w-full justify-center gap-4 bg-red-50 p-2 text-center">
         <Typography variant="body-small">Laget av Lasse & Sonica</Typography>
         {showLogout && (
           <Typography variant="body-small" className="underline">

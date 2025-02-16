@@ -1,9 +1,11 @@
 import type { TransformerOption } from "@cld-apis/types";
 import { buildImageUrl } from "cloudinary-build-url";
-import { Typography } from "./Typography";
 import { Link } from "react-router";
-import { Button } from "./Button";
+
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
+
+import { Button } from "./Button";
+import { Typography } from "./Typography";
 
 export type CloudinaryImageProps = {
   imageUrl: string;
@@ -45,7 +47,7 @@ export const CloudinaryImage = ({
         sizes="(max-width:768px) 95vw, (min-width:767px) and (max-width:1024px) 67vw, 800px"
       />
       {showDescription && (
-        <Typography variant="body-small" className="text-center my-4">
+        <Typography variant="body-small" className="my-4 text-center">
           {imageAlt}
         </Typography>
       )}
@@ -73,7 +75,7 @@ function getSrcSet({
 }) {
   return sizes
     .map((size) =>
-      getCloudinaryImageUrl({ size, relativeUrl, transformations, cloudName })
+      getCloudinaryImageUrl({ size, relativeUrl, transformations, cloudName }),
     )
     .join(", ");
 }

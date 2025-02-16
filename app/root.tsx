@@ -1,5 +1,12 @@
 import type { LinksFunction, MetaFunction } from "react-router";
-import { Links, Meta, Outlet, Scripts, ScrollRestoration, useRouteError } from "react-router";
+import {
+  Links,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useRouteError,
+} from "react-router";
 import "./tailwind.css";
 
 export const meta: MetaFunction = () => {
@@ -13,7 +20,7 @@ export const links: LinksFunction = () => [
     href: "/AlexBrush-Regular.ttf",
     type: "font/ttf",
     crossOrigin: "anonymous",
-  }
+  },
 ];
 
 export default function App() {

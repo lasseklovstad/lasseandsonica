@@ -2,6 +2,7 @@ import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
+
 import type { Route } from "./+types/wedding.home";
 
 export const meta: Route.MetaFunction = () => {

@@ -1,7 +1,9 @@
 import { Outlet } from "react-router";
+
 import { PageTitle } from "~/components/PageTitle";
 import { RoundedImageLink } from "~/components/RoundedImageLink";
 import { routes } from "~/types/routes";
+
 import type { Route } from "./+types/wedding.friendsandfamily";
 
 export const meta: Route.MetaFunction = () => {
@@ -23,7 +25,7 @@ export default function FriendsAndFamily() {
         }}
         subtitle={["Trykk på bildene for å oppdage mer."]}
       />
-      <div className="flex gap-4 md:gap-16 mx-4 justify-center items-center">
+      <div className="mx-4 flex items-center justify-center gap-4 md:gap-16">
         <RoundedImageLink
           title="Sonica"
           imageUrl="Bryllup/sonica_squar_tmyspn.jpg"

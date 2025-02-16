@@ -1,6 +1,8 @@
 import { NavLink } from "react-router";
-import { Typography } from "./Typography";
+
 import type { LinkType } from "~/types/link";
+
+import { Typography } from "./Typography";
 
 export const WeddingLink = ({ link }: { link: LinkType }) => {
   return (
@@ -8,8 +10,8 @@ export const WeddingLink = ({ link }: { link: LinkType }) => {
       to={link.to}
       className={({ isActive }) =>
         `${
-          isActive ? "border-black border-b-2 bg-slate-50" : ""
-        } w-full inline-flex px-2`
+          isActive ? "border-b-2 border-black bg-slate-50" : ""
+        } inline-flex w-full px-2`
       }
       prefetch="intent"
     >

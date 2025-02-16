@@ -3,7 +3,7 @@ import { RoundedImage } from "~/components/RoundedImage";
 export default function Lasse() {
   return (
     <div>
-      <div className="flex gap-8 justify-center flex-wrap">
+      <div className="flex flex-wrap justify-center gap-8">
         <RoundedImage
           name="Kjetil"
           imageUrl="Bryllup/kjetil_kvadrat_peujap.jpg"
@@ -20,7 +20,7 @@ export default function Lasse() {
           weddingRole="Brudgommens besteforeldre"
         />
       </div>
-      <div className="flex gap-8 justify-center flex-wrap">
+      <div className="flex flex-wrap justify-center gap-8">
         <RoundedImage
           name="Henriette"
           imageUrl="Bryllup/henri-kvadrat2_kndagl.jpg"
@@ -42,7 +42,7 @@ export default function Lasse() {
           weddingRole="Brudgommens lillebror"
         />
       </div>
-      <div className="flex gap-8 justify-center m-4 flex-wrap">
+      <div className="m-4 flex flex-wrap justify-center gap-8">
         <RoundedImage
           name="Ivar"
           imageUrl="Bryllup/ivar-kopi_vu8xc9.jpg"

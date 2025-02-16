@@ -1,6 +1,7 @@
 import { PageTitle } from "~/components/PageTitle";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
+
 import type { Route } from "./+types/wedding.rsvp";
 
 export const meta: Route.MetaFunction = () => {

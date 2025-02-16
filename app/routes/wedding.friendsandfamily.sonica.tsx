@@ -3,7 +3,7 @@ import { RoundedImage } from "~/components/RoundedImage";
 export default function Sonica() {
   return (
     <div>
-      <div className="flex gap-8 justify-center flex-wrap">
+      <div className="flex flex-wrap justify-center gap-8">
         <RoundedImage
           name="Raj"
           imageUrl="Bryllup/raj_kvadrat_vzzqsm.jpg"
@@ -25,7 +25,7 @@ export default function Sonica() {
           weddingRole="Brudens niese"
         />
       </div>
-      <div className="flex gap-8 justify-center flex-wrap">
+      <div className="flex flex-wrap justify-center gap-8">
         <RoundedImage
           name="Julie"
           imageUrl="Bryllup/25BDF8FF-360B-4ED8-8579-F9C5CB621857_ejljoc.jpg"

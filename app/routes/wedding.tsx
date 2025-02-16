@@ -1,5 +1,6 @@
 import type { LoaderFunctionArgs } from "react-router";
 import { Outlet, redirect } from "react-router";
+
 import { PageLayout } from "~/components/PageLayout";
 import { WeddingLocationAndCounter } from "~/components/WeddingLocationAndCounter";
 import { routes } from "~/types/routes";

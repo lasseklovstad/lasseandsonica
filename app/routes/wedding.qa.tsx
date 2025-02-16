@@ -1,5 +1,6 @@
-import { useSearchParams } from "react-router";
 import { useEffect, useRef, type ReactNode } from "react";
+import { useSearchParams } from "react-router";
+
 import { Accordion } from "~/components/Accordion";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { LinkContinental, LinkSlemmestad } from "~/components/LinkSlemmestad";
@@ -9,6 +10,7 @@ import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
 import type { AccessLevel } from "~/utils/siteSecret";
+
 import type { Route } from "./+types/wedding.qa";
 
 export const meta: Route.MetaFunction = () => {
@@ -20,10 +22,10 @@ export default function QA() {
   const [params] = useSearchParams();
   const accordionRef = useRef<HTMLDetailsElement[]>([]);
   const filteredQuestions = questions.filter((q) =>
-    q.accessLevels.includes(accessLevel)
+    q.accessLevels.includes(accessLevel),
   );
   const openAccordionIndex = filteredQuestions.findIndex(
-    (q) => q.id === params.get("open")
+    (q) => q.id === params.get("open"),
   );
 
   useEffect(() => {
@@ -140,7 +142,7 @@ const questions: Question[] = [
         NB: Husk at sko må tas av i garderoben innendørs.
         {accessLevel === "fullAccess" && (
           <>
-            <Typography variant="h5" className="mt-4 mb-1">
+            <Typography variant="h5" className="mb-1 mt-4">
               Hotell Continental
             </Typography>
             Til den andre delen av dagen vil vi skifte til finstasen (smoking /
@@ -229,7 +231,7 @@ const questions: Question[] = [
             <Typography
               variant="body"
               as="a"
-              className="underline font-semibold"
+              className="font-semibold underline"
               target="_blank"
               href={href}
               rel="noreferrer"
@@ -237,7 +239,7 @@ const questions: Question[] = [
               {title}
             </Typography>
             <Typography variant="body-small">{description}</Typography>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 my-1">
+            <div className="my-1 grid grid-cols-2 gap-2 md:grid-cols-3">
               {pictures.map((picture) => (
                 <CloudinaryImage
                   key={picture}

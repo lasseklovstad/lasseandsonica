@@ -1,5 +1,6 @@
 import type { ActionFunctionArgs, LoaderFunction } from "react-router";
 import { Form, useActionData, redirect } from "react-router";
+
 import { Button } from "~/components/Button";
 import { Input } from "~/components/Input";
 import { PageLayout } from "~/components/PageLayout";
@@ -7,6 +8,7 @@ import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
 import { routes } from "~/types/routes";
 import { validateSecret, verifyUserIsLoggedIn } from "~/utils/siteSecret";
+
 import type { Route } from "./+types/login";
 
 export const meta: Route.MetaFunction = () => {
@@ -51,7 +53,7 @@ export default function Login() {
       }
     >
       <div className="flex flex-col items-center">
-        <Form method="POST" className="my-4 flex gap-4 flex-col">
+        <Form method="POST" className="my-4 flex flex-col gap-4">
           <div>
             <Input
               label="Passord"

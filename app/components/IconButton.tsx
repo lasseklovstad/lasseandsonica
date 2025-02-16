@@ -13,7 +13,7 @@ export const IconButton = <T extends React.ElementType = "button">({
   const Component = as || "button";
   return (
     <Component
-      className={`opacity-80 inline-flex items-center p-2 m-2 text-black rounded-[50%] focus:outline-none focus:ring-2 hover:ring-2 ${className}`}
+      className={`m-2 inline-flex items-center rounded-[50%] p-2 text-black opacity-80 hover:ring-2 focus:outline-none focus:ring-2 ${className}`}
       {...props}
     />
   );

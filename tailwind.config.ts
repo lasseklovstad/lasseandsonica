@@ -1,7 +1,7 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 
 export default {
-  content: ['./app/**/*.{js,jsx,ts,tsx}'],
+  content: ["./app/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {},
     fontFamily: {
@@ -12,7 +12,7 @@ export default {
     aspectRatio: false,
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio')
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    require("@tailwindcss/aspect-ratio"),
   ],
-} satisfies Config
-
+} satisfies Config;

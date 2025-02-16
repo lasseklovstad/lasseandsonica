@@ -1,10 +1,11 @@
-import { Link } from "react-router";
 import type { ReactNode } from "react";
 import { Fragment } from "react";
+import { Link } from "react-router";
+
 import { Divider } from "./Divider";
-import { Typography } from "./Typography";
 import { LeftArrowIos } from "./icons/LeftArrowIos";
 import { RightArrowIos } from "./icons/RightArrowIos";
+import { Typography } from "./Typography";
 
 type LinkType = { to: string; name: string };
 
@@ -20,11 +21,11 @@ export const PageTitle = ({
   backLink?: LinkType;
 }) => {
   return (
-    <div className="flex flex-col items-center text-center w-full">
+    <div className="flex w-full flex-col items-center text-center">
       {nextLink || backLink ? (
-        <div className="flex justify-between w-full md:hidden pt-1 text-gray-500">
+        <div className="flex w-full justify-between pt-1 text-gray-500 md:hidden">
           {backLink ? (
-            <Link to={backLink.to} className="p-1 inline-flex items-center">
+            <Link to={backLink.to} className="inline-flex items-center p-1">
               <LeftArrowIos />
               {backLink.name}
             </Link>
@@ -32,7 +33,7 @@ export const PageTitle = ({
             <div />
           )}
           {nextLink ? (
-            <Link to={nextLink.to} className="p-1 inline-flex items-center">
+            <Link to={nextLink.to} className="inline-flex items-center p-1">
               {nextLink.name} <RightArrowIos />
             </Link>
           ) : (

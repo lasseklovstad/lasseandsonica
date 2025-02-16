@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { LinkContinental, LinkSlemmestad } from "~/components/LinkSlemmestad";
@@ -8,6 +9,7 @@ import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
 import type { AccessLevel } from "~/utils/siteSecret";
+
 import type { Route } from "./+types/wedding.program";
 
 export const meta: Route.MetaFunction = () => {
@@ -30,22 +32,22 @@ export default function Program() {
         }}
         subtitle={["Her er program for dagen."]}
       />
-      <div className="flex flex-col w-full">
+      <div className="flex w-full flex-col">
         {timeline
           .filter((t) => t.accessLevels.includes(accessLevel))
           .map(({ content, date, title, size }, i) => {
             return (
               <div className="flex w-full md:gap-20" key={i}>
-                <div className="flex flex-col items-center w-[135px]">
+                <div className="flex w-[135px] flex-col items-center">
                   <Typography
                     variant={size === "large" ? "h5" : "body-small"}
-                    className="text-gray-500 rounded-sm font-medium text-center w-full"
+                    className="w-full rounded-sm text-center font-medium text-gray-500"
                   >
                     {date}
                   </Typography>
-                  <div className="w-[2px] h-full bg-red-200" />
+                  <div className="h-full w-[2px] bg-red-200" />
                 </div>
-                <div className="pb-8 px-1 w-full">
+                <div className="w-full px-1 pb-8">
                   <Typography
                     variant={size === "large" ? "h4" : "h5"}
                     className="font-semibold"
@@ -171,7 +173,7 @@ const timeline: TimelineEvent[] = [
             foreldre, og pandit-ji setter seg på hver sin side av bålet
             (mandap). Her vil brudeparet vies. Det vil utføres tradisjonelle
             ritualer som:
-            <ol className="list-disc my-2 ml-4">
+            <ol className="my-2 ml-4 list-disc">
               <li>Kanyadaan: Brudens far «gir bort» hånden til datteren sin</li>
               <li>
                 Gathbandhan: Brudeparet knyttes sammen med et tøystykke

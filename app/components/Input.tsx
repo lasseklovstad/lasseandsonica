@@ -1,5 +1,6 @@
 import type { HTMLInputTypeAttribute } from "react";
 import { useId } from "react";
+
 import { Typography } from "./Typography";
 
 type Props = {
@@ -20,7 +21,7 @@ export const Input = ({
   const id = useId();
   return (
     <>
-      <label htmlFor={id} className="block mb-1">
+      <label htmlFor={id} className="mb-1 block">
         <Typography as="span" variant="body">
           {label}
         </Typography>
@@ -31,7 +32,7 @@ export const Input = ({
         name={name}
         id={id}
         placeholder={placeholder}
-        className="bg-gray-50 border border-gray-300 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500"
       />
     </>
   );

@@ -8,6 +8,8 @@
     "**/.client/**/*.tsx",
     "worker-configuration.d.ts",
     ".react-router/types/**/*",
+    "*.config.js",
+    "*.config.ts"
   ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
