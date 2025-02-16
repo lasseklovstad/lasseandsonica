@@ -1,7 +1,7 @@
 import type { TransformerOption } from "@cld-apis/types";
 import { buildImageUrl } from "cloudinary-build-url";
 import { Typography } from "./Typography";
-import { Link } from "@remix-run/react";
+import { Link } from "react-router";
 import { Button } from "./Button";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 

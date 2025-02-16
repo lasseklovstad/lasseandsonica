@@ -1,4 +1,4 @@
-import { createCookie } from "@remix-run/cloudflare";
+import { createCookie } from "react-router";
 
 export const siteSecretCookie = createCookie("site-secret", {
   httpOnly: true,

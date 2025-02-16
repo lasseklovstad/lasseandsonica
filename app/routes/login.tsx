@@ -1,6 +1,5 @@
-import type { ActionFunctionArgs, LoaderFunction } from "@remix-run/cloudflare";
-import { json, redirect } from "@remix-run/cloudflare";
-import { Form, useActionData } from "@remix-run/react";
+import type { ActionFunctionArgs, LoaderFunction } from "react-router";
+import { Form, useActionData, redirect } from "react-router";
 import { Button } from "~/components/Button";
 import { Input } from "~/components/Input";
 import { PageLayout } from "~/components/PageLayout";
@@ -23,7 +22,7 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
     });
   }
 
-  return json({ error: "Feil passord" });
+  return { error: "Feil passord" };
 };
 
 export const loader: LoaderFunction = async ({ request, context }) => {
@@ -31,7 +30,7 @@ export const loader: LoaderFunction = async ({ request, context }) => {
   if (isLoggedIn) {
     throw redirect("/");
   }
-  return json(null);
+  return {};
 };
 
 export default function Login() {

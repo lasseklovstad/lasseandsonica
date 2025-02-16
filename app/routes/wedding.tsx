@@ -1,6 +1,5 @@
-import type { LoaderFunctionArgs } from "@remix-run/cloudflare";
-import { json, redirect } from "@remix-run/cloudflare";
-import { Outlet } from "@remix-run/react";
+import type { LoaderFunctionArgs } from "react-router";
+import { Outlet, redirect } from "react-router";
 import { PageLayout } from "~/components/PageLayout";
 import { WeddingLocationAndCounter } from "~/components/WeddingLocationAndCounter";
 import { routes } from "~/types/routes";
@@ -11,10 +10,10 @@ export const loader = async ({ request, context }: LoaderFunctionArgs) => {
   if (!isLoggedIn) {
     return redirect(`/${routes.login}`);
   }
-  return json({
+  return {
     accessLevel: isLoggedIn,
     mainCloudName: context.cloudflare.env.CLOUDINARY_NAME,
-  } as const);
+  };
 };
 
 export default function Root() {

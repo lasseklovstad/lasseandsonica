@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import { useNavigation } from "@remix-run/react";
+import { useNavigation } from "react-router";
 import { useEffect, useRef } from "react";
 import { WeddingLink } from "./WeddingLink";
 import { Menu } from "./icons/Menu";

@@ -1,4 +1,4 @@
-import { useRouteLoaderData } from "@remix-run/react";
+import { useRouteLoaderData } from "react-router";
 import type { AccessLevel } from "~/utils/siteSecret";
 
 export const useWeddingLoaderData = () => {

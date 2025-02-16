@@ -1,4 +1,4 @@
-import { AppLoadContext } from "@remix-run/cloudflare";
+import { AppLoadContext } from "react-router";
 import { siteSecretCookie } from "~/cookies";
 
 export type AccessLevel = "fullAccess" | "limitedAccess";

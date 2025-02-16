@@ -1,4 +1,4 @@
-import { NavLink } from "@remix-run/react";
+import { NavLink } from "react-router";
 import type { PropsWithChildren } from "react";
 import { CloudinaryImage } from "./CloudinaryImage";
 import { Typography } from "./Typography";
