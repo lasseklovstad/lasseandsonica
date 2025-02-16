@@ -5,6 +5,4 @@ import { createPagesFunctionHandler } from "@react-router/cloudflare";
 // eslint-disable-next-line import/no-unresolved
 import * as build from "../build/server";
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
 export const onRequest = createPagesFunctionHandler({ build });
