@@ -1,4 +1,4 @@
-import { Outlet } from "@remix-run/react";
+import { Outlet } from "react-router";
 import { PageTitle } from "~/components/PageTitle";
 import { RoundedImageLink } from "~/components/RoundedImageLink";
 import { routes } from "~/types/routes";

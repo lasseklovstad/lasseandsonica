@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "@remix-run/react";
+import { Link, useSearchParams } from "react-router";
 import { CloudinaryImage } from "./CloudinaryImage";
 import { IconButton } from "./IconButton";
 import { LeftArrow } from "./icons/LeftArrow";

@@ -1,4 +1,4 @@
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "react-router";
 import { useEffect, useRef, type ReactNode } from "react";
 import { Accordion } from "~/components/Accordion";
 import { CloudinaryImage } from "~/components/CloudinaryImage";

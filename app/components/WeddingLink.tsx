@@ -1,4 +1,4 @@
-import { NavLink } from "@remix-run/react";
+import { NavLink } from "react-router";
 import { Typography } from "./Typography";
 import type { LinkType } from "~/types/link";
 
