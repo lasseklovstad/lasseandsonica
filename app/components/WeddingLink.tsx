@@ -13,6 +13,7 @@ export const WeddingLink = ({ link }: { link: LinkType }) => {
           isActive ? "border-b-2 border-black bg-slate-50" : ""
         } inline-flex w-full px-2`
       }
+      viewTransition
       prefetch="intent"
     >
       <Typography variant="body-small" className="p-1" as="span">

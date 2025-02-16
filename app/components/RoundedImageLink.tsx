@@ -30,6 +30,8 @@ export const RoundedImageLink = ({
   return (
     <NavLink
       to={to}
+      viewTransition
+      prefetch="intent"
       preventScrollReset
       className={({ isActive }) =>
         `relative w-[325px] transition duration-500 ease-in-out ${
