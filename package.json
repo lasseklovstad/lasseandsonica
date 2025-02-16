@@ -4,16 +4,15 @@
   "type": "module",
   "scripts": {
     "build": "react-router build",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "wrangler pages deploy ./build/client",
     "dev": "react-router dev",
-    "start": "wrangler dev",
+    "start": "wrangler pages dev ./build/client",
     "typecheck": "react-router typegen && tsc",
     "lint": "eslint ./app --ext .js,.jsx,.ts,.tsx,.mjs,.cjs",
     "lint:ci": "npm run lint -- --max-warnings 0"
   },
   "dependencies": {
-    "@react-router/node": "^7.0.0",
-    "@react-router/serve": "^7.0.0",
+    "@react-router/cloudflare": "^7.1.5",
     "@tailwindcss/aspect-ratio": "0.4.2",
     "cloudinary": "2.0.3",
     "cloudinary-build-url": "0.2.4",

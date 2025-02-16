@@ -6,7 +6,6 @@
     "**/.server/**/*.tsx",
     "**/.client/**/*.ts",
     "**/.client/**/*.tsx",
-    "workers/**/*",
     "worker-configuration.d.ts",
     ".react-router/types/**/*",
   ],
