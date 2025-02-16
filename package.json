@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@react-router/cloudflare": "^7.1.5",
-    "@tailwindcss/aspect-ratio": "0.4.2",
     "@tailwindcss/postcss": "^4.0.0",
     "cloudinary": "2.0.3",
     "cloudinary-build-url": "0.2.4",

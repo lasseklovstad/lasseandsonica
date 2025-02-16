@@ -1,6 +1,8 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@config '../tailwind.config.ts';
+@theme {
+  --font-cursive: "Cursive-1", "sans-serif";
+}
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
