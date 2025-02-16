@@ -20,7 +20,7 @@ export const Button = <T extends React.ElementType = "button">({
       type={type}
       className={`${className ? className : ""} ${
         pending ? "text-gray-300" : "text-white"
-      } relative rounded-md bg-blue-600 px-4 py-2 hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300`}
+      } relative rounded-md bg-blue-600 px-4 py-2 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-hidden`}
       {...props}
     >
       <Typography as="span" variant="body" className="font-semibold">

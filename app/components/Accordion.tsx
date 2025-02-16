@@ -15,7 +15,7 @@ export const Accordion = forwardRef(
   ) => {
     return (
       <details className="group w-full" open={defaultOpen} ref={ref}>
-        <summary className="flex list-none items-center justify-between border border-gray-200 p-4 hover:cursor-pointer hover:bg-gray-100 focus:ring-2 focus:ring-gray-200 group-open:bg-gray-100">
+        <summary className="flex list-none items-center justify-between border border-gray-200 p-4 group-open:bg-gray-100 hover:cursor-pointer hover:bg-gray-100 focus:ring-2 focus:ring-gray-200">
           <Typography variant="h5" as="div">
             {title}
           </Typography>

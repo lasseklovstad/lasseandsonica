@@ -41,7 +41,7 @@ export default function Program() {
                 <div className="flex w-[135px] flex-col items-center">
                   <Typography
                     variant={size === "large" ? "h5" : "body-small"}
-                    className="w-full rounded-sm text-center font-medium text-gray-500"
+                    className="w-full rounded-xs text-center font-medium text-gray-500"
                   >
                     {date}
                   </Typography>

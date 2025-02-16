@@ -41,7 +41,7 @@ export const PageTitle = ({
           )}
         </div>
       ) : null}
-      <Typography variant="h2" className="mb-4 mt-2">
+      <Typography variant="h2" className="mt-2 mb-4">
         {title}
       </Typography>
       <Typography className="mb-4 italic">

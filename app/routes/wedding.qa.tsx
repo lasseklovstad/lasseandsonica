@@ -142,7 +142,7 @@ const questions: Question[] = [
         NB: Husk at sko må tas av i garderoben innendørs.
         {accessLevel === "fullAccess" && (
           <>
-            <Typography variant="h5" className="mb-1 mt-4">
+            <Typography variant="h5" className="mt-4 mb-1">
               Hotell Continental
             </Typography>
             Til den andre delen av dagen vil vi skifte til finstasen (smoking /

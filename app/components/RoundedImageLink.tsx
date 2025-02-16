@@ -46,7 +46,7 @@ export const RoundedImageLink = ({
       <Typography
         as="div"
         variant="h3"
-        className="text-center font-cursive font-thin"
+        className="font-cursive text-center font-thin"
       >
         {weedingRole}
       </Typography>

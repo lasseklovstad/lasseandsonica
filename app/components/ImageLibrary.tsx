@@ -25,7 +25,7 @@ export const ImageLibrary = ({ pictures, cloudName }: Props) => {
               preventScrollReset
               to={{ search: `?pictureIndex=${pictureIndexAsNumber - 1}` }}
               aria-label="Forrige bilde"
-              className="absolute left-0 top-0 bg-gray-200"
+              className="absolute top-0 left-0 bg-gray-200"
             >
               <LeftArrow />
             </IconButton>
@@ -41,7 +41,7 @@ export const ImageLibrary = ({ pictures, cloudName }: Props) => {
               to={{ search: `?pictureIndex=${pictureIndexAsNumber + 1}` }}
               preventScrollReset
               aria-label="Neste bilde"
-              className="absolute right-0 top-0 bg-gray-200"
+              className="absolute top-0 right-0 bg-gray-200"
             >
               <RightArrow />
             </IconButton>

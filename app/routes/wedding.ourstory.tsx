@@ -36,7 +36,7 @@ export default function OurStory() {
                 <Typography
                   as="div"
                   variant="body-small"
-                  className="whitespace-nowrap rounded-sm text-center font-medium text-gray-500 sm:px-4"
+                  className="rounded-xs text-center font-medium whitespace-nowrap text-gray-500 sm:px-4"
                 >
                   {date}
                 </Typography>
@@ -197,7 +197,7 @@ const timeline: TimelineEvent[] = [
     title: "Frieriet",
     content: [
       {
-        text: 'Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en "vanlig" onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring på fingeren.',
+        text: 'Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en "vanlig" onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring-3 på fingeren.',
         images: [
           {
             imageUrl: "Bryllup/986C7902-25E2-4DB6-B711-C170A3D450CC_zolx3n.jpg",
