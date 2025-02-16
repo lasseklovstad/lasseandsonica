@@ -8,6 +8,74 @@ import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
 import type { AccessLevel } from "~/utils/siteSecret";
+import type { Route } from "./+types/wedding.program";
+
+export const meta: Route.MetaFunction = () => {
+  return [{ title: "Program - Lasse & Sonica" }];
+};
+
+export default function Program() {
+  const { accessLevel } = useWeddingLoaderData();
+  return (
+    <div>
+      <PageTitle
+        title="Program"
+        nextLink={{
+          to: `../${routes.wedding.friendsAndFamily}`,
+          name: `Venner og familie`,
+        }}
+        backLink={{
+          to: `../${routes.wedding.ourStory}`,
+          name: `Vår historie`,
+        }}
+        subtitle={["Her er program for dagen."]}
+      />
+      <div className="flex flex-col w-full">
+        {timeline
+          .filter((t) => t.accessLevels.includes(accessLevel))
+          .map(({ content, date, title, size }, i) => {
+            return (
+              <div className="flex w-full md:gap-20" key={i}>
+                <div className="flex flex-col items-center w-[135px]">
+                  <Typography
+                    variant={size === "large" ? "h5" : "body-small"}
+                    className="text-gray-500 rounded-sm font-medium text-center w-full"
+                  >
+                    {date}
+                  </Typography>
+                  <div className="w-[2px] h-full bg-red-200" />
+                </div>
+                <div className="pb-8 px-1 w-full">
+                  <Typography
+                    variant={size === "large" ? "h4" : "h5"}
+                    className="font-semibold"
+                  >
+                    {title}
+                  </Typography>
+                  {content.map((c, i) => {
+                    return (
+                      <div key={i}>
+                        <Typography
+                          as="div"
+                          variant="body-small"
+                          className="my-4"
+                        >
+                          {c.text}
+                        </Typography>
+                        {c.images?.map((image, i) => (
+                          <CloudinaryImage key={i} {...image} />
+                        ))}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            );
+          })}
+      </div>
+    </div>
+  );
+}
 
 type TimelineEvent = {
   size?: "large" | "normal";
@@ -48,13 +116,17 @@ const timeline: TimelineEvent[] = [
         text: (
           <>
             Brudgommens parade starter på parkeringsplassen.{" "}
-            <span className="font-semibold">Lasse&apos;s familie og venner </span>
+            <span className="font-semibold">
+              Lasse&apos;s familie og venner{" "}
+            </span>
             møtes der og blir med i paraden. I henhold til indisk tradisjon
             kommer alle fra brudgommens side dansende i paraden og lager god
             stemning.
             <br />
             <br />
-            <span className="font-semibold">Sonica&apos;s familie og venner </span>
+            <span className="font-semibold">
+              Sonica&apos;s familie og venner{" "}
+            </span>
             møtes derimot utenfor inngangen til tempelet for å ta imot
             brudgommen og hans følge. Brudens mor ønsker så brudgommen velkommen
             ved å utføre velsignelsesritualet (aarti).
@@ -251,62 +323,3 @@ const timeline: TimelineEvent[] = [
     accessLevels: ["fullAccess"],
   },
 ];
-
-export default function Program() {
-  const { accessLevel } = useWeddingLoaderData();
-  return (
-    <div>
-      <PageTitle
-        title="Program"
-        nextLink={{
-          to: `../${routes.wedding.friendsAndFamily}`,
-          name: `Venner og familie`,
-        }}
-        backLink={{
-          to: `../${routes.wedding.ourStory}`,
-          name: `Vår historie`,
-        }}
-        subtitle={["Her er program for dagen."]}
-      />
-      <div className="flex flex-col w-full">
-        {timeline
-          .filter((t) => t.accessLevels.includes(accessLevel))
-          .map(({ content, date, title, size }, i) => {
-            return (
-              <div className="flex w-full md:gap-20" key={i}>
-                <div className="flex flex-col items-center w-[135px]">
-                  <Typography
-                    variant={size === "large" ? "h5" : "body-small"}
-                    className="text-gray-500 rounded-sm font-medium text-center w-full"
-                  >
-                    {date}
-                  </Typography>
-                  <div className="w-[2px] h-full bg-red-200" />
-                </div>
-                <div className="pb-8 px-1 w-full">
-                  <Typography
-                    variant={size === "large" ? "h4" : "h5"}
-                    className="font-semibold"
-                  >
-                    {title}
-                  </Typography>
-                  {content.map((c, i) => {
-                    return (
-                      <div key={i}>
-                        <Typography as="div" variant="body-small" className="my-4">
-                          {c.text}
-                        </Typography>
-                        {c.images?.map((image, i) => (
-                          <CloudinaryImage key={i} {...image} />
-                        ))}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            );
-          })}
-      </div>
-    </div>
-  );
-}

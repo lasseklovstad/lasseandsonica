@@ -4,6 +4,72 @@ import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { routes } from "~/types/routes";
+import type { Route } from "./+types/wedding.ourstory";
+
+export const meta: Route.MetaFunction = () => {
+  return [{ title: "Vår historie - Lasse & Sonica" }];
+};
+
+export default function OurStory() {
+  return (
+    <div className="flex flex-col items-center">
+      <PageTitle
+        title="Vår historie"
+        nextLink={{
+          to: `../${routes.wedding.program}`,
+          name: `Program`,
+        }}
+        backLink={{
+          to: `../${routes.wedding.home}`,
+          name: `Hjem`,
+        }}
+        subtitle={["Her kan dere lese om vår reise fra vi møttes."]}
+      />
+
+      <div className="flex flex-col w-full">
+        {timeline.map(({ content, date, title }, i) => {
+          return (
+            <div className="flex w-full gap-2 sm:gap-24" key={i}>
+              <div className="flex flex-col items-center w-[65px]">
+                <Typography
+                  as="div"
+                  variant="body-small"
+                  className="text-gray-500 sm:px-4 rounded-sm font-medium text-center whitespace-nowrap"
+                >
+                  {date}
+                </Typography>
+                <div className="w-[2px] h-full bg-red-200" />
+              </div>
+              <div className="pb-8 px-2 w-full">
+                <Typography variant="h5" className="font-semibold">
+                  {title}
+                </Typography>
+                {content.map((c, i) => {
+                  return (
+                    <div key={i}>
+                      <Typography
+                        as="div"
+                        variant="body-small"
+                        className="my-4"
+                      >
+                        {c.text}
+                      </Typography>
+                      <div className="flex flex-wrap gap-1">
+                        {c.images?.map((image, i) => (
+                          <CloudinaryImage key={i} {...image} />
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
 
 type TimelineEvent = {
   date: ReactNode;
@@ -155,60 +221,3 @@ const timeline: TimelineEvent[] = [
     ],
   },
 ];
-
-export default function OurStory() {
-  return (
-    <div className="flex flex-col items-center">
-      <PageTitle
-        title="Vår historie"
-        nextLink={{
-          to: `../${routes.wedding.program}`,
-          name: `Program`,
-        }}
-        backLink={{
-          to: `../${routes.wedding.home}`,
-          name: `Hjem`,
-        }}
-        subtitle={["Her kan dere lese om vår reise fra vi møttes."]}
-      />
-
-      <div className="flex flex-col w-full">
-        {timeline.map(({ content, date, title }, i) => {
-          return (
-            <div className="flex w-full gap-2 sm:gap-24" key={i}>
-              <div className="flex flex-col items-center w-[65px]">
-                <Typography
-                  as="div"
-                  variant="body-small"
-                  className="text-gray-500 sm:px-4 rounded-sm font-medium text-center whitespace-nowrap"
-                >
-                  {date}
-                </Typography>
-                <div className="w-[2px] h-full bg-red-200" />
-              </div>
-              <div className="pb-8 px-2 w-full">
-                <Typography variant="h5" className="font-semibold">
-                  {title}
-                </Typography>
-                {content.map((c, i) => {
-                  return (
-                    <div key={i}>
-                      <Typography as="div" variant="body-small" className="my-4">
-                        {c.text}
-                      </Typography>
-                      <div className="flex flex-wrap gap-1">
-                        {c.images?.map((image, i) => (
-                          <CloudinaryImage key={i} {...image} />
-                        ))}
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}

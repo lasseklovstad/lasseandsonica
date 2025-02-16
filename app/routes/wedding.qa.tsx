@@ -9,6 +9,58 @@ import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
 import type { AccessLevel } from "~/utils/siteSecret";
+import type { Route } from "./+types/wedding.qa";
+
+export const meta: Route.MetaFunction = () => {
+  return [{ title: "QA - Lasse & Sonica" }];
+};
+
+export default function QA() {
+  const { accessLevel } = useWeddingLoaderData();
+  const [params] = useSearchParams();
+  const accordionRef = useRef<HTMLDetailsElement[]>([]);
+  const filteredQuestions = questions.filter((q) =>
+    q.accessLevels.includes(accessLevel)
+  );
+  const openAccordionIndex = filteredQuestions.findIndex(
+    (q) => q.id === params.get("open")
+  );
+
+  useEffect(() => {
+    if (openAccordionIndex !== -1) {
+      accordionRef.current[openAccordionIndex].scrollIntoView();
+    }
+  }, [openAccordionIndex]);
+
+  return (
+    <div className="flex flex-col items-center">
+      <PageTitle
+        title="Spørsmål og svar"
+        backLink={{
+          to: `../${routes.wedding.pictures}`,
+          name: `Bilder`,
+        }}
+        subtitle={[
+          "Her finner du nyttige spørsmål og svar.",
+          "Er det noe annet du lurer på, spør oss.",
+        ]}
+      />
+      {filteredQuestions.map(({ question, answer }, i) => (
+        <Accordion
+          key={i}
+          ref={(ref) => {
+            if (ref) {
+              accordionRef.current[i] = ref;
+            }
+          }}
+          defaultOpen={i === openAccordionIndex}
+          title={question}
+          content={typeof answer === "function" ? answer(accessLevel) : answer}
+        />
+      ))}
+    </div>
+  );
+}
 
 type Question = {
   question: string;
@@ -201,50 +253,3 @@ const questions: Question[] = [
     accessLevels: ["fullAccess", "limitedAccess"],
   },
 ];
-
-export default function QA() {
-  const { accessLevel } = useWeddingLoaderData();
-  const [params] = useSearchParams();
-  const accordionRef = useRef<HTMLDetailsElement[]>([]);
-  const filteredQuestions = questions.filter((q) =>
-    q.accessLevels.includes(accessLevel)
-  );
-  const openAccordionIndex = filteredQuestions.findIndex(
-    (q) => q.id === params.get("open")
-  );
-
-  useEffect(() => {
-    if (openAccordionIndex !== -1) {
-      accordionRef.current[openAccordionIndex].scrollIntoView();
-    }
-  }, [openAccordionIndex]);
-
-  return (
-    <div className="flex flex-col items-center">
-      <PageTitle
-        title="Spørsmål og svar"
-        backLink={{
-          to: `../${routes.wedding.pictures}`,
-          name: `Bilder`,
-        }}
-        subtitle={[
-          "Her finner du nyttige spørsmål og svar.",
-          "Er det noe annet du lurer på, spør oss.",
-        ]}
-      />
-      {filteredQuestions.map(({ question, answer }, i) => (
-        <Accordion
-          key={i}
-          ref={(ref) => {
-            if (ref) {
-              accordionRef.current[i] = ref;
-            }
-          }}
-          defaultOpen={i === openAccordionIndex}
-          title={question}
-          content={typeof answer === "function" ? answer(accessLevel) : answer}
-        />
-      ))}
-    </div>
-  );
-}

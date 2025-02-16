@@ -2,6 +2,11 @@ import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
+import type { Route } from "./+types/wedding.home";
+
+export const meta: Route.MetaFunction = () => {
+  return [{ title: "Velkommen - Lasse & Sonica" }];
+};
 
 export default function Home() {
   const { accessLevel } = useWeddingLoaderData();

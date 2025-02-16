@@ -2,6 +2,11 @@ import { Outlet } from "react-router";
 import { PageTitle } from "~/components/PageTitle";
 import { RoundedImageLink } from "~/components/RoundedImageLink";
 import { routes } from "~/types/routes";
+import type { Route } from "./+types/wedding.friendsandfamily";
+
+export const meta: Route.MetaFunction = () => {
+  return [{ title: "Venner og familie - Lasse & Sonica" }];
+};
 
 export default function FriendsAndFamily() {
   return (

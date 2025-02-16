@@ -7,6 +7,11 @@ import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
 import { routes } from "~/types/routes";
 import { validateSecret, verifyUserIsLoggedIn } from "~/utils/siteSecret";
+import type { Route } from "./+types/login";
+
+export const meta: Route.MetaFunction = () => {
+  return [{ title: "Logg inn - Lasse & Sonica" }];
+};
 
 export const action = async ({ request, context }: ActionFunctionArgs) => {
   const formData = await request.formData();

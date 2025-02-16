@@ -1,6 +1,7 @@
 import { ImageLibrary } from "~/components/ImageLibrary";
 import { PageTitle } from "~/components/PageTitle";
 import { routes } from "~/types/routes";
+import type { Route } from "./+types/wedding.pictures";
 
 const pictures = [
   {
@@ -94,6 +95,10 @@ const pictures = [
     imageAlt: "Sonica og Lasse på orienteringstur i Sandefjord",
   },
 ];
+
+export const meta: Route.MetaFunction = () => {
+  return [{ title: "Bilder av oss - Lasse & Sonica" }];
+};
 
 export default function Pictures() {
   return (
