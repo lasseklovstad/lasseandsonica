@@ -2,6 +2,8 @@ import { ImageLibrary } from "~/components/ImageLibrary";
 import { PageTitle } from "~/components/PageTitle";
 import { routes } from "~/types/routes";
 
+import type { Route } from "./+types/wedding.pictures";
+
 const pictures = [
   {
     imageUrl: "Bryllup/5BD31EF8-4641-481B-B3A5-5CDB9601859C_zfwhu2.jpg",
@@ -94,6 +96,10 @@ const pictures = [
     imageAlt: "Sonica og Lasse på orienteringstur i Sandefjord",
   },
 ];
+
+export const meta: Route.MetaFunction = () => {
+  return [{ title: "Bilder av oss - Lasse & Sonica" }];
+};
 
 export default function Pictures() {
   return (

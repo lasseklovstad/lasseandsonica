@@ -1,5 +1,6 @@
-import { NavLink } from "react-router";
 import type { PropsWithChildren } from "react";
+import { NavLink } from "react-router";
+
 import { CloudinaryImage } from "./CloudinaryImage";
 import { Typography } from "./Typography";
 
@@ -8,7 +9,7 @@ const TextOverImage = ({ children }: PropsWithChildren) => {
     <Typography
       variant="h3"
       as="div"
-      className="text-white absolute top-0 h-full flex items-center w-full justify-center pb-4"
+      className="absolute top-0 flex h-full w-full items-center justify-center pb-4 text-white"
     >
       {children}
     </Typography>
@@ -29,9 +30,11 @@ export const RoundedImageLink = ({
   return (
     <NavLink
       to={to}
+      viewTransition
+      prefetch="intent"
       preventScrollReset
       className={({ isActive }) =>
-        `relative duration-500 transition ease-in-out w-[325px] ${
+        `relative w-[325px] transition duration-500 ease-in-out ${
           isActive ? "scale-105 brightness-100" : "scale-100 brightness-75"
         }`
       }
@@ -40,12 +43,12 @@ export const RoundedImageLink = ({
       <CloudinaryImage
         imageAlt={title}
         imageUrl={imageUrl}
-        className="shadow-md rounded-[50%] overflow-auto"
+        className="overflow-auto rounded-[50%] shadow-md"
       />
       <Typography
         as="div"
         variant="h3"
-        className="text-center font-cursive font-thin"
+        className="font-cursive text-center font-thin"
       >
         {weedingRole}
       </Typography>

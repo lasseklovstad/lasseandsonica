@@ -1,7 +1,9 @@
 import type { ReactNode } from "react";
+
+import type { LinkType } from "~/types/link";
+
 import { Header } from "./Header";
 import { WeddingLink } from "./WeddingLink";
-import type { LinkType } from "~/types/link";
 
 export const HeaderAndNavigation = ({
   showNavigation,
@@ -20,7 +22,7 @@ export const HeaderAndNavigation = ({
 
       {showNavigation && (
         <nav className="md:py-4">
-          <ul className="md:flex flex-row hidden">
+          <ul className="hidden flex-row md:flex">
             {links.map((link) => {
               return (
                 <li key={link.to}>

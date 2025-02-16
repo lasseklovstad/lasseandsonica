@@ -1,7 +1,9 @@
-import { Link } from "react-router";
-import { routes } from "~/types/routes";
-import { Typography } from "./Typography";
 import type { PropsWithChildren } from "react";
+import { Link } from "react-router";
+
+import { routes } from "~/types/routes";
+
+import { Typography } from "./Typography";
 
 export type QaAccordionId = "ceremony" | "dresscode" | "gift" | "location";
 

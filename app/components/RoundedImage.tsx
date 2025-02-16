@@ -11,17 +11,17 @@ export const RoundedImage = ({
   weddingRole: string;
 }) => {
   return (
-    <div className="w-[200px] p-2 flex flex-col items-center">
+    <div className="flex w-[200px] flex-col items-center p-2">
       <CloudinaryImage
         imageAlt={name}
         imageUrl={imageUrl}
-        className="shadow-md rounded-[50%] overflow-auto"
+        className="overflow-auto rounded-[50%] shadow-md"
       />
       <Typography className="font-semibold">{name}</Typography>
       <Typography
         as="div"
         variant="h3"
-        className="text-center font-cursive font-thin max-w-[140px]"
+        className="font-cursive max-w-[140px] text-center font-thin"
       >
         {weddingRole}
       </Typography>

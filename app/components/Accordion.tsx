@@ -1,4 +1,5 @@
 import { forwardRef, type ReactNode, type ForwardedRef } from "react";
+
 import { Typography } from "./Typography";
 
 type AccordionProps = {
@@ -10,16 +11,16 @@ type AccordionProps = {
 export const Accordion = forwardRef(
   (
     { title, content, defaultOpen }: AccordionProps,
-    ref: ForwardedRef<HTMLDetailsElement>
+    ref: ForwardedRef<HTMLDetailsElement>,
   ) => {
     return (
       <details className="group w-full" open={defaultOpen} ref={ref}>
-        <summary className="list-none hover:cursor-pointer hover:bg-gray-100 group-open:bg-gray-100 p-4 flex justify-between items-center focus:ring-2 focus:ring-gray-200 border border-gray-200">
+        <summary className="flex list-none items-center justify-between border border-gray-200 p-4 group-open:bg-gray-100 hover:cursor-pointer hover:bg-gray-100 focus:ring-2 focus:ring-gray-200">
           <Typography variant="h5" as="div">
             {title}
           </Typography>
           <svg
-            className="w-6 h-6 shrink-0 group-open:rotate-180 transition-transform"
+            className="h-6 w-6 shrink-0 transition-transform group-open:rotate-180"
             fill="currentColor"
             viewBox="0 0 20 20"
             xmlns="http://www.w3.org/2000/svg"
@@ -31,10 +32,10 @@ export const Accordion = forwardRef(
             ></path>
           </svg>
         </summary>
-        <div className="p-4 border border-t-0 border-gray-200">{content}</div>
+        <div className="border border-t-0 border-gray-200 p-4">{content}</div>
       </details>
     );
-  }
+  },
 );
 
 Accordion.displayName = "Accordion";

@@ -1,4 +1,5 @@
 import { Link, useSearchParams } from "react-router";
+
 import { CloudinaryImage } from "./CloudinaryImage";
 import { IconButton } from "./IconButton";
 import { LeftArrow } from "./icons/LeftArrow";
@@ -17,7 +18,7 @@ export const ImageLibrary = ({ pictures, cloudName }: Props) => {
   return (
     <>
       {typeof pictureIndexAsNumber === "number" && selectedPicture ? (
-        <div className="w-full flex justify-center">
+        <div className="flex w-full justify-center">
           <div className="relative max-w-[500px]">
             <IconButton
               as={Link}
@@ -47,7 +48,7 @@ export const ImageLibrary = ({ pictures, cloudName }: Props) => {
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-2 items-center">
+        <div className="grid grid-cols-3 items-center gap-2 md:grid-cols-6">
           {pictures.map((p, i) => (
             <Link
               key={p.imageUrl}
