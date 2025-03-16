@@ -1,7 +1,5 @@
 import type { PropsWithChildren, ReactNode } from "react";
-import { Link } from "react-router";
-
-import { routes } from "~/types/routes";
+import { href, Link } from "react-router";
 
 import { HeaderAndNavigation } from "./HeaderAndNavigation";
 import { links } from "./links";
@@ -29,7 +27,7 @@ export const PageLayout = ({
         <Typography variant="body-small">Laget av Lasse & Sonica</Typography>
         {showLogout && (
           <Typography variant="body-small" className="underline">
-            <Link to={`/${routes.logout}`}>Logg ut</Link>
+            <Link to={href("/logout")}>Logg ut</Link>
           </Typography>
         )}
       </footer>

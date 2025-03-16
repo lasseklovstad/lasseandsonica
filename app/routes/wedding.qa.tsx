@@ -1,5 +1,5 @@
 import { useEffect, useRef, type ReactNode } from "react";
-import { useSearchParams } from "react-router";
+import { href, useSearchParams } from "react-router";
 
 import { Accordion } from "~/components/Accordion";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
@@ -8,7 +8,6 @@ import type { QaAccordionId } from "~/components/LinkToQa";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
-import { routes } from "~/types/routes";
 import type { AccessLevel } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/wedding.qa";
@@ -39,8 +38,8 @@ export default function QA() {
       <PageTitle
         title="Spørsmål og svar"
         backLink={{
-          to: `../${routes.wedding.pictures}`,
-          name: `Bilder`,
+          to: href("/wedding/pictures"),
+          name: "Bilder",
         }}
         subtitle={[
           "Her finner du nyttige spørsmål og svar.",

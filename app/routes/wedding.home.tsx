@@ -1,7 +1,8 @@
+import { href } from "react-router";
+
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
-import { routes } from "~/types/routes";
 
 import type { Route } from "./+types/wedding.home";
 
@@ -16,8 +17,8 @@ export default function Home() {
       <PageTitle
         title="Velkommen"
         nextLink={{
-          to: `../${routes.wedding.ourStory}`,
-          name: `Vår historie`,
+          to: href("/wedding/ourstory"),
+          name: "Vår historie",
         }}
         subtitle={
           accessLevel === "fullAccess"

@@ -1,32 +1,32 @@
-import { routes } from "~/types/routes";
+import { href } from "react-router";
 
 export const links = [
   {
     name: "Hjem",
-    to: `${routes.wedding.home}`,
+    to: href("/wedding/home"),
   },
   {
     name: "Vår historie",
-    to: `${routes.wedding.ourStory}`,
+    to: href("/wedding/ourstory"),
   },
   {
     name: "Program",
-    to: `${routes.wedding.program}`,
+    to: href("/wedding/program"),
   },
   {
     name: "Venner og familie",
-    to: `${routes.wedding.friendsAndFamily}`,
+    to: href("/wedding/friendsandfamily"),
   },
   {
     name: "RSVP",
-    to: `${routes.wedding.rsvp}`,
+    to: href("/wedding/rsvp"),
   },
   {
     name: "Bilder",
-    to: `${routes.wedding.pictures}`,
+    to: href("/wedding/pictures"),
   },
   {
     name: "Q+A",
-    to: `${routes.wedding.qa}`,
+    to: href("/wedding/qa"),
   },
 ];

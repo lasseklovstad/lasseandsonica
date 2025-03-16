@@ -1,8 +1,7 @@
-import { Outlet } from "react-router";
+import { href, Outlet } from "react-router";
 
 import { PageTitle } from "~/components/PageTitle";
 import { RoundedImageLink } from "~/components/RoundedImageLink";
-import { routes } from "~/types/routes";
 
 import type { Route } from "./+types/wedding.friendsandfamily";
 
@@ -16,11 +15,11 @@ export default function FriendsAndFamily() {
       <PageTitle
         title="Venner og familie"
         nextLink={{
-          to: `../${routes.wedding.rsvp}`,
+          to: href("/wedding/rsvp"),
           name: `RSVP`,
         }}
         backLink={{
-          to: `../${routes.wedding.program}`,
+          to: href("/wedding/program"),
           name: `Program`,
         }}
         subtitle={["Trykk på bildene for å oppdage mer."]}

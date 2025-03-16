@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { href } from "react-router";
 
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
@@ -7,7 +8,6 @@ import { LinkToQa } from "~/components/LinkToQa";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
-import { routes } from "~/types/routes";
 import type { AccessLevel } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/wedding.program";
@@ -23,12 +23,12 @@ export default function Program() {
       <PageTitle
         title="Program"
         nextLink={{
-          to: `../${routes.wedding.friendsAndFamily}`,
-          name: `Venner og familie`,
+          to: href("/wedding/friendsandfamily"),
+          name: "Venner og familie",
         }}
         backLink={{
-          to: `../${routes.wedding.ourStory}`,
-          name: `Vår historie`,
+          to: href("/wedding/ourstory"),
+          name: "Vår historie",
         }}
         subtitle={["Her er program for dagen."]}
       />

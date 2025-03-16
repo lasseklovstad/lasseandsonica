@@ -1,6 +1,7 @@
+import { href } from "react-router";
+
 import { ImageLibrary } from "~/components/ImageLibrary";
 import { PageTitle } from "~/components/PageTitle";
-import { routes } from "~/types/routes";
 
 import type { Route } from "./+types/wedding.pictures";
 
@@ -107,12 +108,12 @@ export default function Pictures() {
       <PageTitle
         title="Bilder av oss"
         nextLink={{
-          to: `../${routes.wedding.qa}`,
-          name: `Q+A`,
+          to: href("/wedding/qa"),
+          name: "Q+A",
         }}
         backLink={{
-          to: `../${routes.wedding.rsvp}`,
-          name: `RSVP`,
+          to: href("/wedding/rsvp"),
+          name: "RSVP",
         }}
         subtitle={[
           "Her ser du bilder av oss gjennom tidene.",

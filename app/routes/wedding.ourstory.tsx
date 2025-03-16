@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
+import { href } from "react-router";
 
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
-import { routes } from "~/types/routes";
 
 import type { Route } from "./+types/wedding.ourstory";
 
@@ -18,12 +18,12 @@ export default function OurStory() {
       <PageTitle
         title="Vår historie"
         nextLink={{
-          to: `../${routes.wedding.program}`,
-          name: `Program`,
+          to: href("/wedding/program"),
+          name: "Program",
         }}
         backLink={{
-          to: `../${routes.wedding.home}`,
-          name: `Hjem`,
+          to: href("/wedding/home"),
+          name: "Hjem",
         }}
         subtitle={["Her kan dere lese om vår reise fra vi møttes."]}
       />

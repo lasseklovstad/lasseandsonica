@@ -1,12 +1,11 @@
 import type { ActionFunctionArgs, LoaderFunction } from "react-router";
-import { Form, useActionData, redirect } from "react-router";
+import { Form, href, redirect, useActionData } from "react-router";
 
 import { Button } from "~/components/Button";
 import { Input } from "~/components/Input";
 import { PageLayout } from "~/components/PageLayout";
 import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
-import { routes } from "~/types/routes";
 import { validateSecret, verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/login";
@@ -20,7 +19,7 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
   const secret = formData.get("secret") as string;
 
   if (validateSecret(secret, context)) {
-    return redirect(`/${routes.wedding.root}/${routes.wedding.home}`, {
+    return redirect(href("/wedding/home"), {
       headers: {
         "Set-Cookie": await siteSecretCookie.serialize(secret, {
           expires: new Date(Date.now() + 604_800_000 * 4),
