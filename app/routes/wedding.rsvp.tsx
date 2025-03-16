@@ -2,7 +2,6 @@ import { href } from "react-router";
 
 import { PageTitle } from "~/components/PageTitle";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
-import { routes } from "~/types/routes";
 
 import type { Route } from "./+types/wedding.rsvp";
 

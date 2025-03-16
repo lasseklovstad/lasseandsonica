@@ -1,12 +1,11 @@
 import type { ActionFunctionArgs, LoaderFunction } from "react-router";
-import { Form, useActionData, redirect, href } from "react-router";
+import { Form, href, redirect, useActionData } from "react-router";
 
 import { Button } from "~/components/Button";
 import { Input } from "~/components/Input";
 import { PageLayout } from "~/components/PageLayout";
 import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
-import { routes } from "~/types/routes";
 import { validateSecret, verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/login";
