@@ -1,7 +1,5 @@
 import type { PropsWithChildren } from "react";
-import { Link } from "react-router";
-
-import { routes } from "~/types/routes";
+import { href, Link } from "react-router";
 
 import { Typography } from "./Typography";
 
@@ -16,7 +14,7 @@ export const LinkToQa = ({
   <Typography
     as={Link}
     variant="body-small"
-    to={`../${routes.wedding.qa}?open=${open}`}
+    to={`${href("/wedding/qa")}?open=${open}`}
     className="underline"
   >
     {children}
