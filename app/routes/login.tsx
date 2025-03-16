@@ -1,5 +1,5 @@
 import type { ActionFunctionArgs, LoaderFunction } from "react-router";
-import { Form, useActionData, redirect } from "react-router";
+import { Form, useActionData, redirect, href } from "react-router";
 
 import { Button } from "~/components/Button";
 import { Input } from "~/components/Input";
@@ -20,7 +20,7 @@ export const action = async ({ request, context }: ActionFunctionArgs) => {
   const secret = formData.get("secret") as string;
 
   if (validateSecret(secret, context)) {
-    return redirect(`/${routes.wedding.root}/${routes.wedding.home}`, {
+    return redirect(href("/wedding/home"), {
       headers: {
         "Set-Cookie": await siteSecretCookie.serialize(secret, {
           expires: new Date(Date.now() + 604_800_000 * 4),

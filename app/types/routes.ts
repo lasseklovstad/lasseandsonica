@@ -12,4 +12,4 @@ export const routes = {
   },
   login: "login",
   logout: "logout",
-};
+} as const;

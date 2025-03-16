@@ -1,3 +1,5 @@
+import { href } from "react-router";
+
 import { PageTitle } from "~/components/PageTitle";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { routes } from "~/types/routes";
@@ -38,12 +40,12 @@ export default function RSVP() {
       <div className="md:hidden">
         <PageTitle
           nextLink={{
-            to: `../${routes.wedding.pictures}`,
-            name: `Bilder`,
+            to: href("/wedding/pictures"),
+            name: "Bilder",
           }}
           backLink={{
-            to: `../${routes.wedding.friendsAndFamily}`,
-            name: `Venner og familie`,
+            to: href("/wedding/friendsandfamily"),
+            name: "Venner og familie",
           }}
           title="Kommer du?"
           subtitle={subtitles}
