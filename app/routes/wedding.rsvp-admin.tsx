@@ -6,7 +6,7 @@ import { getDatabase } from "~/database/database";
 import { rsvps } from "~/database/schema";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
-import type { Route } from "./+types/wedding.rsvp";
+import type { Route } from "./+types/wedding.rsvp-admin";
 
 export const meta: Route.MetaFunction = () => {
   return [{ title: "RSVP ADMIN - Lasse & Sonica" }];
