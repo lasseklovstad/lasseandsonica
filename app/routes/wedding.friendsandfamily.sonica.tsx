@@ -14,6 +14,8 @@ export default function Sonica() {
           imageUrl="Bryllup/suman_kvadrat_2_wlpmvp.jpg"
           weddingRole="Brudens mor"
         />
+      </div>
+      <div className="flex flex-wrap justify-center gap-8">
         <RoundedImage
           name="Carina"
           imageUrl="Bryllup/Carina_firkant_bmnbvp.jpg"
@@ -23,6 +25,11 @@ export default function Sonica() {
           name="Olivia"
           imageUrl="Bryllup/ollie-kvadrat_nb1qxq.jpg"
           weddingRole="Brudens niese"
+        />
+        <RoundedImage
+          name="Håkon"
+          imageUrl="Bryllup/haakon_ratgah.jpg"
+          weddingRole="Brudens svoger"
         />
       </div>
       <div className="flex flex-wrap justify-center gap-8">

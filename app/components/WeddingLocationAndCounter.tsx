@@ -2,7 +2,7 @@ import { useCountdown } from "~/hooks/useCountdown";
 
 import { Typography } from "./Typography";
 
-const startDate = new Date(2023, 7, 11, 12, 0);
+const startDate = new Date(2025, 9, 11, 16, 0);
 
 export const WeddingLocationAndCounter = () => {
   const [days, hours, minutes, seconds] = useCountdown(startDate);
@@ -16,7 +16,7 @@ export const WeddingLocationAndCounter = () => {
             day: "numeric",
           })
           .toUpperCase()}{" "}
-        • ASKER / OSLO
+        • OSLO
       </Typography>
       <Typography suppressHydrationWarning>
         {days} dager, {hours} timer, {minutes} minutter, {seconds} sekunder

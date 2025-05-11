@@ -214,11 +214,29 @@ const timeline: TimelineEvent[] = [
     content: [{ text: "Bryllup med våre nærmeste venner og familie." }],
   },
   {
-    date: <span className="w-full">TBD.....</span>,
+    date: <TimelineDate date={new Date(2024, 11, 1)} />,
+    title: "Flytter",
+    content: [
+      {
+        text: "Vi flytter fra fest og moro i rundkjøringen til den roligere delen av Kiellandsplass. Litt oppussing må selvfølgelig til og vi får bo hos Carina en måneds tid før vi forflytter oss opp 3 etasjer.",
+      },
+    ],
+  },
+  {
+    date: <TimelineDate date={new Date(2025, 1, 25)} />,
+    title: "Emilie blir født",
+    content: [
+      {
+        text: "Lille Emilie kommer til verden kl.05.25 dagen etter bursdagen til moren sin.",
+      },
+    ],
+  },
+  {
+    date: <TimelineDate date={new Date(2025, 9, 11)} />,
     title: "Bryllupsfeiring",
     content: [
       {
-        text: "Bryllupsfeiring med alle våre fantastiske venner og familie er under planlegging - stay tuned.",
+        text: "Endelig er det til for bryllupsfeiring med alle våre fantastiske venner og familie.",
       },
     ],
   },

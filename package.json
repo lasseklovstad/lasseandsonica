@@ -9,13 +9,18 @@
     "start": "wrangler pages dev ./build/client",
     "typecheck": "react-router typegen && tsc",
     "lint": "eslint .",
-    "lint:ci": "react-router typegen && eslint . --max-warnings 0"
+    "lint:ci": "react-router typegen && eslint . --max-warnings 0",
+    "db:migrate:prod": "wrangler d1 migrations apply sonica-og-lasse-bryllup --remote",
+    "db:migrate:local": "wrangler d1 migrations apply sonica-og-lasse-bryllup",
+    "db:generate": "drizzle-kit generate",
+    "db:drop": "drizzle-kit drop"
   },
   "dependencies": {
     "@react-router/cloudflare": "^7.3.0",
     "@tailwindcss/postcss": "^4.0.14",
     "cloudinary": "2.6.0",
     "cloudinary-build-url": "0.2.4",
+    "drizzle-orm": "^0.43.1",
     "eslint": "^9.22.0",
     "isbot": "5.1.23",
     "miniflare": "4.20250310.0",
@@ -33,6 +38,7 @@
     "@tailwindcss/vite": "^4.0.14",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
+    "drizzle-kit": "^0.31.1",
     "eslint-config-prettier": "^10.1.1",
     "eslint-import-resolver-typescript": "^3.9.0",
     "eslint-plugin-import": "^2.31.0",

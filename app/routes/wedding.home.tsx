@@ -2,7 +2,6 @@ import { href } from "react-router";
 
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
-import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 
 import type { Route } from "./+types/wedding.home";
 
@@ -11,7 +10,6 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export default function Home() {
-  const { accessLevel } = useWeddingLoaderData();
   return (
     <div className="flex flex-col items-center">
       <PageTitle
@@ -20,17 +18,9 @@ export default function Home() {
           to: href("/wedding/ourstory"),
           name: "Vår historie",
         }}
-        subtitle={
-          accessLevel === "fullAccess"
-            ? [
-                "Vi giftet oss 11. august 2023 og takk til dere som var med på feiringen!",
-                "En større bryllupsfeiring er under planlegging og vil bli om noen år.",
-              ]
-            : [
-                "Vi giftet oss 11. august 2023!",
-                "En større bryllupsfeiring er under planlegging og vil bli om noen år.",
-              ]
-        }
+        subtitle={[
+          "Vi giftet oss 11. august 2023 og nå er det endelig tid for feiring!",
+        ]}
       />
       <CloudinaryImage
         imageAlt="Lasse og Sonica på takterrasse 17.mai 2023"
