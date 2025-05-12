@@ -5,6 +5,7 @@ import { siteSecretCookie } from "~/cookies";
 export type AccessLevel = "fullAccess" | "limitedAccess" | "admin";
 
 export const validateSecret = (secret: string, context: AppLoadContext) => {
+  console.log(context.cloudflare.env);
   const adminAccess = secret === context.cloudflare.env.LOGIN_SECRET_ADMIN;
   if (adminAccess) {
     return "admin";
