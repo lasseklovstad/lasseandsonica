@@ -20,7 +20,7 @@ export const Input = ({
 }: Props) => {
   const id = useId();
   return (
-    <>
+    <div>
       <label htmlFor={id} className="mb-1 block">
         <Typography as="span" variant="body">
           {label}
@@ -34,6 +34,6 @@ export const Input = ({
         placeholder={placeholder}
         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500"
       />
-    </>
+    </div>
   );
 };

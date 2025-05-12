@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lasseandsonica",
+  "compatibility_date": "2025-04-18",
+  "pages_build_output_dir": "./build/client",
+  "vars": {
+    "CLOUDINARY_NAME": "dsiqlprku"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "sonica-og-lasse-bryllup",
+      "database_id": "02094b3b-051e-4ed9-833c-3203f91ae371",
+      "migrations_dir": "migrations"
+    }
+  ]
+}
