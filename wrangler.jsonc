@@ -3,9 +3,6 @@
   "name": "lasseandsonica",
   "compatibility_date": "2025-04-18",
   "pages_build_output_dir": "./build/client",
-  "vars": {
-    "MY_KV": "MY_KV"
-  },
   "d1_databases": [
     {
       "binding": "DB",
