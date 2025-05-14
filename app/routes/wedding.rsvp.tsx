@@ -41,7 +41,7 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
 
   const resend = new Resend(context.cloudflare.env.RESEND_API_KEY);
 
-  const response = await resend.emails.send({
+  await resend.emails.send({
     from: "Sonica & Lasse <hello@lasseandsonica.com>",
     to: email,
     subject: "Bekreftelse RSVP - Bryllup",
