@@ -4,7 +4,6 @@ import { href, useSearchParams } from "react-router";
 import { Accordion } from "~/components/Accordion";
 import { LinkMoonFish } from "~/components/LinkSlemmestad";
 import { PageTitle } from "~/components/PageTitle";
-import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 
 import type { Route } from "./+types/wedding.qa";
 
@@ -60,7 +59,6 @@ const questions = [
 ];
 
 export default function QA() {
-  const { accessLevel } = useWeddingLoaderData();
   const [params] = useSearchParams();
   const accordionRef = useRef<HTMLDetailsElement[]>([]);
   const openAccordionIndex = questions.findIndex(

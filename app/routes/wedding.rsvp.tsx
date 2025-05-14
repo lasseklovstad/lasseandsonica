@@ -41,10 +41,10 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
 
   const resend = new Resend(context.cloudflare.env.RESEND_API_KEY);
 
-  await resend.emails.send({
-    from: "Sonica & Lasse hello@lasseandsonica.com",
+  const response = await resend.emails.send({
+    from: "Sonica & Lasse <hello@lasseandsonica.com>",
     to: email,
-    subject: "Sonica & Lasse - Bryllup",
+    subject: "Bekreftelse RSVP - Bryllup",
     html:
       attending === "yes"
         ? "<p>Du svarte at du kunne komme til bryllupet</p>"
