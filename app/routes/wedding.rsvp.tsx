@@ -1,4 +1,5 @@
 import { Form, href } from "react-router";
+import { Resend } from "resend";
 
 import { Button } from "~/components/Button";
 import { Input } from "~/components/Input";
@@ -28,14 +29,7 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
   const attending = String(formData.get("attending") ?? "").trim();
   const foodPreferences = String(formData.get("foodPreferences") ?? "").trim();
   const comments = String(formData.get("comments") ?? "").trim();
-  console.log({
-    fullName,
-    attending: attending === "yes" ? "yes" : "no",
-    comments,
-    email,
-    foodPreferences,
-    fullNameGuest,
-  });
+
   await db.insert(rsvps).values({
     fullName,
     attending: attending === "yes" ? "yes" : "no",
@@ -45,7 +39,17 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
     fullNameGuest,
   });
 
-  // TODO Send mail
+  const resend = new Resend(context.cloudflare.env.RESEND_API_KEY);
+
+  await resend.emails.send({
+    from: "Sonica & Lasse <hello@lasseandsonica.com>",
+    to: email,
+    subject: "Bekreftelse RSVP - Bryllup",
+    html:
+      attending === "yes"
+        ? "<p>Du svarte at du kunne komme til bryllupet</p>"
+        : "<p>Du svarte at du ikke kunne komme til bryllupet</p>",
+  });
 
   return { status: "success" };
 };

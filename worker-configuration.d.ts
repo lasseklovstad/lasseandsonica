@@ -11,6 +11,7 @@ interface Env {
   LOGIN_SECRET_LIMITED: string;
   LOGIN_SECRET_FULL: string;
   LOGIN_SECRET_ADMIN: string;
+  RESEND_API_KEY: string;
   CLOUDINARY_API_SECRET: string;
   CLOUDINARY_API_KEY: string;
   CLOUDINARY_NAME: string;

@@ -19,3 +19,14 @@ export const LinkContinental = () => (
     Adressen er: Stortingsgata 24/26, 0117 Oslo
   </a>
 );
+
+export const LinkMoonFish = () => (
+  <a
+    className="font-semibold underline"
+    href="https://www.google.com/maps/search/?api=1&query=Månefisken+AS"
+    target="_blank"
+    rel="noreferrer"
+  >
+    Adressen er: Sagveien 23A, 0459 Oslo
+  </a>
+);

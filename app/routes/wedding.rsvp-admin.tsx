@@ -15,7 +15,7 @@ export const meta: Route.MetaFunction = () => {
 export const loader = async ({ request, context }: Route.ActionArgs) => {
   const isLoggedIn = await verifyUserIsLoggedIn(request, context);
   if (isLoggedIn !== "admin") {
-    redirect(href("/wedding/home"));
+    return redirect(href("/wedding/home"));
   }
   const db = getDatabase(context);
   return { rsvpList: await db.select().from(rsvps) };
