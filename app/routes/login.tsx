@@ -2,7 +2,7 @@ import type { ActionFunctionArgs, LoaderFunction } from "react-router";
 import { Form, href, redirect, useActionData } from "react-router";
 
 import { Button } from "~/components/Button";
-import { Input } from "~/components/Input";
+import { InputField } from "~/components/Input";
 import { PageLayout } from "~/components/PageLayout";
 import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
@@ -54,18 +54,15 @@ export default function Login() {
       <div className="flex flex-col items-center">
         <Form method="POST" className="my-4 flex flex-col gap-4">
           <div>
-            <Input
-              label="Passord"
-              name="secret"
-              type="password"
-              placeholder="Spør Lasse & Sonica"
+            <InputField
+              labelProps={{ children: "Passord" }}
+              inputProps={{
+                name: "secret",
+                type: "password",
+                placeholder: "Spør Lasse & Sonica",
+              }}
+              errors={actionData?.error ? [actionData.error] : undefined}
             />
-
-            {actionData?.error && (
-              <Typography className="text-red-600">
-                {actionData.error}
-              </Typography>
-            )}
           </div>
           <Button type="submit">Logg inn</Button>
         </Form>
