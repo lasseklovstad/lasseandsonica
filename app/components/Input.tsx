@@ -1,39 +1,34 @@
-import type { HTMLInputTypeAttribute } from "react";
+import type { ComponentPropsWithRef } from "react";
 import { useId } from "react";
 
-import { Typography } from "./Typography";
+import { cn } from "~/utils/utils";
 
 type Props = {
-  label: string;
-  placeholder?: string;
-  name: string;
-  type: HTMLInputTypeAttribute;
-  defaultValue?: string;
+  labelProps: ComponentPropsWithRef<"label">;
+  inputProps: ComponentPropsWithRef<"input">;
+  errors?: string[] | undefined;
 };
 
-export const Input = ({
-  label,
-  name,
-  type,
-  placeholder,
-  defaultValue,
-}: Props) => {
-  const id = useId();
+export const InputField = ({ labelProps, inputProps, errors }: Props) => {
+  const fallbackId = useId();
+  const id = inputProps.id ?? fallbackId;
+  const errorId = `${id}-error`;
   return (
     <div>
-      <label htmlFor={id} className="mb-1 block">
-        <Typography as="span" variant="body">
-          {label}
-        </Typography>
-      </label>
+      <label
+        {...labelProps}
+        htmlFor={id}
+        className={cn("text-md mb-1 block md:text-lg", labelProps.className)}
+      />
       <input
-        defaultValue={defaultValue}
-        type={type}
-        name={name}
+        {...inputProps}
         id={id}
-        placeholder={placeholder}
+        aria-describedby={errorId}
         className="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-base text-gray-900 focus:border-blue-500 focus:ring-blue-500"
       />
+      <div id={errorId} className={"text-base text-red-600"}>
+        {errors ? errors[0] : null}
+      </div>
     </div>
   );
 };

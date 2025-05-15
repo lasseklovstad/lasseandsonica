@@ -1,8 +1,11 @@
-import { Form, href } from "react-router";
+import { getFormProps, getInputProps, useForm } from "@conform-to/react";
+import { parseWithZod } from "@conform-to/zod";
+import { data, Form, href, useNavigation } from "react-router";
 import { Resend } from "resend";
+import { z } from "zod";
 
 import { Button } from "~/components/Button";
-import { Input } from "~/components/Input";
+import { InputField } from "~/components/Input";
 import { PageTitle } from "~/components/PageTitle";
 import { getDatabase } from "~/database/database";
 import { rsvps } from "~/database/schema";
@@ -10,6 +13,22 @@ import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/wedding.rsvp";
+
+const nameSchema = z
+  .string({ required_error: "Påkrevd" })
+  .trim()
+  .min(3, { message: "Navnet må være lenger enn 3 bokstaver" });
+const schema = z.object({
+  fullName: nameSchema,
+  email: z
+    .string({ required_error: "Påkrevd" })
+    .trim()
+    .email({ message: "E-post er ikke gyldig." }),
+  fullNameGuest: nameSchema.optional(),
+  attending: z.enum(["yes", "no"], { required_error: "Påkrevd" }),
+  foodPreferences: z.string().trim().optional(),
+  comments: z.string().trim().optional(),
+});
 
 export const meta: Route.MetaFunction = () => {
   return [{ title: "RSVP - Lasse & Sonica" }];
@@ -22,21 +41,28 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
     throw new Response("Ingen tilgang", { status: 403 });
   }
   const db = getDatabase(context);
-  // TODO: Validate
-  const fullName = String(formData.get("fullName") ?? "").trim();
-  const email = String(formData.get("email") ?? "").trim();
-  const fullNameGuest = String(formData.get("fullNameGuest") ?? "").trim();
-  const attending = String(formData.get("attending") ?? "").trim();
-  const foodPreferences = String(formData.get("foodPreferences") ?? "").trim();
-  const comments = String(formData.get("comments") ?? "").trim();
+  const submission = parseWithZod(formData, { schema });
 
-  await db.insert(rsvps).values({
-    fullName,
-    attending: attending === "yes" ? "yes" : "no",
-    comments,
+  if (submission.status !== "success") {
+    return data({ status: submission.status, result: submission.reply() });
+  }
+
+  const {
+    attending,
     email,
+    fullName,
+    comments,
     foodPreferences,
     fullNameGuest,
+  } = submission.value;
+
+  await db.insert(rsvps).values({
+    attending,
+    email,
+    fullName,
+    comments: comments ?? "",
+    foodPreferences: foodPreferences ?? "",
+    fullNameGuest: fullNameGuest ?? "",
   });
 
   const resend = new Resend(context.cloudflare.env.RESEND_API_KEY);
@@ -51,11 +77,26 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
         : "<p>Du svarte at du ikke kunne komme til bryllupet</p>",
   });
 
-  return { status: "success" };
+  return data({ status: submission.status, result: submission.reply() });
 };
 
 export default function RSVP({ actionData }: Route.ComponentProps) {
   const { accessLevel } = useWeddingLoaderData();
+  const navigation = useNavigation();
+  const [
+    form,
+    { attending, comments, email, foodPreferences, fullName, fullNameGuest },
+  ] = useForm({
+    // Sync the result of last submission
+    lastResult: actionData?.result,
+
+    // Reuse the validation logic on the client
+    onValidate({ formData }) {
+      return parseWithZod(formData, { schema });
+    },
+    shouldRevalidate: "onBlur",
+    shouldValidate: "onSubmit",
+  });
   const hasSubmitted = actionData?.status === "success";
 
   const subtitles = [
@@ -85,64 +126,92 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
       {hasSubmitted ? (
         <div>Tusen takk, du får en bekreftelse på epost</div>
       ) : (
-        <Form method="POST" className="mb-20 flex w-full justify-center">
+        <Form
+          {...getFormProps(form)}
+          method="POST"
+          className="mb-20 flex w-full justify-center"
+        >
           <div className="flex w-full max-w-[500px] flex-col gap-4">
-            <Input
-              placeholder="Ola Nordman"
-              label="Fullt navn"
-              name="fullName"
-              type="text"
+            <InputField
+              labelProps={{ children: "Fullt navn" }}
+              inputProps={{
+                ...getInputProps(fullName, { type: "text" }),
+                placeholder: "Ola Nordman",
+              }}
+              errors={fullName.errors}
             />
 
-            <Input
-              placeholder="navn@eksempel.no"
-              label="E-post"
-              name="email"
-              type="email"
+            <InputField
+              labelProps={{ children: "E-post" }}
+              inputProps={{
+                ...getInputProps(email, { type: "email" }),
+                placeholder: "navn@eksempel.no",
+              }}
+              errors={email.errors}
             />
             {accessLevel === "fullAccess" ? (
-              <Input
-                placeholder="Kari Nordman"
-                label="Fullt navn partner"
-                name="fullNameGuest"
-                type="text"
+              <InputField
+                labelProps={{ children: "Fullt navn partner" }}
+                inputProps={{
+                  ...getInputProps(fullNameGuest, { type: "text" }),
+                  placeholder: "Kari Nordman",
+                }}
+                errors={fullNameGuest.errors}
               />
             ) : null}
-            <fieldset className="flex gap-2">
+            <fieldset className="flex flex-col gap-2">
               <legend className="mb-2 font-semibold">Kan du komme?</legend>
-              <label className="flex items-center gap-2 hover:cursor-pointer">
-                <input
-                  type="radio"
-                  name="attending"
-                  value="yes"
-                  className="size-6"
-                />
-                Ja
-              </label>
-              <label className="flex items-center gap-2 hover:cursor-pointer">
-                <input
-                  type="radio"
-                  name="attending"
-                  value="no"
-                  className="size-6"
-                />
-                Nei
-              </label>
+              <div className="flex gap-2">
+                <label className="flex items-center gap-2 hover:cursor-pointer">
+                  <input
+                    className="size-6"
+                    {...getInputProps(attending, {
+                      type: "radio",
+                      value: "yes",
+                    })}
+                  />
+                  Ja
+                </label>
+                <label className="flex items-center gap-2 hover:cursor-pointer">
+                  <input
+                    className="size-6"
+                    {...getInputProps(attending, {
+                      type: "radio",
+                      value: "no",
+                    })}
+                  />
+                  Nei
+                </label>
+              </div>
+              <div id={attending.errorId} className={"text-base text-red-600"}>
+                {attending.errors ? attending.errors[0] : null}
+              </div>
             </fieldset>
-            <Input
-              placeholder="Nøtter"
-              label="Matpreferanser"
-              name="foodPreferences"
-              type="text"
+            <InputField
+              labelProps={{ children: "Matpreferanser" }}
+              inputProps={{
+                ...getInputProps(foodPreferences, { type: "text" }),
+                placeholder: "Nøtter",
+              }}
+              errors={foodPreferences.errors}
             />
-            <Input
-              placeholder="Jeg gleder meg!!!"
-              label="Kommentarer"
-              name="comments"
-              type="text"
+            <InputField
+              labelProps={{ children: "Kommentarer" }}
+              inputProps={{
+                ...getInputProps(comments, { type: "text" }),
+                placeholder: "Jeg gleder meg!!!",
+              }}
+              errors={comments.errors}
             />
 
-            <Button type="submit">Send inn</Button>
+            <Button
+              type="submit"
+              pending={
+                navigation.state !== "idle" && navigation.formMethod === "POST"
+              }
+            >
+              Send inn
+            </Button>
           </div>
         </Form>
       )}
