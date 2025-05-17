@@ -18,11 +18,15 @@ import type { rsvps } from "~/database/schema";
 type Props = { rsvp: typeof rsvps.$inferSelect };
 
 export const RSVPEmail = ({ rsvp }: Props) => {
+  const subtitleText =
+    rsvp.attending === "yes"
+      ? `Vi gleder oss til å se ${rsvp.fullNameGuest ? "dere" : "deg"} i bryllupet 11.oktober.`
+      : `Det var synd at ${rsvp.fullNameGuest ? "dere" : "du"} ikke kunne komme i vårt bryllup.`;
   return (
     <Html>
       <Head />
       <Body style={main}>
-        <Preview>Yelp recent login</Preview>
+        <Preview>{subtitleText}</Preview>
         <Container>
           <Section style={logo}>
             <Img
@@ -53,9 +57,7 @@ export const RSVPEmail = ({ rsvp }: Props) => {
                     textAlign: "center",
                   }}
                 >
-                  {rsvp.attending === "yes"
-                    ? `Vi gleder oss til å se ${rsvp.fullNameGuest ? "dere" : "deg"} i bryllupet 11.oktober.`
-                    : `Det var synd at ${rsvp.fullNameGuest ? "dere" : "du"} ikke kunne komme i vårt bryllup.`}
+                  {subtitleText}
                 </Heading>
                 <table>
                   <tbody>
