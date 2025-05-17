@@ -7,14 +7,20 @@ type Props = {
   labelProps: ComponentPropsWithRef<"label">;
   inputProps: ComponentPropsWithRef<"input">;
   errors?: string[] | undefined;
+  className?: string;
 };
 
-export const InputField = ({ labelProps, inputProps, errors }: Props) => {
+export const InputField = ({
+  labelProps,
+  inputProps,
+  errors,
+  className,
+}: Props) => {
   const fallbackId = useId();
   const id = inputProps.id ?? fallbackId;
   const errorId = `${id}-error`;
   return (
-    <div>
+    <div className={className}>
       <label
         {...labelProps}
         htmlFor={id}
