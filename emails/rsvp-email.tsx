@@ -76,7 +76,7 @@ export const RSVPEmail = ({ rsvp }: Props) => {
                         content: rsvp.foodPreferences,
                       },
                       {
-                        label: "Matpreferanser",
+                        label: "Kommentarer",
                         content: rsvp.comments,
                       },
                     ]
@@ -138,10 +138,6 @@ const main = {
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif',
 };
 
-const paragraph = {
-  fontSize: 16,
-};
-
 const logo = {
   padding: "30px 20px",
   width: "24px",
@@ -169,14 +165,6 @@ const content = {
   overflow: "hidden",
 };
 
-const image = {
-  maxWidth: "100%",
-};
-
 const boxInfos = {
   padding: "20px",
-};
-
-const containerImageFooter = {
-  padding: "45px 0 0 0",
 };
