@@ -1,7 +1,7 @@
 {
   "version": "6",
   "dialect": "sqlite",
-  "id": "51d21290-3ab3-4db6-9e56-9aa7cfaf17b0",
+  "id": "ec6e127c-0965-474e-98cc-da4628f38423",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "rsvps": {
@@ -55,6 +55,14 @@
           "primaryKey": false,
           "notNull": true,
           "autoincrement": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "(unixepoch())"
         }
       },
       "indexes": {},

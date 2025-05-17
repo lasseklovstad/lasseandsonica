@@ -5,5 +5,6 @@ CREATE TABLE `rsvps` (
 	`email` text NOT NULL,
 	`attending` text NOT NULL,
 	`food_preferences` text NOT NULL,
-	`comments` text NOT NULL
+	`comments` text NOT NULL,
+	`created_at` integer DEFAULT (unixepoch()) NOT NULL
 );

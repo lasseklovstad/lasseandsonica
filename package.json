@@ -12,12 +12,16 @@
     "lint:ci": "react-router typegen && eslint . --max-warnings 0",
     "db:migrate:prod": "wrangler d1 migrations apply sonica-og-lasse-bryllup --remote",
     "db:migrate:local": "wrangler d1 migrations apply sonica-og-lasse-bryllup",
+    "db:delete:local": "wrangler d1 delete sonica-og-lasse-bryllup",
     "db:generate": "drizzle-kit generate",
-    "db:drop": "drizzle-kit drop"
+    "db:drop": "drizzle-kit drop",
+    "wrangler": "wrangler",
+    "email:dev": "email dev"
   },
   "dependencies": {
     "@conform-to/react": "^1.5.1",
     "@conform-to/zod": "^1.5.1",
+    "@react-email/components": "^0.0.41",
     "@react-router/cloudflare": "^7.3.0",
     "@tailwindcss/postcss": "^4.0.14",
     "cloudinary": "2.6.0",
@@ -55,6 +59,7 @@
     "knip": "^5.46.0",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "react-email": "4.0.14",
     "typescript": "5.8.2",
     "typescript-eslint": "^8.26.1",
     "vite": "6.2.2",

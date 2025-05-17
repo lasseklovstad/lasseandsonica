@@ -1,3 +1,4 @@
+import { sql } from "drizzle-orm";
 import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
 export const rsvps = sqliteTable("rsvps", {
@@ -8,4 +9,7 @@ export const rsvps = sqliteTable("rsvps", {
   attending: text({ enum: ["yes", "no"] }).notNull(),
   foodPreferences: text().notNull(),
   comments: text().notNull(),
+  createdAt: integer({ mode: "timestamp" })
+    .default(sql`(unixepoch())`)
+    .notNull(),
 });
