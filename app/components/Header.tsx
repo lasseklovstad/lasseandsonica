@@ -1,7 +1,10 @@
 import type { PropsWithChildren } from "react";
+import { useTranslation } from "react-i18next";
+import { useSearchParams } from "react-router";
 
 import type { LinkType } from "~/types/link";
 
+import { Button } from "./Button";
 import { SideBar } from "./SideBar";
 import { Typography } from "./Typography";
 
@@ -10,6 +13,8 @@ export const Header = ({
   children,
   links,
 }: PropsWithChildren<{ showSideBar: boolean; links: LinkType[] }>) => {
+  const { i18n } = useTranslation();
+  const [, setSearchParams] = useSearchParams();
   return (
     <header
       className={`flex w-full flex-col items-center bg-red-50 ${
@@ -18,11 +23,53 @@ export const Header = ({
     >
       <div className="relative flex w-full items-center justify-center p-1">
         {showSideBar && <SideBar links={links} />}
-        <img
-          alt="Bilde av to ringer"
-          className="w-10 sm:w-14"
-          src="/ringer.png"
-        />
+        <img alt="" className="w-10 sm:w-14" src="/ringer.png" />
+        <Button
+          onClick={() =>
+            setSearchParams({ lng: i18n.language === "no" ? "en" : "no" })
+          }
+          className="absolute right-2 rounded-full bg-transparent text-black hover:bg-gray-300"
+        >
+          {i18n.language === "no" ? (
+            <>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="flag-icons-gb"
+                viewBox="0 0 640 480"
+                className="size-8"
+              >
+                <path fill="#012169" d="M0 0h640v480H0z" />
+                <path
+                  fill="#FFF"
+                  d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0z"
+                />
+                <path
+                  fill="#C8102E"
+                  d="m424 281 216 159v40L369 281zm-184 20 6 35L54 480H0zM640 0v3L391 191l2-44L590 0zM0 0l239 176h-60L0 42z"
+                />
+                <path fill="#FFF" d="M241 0v480h160V0zM0 160v160h640V160z" />
+                <path fill="#C8102E" d="M0 193v96h640v-96zM273 0v480h96V0z" />
+              </svg>
+              <span className="sr-only">English</span>
+            </>
+          ) : (
+            <>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                id="flag-icons-no"
+                viewBox="0 0 640 480"
+                className="size-8"
+              >
+                <path fill="#ed2939" d="M0 0h640v480H0z" />
+                <path fill="#fff" d="M180 0h120v480H180z" />
+                <path fill="#fff" d="M0 180h640v120H0z" />
+                <path fill="#002664" d="M210 0h60v480h-60z" />
+                <path fill="#002664" d="M0 210h640v60H0z" />
+              </svg>
+              <span className="sr-only">Norsk</span>
+            </>
+          )}
+        </Button>
       </div>
 
       <div className="mb-4 flex w-full flex-col items-center gap-2">

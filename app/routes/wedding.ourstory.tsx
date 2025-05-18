@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useTranslation } from "react-i18next";
 import { href } from "react-router";
 
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
@@ -12,20 +13,165 @@ export const meta: Route.MetaFunction = () => {
   return [{ title: "Vår historie - Lasse & Sonica" }];
 };
 
+export const handle = { i18n: "ourstory" };
+
 export default function OurStory() {
+  const { t } = useTranslation("home");
+  const { t: tCommon } = useTranslation("common");
+  const timeline: TimelineEvent[] = [
+    {
+      date: <TimelineDate date={new Date(2018, 11, 7)} />,
+      title: "Første møte",
+      content: [
+        {
+          text: "Lasse og Sonica møttes for første gang på julebordet til Experis (Ciber den gang). Lasse danset morsom skulderdans på dansegulvet, Sonica spurte hvorfor han danset slik. Lasse svarte: Jeg gjør det for damene. Sonica var ikke helt overbevist, men syntes det var veldig gøy!",
+        },
+      ],
+    },
+    {
+      date: <TimelineDate date={new Date(2020, 4, 27)} />,
+      title: "Første gnist",
+      content: [
+        {
+          text: "Etter flere uker med sosial nedstengning var det plutselig ekstra hyggelig å se hverandre under mangekamp med jobb.",
+          images: [
+            {
+              imageUrl: "Bryllup/slackline_ovgmfq.jpg",
+              imageAlt: "Slack line lagbilde",
+            },
+          ],
+        },
+        {
+          text: "Selv om Lasse ikke imponerte stort i slackline...",
+          images: [
+            {
+              imageUrl: "Bryllup/IMG_20200527_180005_azyfrh.jpg",
+              imageAlt: "Slack line med Lasse",
+              className: "max-w-[400px]",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      date: <TimelineDate date={new Date(2020, 5, 21)} />,
+      title: "Første date",
+      content: [
+        {
+          text: 'Det ble ingen "øl ute", ettersom Lasse slo til og inviterte til tacomiddag, med Kløvstad-salsa og rødvin.',
+          images: [
+            {
+              imageUrl: "v1685207369/taco_ji7gmn.png",
+              imageAlt: "Taco",
+              className: "md:max-w-[200px] max-w-[100px]",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      date: <TimelineDate date={new Date(2020, 6, 11)} />,
+      title: "Offisielt kjærester",
+      content: [
+        {
+          text: "Var ingen grunn til å vente lenger når alt føltes riktig - og vi ble offisielt kjærester!",
+          images: [
+            {
+              imageUrl:
+                "Bryllup/59AF94DE-051A-4F6E-AD14-63BBDDDA6375_garffo.jpg",
+              imageAlt: "Selfie av oss kvelden vi ble kjærester",
+              className: "max-w-[200px]",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      date: <TimelineDate date={new Date(2021, 4, 10)} />,
+      title: "Flytter sammen",
+      content: [
+        {
+          text: "Vi ble lei av å reise frem og tilbake mellom Alexander Kiellandsplass og Solli Plass. Sonica kjøpte seg inn, og Ivar måtte dessverre flytte litt lenger ned i gata. Det ble store endringer i leiligheten, ettersom Sonica ville pusse opp og fjerne alle minner av et guttekollektiv. Lasse måtte bli med å bo i leiligheten på Solli mens vi pusset opp, og vi fikk tilslutt flytte inn i vår nyoppussede leilighet på Kiellands.",
+          images: [
+            {
+              imageUrl:
+                "Bryllup/30D7B25C-FCB1-4748-947F-BAF0282E3EF1_vonek3.jpg",
+              imageAlt: "Lasse pusser opp på en stige",
+              className: "max-w-[200px]",
+            },
+            {
+              imageUrl:
+                "Bryllup/067E0DAC-5DAD-4D42-BC80-B7B2BEDDECE4_jojzh3.jpg",
+              imageAlt: "Sonica pusser på en stige",
+              className: "max-w-[356px]",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      date: <TimelineDate date={new Date(2023, 3, 19)} />,
+      title: "Frieriet",
+      content: [
+        {
+          text: 'Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en "vanlig" onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring-3 på fingeren.',
+          images: [
+            {
+              imageUrl:
+                "Bryllup/986C7902-25E2-4DB6-B711-C170A3D450CC_zolx3n.jpg",
+              imageAlt: "Lasse frir",
+              className: "max-w-[200px]",
+            },
+          ],
+        },
+      ],
+    },
+    {
+      date: <TimelineDate date={new Date(2023, 7, 11)} />,
+      title: "Bryllup!",
+      content: [{ text: "Bryllup med våre nærmeste venner og familie." }],
+    },
+    {
+      date: <TimelineDate date={new Date(2024, 11, 1)} />,
+      title: "Flytter",
+      content: [
+        {
+          text: "Vi flytter fra fest og moro i rundkjøringen til den roligere delen av Kiellandsplass. Litt oppussing må selvfølgelig til og vi får bo hos Carina en måneds tid før vi forflytter oss opp 3 etasjer.",
+        },
+      ],
+    },
+    {
+      date: <TimelineDate date={new Date(2025, 1, 25)} />,
+      title: "Emilie blir født",
+      content: [
+        {
+          text: "Lille Emilie kommer til verden kl.05.25 dagen etter bursdagen til moren sin.",
+        },
+      ],
+    },
+    {
+      date: <TimelineDate date={new Date(2025, 9, 11)} />,
+      title: "Bryllupsfeiring",
+      content: [
+        {
+          text: "Endelig er det til for bryllupsfeiring med alle våre fantastiske venner og familie.",
+        },
+      ],
+    },
+  ];
   return (
     <div className="flex flex-col items-center">
       <PageTitle
-        title="Vår historie"
+        title={t("title")}
         nextLink={{
           to: href("/wedding/program"),
-          name: "Program",
+          name: tCommon("program"),
         }}
         backLink={{
           to: href("/wedding/home"),
-          name: "Hjem",
+          name: tCommon("home"),
         }}
-        subtitle={["Her kan dere lese om vår reise fra vi møttes."]}
+        subtitle={[t("subtitle")]}
       />
 
       <div className="flex w-full flex-col">
@@ -103,141 +249,3 @@ const TimelineDate = ({ date }: { date: Date }) => {
     </div>
   );
 };
-
-const timeline: TimelineEvent[] = [
-  {
-    date: <TimelineDate date={new Date(2018, 11, 7)} />,
-    title: "Første møte",
-    content: [
-      {
-        text: "Lasse og Sonica møttes for første gang på julebordet til Experis (Ciber den gang). Lasse danset morsom skulderdans på dansegulvet, Sonica spurte hvorfor han danset slik. Lasse svarte: Jeg gjør det for damene. Sonica var ikke helt overbevist, men syntes det var veldig gøy!",
-      },
-    ],
-  },
-  {
-    date: <TimelineDate date={new Date(2020, 4, 27)} />,
-    title: "Første gnist",
-    content: [
-      {
-        text: "Etter flere uker med sosial nedstengning var det plutselig ekstra hyggelig å se hverandre under mangekamp med jobb.",
-        images: [
-          {
-            imageUrl: "Bryllup/slackline_ovgmfq.jpg",
-            imageAlt: "Slack line lagbilde",
-          },
-        ],
-      },
-      {
-        text: "Selv om Lasse ikke imponerte stort i slackline...",
-        images: [
-          {
-            imageUrl: "Bryllup/IMG_20200527_180005_azyfrh.jpg",
-            imageAlt: "Slack line med Lasse",
-            className: "max-w-[400px]",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    date: <TimelineDate date={new Date(2020, 5, 21)} />,
-    title: "Første date",
-    content: [
-      {
-        text: 'Det ble ingen "øl ute", ettersom Lasse slo til og inviterte til tacomiddag, med Kløvstad-salsa og rødvin.',
-        images: [
-          {
-            imageUrl: "v1685207369/taco_ji7gmn.png",
-            imageAlt: "Taco",
-            className: "md:max-w-[200px] max-w-[100px]",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    date: <TimelineDate date={new Date(2020, 6, 11)} />,
-    title: "Offisielt kjærester",
-    content: [
-      {
-        text: "Var ingen grunn til å vente lenger når alt føltes riktig - og vi ble offisielt kjærester!",
-        images: [
-          {
-            imageUrl: "Bryllup/59AF94DE-051A-4F6E-AD14-63BBDDDA6375_garffo.jpg",
-            imageAlt: "Selfie av oss kvelden vi ble kjærester",
-            className: "max-w-[200px]",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    date: <TimelineDate date={new Date(2021, 4, 10)} />,
-    title: "Flytter sammen",
-    content: [
-      {
-        text: "Vi ble lei av å reise frem og tilbake mellom Alexander Kiellandsplass og Solli Plass. Sonica kjøpte seg inn, og Ivar måtte dessverre flytte litt lenger ned i gata. Det ble store endringer i leiligheten, ettersom Sonica ville pusse opp og fjerne alle minner av et guttekollektiv. Lasse måtte bli med å bo i leiligheten på Solli mens vi pusset opp, og vi fikk tilslutt flytte inn i vår nyoppussede leilighet på Kiellands.",
-        images: [
-          {
-            imageUrl: "Bryllup/30D7B25C-FCB1-4748-947F-BAF0282E3EF1_vonek3.jpg",
-            imageAlt: "Lasse pusser opp på en stige",
-            className: "max-w-[200px]",
-          },
-          {
-            imageUrl: "Bryllup/067E0DAC-5DAD-4D42-BC80-B7B2BEDDECE4_jojzh3.jpg",
-            imageAlt: "Sonica pusser på en stige",
-            className: "max-w-[356px]",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    date: <TimelineDate date={new Date(2023, 3, 19)} />,
-    title: "Frieriet",
-    content: [
-      {
-        text: 'Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en "vanlig" onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring-3 på fingeren.',
-        images: [
-          {
-            imageUrl: "Bryllup/986C7902-25E2-4DB6-B711-C170A3D450CC_zolx3n.jpg",
-            imageAlt: "Lasse frir",
-            className: "max-w-[200px]",
-          },
-        ],
-      },
-    ],
-  },
-  {
-    date: <TimelineDate date={new Date(2023, 7, 11)} />,
-    title: "Bryllup!",
-    content: [{ text: "Bryllup med våre nærmeste venner og familie." }],
-  },
-  {
-    date: <TimelineDate date={new Date(2024, 11, 1)} />,
-    title: "Flytter",
-    content: [
-      {
-        text: "Vi flytter fra fest og moro i rundkjøringen til den roligere delen av Kiellandsplass. Litt oppussing må selvfølgelig til og vi får bo hos Carina en måneds tid før vi forflytter oss opp 3 etasjer.",
-      },
-    ],
-  },
-  {
-    date: <TimelineDate date={new Date(2025, 1, 25)} />,
-    title: "Emilie blir født",
-    content: [
-      {
-        text: "Lille Emilie kommer til verden kl.05.25 dagen etter bursdagen til moren sin.",
-      },
-    ],
-  },
-  {
-    date: <TimelineDate date={new Date(2025, 9, 11)} />,
-    title: "Bryllupsfeiring",
-    content: [
-      {
-        text: "Endelig er det til for bryllupsfeiring med alle våre fantastiske venner og familie.",
-      },
-    ],
-  },
-];

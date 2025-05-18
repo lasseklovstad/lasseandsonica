@@ -1,7 +1,15 @@
+import { resolve } from "node:path";
+
+import { createInstance } from "i18next";
+import Backend from "i18next-fs-backend/cjs";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
+import { I18nextProvider, initReactI18next } from "react-i18next";
 import type { AppLoadContext, EntryContext } from "react-router";
 import { ServerRouter } from "react-router";
+
+import i18n from "./i18n"; // your i18n configuration file
+import i18next from "./utils/i18n.server";
 
 export default async function handleRequest(
   request: Request,
@@ -13,9 +21,24 @@ export default async function handleRequest(
 ) {
   let shellRendered = false;
   const userAgent = request.headers.get("user-agent");
+  const instance = createInstance();
+  const lng = await i18next.getLocale(request);
+  const ns = i18next.getRouteNamespaces(routerContext);
+
+  await instance
+    .use(initReactI18next) // Tell our instance to use react-i18next
+    .use(Backend) // Setup our backend
+    .init({
+      ...i18n, // spread the configuration
+      lng, // The locale we detected above
+      ns, // The namespaces the routes about to render wants to use
+      backend: { loadPath: resolve("./public/locales/{{lng}}/{{ns}}.json") },
+    });
 
   const body = await renderToReadableStream(
-    <ServerRouter context={routerContext} url={request.url} />,
+    <I18nextProvider i18n={instance}>
+      <ServerRouter context={routerContext} url={request.url} />
+    </I18nextProvider>,
     {
       onError(error: unknown) {
         responseStatusCode = 500;
