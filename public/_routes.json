@@ -6,6 +6,8 @@
     "/favicon.svg",
     "/ringer.png",
     "/AlexBrush-Regular.ttf",
-    "/assets/*"
+    "/assets/*",
+    "/locales/no/*",
+    "/locales/en/*"
   ]
 }
