@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { href, Link } from "react-router";
 
 import { HeaderAndNavigation } from "./HeaderAndNavigation";
-import { links } from "./links";
 import { Typography } from "./Typography";
 
 export const PageLayout = ({

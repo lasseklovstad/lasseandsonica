@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { href } from "react-router";
 
 import { PageTitle } from "~/components/PageTitle";
@@ -9,43 +10,47 @@ export const meta: Route.MetaFunction = () => {
   return [{ title: "Program - Lasse & Sonica" }];
 };
 
+export const handle = { i18n: "program" };
+
 export default function Program() {
+  const { t } = useTranslation("program");
+  const { t: tCommon } = useTranslation("common");
   return (
     <div>
       <PageTitle
-        title="Program"
+        title={t("title")}
         nextLink={{
           to: href("/wedding/friendsandfamily"),
-          name: "Venner og familie",
+          name: tCommon("friendsandfamily"),
         }}
         backLink={{
           to: href("/wedding/ourstory"),
-          name: "Vår historie",
+          name: tCommon("ourstory"),
         }}
-        subtitle={["Her er program for dagen."]}
+        subtitle={[t("subtitle")]}
       />
       <div className="flex w-full flex-col">
         {[
           {
-            startTime: <>16.00</>,
+            startTime: "16:00",
             size: "large",
-            title: "Velkommen til bryllupsfest på Månefisken",
+            title: t("welcome"),
           },
           {
-            startTime: <>16:30</>,
-            title: "Kjærlighetsseremoni",
+            startTime: "16:30",
+            title: t("ceremony"),
           },
           {
-            startTime: <>17:30</>,
-            title: "Middag",
+            startTime: "17:30",
+            title: t("dinner"),
           },
           {
-            startTime: <>22:00</>,
-            title: "Fest og underholdning",
+            startTime: "22:00",
+            title: t("party"),
           },
           {
-            startTime: <>01:00</>,
-            title: "Takk for nå",
+            startTime: "01:00",
+            title: t("thankYou"),
           },
         ].map(({ startTime, title, size }, i) => {
           return (

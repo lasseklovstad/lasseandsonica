@@ -16,37 +16,37 @@ export const meta: Route.MetaFunction = () => {
 export const handle = { i18n: "ourstory" };
 
 export default function OurStory() {
-  const { t } = useTranslation("home");
+  const { t } = useTranslation("ourstory");
   const { t: tCommon } = useTranslation("common");
   const timeline: TimelineEvent[] = [
     {
       date: <TimelineDate date={new Date(2018, 11, 7)} />,
-      title: "Første møte",
+      title: t("timeline.firstMeeting.title"),
       content: [
         {
-          text: "Lasse og Sonica møttes for første gang på julebordet til Experis (Ciber den gang). Lasse danset morsom skulderdans på dansegulvet, Sonica spurte hvorfor han danset slik. Lasse svarte: Jeg gjør det for damene. Sonica var ikke helt overbevist, men syntes det var veldig gøy!",
+          text: t("timeline.firstMeeting.content"),
         },
       ],
     },
     {
       date: <TimelineDate date={new Date(2020, 4, 27)} />,
-      title: "Første gnist",
+      title: t("timeline.firstSpark.title"),
       content: [
         {
-          text: "Etter flere uker med sosial nedstengning var det plutselig ekstra hyggelig å se hverandre under mangekamp med jobb.",
+          text: t("timeline.firstSpark.content1"),
           images: [
             {
               imageUrl: "Bryllup/slackline_ovgmfq.jpg",
-              imageAlt: "Slack line lagbilde",
+              imageAlt: t("timeline.firstSpark.slackLineImageAlt"),
             },
           ],
         },
         {
-          text: "Selv om Lasse ikke imponerte stort i slackline...",
+          text: t("timeline.firstSpark.content2"),
           images: [
             {
               imageUrl: "Bryllup/IMG_20200527_180005_azyfrh.jpg",
-              imageAlt: "Slack line med Lasse",
+              imageAlt: t("timeline.firstSpark.slackLineWithLasseImageAlt"),
               className: "max-w-[400px]",
             },
           ],
@@ -55,14 +55,14 @@ export default function OurStory() {
     },
     {
       date: <TimelineDate date={new Date(2020, 5, 21)} />,
-      title: "Første date",
+      title: t("timeline.firstDate.title"),
       content: [
         {
-          text: 'Det ble ingen "øl ute", ettersom Lasse slo til og inviterte til tacomiddag, med Kløvstad-salsa og rødvin.',
+          text: t("timeline.firstDate.content"),
           images: [
             {
               imageUrl: "v1685207369/taco_ji7gmn.png",
-              imageAlt: "Taco",
+              imageAlt: t("timeline.firstDate.imageAlt"),
               className: "md:max-w-[200px] max-w-[100px]",
             },
           ],
@@ -71,15 +71,15 @@ export default function OurStory() {
     },
     {
       date: <TimelineDate date={new Date(2020, 6, 11)} />,
-      title: "Offisielt kjærester",
+      title: t("timeline.officiallyPartners.title"),
       content: [
         {
-          text: "Var ingen grunn til å vente lenger når alt føltes riktig - og vi ble offisielt kjærester!",
+          text: t("timeline.officiallyPartners.content"),
           images: [
             {
               imageUrl:
                 "Bryllup/59AF94DE-051A-4F6E-AD14-63BBDDDA6375_garffo.jpg",
-              imageAlt: "Selfie av oss kvelden vi ble kjærester",
+              imageAlt: t("timeline.firstDate.imageAlt"),
               className: "max-w-[200px]",
             },
           ],
@@ -88,21 +88,21 @@ export default function OurStory() {
     },
     {
       date: <TimelineDate date={new Date(2021, 4, 10)} />,
-      title: "Flytter sammen",
+      title: t("timeline.moveTogether.title"),
       content: [
         {
-          text: "Vi ble lei av å reise frem og tilbake mellom Alexander Kiellandsplass og Solli Plass. Sonica kjøpte seg inn, og Ivar måtte dessverre flytte litt lenger ned i gata. Det ble store endringer i leiligheten, ettersom Sonica ville pusse opp og fjerne alle minner av et guttekollektiv. Lasse måtte bli med å bo i leiligheten på Solli mens vi pusset opp, og vi fikk tilslutt flytte inn i vår nyoppussede leilighet på Kiellands.",
+          text: t("timeline.moveTogether.content"),
           images: [
             {
               imageUrl:
                 "Bryllup/30D7B25C-FCB1-4748-947F-BAF0282E3EF1_vonek3.jpg",
-              imageAlt: "Lasse pusser opp på en stige",
+              imageAlt: t("timeline.moveTogether.lasseImageAlt"),
               className: "max-w-[200px]",
             },
             {
               imageUrl:
                 "Bryllup/067E0DAC-5DAD-4D42-BC80-B7B2BEDDECE4_jojzh3.jpg",
-              imageAlt: "Sonica pusser på en stige",
+              imageAlt: t("timeline.moveTogether.sonicaImageAlt"),
               className: "max-w-[356px]",
             },
           ],
@@ -111,15 +111,15 @@ export default function OurStory() {
     },
     {
       date: <TimelineDate date={new Date(2023, 3, 19)} />,
-      title: "Frieriet",
+      title: t("timeline.proposal.title"),
       content: [
         {
-          text: 'Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en "vanlig" onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring-3 på fingeren.',
+          text: t("timeline.proposal.content"),
           images: [
             {
               imageUrl:
                 "Bryllup/986C7902-25E2-4DB6-B711-C170A3D450CC_zolx3n.jpg",
-              imageAlt: "Lasse frir",
+              imageAlt: t("timeline.proposal.imageAlt"),
               className: "max-w-[200px]",
             },
           ],
@@ -128,33 +128,33 @@ export default function OurStory() {
     },
     {
       date: <TimelineDate date={new Date(2023, 7, 11)} />,
-      title: "Bryllup!",
-      content: [{ text: "Bryllup med våre nærmeste venner og familie." }],
+      title: t("timeline.wedding.title"),
+      content: [{ text: t("timeline.wedding.content") }],
     },
     {
       date: <TimelineDate date={new Date(2024, 11, 1)} />,
-      title: "Flytter",
+      title: t("timeline.move.title"),
       content: [
         {
-          text: "Vi flytter fra fest og moro i rundkjøringen til den roligere delen av Kiellandsplass. Litt oppussing må selvfølgelig til og vi får bo hos Carina en måneds tid før vi forflytter oss opp 3 etasjer.",
+          text: t("timeline.move.content"),
         },
       ],
     },
     {
       date: <TimelineDate date={new Date(2025, 1, 25)} />,
-      title: "Emilie blir født",
+      title: t("timeline.born.title"),
       content: [
         {
-          text: "Lille Emilie kommer til verden kl.05.25 dagen etter bursdagen til moren sin.",
+          text: t("timeline.born.title"),
         },
       ],
     },
     {
       date: <TimelineDate date={new Date(2025, 9, 11)} />,
-      title: "Bryllupsfeiring",
+      title: t("timeline.weddingParty.title"),
       content: [
         {
-          text: "Endelig er det til for bryllupsfeiring med alle våre fantastiske venner og familie.",
+          text: t("timeline.weddingParty.content"),
         },
       ],
     },
@@ -225,27 +225,17 @@ type TimelineEvent = {
   content: { text: string; images?: CloudinaryImageProps[] }[];
 };
 
-const months = [
-  "jan.",
-  "feb.",
-  "mars",
-  "april",
-  "mai",
-  "juni",
-  "juli",
-  "aug.",
-  "sept.",
-  "okt.",
-  "nov.",
-  "des.",
-];
 const TimelineDate = ({ date }: { date: Date }) => {
+  const { i18n } = useTranslation();
   return (
     <div className="flex flex-col">
       <span>
-        {date.getDate()} {months[date.getMonth()]}
+        {date.toLocaleDateString(i18n.language, {
+          day: "numeric",
+          month: "short",
+        })}
       </span>
-      <span>{date.getFullYear()}</span>
+      <span>{date.toLocaleDateString(i18n.language, { year: "numeric" })}</span>
     </div>
   );
 };

@@ -11,8 +11,6 @@ import {
 import { useChangeLanguage } from "remix-i18next/react";
 import "./tailwind.css";
 
-import { z } from "zod";
-
 import type { Route } from "./+types/root";
 import i18next, { localeCookie } from "./utils/i18n.server";
 
@@ -32,7 +30,6 @@ export const links: LinksFunction = () => [
 
 export const loader = async ({ request }: Route.LoaderArgs) => {
   const locale = await i18next.getLocale(request);
-  console.log(locale);
   return data(
     { locale },
     { headers: { "Set-Cookie": await localeCookie.serialize(locale) } },
