@@ -1,7 +1,4 @@
-import { resolve } from "node:path";
-
 import { createInstance } from "i18next";
-import Backend from "i18next-fs-backend/cjs";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
 import { I18nextProvider, initReactI18next } from "react-i18next";
@@ -27,12 +24,10 @@ export default async function handleRequest(
 
   await instance
     .use(initReactI18next) // Tell our instance to use react-i18next
-    .use(Backend) // Setup our backend
     .init({
       ...i18n, // spread the configuration
       lng, // The locale we detected above
       ns, // The namespaces the routes about to render wants to use
-      backend: { loadPath: resolve("./public/locales/{{lng}}/{{ns}}.json") },
     });
 
   const body = await renderToReadableStream(
