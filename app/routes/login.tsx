@@ -40,8 +40,6 @@ export const loader: LoaderFunction = async ({ request, context }) => {
   return {};
 };
 
-export const handle = { i18n: "login" };
-
 export default function Login() {
   const actionData = useActionData<typeof action>();
   const { t } = useTranslation("login");

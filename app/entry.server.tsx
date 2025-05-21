@@ -6,7 +6,7 @@ import type { AppLoadContext, EntryContext } from "react-router";
 import { ServerRouter } from "react-router";
 
 import i18n from "./i18n"; // your i18n configuration file
-import i18next from "./utils/i18n.server";
+import i18next, { i18nextConfig } from "./utils/i18n.server";
 
 export default async function handleRequest(
   request: Request,
@@ -18,7 +18,7 @@ export default async function handleRequest(
 ) {
   let shellRendered = false;
   const userAgent = request.headers.get("user-agent");
-  const instance = createInstance();
+  const instance = createInstance(i18nextConfig.i18next);
   const lng = await i18next.getLocale(request);
   const ns = i18next.getRouteNamespaces(routerContext);
 

@@ -14,7 +14,7 @@ export const localeCookie = createCookie("lng", {
   httpOnly: true,
 });
 
-const i18next = new RemixI18Next({
+export const i18nextConfig = {
   detection: {
     supportedLanguages: i18n.supportedLngs,
     fallbackLanguage: i18n.fallbackLng,
@@ -26,6 +26,8 @@ const i18next = new RemixI18Next({
     ...i18n,
     resources,
   },
-});
+};
+
+const i18next = new RemixI18Next(i18nextConfig);
 
 export default i18next;

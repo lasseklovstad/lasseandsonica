@@ -36,8 +36,6 @@ export const loader = async ({ request }: Route.LoaderArgs) => {
   );
 };
 
-export const handle = { i18n: "common" };
-
 export default function App({ loaderData: { locale } }: Route.ComponentProps) {
   // This hook will change the i18n instance language to the current locale
   // detected by the loader, this way, when we do something to change the

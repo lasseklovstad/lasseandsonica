@@ -10,8 +10,6 @@ export const meta: Route.MetaFunction = () => {
   return [{ title: "Velkommen - Lasse & Sonica" }];
 };
 
-export const handle = { i18n: "home" };
-
 export default function Home() {
   const { t } = useTranslation("home");
   const { t: tCommon } = useTranslation("common");
