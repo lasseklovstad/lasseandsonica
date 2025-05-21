@@ -33,7 +33,7 @@ const sizes: Record<Variant, string> = {
   h2: "md:text-4xl font-bold text-3xl",
   h3: "md:text-3xl font-bold text-2xl",
   h4: "md:text-2xl font-semibold text-xl",
-  h5: "md:text-xl font-semibold text-lg",
+  h5: "md:text-xl text-lg",
   body: "md:text-lg text-md",
   "body-small": "md:text-md text-sm",
   small: "md:text-sm text-xs",

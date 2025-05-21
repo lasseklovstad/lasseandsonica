@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { href } from "react-router";
 
 import { CloudinaryImage } from "~/components/CloudinaryImage";
@@ -10,20 +11,20 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export default function Home() {
+  const { t } = useTranslation("home");
+  const { t: tCommon } = useTranslation("common");
   return (
     <div className="flex flex-col items-center">
       <PageTitle
-        title="Velkommen"
+        title={t("title")}
         nextLink={{
           to: href("/wedding/ourstory"),
-          name: "Vår historie",
+          name: tCommon("ourstory"),
         }}
-        subtitle={[
-          "Vi giftet oss 11. august 2023 og nå er det endelig tid for feiring!",
-        ]}
+        subtitle={[t("subtitle")]}
       />
       <CloudinaryImage
-        imageAlt="Lasse og Sonica på takterrasse 17.mai 2023"
+        imageAlt={t("imageAlt")}
         imageUrl="Bryllup/77B9998B-E0F0-4D8E-A4AE-AE1E501B6E5D_yrfz6t.jpg"
       />
     </div>

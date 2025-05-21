@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { useNavigation } from "react-router";
 
 import type { LinkType } from "~/types/link";
@@ -9,6 +10,7 @@ import { WeddingLink } from "./WeddingLink";
 
 export const SideBar = ({ links }: { links: LinkType[] }) => {
   const navigation = useNavigation();
+  const { t } = useTranslation("common");
   const dialogRef = useRef<HTMLDialogElement | null>(null);
 
   useEffect(() => {
@@ -22,7 +24,7 @@ export const SideBar = ({ links }: { links: LinkType[] }) => {
       <IconButton
         onClick={() => dialogRef.current?.showModal()}
         type="button"
-        aria-label="Åpne sidemeny"
+        aria-label={t("openNavigationMenu")}
         className="absolute left-0 md:hidden"
       >
         <Menu />

@@ -1,5 +1,6 @@
 import type { LinksFunction, MetaFunction } from "react-router";
 import {
+  data,
   Links,
   Meta,
   Outlet,
@@ -7,7 +8,11 @@ import {
   ScrollRestoration,
   useRouteError,
 } from "react-router";
+import { useChangeLanguage } from "remix-i18next/react";
 import "./tailwind.css";
+
+import type { Route } from "./+types/root";
+import i18next, { localeCookie } from "./utils/i18n.server";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Lasse & Sonica" }];
@@ -23,9 +28,22 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export default function App() {
+export const loader = async ({ request }: Route.LoaderArgs) => {
+  const locale = await i18next.getLocale(request);
+  return data(
+    { locale },
+    { headers: { "Set-Cookie": await localeCookie.serialize(locale) } },
+  );
+};
+
+export default function App({ loaderData: { locale } }: Route.ComponentProps) {
+  // This hook will change the i18n instance language to the current locale
+  // detected by the loader, this way, when we do something to change the
+  // language, this locale will change and i18next will load the correct
+  // translation files
+  useChangeLanguage(locale);
   return (
-    <html lang="no">
+    <html lang={locale}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />

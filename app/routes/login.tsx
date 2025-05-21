@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import type { ActionFunctionArgs, LoaderFunction } from "react-router";
 import { Form, href, redirect, useActionData } from "react-router";
 
@@ -41,13 +42,14 @@ export const loader: LoaderFunction = async ({ request, context }) => {
 
 export default function Login() {
   const actionData = useActionData<typeof action>();
+  const { t } = useTranslation("login");
   return (
     <PageLayout
       showNavigation={false}
       showLogout={false}
       headerContent={
         <Typography variant="h3" as="h2" className="font-normal">
-          Velkommen
+          {t("title")}
         </Typography>
       }
     >
@@ -55,16 +57,16 @@ export default function Login() {
         <Form method="POST" className="my-4 flex flex-col gap-4">
           <div>
             <InputField
-              labelProps={{ children: "Passord" }}
+              labelProps={{ children: t("passwordLabel") }}
               inputProps={{
                 name: "secret",
                 type: "password",
-                placeholder: "Spør Lasse & Sonica",
+                placeholder: t("passwordPlaceholder"),
               }}
               errors={actionData?.error ? [actionData.error] : undefined}
             />
           </div>
-          <Button type="submit">Logg inn</Button>
+          <Button type="submit">{t("login")}</Button>
         </Form>
       </div>
     </PageLayout>
