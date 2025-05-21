@@ -24,7 +24,7 @@ export const validateSecret = (secret: string, context: AppLoadContext) => {
 export const verifyUserIsLoggedIn = async (
   request: Request,
   context: AppLoadContext,
-) => {
+): Promise<AccessLevel | false> => {
   const cookieHeader = request.headers.get("Cookie");
   const siteSecret = await siteSecretCookie.parse(cookieHeader);
   return validateSecret(siteSecret, context);

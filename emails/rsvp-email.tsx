@@ -10,7 +10,6 @@ import {
   Preview,
   Row,
   Section,
-  Text,
 } from "@react-email/components";
 
 import type { rsvps } from "~/database/schema";
@@ -95,14 +94,6 @@ export const RSVPEmail = ({ rsvp }: Props) => {
                       ))}
                   </tbody>
                 </table>
-              </Column>
-            </Row>
-            <Row style={{ ...boxInfos, paddingBottom: "0" }}>
-              <Column>
-                <Text>
-                  Denne informasjonen blir lagret på Cloudflare og slettet inne
-                  60 dager etter bryllupet.
-                </Text>
               </Column>
             </Row>
             <Row style={{ ...boxInfos, paddingTop: "8" }}>

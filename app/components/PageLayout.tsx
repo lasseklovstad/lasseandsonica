@@ -2,6 +2,8 @@ import type { PropsWithChildren, ReactNode } from "react";
 import { useTranslation } from "react-i18next";
 import { href, Link } from "react-router";
 
+import type { AccessLevel } from "~/utils/siteSecret";
+
 import { HeaderAndNavigation } from "./HeaderAndNavigation";
 import { Typography } from "./Typography";
 
@@ -10,10 +12,12 @@ export const PageLayout = ({
   showNavigation,
   showLogout,
   headerContent,
+  accessLevel,
 }: PropsWithChildren<{
   showNavigation: boolean;
   showLogout: boolean;
   headerContent: ReactNode;
+  accessLevel: AccessLevel;
 }>) => {
   const { t } = useTranslation("common");
   return (
@@ -42,6 +46,12 @@ export const PageLayout = ({
             name: t("rsvp"),
             to: href("/wedding/rsvp"),
           },
+          accessLevel === "admin"
+            ? {
+                name: t("rsvpAdmin"),
+                to: href("/wedding/rsvp-admin"),
+              }
+            : undefined,
           {
             name: t("pictures"),
             to: href("/wedding/pictures"),
@@ -50,7 +60,7 @@ export const PageLayout = ({
             name: t("qa"),
             to: href("/wedding/qa"),
           },
-        ]}
+        ].filter((route) => route !== undefined)}
       />
       <main className="mb-2 w-full px-1 md:max-w-[1000px]">{children}</main>
       <footer className="mt-auto flex h-10 w-full justify-center gap-4 bg-red-50 p-2 text-center">

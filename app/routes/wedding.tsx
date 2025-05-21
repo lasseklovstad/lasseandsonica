@@ -5,6 +5,8 @@ import { PageLayout } from "~/components/PageLayout";
 import { WeddingLocationAndCounter } from "~/components/WeddingLocationAndCounter";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
+import type { Route } from "./+types/wedding";
+
 export const loader = async ({ request, context }: LoaderFunctionArgs) => {
   const isLoggedIn = await verifyUserIsLoggedIn(request, context);
   if (!isLoggedIn) {
@@ -16,12 +18,15 @@ export const loader = async ({ request, context }: LoaderFunctionArgs) => {
   };
 };
 
-export default function Root() {
+export default function Root({
+  loaderData: { accessLevel },
+}: Route.ComponentProps) {
   return (
     <PageLayout
       showNavigation
       showLogout
       headerContent={<WeddingLocationAndCounter />}
+      accessLevel={accessLevel}
     >
       <Outlet />
     </PageLayout>

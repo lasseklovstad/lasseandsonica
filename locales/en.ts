@@ -6,6 +6,7 @@ export default {
     program: "Program",
     friendsandfamily: "Friends and Family",
     rsvp: "RSVP",
+    rsvpAdmin: "RSVP Admin",
     pictures: "Pictures",
     qa: "Q & A",
     ourstory: "Our Story",
