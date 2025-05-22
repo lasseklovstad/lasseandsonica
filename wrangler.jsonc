@@ -13,6 +13,10 @@
     {
       "pattern": "lasseandsonica.com",
       "custom_domain": true
+    },
+    {
+      "pattern": "www.lasseandsonica.com",
+      "custom_domain": true
     }
   ],
   "d1_databases": [
