@@ -11,6 +11,7 @@ import { PageTitle } from "~/components/PageTitle";
 import { getDatabase } from "~/database/database";
 import { rsvps } from "~/database/schema";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
+import { CloudflareContext } from "~/middleware/bindings";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/wedding.rsvp";
@@ -69,7 +70,7 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
     })
     .returning();
 
-  const resend = new Resend(context.cloudflare.env.RESEND_API_KEY);
+  const resend = new Resend(context.get(CloudflareContext).env.RESEND_API_KEY);
 
   await resend.emails.send({
     from: "Sonica & Lasse <hello@lasseandsonica.com>",

@@ -1,10 +1,12 @@
 import { drizzle } from "drizzle-orm/d1";
-import type { AppLoadContext } from "react-router";
+import type { unstable_RouterContextProvider } from "react-router";
+
+import { CloudflareContext } from "~/middleware/bindings";
 
 import { rsvps } from "./schema";
 
-export const getDatabase = (context: AppLoadContext) => {
-  return drizzle(context.cloudflare.env.DB, {
+export const getDatabase = (context: unstable_RouterContextProvider) => {
+  return drizzle(context.get(CloudflareContext).env.DB, {
     schema: { rsvps },
     casing: "snake_case",
   });

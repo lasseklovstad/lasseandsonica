@@ -1,4 +1,3 @@
-import type { ExecutionContext } from "@cloudflare/workers-types";
 import type { unstable_InitialContext } from "react-router";
 import { createRequestHandler } from "react-router";
 // eslint-disable-next-line import/no-unresolved

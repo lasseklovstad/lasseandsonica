@@ -30,7 +30,9 @@ jobs:
             LOGIN_SECRET_FULL
             LOGIN_SECRET_ADMIN
             LOGIN_SECRET_LIMITED
+            RESEND_API_KEY
         env:
           LOGIN_SECRET_FULL: ${{ vars.LOGIN_SECRET_FULL }}
           LOGIN_SECRET_ADMIN: ${{ vars.LOGIN_SECRET_ADMIN }}
           LOGIN_SECRET_LIMITED: ${{ vars.LOGIN_SECRET_LIMITED }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
