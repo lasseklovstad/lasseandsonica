@@ -1,3 +1,5 @@
+import type en from "./en";
+
 export default {
   common: {
     logout: "Logg ut",
@@ -6,6 +8,7 @@ export default {
     program: "Program",
     friendsandfamily: "Venner og familie",
     rsvp: "RSVP",
+    rsvpAdmin: "RSVP Admin",
     pictures: "Bilder",
     qa: "Q & A",
     ourstory: "Vår historie",
@@ -99,4 +102,4 @@ export default {
     party: "Fest og underholdning",
     thankYou: "Takk for nå",
   },
-};
+} satisfies typeof en;

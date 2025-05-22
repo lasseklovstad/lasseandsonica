@@ -8,6 +8,7 @@ import RSVPEmail from "emails/rsvp-email";
 import { Button } from "~/components/Button";
 import { InputField } from "~/components/Input";
 import { PageTitle } from "~/components/PageTitle";
+import { Typography } from "~/components/Typography";
 import { getDatabase } from "~/database/database";
 import { rsvps } from "~/database/schema";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
@@ -102,7 +103,8 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
   const hasSubmitted = actionData?.status === "success";
 
   const subtitles = [
-    "Vi håper du har mulighet til å feire denne dagen med oss! Vennligst svar ved å sende inn skjema under innen 1. september.",
+    "Vi håper du har mulighet til å feire denne dagen med oss!",
+    "Vennligst svar ved å sende inn skjema under innen 1. september.",
   ];
 
   return (
@@ -125,8 +127,10 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
         />
       </div>
       <main className="px-2">
-        {hasSubmitted ? (
-          <div>Tusen takk, du får en bekreftelse på epost</div>
+        {!hasSubmitted ? (
+          <Typography variant="body" className="text-center">
+            Takk for ditt svar, du får en bekreftelse på epost.
+          </Typography>
         ) : (
           <Form
             {...getFormProps(form)}
@@ -208,10 +212,6 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                 }}
                 errors={comments.errors}
               />
-              <div className="text-sm text-gray-500">
-                Denne informasjonen blir lagret på Cloudflare og slettet inne 60
-                dager etter bryllupet.
-              </div>
               <Button
                 type="submit"
                 pending={
