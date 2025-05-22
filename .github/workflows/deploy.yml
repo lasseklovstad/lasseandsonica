@@ -1,0 +1,38 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}
+
+jobs:
+  deploy:
+    name: "Deploy to Cloudflare Workers"
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: pnpm i --frozen-lockfile
+      - run: pnpm build
+      - uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          secrets: |
+            LOGIN_SECRET_FULL
+            LOGIN_SECRET_ADMIN
+            LOGIN_SECRET_LIMITED
+            RESEND_API_KEY
+        env:
+          LOGIN_SECRET_FULL: ${{ vars.LOGIN_SECRET_FULL }}
+          LOGIN_SECRET_ADMIN: ${{ vars.LOGIN_SECRET_ADMIN }}
+          LOGIN_SECRET_LIMITED: ${{ vars.LOGIN_SECRET_LIMITED }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}

@@ -1,19 +1,24 @@
-import type { AppLoadContext } from "react-router";
+import type { unstable_RouterContextProvider } from "react-router";
 
 import { siteSecretCookie } from "~/cookies";
+import { CloudflareContext } from "~/middleware/bindings";
 
 export type AccessLevel = "fullAccess" | "limitedAccess" | "admin";
 
-export const validateSecret = (secret: string, context: AppLoadContext) => {
-  const adminAccess = secret === context.cloudflare.env.LOGIN_SECRET_ADMIN;
+export const validateSecret = (
+  secret: string,
+  context: unstable_RouterContextProvider,
+) => {
+  const cloudflare = context.get(CloudflareContext);
+  const adminAccess = secret === cloudflare.env.LOGIN_SECRET_ADMIN;
   if (adminAccess) {
     return "admin";
   }
-  const fullAccess = secret === context.cloudflare.env.LOGIN_SECRET_FULL;
+  const fullAccess = secret === cloudflare.env.LOGIN_SECRET_FULL;
   if (fullAccess) {
     return "fullAccess";
   }
-  const limitedAccess = secret === context.cloudflare.env.LOGIN_SECRET_LIMITED;
+  const limitedAccess = secret === cloudflare.env.LOGIN_SECRET_LIMITED;
   if (limitedAccess) {
     return "limitedAccess";
   }
@@ -23,8 +28,8 @@ export const validateSecret = (secret: string, context: AppLoadContext) => {
 
 export const verifyUserIsLoggedIn = async (
   request: Request,
-  context: AppLoadContext,
-): Promise<AccessLevel | false> => {
+  context: unstable_RouterContextProvider,
+) => {
   const cookieHeader = request.headers.get("Cookie");
   const siteSecret = await siteSecretCookie.parse(cookieHeader);
   return validateSecret(siteSecret, context);

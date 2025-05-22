@@ -8,7 +8,14 @@ import tseslint from "typescript-eslint";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
-  { ignores: [".react-router", "build", ".wrangler"] },
+  {
+    ignores: [
+      ".react-router",
+      "build",
+      ".wrangler",
+      "worker-configuration.d.ts",
+    ],
+  },
   { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
 
   {

@@ -2,7 +2,7 @@ import { createInstance } from "i18next";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
 import { I18nextProvider, initReactI18next } from "react-i18next";
-import type { AppLoadContext, EntryContext } from "react-router";
+import type { EntryContext } from "react-router";
 import { ServerRouter } from "react-router";
 
 import i18n from "./i18n"; // your i18n configuration file
@@ -13,8 +13,6 @@ export default async function handleRequest(
   responseStatusCode: number,
   responseHeaders: Headers,
   routerContext: EntryContext,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _loadContext: AppLoadContext,
 ) {
   let shellRendered = false;
   const userAgent = request.headers.get("user-agent");
