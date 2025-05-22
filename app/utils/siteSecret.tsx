@@ -29,7 +29,7 @@ export const validateSecret = (
 export const verifyUserIsLoggedIn = async (
   request: Request,
   context: unstable_RouterContextProvider,
-) => {
+): Promise<AccessLevel | false> => {
   const cookieHeader = request.headers.get("Cookie");
   const siteSecret = await siteSecretCookie.parse(cookieHeader);
   return validateSecret(siteSecret, context);

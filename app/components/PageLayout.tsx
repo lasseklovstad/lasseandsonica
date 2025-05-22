@@ -17,7 +17,7 @@ export const PageLayout = ({
   showNavigation: boolean;
   showLogout: boolean;
   headerContent: ReactNode;
-  accessLevel: AccessLevel;
+  accessLevel?: AccessLevel;
 }>) => {
   const { t } = useTranslation("common");
   return (

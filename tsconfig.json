@@ -7,6 +7,7 @@
     "**/.client/**/*.ts",
     "**/.client/**/*.tsx",
     "worker-configuration.d.ts",
+    "@types/i18next.d.ts",
     ".react-router/types/**/*",
     "*.config.js",
     "*.config.ts"
