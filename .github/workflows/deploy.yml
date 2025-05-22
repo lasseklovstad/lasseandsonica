@@ -23,6 +23,10 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          secrets: |
+            LOGIN_SECRET_FULL
+            LOGIN_SECRET_ADMIN
+            LOGIN_SECRET_LIMITED
         env:
           LOGIN_SECRET_FULL: ${{ vars.LOGIN_SECRET_FULL }}
           LOGIN_SECRET_ADMIN: ${{ vars.LOGIN_SECRET_ADMIN }}
