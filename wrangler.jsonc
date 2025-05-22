@@ -9,6 +9,12 @@
   "vars": {
     "CLOUDINARY_NAME": "dsiqlprku"
   },
+  "routes": [
+    {
+      "pattern": "lasseandsonica.com",
+      "custom_domain": true
+    }
+  ],
   "d1_databases": [
     {
       "binding": "DB",
