@@ -1,10 +1,9 @@
+import { createInstance } from "i18next";
 import { isbot } from "isbot";
 import { renderToReadableStream } from "react-dom/server";
 import { I18nextProvider, initReactI18next } from "react-i18next";
 import type { EntryContext } from "react-router";
 import { ServerRouter } from "react-router";
-
-import { createInstance } from "i18next";
 
 import i18n from "./i18n"; // your i18n configuration file
 import i18next, { i18nextConfig } from "./utils/i18n.server";
