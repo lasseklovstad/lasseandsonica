@@ -15,7 +15,7 @@ export const meta: Route.MetaFunction = () => {
   return [{ title: "Logg inn - Lasse & Sonica" }];
 };
 
-export const action = async ({ request, context }: ActionFunctionArgs) => {
+export const action = async ({ request, context }: Route.ActionArgs) => {
   const formData = await request.formData();
   const secret = formData.get("secret") as string;
 
