@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import type { ActionFunctionArgs, LoaderFunction } from "react-router";
+import type { LoaderFunction } from "react-router";
 import { Form, href, redirect, useActionData } from "react-router";
 
 import { Button } from "~/components/Button";
