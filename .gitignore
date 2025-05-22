@@ -8,3 +8,5 @@ node_modules
 .wrangler
 .dev.vars
 .react-router
+worker-configuration.d.ts
+tsconfig.tsbuildinfo
