@@ -28,9 +28,12 @@ export function loader({ params }: Route.LoaderArgs) {
   if (ns.error) return data({ error: ns.error }, { status: 400 });
 
   return data(namespaces[ns.data], {
-    headers: {
-      "Cache-Control":
-        "max-age=300, s-maxage=86400, stale-while-revalidate=604800, stale-if-error=604800",
-    },
+    headers:
+      process.env.NODE_ENV === "production"
+        ? {
+            "Cache-Control":
+              "max-age=300, s-maxage=86400, stale-while-revalidate=604800, stale-if-error=604800",
+          }
+        : {},
   });
 }
