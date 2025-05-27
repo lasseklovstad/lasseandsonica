@@ -7,11 +7,11 @@ export const EnvSchema = z.object({
   LOGIN_SECRET_ADMIN: z.string(),
   CLOUDINARY_NAME: z.string(),
   RESEND_API_KEY: z.string(),
-  DB: z.instanceof(D1Database),
 });
 
 export const CloudflareContext = unstable_createContext<{
   env: z.infer<typeof EnvSchema>;
+  db: D1Database;
   ctx: ExecutionContext;
   cf?: RequestInitCfProperties;
 }>();
