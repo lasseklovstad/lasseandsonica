@@ -11,7 +11,8 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext) {
     const context: unstable_InitialContext = new Map();
     context.set(CloudflareContext, {
-      env: EnvSchema.safeParse(env),
+      env: EnvSchema.parse(env),
+      db: env.DB,
       ctx,
       cf: request.cf,
     });

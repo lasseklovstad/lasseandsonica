@@ -71,14 +71,18 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
     })
     .returning();
 
-  const resend = new Resend(context.get(CloudflareContext).env.RESEND_API_KEY);
+  const resendKey = context.get(CloudflareContext).env.RESEND_API_KEY;
+  if (resendKey) {
+    const resend = new Resend(resendKey);
 
-  await resend.emails.send({
-    from: "Sonica & Lasse <hello@lasseandsonica.com>",
-    to: email,
-    subject: "Bekreftelse RSVP - Bryllup",
-    react: <RSVPEmail rsvp={rsvp} />,
-  });
+    await resend.emails.send({
+      from: "Sonica & Lasse <hello@lasseandsonica.com>",
+      to: email,
+      subject: "Bekreftelse RSVP - Bryllup",
+      react: <RSVPEmail rsvp={rsvp} />,
+    });
+    console.warn("Skip sending mail");
+  }
 
   return data({ status: submission.status, result: submission.reply() });
 };
@@ -127,7 +131,7 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
         />
       </div>
       <main className="px-2">
-        {!hasSubmitted ? (
+        {hasSubmitted ? (
           <Typography variant="body" className="text-center">
             Takk for ditt svar, du får en bekreftelse på epost.
           </Typography>

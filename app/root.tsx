@@ -12,7 +12,11 @@ import { useChangeLanguage } from "remix-i18next/react";
 import "./tailwind.css";
 
 import type { Route } from "./+types/root";
-import i18next, { localeCookie } from "./utils/i18n.server";
+import {
+  getLocale,
+  i18nextMiddleware,
+  localeCookie,
+} from "./utils/i18n.server";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Lasse & Sonica" }];
@@ -28,8 +32,10 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export const loader = async ({ request }: Route.LoaderArgs) => {
-  const locale = await i18next.getLocale(request);
+export const unstable_middleware = [i18nextMiddleware];
+
+export const loader = async ({ context }: Route.LoaderArgs) => {
+  const locale = getLocale(context);
   return data(
     { locale },
     { headers: { "Set-Cookie": await localeCookie.serialize(locale) } },
