@@ -13,7 +13,6 @@ import "./tailwind.css";
 
 import type { Route } from "./+types/root";
 import {
-  getInstance,
   getLocale,
   i18nextMiddleware,
   localeCookie,
