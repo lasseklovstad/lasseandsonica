@@ -81,7 +81,7 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
       subject: "Bekreftelse RSVP - Bryllup",
       react: <RSVPEmail rsvp={rsvp} />,
     });
-    console.warning("Skip sending mail");
+    console.warn("Skip sending mail");
   }
 
   return data({ status: submission.status, result: submission.reply() });
