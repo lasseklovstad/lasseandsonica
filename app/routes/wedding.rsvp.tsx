@@ -1,8 +1,9 @@
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
-import { parseWithZod } from "@conform-to/zod";
+import { parseWithZod } from "@conform-to/zod/v4";
+import { useTranslation } from "react-i18next";
 import { data, Form, href, useNavigation } from "react-router";
 import { Resend } from "resend";
-import { z } from "zod";
+import { z } from "zod/v4";
 
 import RSVPEmail from "emails/rsvp-email";
 import { Button } from "~/components/Button";
@@ -13,38 +14,58 @@ import { getDatabase } from "~/database/database";
 import { rsvps } from "~/database/schema";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { CloudflareContext } from "~/middleware/bindings";
+import { getInstance } from "~/utils/i18n.server";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/wedding.rsvp";
 
-const nameSchema = z
-  .string({ required_error: "Påkrevd" })
-  .trim()
-  .min(3, { message: "Navnet må være lenger enn 3 bokstaver" });
-const schema = z.object({
-  fullName: nameSchema,
-  email: z
-    .string({ required_error: "Påkrevd" })
+const createRsvpSchema = ({
+  requiredMessage,
+  invalidEmailMessage,
+  minNameMessage,
+}: {
+  requiredMessage: string;
+  minNameMessage: string;
+  invalidEmailMessage: string;
+}) => {
+  const nameSchema = z
+    .string({ error: requiredMessage })
     .trim()
-    .email({ message: "E-post er ikke gyldig." }),
-  fullNameGuest: nameSchema.optional(),
-  attending: z.enum(["yes", "no"], { required_error: "Påkrevd" }),
-  foodPreferences: z.string().trim().optional(),
-  comments: z.string().trim().optional(),
-});
+    .min(3, { message: minNameMessage });
+  const schema = z.object({
+    fullName: nameSchema,
+    email: z.email({
+      error: (issue) => {
+        return issue.input ? invalidEmailMessage : requiredMessage;
+      },
+    }),
+    fullNameGuest: nameSchema.optional(),
+    attending: z.enum(["yes", "no"], { error: requiredMessage }),
+    foodPreferences: z.string().trim().optional(),
+    comments: z.string().trim().optional(),
+  });
+  return schema;
+};
 
 export const meta: Route.MetaFunction = () => {
   return [{ title: "RSVP - Lasse & Sonica" }];
 };
 
 export const action = async ({ request, context }: Route.ActionArgs) => {
+  const i18next = getInstance(context);
   const formData = await request.formData();
   const isLoggedIn = await verifyUserIsLoggedIn(request, context);
   if (!isLoggedIn) {
     throw new Response("Ingen tilgang", { status: 403 });
   }
   const db = getDatabase(context);
-  const submission = parseWithZod(formData, { schema });
+  const submission = parseWithZod(formData, {
+    schema: createRsvpSchema({
+      invalidEmailMessage: i18next.t("rsvp:errors.invalidEmailMessage"),
+      minNameMessage: i18next.t("rsvp:errors.minNameMessage"),
+      requiredMessage: i18next.t("rsvp:errors.requiredMessage"),
+    }),
+  });
 
   if (submission.status !== "success") {
     return data({ status: submission.status, result: submission.reply() });
@@ -88,6 +109,8 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
 };
 
 export default function RSVP({ actionData }: Route.ComponentProps) {
+  const { t } = useTranslation("rsvp");
+  const { t: t_common } = useTranslation("common");
   const { accessLevel } = useWeddingLoaderData();
   const navigation = useNavigation();
   const [
@@ -99,7 +122,13 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
 
     // Reuse the validation logic on the client
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema });
+      return parseWithZod(formData, {
+        schema: createRsvpSchema({
+          invalidEmailMessage: t("errors.invalidEmailMessage"),
+          minNameMessage: t("errors.minNameMessage"),
+          requiredMessage: t("errors.requiredMessage"),
+        }),
+      });
     },
     shouldRevalidate: "onBlur",
     shouldValidate: "onSubmit",
@@ -114,19 +143,19 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
   return (
     <div>
       <div className="hidden md:block">
-        <PageTitle title="Kommer du?" subtitle={subtitles} />
+        <PageTitle title={t("title")} subtitle={subtitles} />
       </div>
       <div className="md:hidden">
         <PageTitle
           nextLink={{
             to: href("/wedding/pictures"),
-            name: "Bilder",
+            name: t_common("pictures"),
           }}
           backLink={{
             to: href("/wedding/friendsandfamily"),
-            name: "Venner og familie",
+            name: t_common("friendsandfamily"),
           }}
-          title="Kommer du?"
+          title={t("title")}
           subtitle={subtitles}
         />
       </div>

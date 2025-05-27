@@ -29,6 +29,9 @@ export default {
     passwordLabel: "Passord",
     passwordPlaceholder: "Spør Lasse & Sonica",
     login: "Logg inn",
+    errors: {
+      invalidPassword: "Feil passord",
+    },
   },
   ourstory: {
     title: "Vår historie",
@@ -101,5 +104,13 @@ export default {
     dinner: "Middag",
     party: "Fest og underholdning",
     thankYou: "Takk for nå",
+  },
+  rsvp: {
+    title: "Kommer du?",
+    errors: {
+      requiredMessage: "Påkrevd",
+      minNameMessage: "Må være lenger enn 3 bokstaver",
+      invalidEmailMessage: "E-post er ikke gyldig",
+    },
   },
 } satisfies typeof en;

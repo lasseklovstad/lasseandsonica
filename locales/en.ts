@@ -27,6 +27,9 @@ export default {
     passwordLabel: "Password",
     passwordPlaceholder: "Ask Lasse & Sonica",
     login: "Log in",
+    errors: {
+      invalidPassword: "Wrong password",
+    },
   },
   ourstory: {
     title: "Our Story",
@@ -99,5 +102,13 @@ export default {
     dinner: "Dinner",
     party: "Party and entertainment",
     thankYou: "Thank you for now",
+  },
+  rsvp: {
+    title: "Are you comming?",
+    errors: {
+      requiredMessage: "Required",
+      minNameMessage: "Must be more then 3 characters",
+      invalidEmailMessage: "Email is not valid",
+    },
   },
 };

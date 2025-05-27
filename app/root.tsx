@@ -11,6 +11,8 @@ import {
 import { useChangeLanguage } from "remix-i18next/react";
 import "./tailwind.css";
 
+import { z } from "zod/v4";
+
 import type { Route } from "./+types/root";
 import {
   getLocale,
@@ -37,9 +39,17 @@ export const unstable_middleware = [i18nextMiddleware];
 export const loader = async ({ context }: Route.LoaderArgs) => {
   const locale = getLocale(context);
   return data(
-    { locale },
+    { locale: locale as "en" | "no" },
     { headers: { "Set-Cookie": await localeCookie.serialize(locale) } },
   );
+};
+
+export const clientLoader = async ({
+  serverLoader,
+}: Route.ClientLoaderArgs) => {
+  const loaderData = await serverLoader();
+  z.config(z.locales[loaderData.locale]());
+  return loaderData;
 };
 
 export default function App({ loaderData: { locale } }: Route.ComponentProps) {
