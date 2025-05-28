@@ -135,10 +135,7 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
   });
   const hasSubmitted = actionData?.status === "success";
 
-  const subtitles = [
-    "Vi håper du har mulighet til å feire denne dagen med oss!",
-    "Vennligst svar ved å sende inn skjema under innen 1. september.",
-  ];
+  const subtitles = [t("subtitle1"), t("subtitle2")];
 
   return (
     <div>
@@ -162,7 +159,7 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
       <main className="px-2">
         {hasSubmitted ? (
           <Typography variant="body" className="text-center">
-            Takk for ditt svar, du får en bekreftelse på epost.
+            {t("successText")}
           </Typography>
         ) : (
           <Form
@@ -172,34 +169,34 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
           >
             <div className="flex w-full max-w-[500px] flex-col gap-4">
               <InputField
-                labelProps={{ children: "Fullt navn" }}
+                labelProps={{ children: t("fullName") }}
                 inputProps={{
                   ...getInputProps(fullName, { type: "text" }),
-                  placeholder: "Ola Nordman",
+                  placeholder: t("fullNamePlaceholder"),
                 }}
                 errors={fullName.errors}
               />
 
               <InputField
-                labelProps={{ children: "E-post" }}
+                labelProps={{ children: t("email") }}
                 inputProps={{
                   ...getInputProps(email, { type: "email" }),
-                  placeholder: "navn@eksempel.no",
+                  placeholder: t("emailPlaceholder"),
                 }}
                 errors={email.errors}
               />
               {accessLevel === "fullAccess" ? (
                 <InputField
-                  labelProps={{ children: "Fullt navn partner" }}
+                  labelProps={{ children: t("fullNameGuest") }}
                   inputProps={{
                     ...getInputProps(fullNameGuest, { type: "text" }),
-                    placeholder: "Kari Nordman",
+                    placeholder: t("fullNameGuestPlaceholder"),
                   }}
                   errors={fullNameGuest.errors}
                 />
               ) : null}
               <fieldset className="flex flex-col gap-2">
-                <legend className="mb-2 font-semibold">Kan du komme?</legend>
+                <legend className="mb-2 font-semibold">{t("attending")}</legend>
                 <div className="flex gap-2">
                   <label className="flex items-center gap-2 hover:cursor-pointer">
                     <input
@@ -209,7 +206,7 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                         value: "yes",
                       })}
                     />
-                    Ja
+                    {t("yes")}
                   </label>
                   <label className="flex items-center gap-2 hover:cursor-pointer">
                     <input
@@ -219,7 +216,7 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                         value: "no",
                       })}
                     />
-                    Nei
+                    {t("no")}
                   </label>
                 </div>
                 <div
@@ -230,18 +227,18 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                 </div>
               </fieldset>
               <InputField
-                labelProps={{ children: "Matpreferanser" }}
+                labelProps={{ children: t("foodPreferences") }}
                 inputProps={{
                   ...getInputProps(foodPreferences, { type: "text" }),
-                  placeholder: "Nøtter",
+                  placeholder: t("foodPreferencesPlaceholder"),
                 }}
                 errors={foodPreferences.errors}
               />
               <InputField
-                labelProps={{ children: "Kommentarer" }}
+                labelProps={{ children: t("comments") }}
                 inputProps={{
                   ...getInputProps(comments, { type: "text" }),
-                  placeholder: "Jeg gleder meg!!!",
+                  placeholder: t("commentsPlaceholder"),
                 }}
                 errors={comments.errors}
               />
@@ -252,7 +249,7 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                   navigation.formMethod === "POST"
                 }
               >
-                Send inn
+                {t("submit")}
               </Button>
             </div>
           </Form>

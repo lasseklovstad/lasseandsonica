@@ -9,9 +9,9 @@ import {
   useRouteError,
 } from "react-router";
 import { useChangeLanguage } from "remix-i18next/react";
-import "./tailwind.css";
-
 import { z } from "zod/v4";
+
+import "./tailwind.css";
 
 import type { Route } from "./+types/root";
 import {
