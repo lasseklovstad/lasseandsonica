@@ -95,13 +95,13 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
   const resendKey = context.get(CloudflareContext).env.RESEND_API_KEY;
   if (resendKey) {
     const resend = new Resend(resendKey);
-
     await resend.emails.send({
       from: "Sonica & Lasse <hello@lasseandsonica.com>",
       to: email,
-      subject: "Bekreftelse RSVP - Bryllup",
-      react: <RSVPEmail rsvp={rsvp} />,
+      subject: i18next.t("email:subject"),
+      react: <RSVPEmail rsvp={rsvp} i18next={i18next} />,
     });
+  } else {
     console.warn("Skip sending mail");
   }
 

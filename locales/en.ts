@@ -129,4 +129,17 @@ export default {
     subtitle1: "We hope you can celebrate this day with us!",
     subtitle2: "Please reply by submitting the form below by September 1st.",
   },
+  email: {
+    subject: "Confirmation RSVP - Wedding",
+    greeting: "Hi {{name}},",
+    excitedToSeeYou:
+      "We are looking forward to seeing you at the wedding on October 11th.",
+    excitedToSeeYou_plural:
+      "We are looking forward to seeing you both at the wedding on October 11th.",
+    sadYouCannotCome: "It's a shame you can't make it to our wedding.",
+    sadYouCannotCome_plural:
+      "It's a shame you both can't make it to our wedding.",
+    goToWebsite: "Go to website",
+    ringsAlt: "Rings",
+  },
 };

@@ -131,4 +131,16 @@ export default {
     subtitle2:
       "Vennligst svar ved å sende inn skjema under innen 1. september.",
   },
+  email: {
+    greeting: "Hei {{name}},",
+    excitedToSeeYou: "Vi gleder oss til å se deg i bryllupet 11.oktober.",
+    excitedToSeeYou_plural:
+      "Vi gleder oss til å se dere i bryllupet 11.oktober.",
+    sadYouCannotCome: "Det var synd at du ikke kunne komme i vårt bryllup.",
+    sadYouCannotCome_plural:
+      "Det var synd at dere ikke kunne komme i vårt bryllup.",
+    goToWebsite: "Gå til nettsiden",
+    ringsAlt: "Ringer",
+    subject: "Bekreftelse RSVP - Bryllup",
+  },
 } satisfies typeof en;
