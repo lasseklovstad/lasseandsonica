@@ -125,9 +125,10 @@ export default {
     email: "Email",
     emailPlaceholder: "name@example.com",
     successText:
-      "Thank you for your response, you will receive a confirmation email.",
+      "Thank you so much for your reply, you'll receive a confirmation by email :D",
     subtitle1: "We hope you can celebrate this day with us!",
-    subtitle2: "Please reply by submitting the form below by September 1st.",
+    subtitle2:
+      "Please reply by submitting the form below by <strong>September 1st.</strong>",
   },
   email: {
     subject: "Confirmation RSVP - Wedding",

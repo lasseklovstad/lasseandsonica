@@ -1,6 +1,6 @@
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod/v4";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { data, Form, href, useNavigation } from "react-router";
 import { Resend } from "resend";
 import { z } from "zod/v4";
@@ -135,7 +135,10 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
   });
   const hasSubmitted = actionData?.status === "success";
 
-  const subtitles = [t("subtitle1"), t("subtitle2")];
+  const subtitles = [
+    <Trans i18nKey={"rsvp:subtitle1"} />,
+    <Trans i18nKey={"rsvp:subtitle2"} />,
+  ];
 
   return (
     <div>
@@ -158,7 +161,7 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
       </div>
       <main className="px-2">
         {hasSubmitted ? (
-          <Typography variant="body" className="text-center">
+          <Typography variant="h2" className="my-8 text-center">
             {t("successText")}
           </Typography>
         ) : (
@@ -172,7 +175,6 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                 labelProps={{ children: t("fullName") }}
                 inputProps={{
                   ...getInputProps(fullName, { type: "text" }),
-                  placeholder: t("fullNamePlaceholder"),
                 }}
                 errors={fullName.errors}
               />
@@ -181,7 +183,6 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                 labelProps={{ children: t("email") }}
                 inputProps={{
                   ...getInputProps(email, { type: "email" }),
-                  placeholder: t("emailPlaceholder"),
                 }}
                 errors={email.errors}
               />
@@ -190,7 +191,6 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                   labelProps={{ children: t("fullNameGuest") }}
                   inputProps={{
                     ...getInputProps(fullNameGuest, { type: "text" }),
-                    placeholder: t("fullNameGuestPlaceholder"),
                   }}
                   errors={fullNameGuest.errors}
                 />
@@ -230,7 +230,6 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                 labelProps={{ children: t("foodPreferences") }}
                 inputProps={{
                   ...getInputProps(foodPreferences, { type: "text" }),
-                  placeholder: t("foodPreferencesPlaceholder"),
                 }}
                 errors={foodPreferences.errors}
               />
@@ -238,7 +237,6 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                 labelProps={{ children: t("comments") }}
                 inputProps={{
                   ...getInputProps(comments, { type: "text" }),
-                  placeholder: t("commentsPlaceholder"),
                 }}
                 errors={comments.errors}
               />

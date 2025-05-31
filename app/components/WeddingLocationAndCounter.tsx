@@ -7,7 +7,7 @@ import { Typography } from "./Typography";
 const startDate = new Date(2025, 9, 11, 16, 0);
 
 export const WeddingLocationAndCounter = () => {
-  const { i18n, t } = useTranslation();
+  const { i18n, t } = useTranslation("common");
   const [days, hours, minutes, seconds] = useCountdown(startDate);
   return (
     <>

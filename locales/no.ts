@@ -126,10 +126,10 @@ export default {
     fullNamePlaceholder: "Ola Nordmann",
     email: "E-post",
     emailPlaceholder: "navn@eksempel.no",
-    successText: "Takk for ditt svar, du får en bekreftelse på epost.",
+    successText: "Tusen takk for ditt svar, du får en bekreftelse på e-post :D",
     subtitle1: "Vi håper du har mulighet til å feire denne dagen med oss!",
     subtitle2:
-      "Vennligst svar ved å sende inn skjema under innen 1. september.",
+      "Vennligst svar ved å sende inn skjema under innen <strong>1. september.</strong>",
   },
   email: {
     greeting: "Hei {{name}},",
