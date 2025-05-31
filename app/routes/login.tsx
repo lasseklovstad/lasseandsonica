@@ -11,6 +11,7 @@ import { InputField } from "~/components/Input";
 import { PageLayout } from "~/components/PageLayout";
 import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
+import { getInstance } from "~/utils/i18n.server";
 import { validateSecret, verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/login";
@@ -20,17 +21,18 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export const action = async ({ request, context }: Route.ActionArgs) => {
+  const i18next = getInstance(context);
   const formData = await request.formData();
   const secret = formData.get("secret") as string;
 
   const submission = parseWithZod(formData, {
-    schema: LoginSchema.check((ctx) => {
+    schema: createLoginSchema().check((ctx) => {
       const isValidSecret = validateSecret(ctx.value.secret, context);
       if (!isValidSecret) {
         ctx.issues.push({
           code: "custom",
           input: ctx.value,
-          message: "Feil passord",
+          message: i18next.t("login:errors.invalidPassword"),
           path: ["secret"],
         });
       }
@@ -50,9 +52,10 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
   return { result: submission.reply() };
 };
 
-const LoginSchema = z.object({
-  secret: z.string(),
-});
+const createLoginSchema = () =>
+  z.object({
+    secret: z.string(),
+  });
 
 export const loader: LoaderFunction = async ({ request, context }) => {
   const isLoggedIn = await verifyUserIsLoggedIn(request, context);
@@ -73,7 +76,7 @@ export default function Login({ actionData }: Route.ComponentProps) {
     defaultValue: { secret: defaultSecret },
     // Reuse the validation logic on the client
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: LoginSchema });
+      return parseWithZod(formData, { schema: createLoginSchema() });
     },
   });
 

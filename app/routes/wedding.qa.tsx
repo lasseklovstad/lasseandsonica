@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
 import { href, useSearchParams } from "react-router";
 
-import { Accordion } from "~/components/Accordion";
-import { LinkMoonFish } from "~/components/LinkSlemmestad";
 import { PageTitle } from "~/components/PageTitle";
+import { Typography } from "~/components/Typography";
 
 import type { Route } from "./+types/wedding.qa";
 
@@ -13,48 +12,48 @@ export const meta: Route.MetaFunction = () => {
 
 const questions = [
   {
-    question: "🎁 Hva skal man gi i bryllupsgave?",
-    id: "gift",
+    question: "Lokasjon",
+    id: "location",
     answer: (
-      <div className="flex flex-col gap-2">
-        <div>
-          Da dette er den mindre feiringen av bryllupet vårt forventer vi ingen
-          gaver nå. Men vi blir veldig glade for koselige hilsener/kort.
-        </div>
-        <div>
-          Om dere gjerne ønsker å gi noe dere tenker passer til oss er det
-          selvfølgelig veldig hyggelig. Men ellers vil vi bruke litt tid på å
-          lage en ønskeliste til den større bryllupsfeiringen.
-        </div>
-        <div>
-          Hvis det fortsatt er ønskelig å gi noe nå ønsker vi oss pengegaver på
-          vipps til sparing.
-        </div>
+      <div>
+        <span>Feiringen er på Månefisken i Oslo, rett ved Akerselva. </span>
+
+        <ul className="mt-2 ml-4 list-disc">
+          <li>
+            <a
+              href="https://www.google.com/maps/search/?api=1&query=Månefisken+AS"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Adressen er Sagveien 23A, 0459 Oslo
+            </a>
+          </li>
+          <li>Nærmeste parkering er Mølla p-hus.</li>
+          <li>Det er trapper ned til inngang og ingen heis.</li>
+        </ul>
       </div>
     ),
   },
   {
-    question: "🗺️ Hvor er feiringen?",
-    id: "location",
-    answer: (
-      <>
-        Feiringen er på Månefisken i Oslo, rett ved Akerselva. <br />
-        <LinkMoonFish />
-      </>
-    ),
+    question: "Antrekk",
+    id: "dresscode",
+    answer: "Smoking / Mørk dress",
   },
   {
-    question: "👗 Hva skal man ha på seg?",
+    question: "Tale eller innslag",
     id: "dresscode",
     answer: (
       <div>
-        <span className="font-semibold">Dress code menn:</span> Smoking / Mørk
-        dress
-        <br />
-        <span className="font-semibold">Dress code damer:</span> Knelang kjole /
-        Lang kjole
+        Ønsker du å holde tale eller et innslag under middagen, send en mail til
+        våres toastmastere Magnus Joelson og Jim-Roger Knutsen. Send mail til
+        jimr.knutsen@live.no
       </div>
     ),
+  },
+  {
+    question: "Ønskeliste",
+    id: "gift",
+    answer: <span className="italic">Mer info kommer</span>,
   },
 ];
 
@@ -74,29 +73,23 @@ export default function QA() {
   return (
     <div className="flex flex-col items-center">
       <PageTitle
-        title="Spørsmål og svar"
+        title="Praktisk info"
         backLink={{
           to: href("/wedding/pictures"),
           name: "Bilder",
         }}
-        subtitle={[
-          "Her finner du nyttige spørsmål og svar.",
-          "Er det noe annet du lurer på, spør oss.",
-        ]}
+        subtitle={["Finner du ikke det du lurer på? Spør oss!"]}
       />
-      {questions.map(({ question, answer }, i) => (
-        <Accordion
-          key={i}
-          ref={(ref) => {
-            if (ref) {
-              accordionRef.current[i] = ref;
-            }
-          }}
-          defaultOpen={i === openAccordionIndex}
-          title={question}
-          content={answer}
-        />
-      ))}
+      <div className="mb-12 flex max-w-[500px] flex-col gap-6">
+        {questions.map(({ question, answer }, i) => (
+          <div key={question}>
+            <Typography variant="h4" className="mb-2">
+              {question}
+            </Typography>
+            {answer}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
