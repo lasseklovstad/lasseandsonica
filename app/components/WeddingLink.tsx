@@ -16,7 +16,7 @@ export const WeddingLink = ({ link }: { link: LinkType }) => {
       viewTransition
       prefetch="intent"
     >
-      <Typography variant="body-small" className="p-1" as="span">
+      <Typography variant="body" className="p-1" as="span">
         {link.name}
       </Typography>
     </NavLink>

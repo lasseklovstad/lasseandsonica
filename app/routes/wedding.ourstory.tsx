@@ -162,12 +162,12 @@ export default function OurStory() {
       <PageTitle
         title={t("title")}
         nextLink={{
-          to: href("/wedding/program"),
-          name: tCommon("program"),
+          to: href("/wedding/pictures"),
+          name: tCommon("pictures"),
         }}
         backLink={{
-          to: href("/wedding/home"),
-          name: tCommon("home"),
+          to: href("/wedding/friendsandfamily"),
+          name: tCommon("friendsandfamily"),
         }}
         subtitle={[t("subtitle")]}
       />

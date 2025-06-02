@@ -10,7 +10,7 @@ export default {
     rsvp: "RSVP",
     rsvpAdmin: "RSVP Admin",
     pictures: "Bilder",
-    qa: "Q & A",
+    qa: "Info",
     ourstory: "Vår historie",
     openNavigationMenu: "Åpne navigasjonsmeny",
     days: "dager",
@@ -29,6 +29,9 @@ export default {
     passwordLabel: "Passord",
     passwordPlaceholder: "Spør Lasse & Sonica",
     login: "Logg inn",
+    errors: {
+      invalidPassword: "Feil passord",
+    },
   },
   ourstory: {
     title: "Vår historie",
@@ -101,5 +104,43 @@ export default {
     dinner: "Middag",
     party: "Fest og underholdning",
     thankYou: "Takk for nå",
+  },
+  rsvp: {
+    title: "Kommer du?",
+    errors: {
+      requiredMessage: "Påkrevd",
+      minNameMessage: "Må være lenger enn 3 bokstaver",
+      invalidEmailMessage: "E-post er ikke gyldig",
+    },
+    submit: "Send inn",
+    comments: "Kommentarer",
+    commentsPlaceholder: "Jeg gleder meg!!!",
+    foodPreferences: "Allergier",
+    foodPreferencesPlaceholder: "Nøtter",
+    attending: "Kan du komme?",
+    yes: "Ja",
+    no: "Nei",
+    fullNameGuest: "Fullt navn partner",
+    fullNameGuestPlaceholder: "Kari Nordmann",
+    fullName: "Fullt navn",
+    fullNamePlaceholder: "Ola Nordmann",
+    email: "E-post",
+    emailPlaceholder: "navn@eksempel.no",
+    successText: "Tusen takk for ditt svar, du får en bekreftelse på e-post :D",
+    subtitle1: "Vi håper du har mulighet til å feire denne dagen med oss!",
+    subtitle2:
+      "Vennligst svar ved å sende inn skjema under innen <strong>1. september.</strong>",
+  },
+  email: {
+    greeting: "Hei {{name}},",
+    excitedToSeeYou: "Vi gleder oss til å se deg i bryllupet 11.oktober.",
+    excitedToSeeYou_plural:
+      "Vi gleder oss til å se dere i bryllupet 11.oktober.",
+    sadYouCannotCome: "Det var synd at du ikke kunne komme i vårt bryllup.",
+    sadYouCannotCome_plural:
+      "Det var synd at dere ikke kunne komme i vårt bryllup.",
+    goToWebsite: "Gå til nettsiden",
+    ringsAlt: "Ringer",
+    subject: "Bekreftelse RSVP - Bryllup",
   },
 } satisfies typeof en;

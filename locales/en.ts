@@ -8,7 +8,7 @@ export default {
     rsvp: "RSVP",
     rsvpAdmin: "RSVP Admin",
     pictures: "Pictures",
-    qa: "Q & A",
+    qa: "Info",
     ourstory: "Our Story",
     openNavigationMenu: "Open navigation menu",
     days: "days",
@@ -27,6 +27,9 @@ export default {
     passwordLabel: "Password",
     passwordPlaceholder: "Ask Lasse & Sonica",
     login: "Log in",
+    errors: {
+      invalidPassword: "Wrong password",
+    },
   },
   ourstory: {
     title: "Our Story",
@@ -99,5 +102,45 @@ export default {
     dinner: "Dinner",
     party: "Party and entertainment",
     thankYou: "Thank you for now",
+  },
+  rsvp: {
+    title: "Are you attending?",
+    errors: {
+      requiredMessage: "Required",
+      minNameMessage: "Must be more then 3 characters",
+      invalidEmailMessage: "Email is not valid",
+    },
+    submit: "Send in",
+    comments: "Comments",
+    commentsPlaceholder: "Looking forward to it!",
+    foodPreferences: "Dietary requirements",
+    foodPreferencesPlaceholder: "Nuts",
+    attending: "Can you attend?",
+    yes: "Yes",
+    no: "No",
+    fullNameGuest: "Full name partner",
+    fullNameGuestPlaceholder: "Jane Doe",
+    fullName: "Full name",
+    fullNamePlaceholder: "John Doe",
+    email: "Email",
+    emailPlaceholder: "name@example.com",
+    successText:
+      "Thank you so much for your reply, you'll receive a confirmation by email :D",
+    subtitle1: "We hope you can celebrate this day with us!",
+    subtitle2:
+      "Please reply by submitting the form below by <strong>September 1st.</strong>",
+  },
+  email: {
+    subject: "Confirmation RSVP - Wedding",
+    greeting: "Hi {{name}},",
+    excitedToSeeYou:
+      "We are looking forward to seeing you at the wedding on October 11th.",
+    excitedToSeeYou_plural:
+      "We are looking forward to seeing you both at the wedding on October 11th.",
+    sadYouCannotCome: "It's a shame you can't make it to our wedding.",
+    sadYouCannotCome_plural:
+      "It's a shame you both can't make it to our wedding.",
+    goToWebsite: "Go to website",
+    ringsAlt: "Rings",
   },
 };

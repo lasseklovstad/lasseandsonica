@@ -11,16 +11,45 @@ import {
   Row,
   Section,
 } from "@react-email/components";
+import { createInstance, type i18n } from "i18next";
 
 import type { rsvps } from "~/database/schema";
+import { resources } from "~/utils/i18n.server";
 
-type Props = { rsvp: typeof rsvps.$inferSelect };
+type Props = { rsvp: typeof rsvps.$inferSelect; i18next: i18n };
 
-export const RSVPEmail = ({ rsvp }: Props) => {
+export const RSVPEmail = ({ rsvp, i18next: { t } }: Props) => {
   const subtitleText =
     rsvp.attending === "yes"
-      ? `Vi gleder oss til å se ${rsvp.fullNameGuest ? "dere" : "deg"} i bryllupet 11.oktober.`
-      : `Det var synd at ${rsvp.fullNameGuest ? "dere" : "du"} ikke kunne komme i vårt bryllup.`;
+      ? t(`email:excitedToSeeYou${rsvp.fullNameGuest ? "_plural" : ""}`)
+      : t(`email:sadYouCannotCome${rsvp.fullNameGuest ? "_plural" : ""}`);
+
+  const tableData = [
+    { key: "fullName", label: t("rsvp:fullName"), content: rsvp.fullName },
+    { key: "email", label: t("rsvp:email"), content: rsvp.email },
+    {
+      key: "fullNameGuest",
+      label: t("rsvp:fullNameGuest"),
+      content: rsvp.fullNameGuest,
+      hide: !rsvp.fullNameGuest,
+    },
+    {
+      key: "attendingStatus",
+      label: t("rsvp:attending"),
+      content: rsvp.attending === "yes" ? t("rsvp:yes") : t("rsvp:no"),
+    },
+    {
+      key: "foodPreferences",
+      label: t("rsvp:foodPreferences"),
+      content: rsvp.foodPreferences,
+    },
+    {
+      key: "comments",
+      label: t("rsvp:comments"),
+      content: rsvp.comments,
+    },
+  ];
+
   return (
     <Html>
       <Head />
@@ -30,7 +59,7 @@ export const RSVPEmail = ({ rsvp }: Props) => {
           <Section style={logo}>
             <Img
               src={"https://lasseandsonica.com/ringer.png"}
-              alt="Ringer"
+              alt={t("email:ringsAlt")}
               height={64}
               width="64"
             />
@@ -46,7 +75,7 @@ export const RSVPEmail = ({ rsvp }: Props) => {
                     textAlign: "center",
                   }}
                 >
-                  Hei {rsvp.fullName},
+                  {t("email:greeting", { name: rsvp.fullName })}
                 </Heading>
                 <Heading
                   as="h2"
@@ -60,35 +89,15 @@ export const RSVPEmail = ({ rsvp }: Props) => {
                 </Heading>
                 <table>
                   <tbody>
-                    {[
-                      { label: "Fullt navn", content: rsvp.fullName },
-                      { label: "E-post", content: rsvp.email },
-                      {
-                        label: "Fullt navn partner",
-                        content: rsvp.fullNameGuest,
-                        hide: !rsvp.fullNameGuest,
-                      },
-                      {
-                        label: "Kommer du?",
-                        content: rsvp.attending === "yes" ? "Ja" : "Nei",
-                      },
-                      {
-                        label: "Matpreferanser",
-                        content: rsvp.foodPreferences,
-                      },
-                      {
-                        label: "Kommentarer",
-                        content: rsvp.comments,
-                      },
-                    ]
+                    {tableData
                       .filter((row) => row.hide !== true)
-                      .map(({ label, content }) => (
-                        <tr key={label}>
+                      .map((row) => (
+                        <tr key={row.key}>
                           <td style={{ textAlign: "left", padding: 6 }}>
-                            <b>{label}:</b>
+                            <b>{row.label}:</b>
                           </td>
                           <td style={{ textAlign: "left", padding: 6 }}>
-                            {content}
+                            {row.content}
                           </td>
                         </tr>
                       ))}
@@ -99,7 +108,7 @@ export const RSVPEmail = ({ rsvp }: Props) => {
             <Row style={{ ...boxInfos, paddingTop: "8" }}>
               <Column style={buttonContainer} colSpan={2}>
                 <Button style={button} href="https://lasseandsonica.com">
-                  Gå til nettsiden
+                  {t("email:goToWebsite")}
                 </Button>
               </Column>
             </Row>
@@ -110,6 +119,9 @@ export const RSVPEmail = ({ rsvp }: Props) => {
   );
 };
 
+const instance = createInstance({ resources: resources });
+void instance.init({ lng: "en", initAsync: false });
+
 RSVPEmail.PreviewProps = {
   rsvp: {
     attending: "no",
@@ -118,9 +130,10 @@ RSVPEmail.PreviewProps = {
     email: "lasse@gmail.com",
     foodPreferences: "Nøtter",
     fullName: "Lasse Testesen",
-    fullNameGuest: "",
+    fullNameGuest: "Kake",
     id: 1,
   },
+  i18next: instance,
 } satisfies Props;
 
 export default RSVPEmail;
