@@ -10,7 +10,7 @@ export default {
     rsvp: "RSVP",
     rsvpAdmin: "RSVP Admin",
     pictures: "Bilder",
-    qa: "Q & A",
+    qa: "Info",
     ourstory: "Vår historie",
     openNavigationMenu: "Åpne navigasjonsmeny",
     days: "dager",

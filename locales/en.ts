@@ -8,7 +8,7 @@ export default {
     rsvp: "RSVP",
     rsvpAdmin: "RSVP Admin",
     pictures: "Pictures",
-    qa: "Q & A",
+    qa: "Info",
     ourstory: "Our Story",
     openNavigationMenu: "Open navigation menu",
     days: "days",

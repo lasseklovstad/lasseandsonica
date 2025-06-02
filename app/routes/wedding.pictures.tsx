@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { href } from "react-router";
 
 import { ImageLibrary } from "~/components/ImageLibrary";
@@ -58,22 +59,20 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export default function Pictures() {
+  const { t: tCommon } = useTranslation("common");
   return (
     <div>
       <PageTitle
         title="Bilder av oss"
         nextLink={{
-          to: href("/wedding/qa"),
-          name: "Q+A",
+          to: href("/wedding/home"),
+          name: tCommon("home"),
         }}
         backLink={{
-          to: href("/wedding/rsvp"),
-          name: "RSVP",
+          to: href("/wedding/ourstory"),
+          name: tCommon("ourstory"),
         }}
-        subtitle={[
-          "Her ser du bilder av oss gjennom tidene.",
-          "Trykk på bildene for å se dem i større størrelse.",
-        ]}
+        subtitle={["Her ser du bilder av oss gjennom tidene."]}
       />
       <ImageLibrary pictures={pictures} />
     </div>

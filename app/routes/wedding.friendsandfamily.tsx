@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { href, Outlet } from "react-router";
 
 import { PageTitle } from "~/components/PageTitle";
@@ -10,17 +11,18 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export default function FriendsAndFamily() {
+  const { t: tCommon } = useTranslation("common");
   return (
     <div>
       <PageTitle
         title="Venner og familie"
         nextLink={{
-          to: href("/wedding/rsvp"),
-          name: `RSVP`,
+          to: href("/wedding/ourstory"),
+          name: tCommon("ourstory"),
         }}
         backLink={{
-          to: href("/wedding/program"),
-          name: `Program`,
+          to: href("/wedding/qa"),
+          name: tCommon("qa"),
         }}
         subtitle={["Trykk på bildene for å oppdage mer."]}
       />

@@ -148,15 +148,20 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
       <div className="md:hidden">
         <PageTitle
           nextLink={{
-            to: href("/wedding/pictures"),
-            name: t_common("pictures"),
+            to: href("/wedding/qa"),
+            name: t_common("qa"),
           }}
           backLink={{
-            to: href("/wedding/friendsandfamily"),
-            name: t_common("friendsandfamily"),
+            to: href("/wedding/home"),
+            name: t_common("home"),
           }}
           title={t("title")}
-          subtitle={subtitles}
+          subtitle={[
+            <>
+              <Trans i18nKey={"rsvp:subtitle1"} />{" "}
+              <Trans i18nKey={"rsvp:subtitle2"} />
+            </>,
+          ]}
         />
       </div>
       <main className="px-2">

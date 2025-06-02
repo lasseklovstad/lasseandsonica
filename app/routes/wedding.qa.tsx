@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useTranslation } from "react-i18next";
 import { href, useSearchParams } from "react-router";
 
 import { PageTitle } from "~/components/PageTitle";
@@ -44,9 +44,11 @@ const questions = [
     id: "dresscode",
     answer: (
       <div>
-        Ønsker du å holde tale eller et innslag under middagen, send en mail til
-        våres toastmastere Magnus Joelson og Jim-Roger Knutsen. Send mail til
-        jimr.knutsen@live.no
+        <p>
+          Ønsker du å holde tale eller et innslag under middagen, ta kontakt med
+          våre toastmastere Magnus Joelson og Jim-Roger Knutsen.
+        </p>
+        <p className="mt-4">Kontaktinfo: jimr.knutsen@live.no</p>
       </div>
     ),
   },
@@ -58,29 +60,22 @@ const questions = [
 ];
 
 export default function QA() {
-  const [params] = useSearchParams();
-  const accordionRef = useRef<HTMLDetailsElement[]>([]);
-  const openAccordionIndex = questions.findIndex(
-    (q) => q.id === params.get("open"),
-  );
-
-  useEffect(() => {
-    if (openAccordionIndex !== -1) {
-      accordionRef.current[openAccordionIndex].scrollIntoView();
-    }
-  }, [openAccordionIndex]);
-
+  const { t: tCommon } = useTranslation("common");
   return (
     <div className="flex flex-col items-center">
       <PageTitle
-        title="Praktisk info"
+        title="Info"
         backLink={{
-          to: href("/wedding/pictures"),
-          name: "Bilder",
+          to: href("/wedding/rsvp"),
+          name: tCommon("rsvp"),
+        }}
+        nextLink={{
+          to: href("/wedding/friendsandfamily"),
+          name: tCommon("friendsandfamily"),
         }}
         subtitle={["Finner du ikke det du lurer på? Spør oss!"]}
       />
-      <div className="mb-12 flex max-w-[500px] flex-col gap-6">
+      <div className="mb-12 flex max-w-[500px] flex-col gap-6 px-2">
         {questions.map(({ question, answer }, i) => (
           <div key={question}>
             <Typography variant="h4" className="mb-2">

@@ -18,8 +18,8 @@ export default function Home() {
       <PageTitle
         title={t("title")}
         nextLink={{
-          to: href("/wedding/ourstory"),
-          name: tCommon("ourstory"),
+          to: href("/wedding/rsvp"),
+          name: tCommon("rsvp"),
         }}
         subtitle={[t("subtitle")]}
       />
