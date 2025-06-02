@@ -11,11 +11,12 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export default function FriendsAndFamily() {
+  const { t } = useTranslation("friendsAndFamily");
   const { t: tCommon } = useTranslation("common");
   return (
     <div>
       <PageTitle
-        title="Venner og familie"
+        title={t("title")}
         nextLink={{
           to: href("/wedding/ourstory"),
           name: tCommon("ourstory"),
@@ -24,20 +25,20 @@ export default function FriendsAndFamily() {
           to: href("/wedding/qa"),
           name: tCommon("qa"),
         }}
-        subtitle={["Trykk på bildene for å oppdage mer."]}
+        subtitle={[t("subtitle")]}
       />
       <div className="mx-4 flex items-center justify-center gap-4 md:gap-16">
         <RoundedImageLink
           title="Sonica"
           imageUrl="Bryllup/sonica_squar_tmyspn.jpg"
           to="sonica"
-          weedingRole="Brud"
+          weedingRole={t("bride")}
         />
         <RoundedImageLink
           title="Lasse"
           imageUrl="Bryllup/lasse_squar_nb1kto.jpg"
           to="lasse"
-          weedingRole="Brudgom"
+          weedingRole={t("groom")}
         />
       </div>
       <Outlet />

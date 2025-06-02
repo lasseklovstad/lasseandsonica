@@ -127,7 +127,23 @@ export default function OurStory() {
     {
       date: <TimelineDate date={new Date(2023, 7, 11)} />,
       title: t("timeline.wedding.title"),
-      content: [{ text: t("timeline.wedding.content") }],
+      content: [
+        {
+          text: t("timeline.wedding.content"),
+          images: [
+            {
+              imageUrl: "Bryllup/6M6A1862_edited_1_hab1c2.jpg",
+              imageAlt: "",
+              className: "max-w-[400px]",
+            },
+            {
+              imageUrl: "Bryllup/6M6A1656_tieamc.jpg",
+              imageAlt: "",
+              className: "max-w-[400px]",
+            },
+          ],
+        },
+      ],
     },
     {
       date: <TimelineDate date={new Date(2024, 11, 1)} />,
@@ -143,7 +159,7 @@ export default function OurStory() {
       title: t("timeline.born.title"),
       content: [
         {
-          text: t("timeline.born.title"),
+          text: t("timeline.born.content"),
         },
       ],
     },

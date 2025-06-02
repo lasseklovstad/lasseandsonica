@@ -21,8 +21,9 @@ export default {
   home: {
     title: "Velkommen",
     subtitle:
-      "Vi giftet oss 11. august 2023 og nå er det endelig tid for feiring!",
+      "Vi giftet oss 11. august 2023. Nå er det endelig tid for feiring og vi ønsker å ha med deg!",
     imageAlt: "Lasse og Sonica på takterrasse 17.mai 2023",
+    rsvpInfo: "Svar innen 1. september ved å klikke <strong>her</strong>!",
   },
   login: {
     title: "Velkommen",
@@ -72,27 +73,28 @@ export default {
       proposal: {
         title: "Frieriet",
         content:
-          "Med sykdom etter påske og noen endringer i planene, overrasket Lasse med en veldig romantisk date hjemme på en 'vanlig' onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring-3 på fingeren.",
+          "Med sykdom etter påske og noen endringer i planene overrasket Lasse med en veldig romantisk date hjemme på en 'vanlig' onsdagskveld. Han ordnet med piknik og satte seg ned på kne. Ingen husker nøyaktig hva som ble sagt, men Sonica fikk en ring på fingeren.",
         imageAlt: "Lasse frir",
       },
       wedding: {
         title: "Bryllup!",
-        content: "Bryllup med våre nærmeste venner og familie.",
+        content:
+          "Vi giftet oss på indisk vis på tempelet i Slemmestad. Eventet ble litt større enn planlagt, da man selvfølgelig ikke kan ha en indisk vielse med bare 20 stykker.",
       },
       move: {
-        title: "Flytter",
+        title: "Vi flytter",
         content:
-          "Vi flytter fra fest og moro i rundkjøringen til den roligere delen av Kiellandsplass. Litt oppussing må selvfølgelig til og vi får bo hos Carina en måneds tid før vi forflytter oss opp 3 etasjer.",
+          "Vi flyttet fra fest og moro i rundkjøringen, til den roligere delen av Kiellandsplass. Litt oppussing måtte til og vi fikk bo hos Carina & co en måneds tid, før vi forflyttet oss 3 etasjer opp.",
       },
       born: {
-        title: "Emilie blir født",
+        title: "Emilie ble født",
         content:
-          "Lille Emilie kommer til verden kl.05.25 dagen etter bursdagen til moren sin.",
+          "Vår lille Emilie kom til verden kl. 05:25 dagen etter bursdagen til moren sin, og vi ble en liten familie på 3.",
       },
       weddingParty: {
         title: "Bryllupsfeiring",
         content:
-          "Endelig er det til for bryllupsfeiring med alle våre fantastiske venner og familie.",
+          "Endelig er det tid for bryllupsfeiring med alle våre fantastiske venner og familie.",
       },
     },
   },
@@ -133,14 +135,62 @@ export default {
   },
   email: {
     greeting: "Hei {{name}},",
-    excitedToSeeYou: "Vi gleder oss til å se deg i bryllupet 11.oktober.",
+    excitedToSeeYou: "Vi gleder oss til å se deg i bryllupet vårt 11.oktober.",
     excitedToSeeYou_plural:
-      "Vi gleder oss til å se dere i bryllupet 11.oktober.",
-    sadYouCannotCome: "Det var synd at du ikke kunne komme i vårt bryllup.",
-    sadYouCannotCome_plural:
-      "Det var synd at dere ikke kunne komme i vårt bryllup.",
+      "Vi gleder oss til å se dere i bryllupet vårt 11.oktober.",
+    sadYouCannotCome: "Så synd at du ikke kan komme i vårt bryllup.",
+    sadYouCannotCome_plural: "Så synd at dere ikke kan komme i vårt bryllup.",
     goToWebsite: "Gå til nettsiden",
     ringsAlt: "Ringer",
     subject: "Bekreftelse RSVP - Bryllup",
+  },
+  friendsAndFamily: {
+    title: "Venner og familie",
+    subtitle: "Trykk på bildene for å oppdage mer.",
+    bride: "Brud",
+    brideFather: "Brudens far",
+    brideMother: "Brudens mor",
+    brideSister: "Brudens søster",
+    brideNiece: "Brudens niese",
+    brideBrotherInLaw: "Brudens svoger",
+    bridesMaid: "Brudens forlover",
+    groom: "Brudgom",
+    groomFather: "Brudgommens far",
+    groomMother: "Brudgommens mor",
+    groomBigSister: "Brudgommens storesøster",
+    groomLittleSister: "Brudgommens lillesøster",
+    groomLittleBrother: "Brudgommens lillebror",
+    groomBrotherInLaw: "Brudgommens svoger",
+    groomGrandparents: "Brudgommens besteforelde",
+    groomsMen: "Brudgommens forlover",
+  },
+  qa: {
+    title: "Info",
+    subtitle: "Finner du ikke det du lurer på? Spør oss!",
+    location: {
+      question: "Lokasjon",
+      answerAddress: "Adressen er Sagveien 23A, 0459 Oslo.",
+      answerParking: "Nærmeste parkering er Mølla p-hus.",
+      answerExtra: "Det er trapper ned til inngang og ingen heis.",
+      answerWhere: "Feiringen er på Månefisken i Oslo, rett ved Akerselva.",
+    },
+    dresscode: {
+      question: "Antrekk",
+      answer: "Smoking / Mørk dress",
+    },
+    speechOrPerformance: {
+      question: "Tale eller innslag",
+      answereContact: "Kontaktinfo",
+      answer:
+        "Ønsker du å holde tale eller et innslag under middagen, ta kontakt med våre toastmastere Magnus Joelson og Jim-Roger Knutsen.",
+    },
+    gift: {
+      question: "Ønskeliste",
+      answer: "Mer info kommer",
+    },
+  },
+  pictures: {
+    title: "Bilder av oss",
+    subtitle: "Her ser du bilder av oss gjennom tidene.",
   },
 } satisfies typeof en;
