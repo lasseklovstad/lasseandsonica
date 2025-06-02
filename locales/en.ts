@@ -19,8 +19,10 @@ export default {
   home: {
     title: "Welcome",
     subtitle:
-      "We got married on August 11, 2023 and now it's finally time to celebrate!",
+      "We got married on 11th of August 2023 and now it's finally time to celebrate!",
     imageAlt: "Lasse and Sonica on a rooftop terrace May 17, 2023",
+    rsvpInfo:
+      "Please respond by September 1st by clicking <strong>here</strong>!",
   },
   login: {
     title: "Welcome",
@@ -36,14 +38,14 @@ export default {
     subtitle: "Here you can read about our journey from when we first met.",
     timeline: {
       firstMeeting: {
-        title: "First meeting",
+        title: "When we first met",
         content:
-          "Lasse and Sonica met for the first time at the Experis (then Ciber) Christmas party. Lasse was doing a funny shoulder dance on the dance floor, Sonica asked why he was dancing like that. Lasse replied: I'm doing it for the ladies. Sonica wasn't entirely convinced, but thought it was a lot of fun!",
+          "Lasse and Sonica met for the first time at the Experis Christmas party. Lasse was doing a funny shoulder dance on the dance floor, Sonica asked why he was dancing like that. Lasse replied: I'm doing it for the ladies. Sonica wasn't entirely convinced, but found it very funny!",
       },
       firstSpark: {
         title: "First spark",
         content1:
-          "After several weeks of social lockdown, it was suddenly extra nice to see each other during a multi-event with work.",
+          "After several weeks of social lockdown, it was suddenly extra nice to see each other during an event with work.",
         slackLineImageAlt: "Slack line team photo",
         slackLineWithLasseImageAlt: "Slack line team photo",
         content2: "Even though Lasse didn't impress much on the slackline...",
@@ -51,7 +53,7 @@ export default {
       firstDate: {
         title: "First date",
         content:
-          "There was no 'beer out', as Lasse went for it and invited for taco dinner, with Kløvstad salsa and red wine.",
+          "There was no 'beer out', as Lasse went all in and invited for a taco dinner, with Kløvstad salsa and red wine.",
         imageAlt: "Taco",
       },
       officiallyPartners: {
@@ -63,29 +65,30 @@ export default {
       moveTogether: {
         title: "Moving in together",
         content:
-          "We got tired of traveling back and forth between Alexander Kiellandsplass and Solli Plass. Sonica bought in, and unfortunately Ivar had to move a bit further down the street. There were big changes in the apartment, as Sonica wanted to renovate and remove all traces of a bachelor pad. Lasse had to move in and live in the apartment at Solli while we renovated, and we finally got to move into our newly renovated apartment at Kiellands.",
+          "We got tired of traveling back and forth between Alexander Kiellandsplass and Solli Plass. Sonica moved in, and unfortunately Ivar had to move a bit further down the street. There were big changes in the apartment, as Sonica wanted to renovate and remove all traces of a bachelor pad. Lasse had to move in and live in the apartment at Solli while we renovated, and we finally got to move into our newly renovated apartment at Kiellands.",
         lasseImageAlt: "Lasse renovating on a ladder",
         sonicaImageAlt: "Sonica renovating on a ladder",
       },
       proposal: {
         title: "The proposal",
         content:
-          "With illness after Easter and some changes in plans, Lasse surprised with a very romantic date at home on an 'ordinary' Wednesday evening. He arranged a picnic and got down on one knee. No one remembers exactly what was said, but Sonica got a ring-3 on her finger.",
+          "With illness after Easter and some changes in plans, Lasse surprised with a very romantic date at home on an 'ordinary' Wednesday. He arranged a picnic and got down on one knee. No one remembers exactly what was said, but Sonica got a ring on her finger.",
         imageAlt: "Lasse proposes",
       },
       wedding: {
         title: "Wedding!",
-        content: "Wedding with our closest friends and family.",
+        content:
+          "We got married at the Indian temple in Slemmestad. This turned out to be a bit bigger than planned, because you can of course not have an indian wedding ceremony with only 20 people.",
       },
       move: {
         title: "Moving",
         content:
-          "We are moving from partying and fun in the roundabout to the quieter part of Kiellandsplass. Of course, a bit of renovation is needed and we get to stay with Carina for a month before we move up 3 floors.",
+          "We moved from partying and fun to the calmer part of Kiellandsplass. A bit of renovation was needed and we stayed with Carina & co for a month before we move up 3 floors.",
       },
       born: {
-        title: "Emilie is born",
+        title: "Emilie was born",
         content:
-          "Little Emilie comes into the world at 05:25 the day after her mother's birthday.",
+          "Our little Emilie was born 05:25 the day after her moms birthday, and we became a little family of 3.",
       },
       weddingParty: {
         title: "Wedding celebration",
@@ -97,11 +100,11 @@ export default {
   program: {
     title: "Program",
     subtitle: "Here is the program for the day.",
-    welcome: "Welcome to the wedding party at Månefisken",
+    welcome: "Welcome to our wedding party at Månefisken",
     ceremony: "Love ceremony",
     dinner: "Dinner",
     party: "Party and entertainment",
-    thankYou: "Thank you for now",
+    thankYou: "Thanks for tonight",
   },
   rsvp: {
     title: "Are you attending?",
@@ -138,9 +141,58 @@ export default {
     excitedToSeeYou_plural:
       "We are looking forward to seeing you both at the wedding on October 11th.",
     sadYouCannotCome: "It's a shame you can't make it to our wedding.",
-    sadYouCannotCome_plural:
-      "It's a shame you both can't make it to our wedding.",
+    sadYouCannotCome_plural: "It's a shame you can't make it to our wedding.",
     goToWebsite: "Go to website",
     ringsAlt: "Rings",
+  },
+  friendsAndFamily: {
+    title: "Friends and family",
+    subtitle: "Click the pictures to see more.",
+    bride: "Bride",
+    brideFather: "Bride's father",
+    brideMother: "Bride's mother",
+    brideSister: "Bride's sister",
+    brideNiece: "Bride's niece",
+    brideBrotherInLaw: "Bride's brother-in-law",
+    bridesMaid: "Bridesmaid",
+    groom: "Groom",
+    groomFather: "Father of the groom",
+    groomMother: "Mother of the groom",
+    groomBigSister: "Groom's older sister",
+    groomLittleSister: "Groom's younger sister",
+    groomLittleBrother: "Groom's younger brother",
+    groomBrotherInLaw: "Groom's brother-in-law",
+    groomGrandparents: "Groom's grandparents",
+    groomsMen: "Groomsmen",
+  },
+  qa: {
+    title: "Info",
+    subtitle: "Can't find what you're looking for? Just ask us!",
+    location: {
+      question: "Location",
+      answerAddress: "The address is Sagveien 23A, 0459 Oslo.",
+      answerParking: "The nearest parking is Mølla parking garage.",
+      answerExtra: "There are stairs down to the entrance and no elevator.",
+      answerWhere:
+        "The celebration will be at Månefisken in Oslo, right by the Akerselva river.",
+    },
+    dresscode: {
+      question: "Dress Code",
+      answer: "Tuxedo / Dark suit",
+    },
+    speechOrPerformance: {
+      question: "Speech or performance",
+      answereContact: "Contact info",
+      answer:
+        "If you'd like to give a speech or perform something during dinner, please contact our toastmasters Magnus Joelson and Jim-Roger Knutsen.",
+    },
+    gift: {
+      question: "Gift List",
+      answer: "More info coming soon",
+    },
+  },
+  pictures: {
+    title: "Pictures of us",
+    subtitle: "Here you can see pictures of us through the years.",
   },
 };

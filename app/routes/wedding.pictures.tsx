@@ -60,10 +60,11 @@ export const meta: Route.MetaFunction = () => {
 
 export default function Pictures() {
   const { t: tCommon } = useTranslation("common");
+  const { t } = useTranslation("pictures");
   return (
     <div>
       <PageTitle
-        title="Bilder av oss"
+        title={t("title")}
         nextLink={{
           to: href("/wedding/home"),
           name: tCommon("home"),
@@ -72,7 +73,7 @@ export default function Pictures() {
           to: href("/wedding/ourstory"),
           name: tCommon("ourstory"),
         }}
-        subtitle={["Her ser du bilder av oss gjennom tidene."]}
+        subtitle={[t("subtitle")]}
       />
       <ImageLibrary pictures={pictures} />
     </div>

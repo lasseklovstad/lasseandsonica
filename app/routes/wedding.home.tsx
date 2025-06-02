@@ -1,4 +1,4 @@
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { href, Link } from "react-router";
 
 import { CloudinaryImage } from "~/components/CloudinaryImage";
@@ -23,15 +23,12 @@ export default function Home() {
         }}
         subtitle={[t("subtitle")]}
       />
-      <Link
-        to={href("/wedding/rsvp")}
-        className="mb-2 text-lg underline underline-offset-2"
-      >
-        Svar innen 1.september ved å klikke her!
+      <Link to={href("/wedding/rsvp")} className="mb-2 p-2 text-lg">
+        <Trans t={t} i18nKey={"rsvpInfo"} />
       </Link>
       <CloudinaryImage
         imageAlt={t("imageAlt")}
-        imageUrl="Bryllup/edited-sonica-og-lasse_izlpgd.jpg"
+        imageUrl="Bryllup/20240601_140831538_iOS_rku6tv.jpg"
       />
     </div>
   );
