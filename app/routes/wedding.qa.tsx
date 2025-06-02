@@ -76,7 +76,7 @@ export default function QA() {
         subtitle={["Finner du ikke det du lurer på? Spør oss!"]}
       />
       <div className="mb-12 flex max-w-[500px] flex-col gap-6 px-2">
-        {questions.map(({ question, answer }, i) => (
+        {questions.map(({ question, answer }) => (
           <div key={question}>
             <Typography variant="h4" className="mb-2">
               {question}
