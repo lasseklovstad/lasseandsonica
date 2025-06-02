@@ -136,8 +136,8 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
   const hasSubmitted = actionData?.status === "success";
 
   const subtitles = [
-    <Trans i18nKey={"rsvp:subtitle1"} />,
-    <Trans i18nKey={"rsvp:subtitle2"} />,
+    <Trans key={1} t={t} i18nKey={"subtitle1"} />,
+    <Trans key={1} t={t} i18nKey={"subtitle2"} />,
   ];
 
   return (
@@ -158,8 +158,8 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
           title={t("title")}
           subtitle={[
             <>
-              <Trans i18nKey={"rsvp:subtitle1"} />{" "}
-              <Trans i18nKey={"rsvp:subtitle2"} />
+              <Trans t={t} i18nKey={"subtitle1"} />{" "}
+              <Trans t={t} i18nKey={"subtitle2"} />
             </>,
           ]}
         />

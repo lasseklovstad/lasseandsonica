@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { href, useSearchParams } from "react-router";
+import { href } from "react-router";
 
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
