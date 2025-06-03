@@ -137,17 +137,18 @@ export default {
     subject: "Confirmation RSVP - Wedding",
     greeting: "Hi {{name}},",
     excitedToSeeYou:
-      "We are looking forward to seeing you at the wedding on October 11th.",
+      "We are looking forward to seeing you at our wedding on October 11th.",
     excitedToSeeYou_plural:
-      "We are looking forward to seeing you both at the wedding on October 11th.",
-    sadYouCannotCome: "It's a shame you can't make it to our wedding.",
-    sadYouCannotCome_plural: "It's a shame you can't make it to our wedding.",
+      "We are looking forward to seeing you both at our wedding on October 11th.",
+    sadYouCannotCome: "We are sorry to hear you can't make it to our wedding.",
+    sadYouCannotCome_plural:
+      "We are sorry to hear you can't make it to our wedding.",
     goToWebsite: "Go to website",
     ringsAlt: "Rings",
   },
   friendsAndFamily: {
     title: "Friends and family",
-    subtitle: "Click the pictures to see more.",
+    subtitle: "Click on the pictures to see more.",
     bride: "Bride",
     brideFather: "Bride's father",
     brideMother: "Bride's mother",
@@ -167,18 +168,18 @@ export default {
   },
   qa: {
     title: "Info",
-    subtitle: "Can't find what you're looking for? Just ask us!",
+    subtitle: "Can't find what you're looking for? Don't hesitate to ask us!",
     location: {
       question: "Location",
-      answerAddress: "The address is Sagveien 23A, 0459 Oslo.",
-      answerParking: "The nearest parking is Mølla parking garage.",
-      answerExtra: "There are stairs down to the entrance and no elevator.",
+      answerAddress: "The address is Sagveien 23A, 0459 Oslo",
+      answerParking: "The nearest parking is Mølla parking house",
+      answerExtra: "There are stairs down to the entrance and no elevator",
       answerWhere:
         "The celebration will be at Månefisken in Oslo, right by the Akerselva river.",
     },
     dresscode: {
       question: "Dress Code",
-      answer: "Tuxedo / Dark suit",
+      answer: "Black-Tie / Formal / Cocktail",
     },
     speechOrPerformance: {
       question: "Speech or performance",
@@ -193,6 +194,6 @@ export default {
   },
   pictures: {
     title: "Pictures of us",
-    subtitle: "Here you can see pictures of us through the years.",
+    subtitle: "Here are pictures of us throughout the years.",
   },
 };

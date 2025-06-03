@@ -151,6 +151,18 @@ export default function OurStory() {
       content: [
         {
           text: t("timeline.move.content"),
+          images: [
+            {
+              imageUrl: "Bryllup/move1_bblipa.jpg",
+              imageAlt: "",
+              className: "max-w-[200px]",
+            },
+            {
+              imageUrl: "Bryllup/move2_wn2qme.jpg",
+              imageAlt: "",
+              className: "max-w-[200px]",
+            },
+          ],
         },
       ],
     },
@@ -160,6 +172,13 @@ export default function OurStory() {
       content: [
         {
           text: t("timeline.born.content"),
+          images: [
+            {
+              imageUrl: "Bryllup/emilie1_iqbeaw.jpg",
+              imageAlt: "",
+              className: "max-w-[200px]",
+            },
+          ],
         },
       ],
     },

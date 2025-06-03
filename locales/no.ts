@@ -23,7 +23,8 @@ export default {
     subtitle:
       "Vi giftet oss 11. august 2023. Nå er det endelig tid for feiring og vi ønsker å ha med deg!",
     imageAlt: "Lasse og Sonica på takterrasse 17.mai 2023",
-    rsvpInfo: "Svar innen 1. september ved å klikke <strong>her</strong>!",
+    rsvpInfo:
+      "Vennligst svar innen 1. september ved å klikke <strong>her</strong>!",
   },
   login: {
     title: "Velkommen",
@@ -169,9 +170,9 @@ export default {
     subtitle: "Finner du ikke det du lurer på? Spør oss!",
     location: {
       question: "Lokasjon",
-      answerAddress: "Adressen er Sagveien 23A, 0459 Oslo.",
-      answerParking: "Nærmeste parkering er Mølla p-hus.",
-      answerExtra: "Det er trapper ned til inngang og ingen heis.",
+      answerAddress: "Adressen er Sagveien 23A, 0459 Oslo",
+      answerParking: "Nærmeste parkering er Mølla p-hus",
+      answerExtra: "Det er trapper ned til inngangen og ingen heis",
       answerWhere: "Feiringen er på Månefisken i Oslo, rett ved Akerselva.",
     },
     dresscode: {
@@ -182,7 +183,7 @@ export default {
       question: "Tale eller innslag",
       answereContact: "Kontaktinfo",
       answer:
-        "Ønsker du å holde tale eller et innslag under middagen, ta kontakt med våre toastmastere Magnus Joelson og Jim-Roger Knutsen.",
+        "Ønsker du å holde en tale eller et innslag under middagen, ta kontakt med våre toastmastere Magnus Joelson og Jim-Roger Knutsen.",
     },
     gift: {
       question: "Ønskeliste",
