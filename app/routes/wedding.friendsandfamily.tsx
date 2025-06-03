@@ -1,8 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { href, Outlet } from "react-router";
+import { Outlet } from "react-router";
 
 import { PageTitle } from "~/components/PageTitle";
 import { RoundedImageLink } from "~/components/RoundedImageLink";
+import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 
 import type { Route } from "./+types/wedding.friendsandfamily";
 
@@ -12,19 +13,13 @@ export const meta: Route.MetaFunction = () => {
 
 export default function FriendsAndFamily() {
   const { t } = useTranslation("friendsAndFamily");
-  const { t: tCommon } = useTranslation("common");
+  const links = useLinks();
   return (
     <div>
       <PageTitle
         title={t("title")}
-        nextLink={{
-          to: href("/wedding/ourstory"),
-          name: tCommon("ourstory"),
-        }}
-        backLink={{
-          to: href("/wedding/qa"),
-          name: tCommon("qa"),
-        }}
+        backLink={getBackLink("friendsandfamily", links)}
+        nextLink={getNextLink("friendsandfamily", links)}
         subtitle={[t("subtitle")]}
       />
       <div className="mx-4 flex items-center justify-center gap-4 md:gap-16">

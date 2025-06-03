@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { href } from "react-router";
 
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
+import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 
 import type { Route } from "./+types/wedding.program";
 
@@ -12,19 +12,13 @@ export const meta: Route.MetaFunction = () => {
 
 export default function Program() {
   const { t } = useTranslation("program");
-  const { t: tCommon } = useTranslation("common");
+  const links = useLinks();
   return (
     <div>
       <PageTitle
         title={t("title")}
-        nextLink={{
-          to: href("/wedding/friendsandfamily"),
-          name: tCommon("friendsandfamily"),
-        }}
-        backLink={{
-          to: href("/wedding/ourstory"),
-          name: tCommon("ourstory"),
-        }}
+        backLink={getBackLink("program", links)}
+        nextLink={getNextLink("program", links)}
         subtitle={[t("subtitle")]}
       />
       <div className="flex w-full flex-col">

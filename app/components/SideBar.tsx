@@ -32,7 +32,7 @@ export const SideBar = ({ links }: { links: LinkType[] }) => {
 
       <dialog
         ref={dialogRef}
-        className={`fixed top-0 left-0 m-0 h-screen max-h-full w-40 p-0 backdrop:bg-gray-300 backdrop:opacity-50`}
+        className={`fixed top-0 left-0 m-0 h-screen max-h-full w-fit p-0 backdrop:bg-gray-300 backdrop:opacity-50`}
         aria-label="Sidebar"
         onClick={(e) => {
           if (!dialogRef.current) return;

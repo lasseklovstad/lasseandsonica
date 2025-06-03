@@ -3,6 +3,7 @@ import { href, Link } from "react-router";
 
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
+import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 
 import type { Route } from "./+types/wedding.home";
 
@@ -12,18 +13,16 @@ export const meta: Route.MetaFunction = () => {
 
 export default function Home() {
   const { t } = useTranslation("home");
-  const { t: tCommon } = useTranslation("common");
+  const links = useLinks();
   return (
     <div className="flex flex-col items-center">
       <PageTitle
         title={t("title")}
-        nextLink={{
-          to: href("/wedding/rsvp"),
-          name: tCommon("rsvp"),
-        }}
+        nextLink={getNextLink("home", links)}
+        backLink={getBackLink("home", links)}
         subtitle={[t("subtitle")]}
       />
-      <Link to={href("/wedding/rsvp")} className="mb-2 p-2 text-lg">
+      <Link to={href("/wedding/rsvp")} className="mb-2 p-2 text-center text-lg">
         <Trans t={t} i18nKey={"rsvpInfo"} />
       </Link>
       <CloudinaryImage
