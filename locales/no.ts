@@ -8,7 +8,7 @@ export default {
     program: "Program",
     friendsandfamily: "Venner og familie",
     rsvp: "RSVP",
-    rsvpAdmin: "RSVP Admin",
+    "rsvp-admin": "RSVP Admin",
     pictures: "Bilder",
     qa: "Info",
     ourstory: "Vår historie",
