@@ -1,7 +1,7 @@
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod/v4";
 import { Trans, useTranslation } from "react-i18next";
-import { data, Form, href, useNavigation } from "react-router";
+import { data, Form, useNavigation } from "react-router";
 import { Resend } from "resend";
 import { z } from "zod/v4";
 
@@ -12,6 +12,7 @@ import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
 import { getDatabase } from "~/database/database";
 import { rsvps } from "~/database/schema";
+import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { CloudflareContext } from "~/middleware/bindings";
 import { getInstance } from "~/utils/i18n.server";
@@ -101,6 +102,12 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
       subject: i18next.t("email:subject"),
       react: <RSVPEmail rsvp={rsvp} i18next={i18next} />,
     });
+    await resend.emails.send({
+      from: "Sonica & Lasse <hello@lasseandsonica.com>",
+      to: "sonicanarula88@gmail.com",
+      subject: "Nytt svar bryllup fra " + rsvp.fullName,
+      react: <RSVPEmail rsvp={rsvp} i18next={i18next} />,
+    });
   } else {
     console.warn("Skip sending mail");
   }
@@ -110,7 +117,7 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
 
 export default function RSVP({ actionData }: Route.ComponentProps) {
   const { t } = useTranslation("rsvp");
-  const { t: t_common } = useTranslation("common");
+  const links = useLinks();
   const { accessLevel } = useWeddingLoaderData();
   const navigation = useNavigation();
   const [
@@ -147,14 +154,8 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
       </div>
       <div className="md:hidden">
         <PageTitle
-          nextLink={{
-            to: href("/wedding/qa"),
-            name: t_common("qa"),
-          }}
-          backLink={{
-            to: href("/wedding/home"),
-            name: t_common("home"),
-          }}
+          nextLink={getNextLink("rsvp", links)}
+          backLink={getBackLink("rsvp", links)}
           title={t("title")}
           subtitle={[
             <>

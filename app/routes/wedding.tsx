@@ -19,15 +19,12 @@ export const loader = async ({ request, context }: Route.LoaderArgs) => {
   };
 };
 
-export default function Root({
-  loaderData: { accessLevel },
-}: Route.ComponentProps) {
+export default function Root() {
   return (
     <PageLayout
       showNavigation
       showLogout
       headerContent={<WeddingLocationAndCounter />}
-      accessLevel={accessLevel}
     >
       <Outlet />
     </PageLayout>

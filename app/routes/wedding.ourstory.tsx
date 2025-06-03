@@ -1,11 +1,11 @@
 import type { ReactNode } from "react";
 import { useTranslation } from "react-i18next";
-import { href } from "react-router";
 
 import type { CloudinaryImageProps } from "~/components/CloudinaryImage";
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
 import { Typography } from "~/components/Typography";
+import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 
 import type { Route } from "./+types/wedding.ourstory";
 
@@ -15,7 +15,7 @@ export const meta: Route.MetaFunction = () => {
 
 export default function OurStory() {
   const { t } = useTranslation("ourstory");
-  const { t: tCommon } = useTranslation("common");
+  const links = useLinks();
   const timeline: TimelineEvent[] = [
     {
       date: <TimelineDate date={new Date(2018, 11, 7)} />,
@@ -196,14 +196,8 @@ export default function OurStory() {
     <div className="flex flex-col items-center">
       <PageTitle
         title={t("title")}
-        nextLink={{
-          to: href("/wedding/pictures"),
-          name: tCommon("pictures"),
-        }}
-        backLink={{
-          to: href("/wedding/friendsandfamily"),
-          name: tCommon("friendsandfamily"),
-        }}
+        backLink={getBackLink("ourstory", links)}
+        nextLink={getNextLink("ourstory", links)}
         subtitle={[t("subtitle")]}
       />
 

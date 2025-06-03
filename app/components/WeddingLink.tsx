@@ -10,7 +10,7 @@ export const WeddingLink = ({ link }: { link: LinkType }) => {
       to={link.to}
       className={({ isActive }) =>
         `${
-          isActive ? "border-b-2 border-black bg-slate-50" : ""
+          isActive ? "border-b-2 border-black bg-slate-50 font-semibold" : ""
         } inline-flex w-full px-2`
       }
       viewTransition

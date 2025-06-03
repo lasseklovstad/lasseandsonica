@@ -6,7 +6,7 @@ export default {
     program: "Program",
     friendsandfamily: "Friends and Family",
     rsvp: "RSVP",
-    rsvpAdmin: "RSVP Admin",
+    "rsvp-admin": "RSVP Admin",
     pictures: "Pictures",
     qa: "Info",
     ourstory: "Our Story",
@@ -19,7 +19,7 @@ export default {
   home: {
     title: "Welcome",
     subtitle:
-      "We got married on 11th of August 2023 and now it's finally time to celebrate!",
+      "We tied the knot on 11th of August 2023 and now it's finally time to celebrate!",
     imageAlt: "Lasse and Sonica on a rooftop terrace May 17, 2023",
     rsvpInfo:
       "Please respond by September 1st by clicking <strong>here</strong>!",
@@ -179,7 +179,7 @@ export default {
     },
     dresscode: {
       question: "Dress Code",
-      answer: "Black-Tie / Formal / Cocktail",
+      answer: "Black-Tie / Formal",
     },
     speechOrPerformance: {
       question: "Speech or performance",

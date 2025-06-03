@@ -1,8 +1,8 @@
 import { useTranslation } from "react-i18next";
-import { href } from "react-router";
 
 import { ImageLibrary } from "~/components/ImageLibrary";
 import { PageTitle } from "~/components/PageTitle";
+import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 
 import type { Route } from "./+types/wedding.pictures";
 
@@ -59,20 +59,14 @@ export const meta: Route.MetaFunction = () => {
 };
 
 export default function Pictures() {
-  const { t: tCommon } = useTranslation("common");
+  const links = useLinks();
   const { t } = useTranslation("pictures");
   return (
     <div>
       <PageTitle
         title={t("title")}
-        nextLink={{
-          to: href("/wedding/home"),
-          name: tCommon("home"),
-        }}
-        backLink={{
-          to: href("/wedding/ourstory"),
-          name: tCommon("ourstory"),
-        }}
+        backLink={getBackLink("pictures", links)}
+        nextLink={getNextLink("pictures", links)}
         subtitle={[t("subtitle")]}
       />
       <ImageLibrary pictures={pictures} />
