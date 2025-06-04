@@ -59,6 +59,10 @@ export const ImageLibrary = ({ pictures, cloudName }: Props) => {
                 imageUrl={p.imageUrl}
                 imageAlt={p.imageAlt}
                 cloudName={cloudName}
+                imgProps={{
+                  className:
+                    "object-cover object-[50%_30%] overflow-hidden aspect-[5/6]",
+                }}
               />
             </Link>
           ))}

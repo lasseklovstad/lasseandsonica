@@ -6,7 +6,14 @@ export default function Sonica() {
   const { t } = useTranslation("friendsAndFamily");
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex justify-center md:-mt-24">
+        <RoundedImage
+          name="Emilie"
+          imageUrl="Bryllup/emilie-kvadrat_kt9v3c.jpg"
+          weddingRole={t("daughter")}
+        />
+      </div>
+      <div className="flex flex-wrap justify-center md:gap-8">
         <RoundedImage
           name="Raj"
           imageUrl="Bryllup/raj_kvadrat_vzzqsm.jpg"
@@ -18,7 +25,7 @@ export default function Sonica() {
           weddingRole={t("brideMother")}
         />
       </div>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-center md:gap-8">
         <RoundedImage
           name="Carina"
           imageUrl="Bryllup/Carina_firkant_bmnbvp.jpg"
@@ -31,11 +38,11 @@ export default function Sonica() {
         />
         <RoundedImage
           name="Håkon"
-          imageUrl="Bryllup/haakon_ratgah.jpg"
+          imageUrl="Bryllup/haakon-firkant_s0smhz.jpg"
           weddingRole={t("brideBrotherInLaw")}
         />
       </div>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-center md:gap-8">
         <RoundedImage
           name="Julie"
           imageUrl="Bryllup/25BDF8FF-360B-4ED8-8579-F9C5CB621857_ejljoc.jpg"

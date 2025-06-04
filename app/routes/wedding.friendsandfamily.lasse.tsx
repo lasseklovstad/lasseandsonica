@@ -6,7 +6,14 @@ export default function Lasse() {
   const { t } = useTranslation("friendsAndFamily");
   return (
     <div>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex justify-center md:-mt-24">
+        <RoundedImage
+          name="Emilie"
+          imageUrl="Bryllup/emilie-kvadrat_kt9v3c.jpg"
+          weddingRole={t("daughter")}
+        />
+      </div>
+      <div className="flex flex-wrap justify-center md:gap-8">
         <RoundedImage
           name="Kjetil"
           imageUrl="Bryllup/kjetil_kvadrat_peujap.jpg"
@@ -23,7 +30,7 @@ export default function Lasse() {
           weddingRole={t("groomGrandparents")}
         />
       </div>
-      <div className="flex flex-wrap justify-center gap-8">
+      <div className="flex flex-wrap justify-center md:gap-8">
         <RoundedImage
           name="Henriette"
           imageUrl="Bryllup/henri-kvadrat2_kndagl.jpg"
@@ -45,7 +52,7 @@ export default function Lasse() {
           weddingRole={t("groomLittleBrother")}
         />
       </div>
-      <div className="m-4 flex flex-wrap justify-center gap-8">
+      <div className="m-4 flex flex-wrap justify-center md:gap-8">
         <RoundedImage
           name="Ivar"
           imageUrl="Bryllup/ivar-kopi_vu8xc9.jpg"

@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import { PageTitle } from "~/components/PageTitle";
+import { RoundedImage } from "~/components/RoundedImage";
 import { Typography } from "~/components/Typography";
 import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 
@@ -54,10 +55,24 @@ export default function QA() {
             answer: (
               <div>
                 <p>{t("speechOrPerformance.answer")}</p>
-                <p className="mt-4">
+                <p className="mt-2">
                   {t("speechOrPerformance.answereContact")}:
                   jimr.knutsen@live.no
                 </p>
+                <div className="flex flex-wrap gap-2">
+                  <RoundedImage
+                    name="Magnus"
+                    imageUrl="Bryllup/452254328_10169340490300651_7044865163759408487_n_wegxcn.jpg"
+                    weddingRole={t("toastmaster")}
+                    size="small"
+                  />
+                  <RoundedImage
+                    name="Jim-Roger"
+                    imageUrl="Bryllup/468958836_10162755569200921_6075689099793330660_n_ofsqss.jpg"
+                    weddingRole={t("toastmaster")}
+                    size="small"
+                  />
+                </div>
               </div>
             ),
           },

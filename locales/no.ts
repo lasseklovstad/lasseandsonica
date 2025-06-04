@@ -148,6 +148,7 @@ export default {
   friendsAndFamily: {
     title: "Venner og familie",
     subtitle: "Trykk på bildene for å oppdage mer.",
+    daughter: "Brudeparets datter",
     bride: "Brud",
     brideFather: "Brudens far",
     brideMother: "Brudens mor",
@@ -168,6 +169,7 @@ export default {
   qa: {
     title: "Info",
     subtitle: "Finner du ikke det du lurer på? Spør oss!",
+    toastmaster: "Toastmaster",
     location: {
       question: "Lokasjon",
       answerAddress: "Adressen er Sagveien 23A, 0459 Oslo",

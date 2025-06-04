@@ -149,6 +149,7 @@ export default {
   friendsAndFamily: {
     title: "Friends and family",
     subtitle: "Click on the pictures to see more.",
+    daughter: "Bride and groom's daughter",
     bride: "Bride",
     brideFather: "Bride's father",
     brideMother: "Bride's mother",
@@ -169,6 +170,7 @@ export default {
   qa: {
     title: "Info",
     subtitle: "Can't find what you're looking for? Don't hesitate to ask us!",
+    toastmaster: "Toastmaster",
     location: {
       question: "Location",
       answerAddress: "The address is Sagveien 23A, 0459 Oslo",

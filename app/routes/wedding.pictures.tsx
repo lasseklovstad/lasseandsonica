@@ -8,6 +8,14 @@ import type { Route } from "./+types/wedding.pictures";
 
 const pictures = [
   {
+    imageUrl: "Bryllup/c47c662b-2665-456c-87bf-f1cf736c7029_zrepow.jpg",
+    imageAlt: "Sonica og Lasse på vei til brylupp",
+  },
+  {
+    imageUrl: "Bryllup/6f6370c8-3bc8-47ce-a37e-32a75b63a8cc_ju8bc9.jpg",
+    imageAlt: "Sonica og Lasse på vei til brylupp",
+  },
+  {
     imageUrl: "Bryllup/87FD1159-9544-4062-8895-1B2F2F8D1641_ojhz7u.jpg",
     imageAlt: "Sonica og Lasse på vei til brylupp",
   },
