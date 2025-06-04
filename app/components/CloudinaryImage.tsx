@@ -1,5 +1,6 @@
 import type { TransformerOption } from "@cld-apis/types";
 import { buildImageUrl } from "cloudinary-build-url";
+import type { ComponentPropsWithRef } from "react";
 import { Link } from "react-router";
 
 import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
@@ -15,6 +16,7 @@ export type CloudinaryImageProps = {
   showDescription?: boolean;
   showBackButton?: boolean;
   cloudName?: string;
+  imgProps?: ComponentPropsWithRef<"img">;
 };
 
 export const CloudinaryImage = ({
@@ -25,6 +27,7 @@ export const CloudinaryImage = ({
   showDescription,
   showBackButton,
   cloudName,
+  imgProps,
 }: CloudinaryImageProps) => {
   const { mainCloudName } = useWeddingLoaderData();
   return (
@@ -45,6 +48,7 @@ export const CloudinaryImage = ({
           cloudName: cloudName || mainCloudName,
         })}
         sizes="(max-width:768px) 95vw, (min-width:767px) and (max-width:1024px) 67vw, 800px"
+        {...imgProps}
       />
       {showDescription && (
         <Typography variant="body-small" className="my-4 text-center">
