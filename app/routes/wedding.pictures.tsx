@@ -8,12 +8,40 @@ import type { Route } from "./+types/wedding.pictures";
 
 const pictures = [
   {
+    imageUrl: "Bryllup/628492FE-4015-4D35-9DF1-2D651C5F3BD5_jx3fpf.jpg",
+    imageAlt: "Piknikk i parken etter Lasse hadde fridd",
+  },
+  {
+    imageUrl: "Bryllup/20250517_113707848_iOS_fqp13c.heic",
+    imageAlt: "17.mai 2025 med hele familien",
+  },
+  {
+    imageUrl: "remixImages/vjrwmhmbald7nyqabirs.jpg",
+    imageAlt: "På vei ut av tempelet etter bryllupssermonien",
+  },
+  {
+    imageUrl: "remixImages/f0m2tf0kbica7c8sc6ib.jpg",
+    imageAlt: "På vei til Oslo etter tempelet",
+  },
+  {
+    imageUrl: "Bryllup/20250117_213635328_iOS_ytl8wk.heic",
+    imageAlt: "Fagdag med jobb",
+  },
+  {
+    imageUrl: "Bryllup/20240509_110843552_iOS_tbygzv.heic",
+    imageAlt: "Orienteringstur",
+  },
+  {
+    imageUrl: "Bryllup/20240629_170355415_iOS_fr9njc.heic",
+    imageAlt: "Fest i Sandefjord",
+  },
+  {
     imageUrl: "Bryllup/c47c662b-2665-456c-87bf-f1cf736c7029_zrepow.jpg",
-    imageAlt: "Sonica og Lasse på vei til brylupp",
+    imageAlt: "",
   },
   {
     imageUrl: "Bryllup/6f6370c8-3bc8-47ce-a37e-32a75b63a8cc_ju8bc9.jpg",
-    imageAlt: "Sonica og Lasse på vei til brylupp",
+    imageAlt: "",
   },
   {
     imageUrl: "Bryllup/87FD1159-9544-4062-8895-1B2F2F8D1641_ojhz7u.jpg",
