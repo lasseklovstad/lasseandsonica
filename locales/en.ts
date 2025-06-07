@@ -31,6 +31,7 @@ export default {
     login: "Log in",
     errors: {
       invalidPassword: "Wrong password",
+      required: "Required",
     },
   },
   ourstory: {

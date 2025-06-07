@@ -33,6 +33,7 @@ export default {
     login: "Logg inn",
     errors: {
       invalidPassword: "Feil passord",
+      required: "Påkrevd",
     },
   },
   ourstory: {

@@ -40,8 +40,8 @@ export default function QA() {
                       {t("location.answerAddress")}
                     </a>
                   </li>
-                  <li>{t("location.answerParking")}</li>
                   <li>{t("location.answerExtra")}</li>
+                  <li>{t("location.answerParking")}</li>
                 </ul>
               </div>
             ),

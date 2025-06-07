@@ -1,5 +1,6 @@
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod/v4";
+import type { TFunction } from "i18next";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import type { LoaderFunction } from "react-router";
@@ -11,7 +12,7 @@ import { InputField } from "~/components/Input";
 import { PageLayout } from "~/components/PageLayout";
 import { Typography } from "~/components/Typography";
 import { siteSecretCookie } from "~/cookies";
-import { getInstance } from "~/utils/i18n.server";
+import { getInstance, getLocale } from "~/utils/i18n.server";
 import { validateSecret, verifyUserIsLoggedIn } from "~/utils/siteSecret";
 
 import type { Route } from "./+types/login";
@@ -22,17 +23,19 @@ export const meta: Route.MetaFunction = () => {
 
 export const action = async ({ request, context }: Route.ActionArgs) => {
   const i18next = getInstance(context);
+  const lng = getLocale(context);
+  const t = i18next.getFixedT(lng, "login");
   const formData = await request.formData();
   const secret = formData.get("secret") as string;
 
   const submission = parseWithZod(formData, {
-    schema: createLoginSchema().check((ctx) => {
+    schema: createLoginSchema(t).check((ctx) => {
       const isValidSecret = validateSecret(ctx.value.secret, context);
       if (!isValidSecret) {
         ctx.issues.push({
           code: "custom",
           input: ctx.value,
-          message: i18next.t("login:errors.invalidPassword"),
+          message: t("errors.invalidPassword"),
           path: ["secret"],
         });
       }
@@ -52,9 +55,9 @@ export const action = async ({ request, context }: Route.ActionArgs) => {
   return { result: submission.reply() };
 };
 
-const createLoginSchema = () =>
+const createLoginSchema = (t: TFunction<"login">) =>
   z.object({
-    secret: z.string(),
+    secret: z.string({ error: t("errors.required") }),
   });
 
 export const loader: LoaderFunction = async ({ request, context }) => {
@@ -76,7 +79,7 @@ export default function Login({ actionData }: Route.ComponentProps) {
     defaultValue: { secret: defaultSecret },
     // Reuse the validation logic on the client
     onValidate({ formData }) {
-      return parseWithZod(formData, { schema: createLoginSchema() });
+      return parseWithZod(formData, { schema: createLoginSchema(t) });
     },
   });
 
