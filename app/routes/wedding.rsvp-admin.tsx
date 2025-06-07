@@ -27,7 +27,7 @@ export const loader = async ({ request, context }: Route.ActionArgs) => {
 export default function RSVPAdmin({
   loaderData: { rsvpList },
 }: Route.ComponentProps) {
-  const { t } = useTranslation("rsvp");
+  const { t, i18n } = useTranslation("rsvp");
   const [search, setSearch] = useState("");
   const links = useLinks();
   return (
@@ -61,6 +61,7 @@ export default function RSVPAdmin({
                   <Th>{t("attending")}</Th>
                   <Th>{t("foodPreferences")}</Th>
                   <Th>{t("comments")}</Th>
+                  <Th>Dato</Th>
                 </tr>
               </thead>
               <tbody>
@@ -86,6 +87,9 @@ export default function RSVPAdmin({
                       <Td>{rsvp.attending === "yes" ? "Ja" : "Nei"}</Td>
                       <Td>{rsvp.foodPreferences}</Td>
                       <Td>{rsvp.comments}</Td>
+                      <Td>
+                        {rsvp.createdAt.toLocaleDateString(i18n.language)}
+                      </Td>
                     </tr>
                   ))}
               </tbody>
