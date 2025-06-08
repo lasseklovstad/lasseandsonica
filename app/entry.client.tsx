@@ -13,9 +13,9 @@ async function main() {
     .use(Fetch)
     .use(I18nextBrowserLanguageDetector)
     .init({
-      fallbackLng: "en",
+      fallbackLng: "no",
       ns: getInitialNamespaces(),
-      detection: { order: ["htmlTag"], caches: [] },
+      detection: { order: ["navigator", "htmlTag"], caches: [] },
       backend: { loadPath: "/api/locales/{{lng}}/{{ns}}" },
     });
 

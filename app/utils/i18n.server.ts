@@ -17,7 +17,7 @@ export const [i18nextMiddleware, getLocale, getInstance] =
   unstable_createI18nextMiddleware({
     detection: {
       supportedLanguages: ["en", "no"],
-      fallbackLanguage: "en",
+      fallbackLanguage: "no",
       cookie: localeCookie,
     },
     i18next: {
