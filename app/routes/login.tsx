@@ -1,10 +1,10 @@
 import { getFormProps, getInputProps, useForm } from "@conform-to/react";
 import { parseWithZod } from "@conform-to/zod/v4";
 import type { TFunction } from "i18next";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { useTranslation } from "react-i18next";
 import type { LoaderFunction } from "react-router";
-import { Form, href, redirect, useSearchParams } from "react-router";
+import { Form, href, redirect } from "react-router";
 import { z } from "zod/v4";
 
 import { Button } from "~/components/Button";
@@ -71,23 +71,15 @@ export const loader: LoaderFunction = async ({ request, context }) => {
 export default function Login({ actionData }: Route.ComponentProps) {
   const { t } = useTranslation("login");
   const formRef = useRef<HTMLFormElement>(null);
-  const [searchParams] = useSearchParams();
-  const defaultSecret = searchParams.get("Passord");
   const [form, { secret }] = useForm({
     // Sync the result of last submission
     lastResult: actionData?.result,
-    defaultValue: { secret: defaultSecret },
+    defaultValue: { secret: "" },
     // Reuse the validation logic on the client
     onValidate({ formData }) {
       return parseWithZod(formData, { schema: createLoginSchema(t) });
     },
   });
-
-  useEffect(() => {
-    if (defaultSecret) {
-      formRef.current?.requestSubmit();
-    }
-  }, [defaultSecret]);
 
   return (
     <PageLayout
