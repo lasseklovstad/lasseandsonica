@@ -139,7 +139,7 @@ export default {
     greeting: "Hei {{name}},",
     excitedToSeeYou: "Vi gleder oss til å se deg i bryllupet vårt 11. oktober.",
     excitedToSeeYou_plural:
-      "Vi gleder oss til å se dere i bryllupet vårt 11.oktober.",
+      "Vi gleder oss til å se dere i bryllupet vårt 11. oktober.",
     sadYouCannotCome: "Så synd at du ikke kan komme i vårt bryllup.",
     sadYouCannotCome_plural: "Så synd at dere ikke kan komme i vårt bryllup.",
     goToWebsite: "Gå til nettsiden",
