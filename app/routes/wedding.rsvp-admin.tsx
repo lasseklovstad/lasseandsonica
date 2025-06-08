@@ -34,7 +34,7 @@ export default function RSVPAdmin({
     <div>
       <PageTitle
         title="RSVP Admin?"
-        subtitle={["Oversikt over hvem som har svart"]}
+        subtitle={["Det har svart " + rsvpList.length]}
         backLink={getBackLink("rsvp-admin", links)}
         nextLink={getNextLink("rsvp-admin", links)}
       />
