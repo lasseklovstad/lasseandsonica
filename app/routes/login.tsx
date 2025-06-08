@@ -72,7 +72,7 @@ export default function Login({ actionData }: Route.ComponentProps) {
   const { t } = useTranslation("login");
   const formRef = useRef<HTMLFormElement>(null);
   const [searchParams] = useSearchParams();
-  const defaultSecret = searchParams.get("secret");
+  const defaultSecret = searchParams.get("Passord");
   const [form, { secret }] = useForm({
     // Sync the result of last submission
     lastResult: actionData?.result,
