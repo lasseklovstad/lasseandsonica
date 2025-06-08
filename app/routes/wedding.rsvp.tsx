@@ -17,6 +17,7 @@ import { useWeddingLoaderData } from "~/hooks/useWeddingLoaderData";
 import { CloudflareContext } from "~/middleware/bindings";
 import { getInstance } from "~/utils/i18n.server";
 import { verifyUserIsLoggedIn } from "~/utils/siteSecret";
+import { cn } from "~/utils/utils";
 
 import type { Route } from "./+types/wedding.rsvp";
 
@@ -202,7 +203,14 @@ export default function RSVP({ actionData }: Route.ComponentProps) {
                 />
               ) : null}
               <fieldset className="flex flex-col gap-2">
-                <legend className="mb-2 font-semibold">{t("attending")}</legend>
+                <legend
+                  className={cn(
+                    "mb-2 font-semibold",
+                    attending.errors?.length && "text-red-600",
+                  )}
+                >
+                  {t("attending")}
+                </legend>
                 <div className="flex gap-2">
                   <label className="flex items-center gap-2 hover:cursor-pointer">
                     <input
