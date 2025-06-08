@@ -64,6 +64,7 @@ export default function App({ loaderData: { locale } }: Route.ComponentProps) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <link rel="icon" href="/favicon.svg" />
+        <meta name="robots" content="noindex, nofollow" />
         <Meta />
         <Links />
       </head>
