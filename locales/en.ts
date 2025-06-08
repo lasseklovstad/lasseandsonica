@@ -188,7 +188,7 @@ export default {
       question: "Speech or performance",
       answereContact: "Contact info",
       answer:
-        "If you'd like to give a speech or perform something during dinner, please contact our toastmasters Magnus Joelson and Jim-Roger Knutsen.",
+        "If you'd like to give a speech or perform something during dinner, please contact our toastmasters Magnus Murphy Joelson and Jim-Roger Knutsen.",
     },
     gift: {
       question: "Gift List",

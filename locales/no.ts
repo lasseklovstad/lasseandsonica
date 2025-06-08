@@ -186,7 +186,7 @@ export default {
       question: "Tale eller innslag",
       answereContact: "Kontaktinfo",
       answer:
-        "Ønsker du å holde en tale eller et innslag under middagen, ta kontakt med våre toastmastere Magnus Joelson og Jim-Roger Knutsen.",
+        "Ønsker du å holde en tale eller et innslag under middagen, ta kontakt med våre toastmastere Magnus Murphy Joelson og Jim-Roger Knutsen.",
     },
     gift: {
       question: "Ønskeliste",
