@@ -30,11 +30,17 @@ export default function RSVPAdmin({
   const { t, i18n } = useTranslation("rsvp");
   const [search, setSearch] = useState("");
   const links = useLinks();
+  const attending = rsvpList.reduce((acc, rsvp) => {
+    if (rsvp.attending === "yes") {
+      return rsvp.fullName && rsvp.fullNameGuest ? acc + 2 : acc + 1;
+    }
+    return acc;
+  }, 0);
   return (
     <div>
       <PageTitle
         title="RSVP Admin?"
-        subtitle={["Det har svart " + rsvpList.length]}
+        subtitle={[attending + " har svart at de kommer."]}
         backLink={getBackLink("rsvp-admin", links)}
         nextLink={getNextLink("rsvp-admin", links)}
       />
