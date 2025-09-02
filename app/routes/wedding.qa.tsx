@@ -78,7 +78,16 @@ export default function QA() {
           },
           {
             question: t("gift.question"),
-            answer: <span className="italic">{t("gift.answer")}</span>,
+            answer: (
+              <>
+                <ul className="my-2 ml-4 list-disc">
+                  <li>{t("gift.list1")}</li>
+                  <li>{t("gift.list2")}</li>
+                  <li>{t("gift.list3")}</li>
+                </ul>
+                <span className="italic">{t("gift.closing")}</span>
+              </>
+            ),
           },
         ].map(({ question, answer }, i) => (
           <div key={i}>
