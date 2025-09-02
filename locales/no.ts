@@ -190,7 +190,7 @@ export default {
     },
     gift: {
       question: "Ønskeliste",
-      list1: "Bidrag til oppussing av svært kjedelig bad",
+      list1: "Bidrag til oppussing av et svært kjedelig bad",
       list2: "Gode viner og musserende både med og uten alkohol",
       list3: "Opplevelser",
       closing: "Den beste gaven er at dere kommer og feirer med oss.",

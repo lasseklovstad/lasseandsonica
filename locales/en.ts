@@ -195,7 +195,8 @@ export default {
       list1: "Contribution to the renovation of a very boring bathroom",
       list2: "Good wines and sparkling, both with and without alcohol",
       list3: "Experiences",
-      closing: "The best gift is that you come and celebrate with us.",
+      closing:
+        "The greatest gift of all is your presence as we celebrate together.",
     },
   },
   pictures: {
