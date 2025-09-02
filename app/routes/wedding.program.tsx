@@ -33,7 +33,7 @@ export default function Program() {
             title: t("ceremony"),
           },
           {
-            startTime: "17:30",
+            startTime: "18:00",
             title: t("dinner"),
           },
           {
