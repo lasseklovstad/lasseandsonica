@@ -107,46 +107,6 @@ export default {
     party: "Party and entertainment",
     thankYou: "Thanks for tonight",
   },
-  rsvp: {
-    title: "Are you attending?",
-    errors: {
-      requiredMessage: "Required",
-      minNameMessage: "Must be more then 3 characters",
-      invalidEmailMessage: "Email is not valid",
-    },
-    submit: "Send in",
-    comments: "Comments",
-    commentsPlaceholder: "Looking forward to it!",
-    foodPreferences: "Dietary requirements",
-    foodPreferencesPlaceholder: "Nuts",
-    attending: "Can you attend?",
-    yes: "Yes",
-    no: "No",
-    fullNameGuest: "Full name partner",
-    fullNameGuestPlaceholder: "Jane Doe",
-    fullName: "Full name",
-    fullNamePlaceholder: "John Doe",
-    email: "Email",
-    emailPlaceholder: "name@example.com",
-    successText:
-      "Thank you so much for your reply, you'll receive a confirmation by email :D",
-    subtitle1: "We hope you can celebrate this day with us!",
-    subtitle2:
-      "Please reply by submitting the form below by <strong>September 1st.</strong>",
-  },
-  email: {
-    subject: "Confirmation RSVP - Wedding",
-    greeting: "Hi {{name}},",
-    excitedToSeeYou:
-      "We are looking forward to seeing you at our wedding on October 11th.",
-    excitedToSeeYou_plural:
-      "We are looking forward to seeing you both at our wedding on October 11th.",
-    sadYouCannotCome: "We are sorry to hear you can't make it to our wedding.",
-    sadYouCannotCome_plural:
-      "We are sorry to hear you can't make it to our wedding.",
-    goToWebsite: "Go to website",
-    ringsAlt: "Rings",
-  },
   friendsAndFamily: {
     title: "Friends and family",
     subtitle: "Click on the pictures to see more.",
@@ -188,13 +148,13 @@ export default {
       question: "Speech or performance",
       answereContact: "Contact info",
       answer:
-        "If you'd like to give a speech or perform something during dinner, please contact our toastmasters Magnus Murphy Joelson and Jim-Roger Knutsen.",
+        "If you'd like to give a speech or perform something during dinner, please contact our toastmasters Magnus Murphy Joelson and Jim-Roger Knutsen by <strong>September 20, 2025</strong/>.",
     },
     gift: {
       question: "Gift List",
       list1: "Contribution to the renovation of a very boring bathroom",
-      list2: "Good wines and sparkling, both with and without alcohol",
-      list3: "Experiences",
+      list2: "Experiences",
+      link: "View our wishlist on onsk.no",
       closing:
         "The greatest gift of all is your presence as we celebrate together.",
     },

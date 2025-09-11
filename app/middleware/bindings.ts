@@ -6,7 +6,6 @@ export const EnvSchema = z.object({
   LOGIN_SECRET_LIMITED: z.string(),
   LOGIN_SECRET_ADMIN: z.string(),
   CLOUDINARY_NAME: z.string(),
-  RESEND_API_KEY: z.string(),
 });
 
 export const CloudflareContext = unstable_createContext<{
