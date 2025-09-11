@@ -7,7 +7,6 @@ const pageIds = [
   "home",
   "program",
   "qa",
-  "rsvp",
   "friendsandfamily",
   "ourstory",
   "pictures",

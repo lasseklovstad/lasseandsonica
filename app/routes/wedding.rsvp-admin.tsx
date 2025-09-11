@@ -1,5 +1,4 @@
 import { useState, type ComponentPropsWithRef } from "react";
-import { useTranslation } from "react-i18next";
 import { href, redirect } from "react-router";
 
 import { InputField } from "~/components/Input";
@@ -27,7 +26,6 @@ export const loader = async ({ request, context }: Route.ActionArgs) => {
 export default function RSVPAdmin({
   loaderData: { rsvpList },
 }: Route.ComponentProps) {
-  const { t, i18n } = useTranslation("rsvp");
   const [search, setSearch] = useState("");
   const links = useLinks();
   const attending = rsvpList.reduce((acc, rsvp) => {
@@ -61,12 +59,12 @@ export default function RSVPAdmin({
             <table className="w-full">
               <thead>
                 <tr>
-                  <Th>{t("fullName")}</Th>
-                  <Th>{t("fullNameGuest")}</Th>
-                  <Th>{t("email")}</Th>
-                  <Th>{t("attending")}</Th>
-                  <Th>{t("foodPreferences")}</Th>
-                  <Th>{t("comments")}</Th>
+                  <Th>Fullt navn</Th>
+                  <Th>Fullt navn partner</Th>
+                  <Th>E-post</Th>
+                  <Th>Kan du komme?</Th>
+                  <Th>Allergier</Th>
+                  <Th>Kommentarer</Th>
                   <Th>Dato</Th>
                 </tr>
               </thead>
@@ -93,9 +91,7 @@ export default function RSVPAdmin({
                       <Td>{rsvp.attending === "yes" ? "Ja" : "Nei"}</Td>
                       <Td>{rsvp.foodPreferences}</Td>
                       <Td>{rsvp.comments}</Td>
-                      <Td>
-                        {rsvp.createdAt.toLocaleDateString(i18n.language)}
-                      </Td>
+                      <Td>{rsvp.createdAt.toLocaleDateString("nb")}</Td>
                     </tr>
                   ))}
               </tbody>

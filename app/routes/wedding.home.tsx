@@ -1,5 +1,4 @@
-import { Trans, useTranslation } from "react-i18next";
-import { href, Link } from "react-router";
+import { useTranslation } from "react-i18next";
 
 import { CloudinaryImage } from "~/components/CloudinaryImage";
 import { PageTitle } from "~/components/PageTitle";
@@ -22,9 +21,6 @@ export default function Home() {
         backLink={getBackLink("home", links)}
         subtitle={[t("subtitle")]}
       />
-      <Link to={href("/wedding/rsvp")} className="mb-2 p-2 text-center text-lg">
-        <Trans t={t} i18nKey={"rsvpInfo"} />
-      </Link>
       <CloudinaryImage
         imageAlt={t("imageAlt")}
         imageUrl="Bryllup/20240601_140831538_iOS_rku6tv.jpg"
