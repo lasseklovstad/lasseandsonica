@@ -82,10 +82,6 @@ export default function QA() {
             question: t("gift.question"),
             answer: (
               <>
-                <ul className="my-2 ml-4 list-disc">
-                  <li>{t("gift.list1")}</li>
-                  <li>{t("gift.list2")}</li>
-                </ul>
                 <a
                   href="https://onsk.no/lister/591-12n"
                   className="my-2 flex w-fit gap-2 rounded border-2 px-6 py-2 text-xl underline"
