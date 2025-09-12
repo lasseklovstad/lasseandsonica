@@ -152,8 +152,6 @@ export default {
     },
     gift: {
       question: "Gift List",
-      list1: "Contribution to the renovation of a very boring bathroom",
-      list2: "Experiences",
       link: "View our wishlist on onsk.no",
       closing:
         "The greatest gift of all is your presence as we celebrate together.",

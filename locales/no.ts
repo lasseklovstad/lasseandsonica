@@ -153,8 +153,6 @@ export default {
     },
     gift: {
       question: "Ønskeliste",
-      list1: "Bidrag til oppussing av et svært kjedelig bad",
-      list2: "Opplevelser",
       link: "Se vår ønskeliste på ønsk.no",
       closing: "Den beste gaven er at dere kommer og feirer med oss.",
     },
