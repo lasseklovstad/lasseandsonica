@@ -9,6 +9,13 @@ const handler = createRequestHandler(build);
 
 export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext) {
+    // Redirect HTTP to HTTPS
+    const url = new URL(request.url);
+    if (url.protocol === "http:") {
+      url.protocol = "https:";
+      return Response.redirect(url.toString(), 301);
+    }
+
     const context: unstable_InitialContext = new Map();
     context.set(CloudflareContext, {
       env: EnvSchema.parse(env),
