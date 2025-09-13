@@ -11,7 +11,10 @@ export default {
   async fetch(request: Request, env: Env, ctx: ExecutionContext) {
     // Redirect HTTP to HTTPS
     const url = new URL(request.url);
-    if (url.protocol === "http:") {
+    if (
+      url.protocol === "http:" &&
+      !url.toString().startsWith("http://localhost")
+    ) {
       const httpsUrl = url.toString().replace("http://", "https://");
       return Response.redirect(httpsUrl, 301);
     }
