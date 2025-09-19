@@ -1,0 +1,11 @@
+diff --git a/build/middleware.js b/build/middleware.js
+index 2449960bd818b06662c3bb6f1fd8b4b6cc897405..719c65a81b8ac17992ae05689016bc2b4b32093d 100644
+--- a/build/middleware.js
++++ b/build/middleware.js
+@@ -1,5 +1,5 @@
+ import { createInstance } from "i18next";
+-import { unstable_createContext } from "react-router";
++import { createContext as unstable_createContext } from "react-router";
+ import { LanguageDetector } from "./lib/language-detector.js";
+ export function unstable_createI18nextMiddleware({ detection, i18next = {}, plugins = [], }) {
+     let localeContext = unstable_createContext();

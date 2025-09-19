@@ -34,7 +34,7 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export const unstable_middleware = [i18nextMiddleware];
+export const middleware = [i18nextMiddleware];
 
 export const loader = async ({ context }: Route.LoaderArgs) => {
   const locale = getLocale(context);

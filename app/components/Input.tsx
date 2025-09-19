@@ -7,6 +7,7 @@ type Props = {
   labelProps: ComponentPropsWithRef<"label">;
   inputProps: ComponentPropsWithRef<"input">;
   errors?: string[] | undefined;
+  description?: string;
   className?: string;
 };
 
@@ -15,6 +16,7 @@ export const InputField = ({
   inputProps,
   errors,
   className,
+  description,
 }: Props) => {
   const fallbackId = useId();
   const id = inputProps.id ?? fallbackId;
@@ -41,6 +43,7 @@ export const InputField = ({
           inputProps.className,
         )}
       />
+      {description ? <div className="text-sm">{description}</div> : null}
       <div id={errorId} className={"text-base text-red-600"}>
         {errors ? errors[0] : null}
       </div>
