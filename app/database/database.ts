@@ -5,7 +5,7 @@ import { CloudflareContext } from "~/middleware/bindings";
 
 import { rsvps } from "./schema";
 
-export const getDatabase = (context: RouterContextProvider) => {
+export const getDatabase = (context: Readonly<RouterContextProvider>) => {
   return drizzle(context.get(CloudflareContext).db, {
     schema: { rsvps },
     casing: "snake_case",
