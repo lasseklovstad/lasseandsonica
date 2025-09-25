@@ -1,5 +1,4 @@
-import type { unstable_InitialContext } from "react-router";
-import { createRequestHandler } from "react-router";
+import { createRequestHandler, RouterContextProvider } from "react-router";
 // eslint-disable-next-line import/no-unresolved
 import * as build from "virtual:react-router/server-build";
 
@@ -18,14 +17,14 @@ export default {
       const httpsUrl = url.toString().replace("http://", "https://");
       return Response.redirect(httpsUrl, 301);
     }
-
-    const context: unstable_InitialContext = new Map();
-    context.set(CloudflareContext, {
+    const routerContext = new RouterContextProvider();
+    routerContext.set(CloudflareContext, {
       env: EnvSchema.parse(env),
       db: env.DB,
       ctx,
       cf: request.cf,
     });
-    return await handler(request, context);
+
+    return await handler(request, routerContext);
   },
 };
