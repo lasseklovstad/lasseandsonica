@@ -4,11 +4,6 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-patchedDependencies:
-  remix-i18next:
-    hash: 18e4e19eae35e605fe37079982008754607a59cb3bc76b8e46dfd5b806f39ce5
-    path: patches/remix-i18next.patch
-
 importers:
 
   .:
@@ -65,8 +60,8 @@ importers:
         specifier: 7.9.1
         version: 7.9.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
       remix-i18next:
-        specifier: ^7.2.1
-        version: 7.2.1(patch_hash=18e4e19eae35e605fe37079982008754607a59cb3bc76b8e46dfd5b806f39ce5)(i18next@25.2.1(typescript@5.8.2))(react-i18next@15.5.2(i18next@25.2.1(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2))(react-router@7.9.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
+        specifier: 7.4.0
+        version: 7.4.0(i18next@25.2.1(typescript@5.8.2))(react-i18next@15.5.2(i18next@25.2.1(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2))(react-router@7.9.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0)
       tailwind-merge:
         specifier: ^3.3.0
         version: 3.3.0
@@ -3489,8 +3484,8 @@ packages:
     resolution: {integrity: sha512-dYqgNSZbDwkaJ2ceRd9ojCGjBq+mOm9LmtXnAnEGyHhN/5R7iDW2TRw3h+o/jCFxus3P2LfWIIiwowAjANm7IA==}
     engines: {node: '>= 0.4'}
 
-  remix-i18next@7.2.1:
-    resolution: {integrity: sha512-zjyDEOtSw2yF31tNHP6RLr7LZl1kEdZ3j3EpzB8905JNg4HsUk+6bNVrWhq8fFfacT6sPK0eH//NrYbpAI7bzw==}
+  remix-i18next@7.4.0:
+    resolution: {integrity: sha512-UcZxsRwxuNdOaMn2tG624NOM4WX26GYjMD9X0M9XhRUCXufz6TpwLiK6KVKsWOcPzqXh0fAXsgbrYKkkaSa70A==}
     engines: {node: '>=20.0.0'}
     peerDependencies:
       i18next: ^24.0.0 || ^25.0.0
@@ -7226,7 +7221,7 @@ snapshots:
       gopd: 1.2.0
       set-function-name: 2.0.2
 
-  remix-i18next@7.2.1(patch_hash=18e4e19eae35e605fe37079982008754607a59cb3bc76b8e46dfd5b806f39ce5)(i18next@25.2.1(typescript@5.8.2))(react-i18next@15.5.2(i18next@25.2.1(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2))(react-router@7.9.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0):
+  remix-i18next@7.4.0(i18next@25.2.1(typescript@5.8.2))(react-i18next@15.5.2(i18next@25.2.1(typescript@5.8.2))(react-dom@19.1.0(react@19.1.0))(react@19.1.0)(typescript@5.8.2))(react-router@7.9.1(react-dom@19.1.0(react@19.1.0))(react@19.1.0))(react@19.1.0):
     dependencies:
       i18next: 25.2.1(typescript@5.8.2)
       react: 19.1.0
