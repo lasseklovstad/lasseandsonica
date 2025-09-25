@@ -150,6 +150,7 @@ export default function Pictures({ loaderData }: Route.ComponentProps) {
                     await uploadNewBlob(file, loaderData.containerSAS);
                     success++;
                   } catch (e) {
+                    console.error(e);
                     failed++;
                     setErrorMessages((errors) => [
                       ...errors,
