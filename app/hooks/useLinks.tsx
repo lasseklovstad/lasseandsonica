@@ -11,6 +11,7 @@ const pageIds = [
   "ourstory",
   "pictures",
   "rsvp-admin",
+  "seating",
 ] as const;
 
 export const useLinks = () => {
