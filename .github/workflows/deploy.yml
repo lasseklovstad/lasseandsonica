@@ -30,7 +30,11 @@ jobs:
             LOGIN_SECRET_FULL
             LOGIN_SECRET_ADMIN
             LOGIN_SECRET_LIMITED
+            AZURE_BLOB_NAME
+            AZURE_BLOB_KEY
         env:
           LOGIN_SECRET_FULL: ${{ vars.LOGIN_SECRET_FULL }}
           LOGIN_SECRET_ADMIN: ${{ vars.LOGIN_SECRET_ADMIN }}
           LOGIN_SECRET_LIMITED: ${{ vars.LOGIN_SECRET_LIMITED }}
+          AZURE_BLOB_NAME: ${{ secrets.AZURE_BLOB_NAME }}
+          AZURE_BLOB_KEY: ${{ secrets.AZURE_BLOB_KEY }}
