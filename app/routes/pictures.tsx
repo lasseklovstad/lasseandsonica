@@ -9,23 +9,23 @@ import { createBlobSas } from "~/utils/azure.server";
 
 import type { Route } from "./+types/pictures";
 
+const expireInMin = 5;
+const expireInMs = expireInMin * 60 * 1000;
+
 export const loader = async ({ context }: Route.LoaderArgs) => {
   const { env } = context.get(CloudflareContext);
-  const account = env.AZURE_BLOB_NAME;
-  const accountKey = env.AZURE_BLOB_KEY;
-  const expireInMin = 5;
 
   const { blobSasUrl } = await createBlobSas({
-    accountKey: accountKey,
-    accountName: account,
+    accountKey: env.AZURE_BLOB_KEY,
+    accountName: env.AZURE_BLOB_NAME,
     containerName: "wedding",
     permissions: "c", // create, no overwrite
-    expiresOn: new Date(new Date().valueOf() + expireInMin * 60 * 1000),
+    expiresOn: new Date(new Date().valueOf() + expireInMs),
     protocol: "https",
   });
   return {
     containerSAS: blobSasUrl,
-    expiresAt: Date.now() + expireInMin * 60 * 1000,
+    expiresAt: Date.now() + expireInMs,
   };
 };
 
