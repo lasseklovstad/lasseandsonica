@@ -12,6 +12,7 @@ export default {
     pictures: "Bilder",
     qa: "Info",
     ourstory: "Vår historie",
+    seating: "Bordplassering",
     openNavigationMenu: "Åpne navigasjonsmeny",
     days: "dager",
     hours: "timer",

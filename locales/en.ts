@@ -9,6 +9,7 @@ export default {
     "rsvp-admin": "RSVP Admin",
     pictures: "Pictures",
     qa: "Info",
+    seating: "Table seating",
     ourstory: "Our Story",
     openNavigationMenu: "Open navigation menu",
     days: "days",
