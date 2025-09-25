@@ -9,7 +9,7 @@ import { createBlobSas } from "~/utils/azure.server";
 
 import type { Route } from "./+types/pictures";
 
-const expireInMin = 5;
+const expireInMin = 10;
 const expireInMs = expireInMin * 60 * 1000;
 
 export const loader = async ({ context }: Route.LoaderArgs) => {
