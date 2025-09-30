@@ -164,6 +164,6 @@ export default {
   },
   seating: {
     title: "Bordplassering",
-    subtitle: "Det kan bli endringer.",
+    subtitle: "Her kan du se foreløpig bordplassering.",
   },
 } satisfies typeof en;

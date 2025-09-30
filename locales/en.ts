@@ -164,6 +164,6 @@ export default {
   },
   seating: {
     title: "Table seating",
-    subtitle: "Changes can be made.",
+    subtitle: "Here you can see the temporary seating.",
   },
 };
