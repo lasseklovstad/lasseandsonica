@@ -162,4 +162,8 @@ export default {
     title: "Bilder av oss",
     subtitle: "Her ser du bilder av oss gjennom tidene.",
   },
+  seating: {
+    title: "Bordplassering",
+    subtitle: "Det kan bli endringer.",
+  },
 } satisfies typeof en;

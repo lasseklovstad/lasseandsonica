@@ -162,4 +162,8 @@ export default {
     title: "Pictures of us",
     subtitle: "Here are pictures of us throughout the years.",
   },
+  seating: {
+    title: "Table seating",
+    subtitle: "Changes can be made.",
+  },
 };
