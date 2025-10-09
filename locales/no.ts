@@ -165,5 +165,6 @@ export default {
   seating: {
     title: "Bordplassering",
     subtitle: "Her kan du se foreløpig bordplassering.",
+    table: "Bord",
   },
 } satisfies typeof en;

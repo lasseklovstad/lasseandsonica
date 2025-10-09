@@ -1,3 +1,5 @@
+import { useTranslation } from "react-i18next";
+
 const tables = [
   {
     name: "Bord 1",
@@ -171,12 +173,15 @@ const tables = [
 ];
 
 export const TableSeating = () => {
+  const { t } = useTranslation("seating");
   return (
     <div className="grid grid-cols-1 gap-8 p-4 text-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {tables.map((table) => {
+      {tables.map((table, index) => {
         return (
-          <div key={table.name}>
-            <h2 className="font-cursive text-4xl font-medium">{table.name}</h2>
+          <div key={index}>
+            <h2 className="font-cursive text-4xl font-medium">
+              {t("table")} {index + 1}
+            </h2>
             <ul>
               {table.names.map((name) => (
                 <li key={name}>{name}</li>
