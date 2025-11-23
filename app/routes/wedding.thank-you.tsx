@@ -1,14 +1,15 @@
 import { useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { ImageLightbox } from "~/components/ImageLightbox";
+import { PageTitle } from "~/components/PageTitle";
+import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 import { CloudflareContext } from "~/middleware/bindings";
 import { createBlobSas } from "~/utils/azure.server";
 
 import type { Route } from "./+types/wedding.thank-you";
-import { PageTitle } from "~/components/PageTitle";
-import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
-import { useTranslation } from "react-i18next";
-import { ImageLightbox } from "~/components/ImageLightbox";
 
-const expireInMin = 10;
+const expireInMin = 60;
 const expireInMs = expireInMin * 60 * 1000;
 
 export const loader = async ({ context }: Route.LoaderArgs) => {
@@ -28,38 +29,49 @@ export const loader = async ({ context }: Route.LoaderArgs) => {
   const xmlText1200 = await getBlobsInFolderXml(containerSas, "edited_1200");
   const files1200 = getFileNamesFromXml(xmlText1200);
 
-  const images400 = await Promise.all(files400.map(blobName => createBlobSas({
-    accountKey: env.AZURE_BLOB_KEY,
-    accountName: env.AZURE_BLOB_NAME,
-    containerName: "wedding",
-    blobName,
-    permissions: "r",
-    expiresOn: new Date(new Date().valueOf() + expireInMs),
-    protocol: "https",
-  })))
+  const images400 = await Promise.all(
+    files400.map((blobName) =>
+      createBlobSas({
+        accountKey: env.AZURE_BLOB_KEY,
+        accountName: env.AZURE_BLOB_NAME,
+        containerName: "wedding",
+        blobName,
+        permissions: "r",
+        expiresOn: new Date(new Date().valueOf() + expireInMs),
+        protocol: "https",
+      }),
+    ),
+  );
 
-  const images1200 = await Promise.all(files1200.map(blobName => createBlobSas({
-    accountKey: env.AZURE_BLOB_KEY,
-    accountName: env.AZURE_BLOB_NAME,
-    containerName: "wedding",
-    blobName,
-    permissions: "r",
-    expiresOn: new Date(new Date().valueOf() + expireInMs),
-    protocol: "https",
-  })))
+  const images1200 = await Promise.all(
+    files1200.map((blobName) =>
+      createBlobSas({
+        accountKey: env.AZURE_BLOB_KEY,
+        accountName: env.AZURE_BLOB_NAME,
+        containerName: "wedding",
+        blobName,
+        permissions: "r",
+        expiresOn: new Date(new Date().valueOf() + expireInMs),
+        protocol: "https",
+      }),
+    ),
+  );
 
   return {
-    images: images400.map(small => {
-      const smallPathname = new URL(small).pathname.replace("edited_400", "")
-      const large = images1200.find(largeImageUrl => {
-        const largePathName = new URL(largeImageUrl).pathname.replace("edited_1200", "")
-        return smallPathname === largePathName
-      })
+    images: images400.map((small) => {
+      const smallPathname = new URL(small).pathname.replace("edited_400", "");
+      const large = images1200.find((largeImageUrl) => {
+        const largePathName = new URL(largeImageUrl).pathname.replace(
+          "edited_1200",
+          "",
+        );
+        return smallPathname === largePathName;
+      });
       if (!large) {
-        throw new Error("couldn't fined image " + small)
+        throw new Error("couldn't fined image " + small);
       }
-      return { large, small }
-    })
+      return { large, small };
+    }),
   };
 };
 
@@ -84,7 +96,7 @@ const getBlobsInFolderXml = async (containerSasUrl: string, prefix: string) => {
   }
 
   return await response.text();
-}
+};
 
 const getFileNamesFromXml = (xmlText: string) => {
   // Match all <Blob>...</Blob> blocks
@@ -102,9 +114,11 @@ const getFileNamesFromXml = (xmlText: string) => {
   }
 
   return files;
-}
+};
 
-export default function Pictures({ loaderData: { images } }: Route.ComponentProps) {
+export default function Pictures({
+  loaderData: { images },
+}: Route.ComponentProps) {
   const links = useLinks();
   const { t } = useTranslation("thank-you");
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
@@ -131,19 +145,19 @@ export default function Pictures({ loaderData: { images } }: Route.ComponentProp
         nextLink={getNextLink("thank-you", links)}
         subtitle={[t("subtitle")]}
       />
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 md:gap-3">
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 md:gap-3 lg:grid-cols-5 xl:grid-cols-6">
         {images.map((src, index) => (
           <button
             key={index}
             onClick={() => openLightbox(index)}
-            className="relative aspect-square overflow-hidden rounded-md hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+            className="relative aspect-square cursor-pointer overflow-hidden rounded-md transition-opacity hover:opacity-80 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
             aria-label={`Open image ${index + 1}`}
           >
             <img
               loading="lazy"
               src={src.small}
               alt={`Gallery image ${index + 1}`}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
           </button>
         ))}

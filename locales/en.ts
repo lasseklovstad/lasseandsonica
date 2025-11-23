@@ -16,7 +16,7 @@ export default {
     hours: "hours",
     minutes: "minutes",
     seconds: "seconds",
-    "thank-you": "Thank you"
+    "thank-you": "Thank you",
   },
   home: {
     title: "Welcome",

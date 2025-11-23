@@ -91,7 +91,7 @@ export default function Pictures({ loaderData }: Route.ComponentProps) {
           Velg filer
         </Button>
         {uploadProgess &&
-          uploadProgess.total !== uploadProgess.success + uploadProgess.failed ? (
+        uploadProgess.total !== uploadProgess.success + uploadProgess.failed ? (
           <div className="block">
             <svg
               aria-hidden="true"

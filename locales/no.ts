@@ -18,7 +18,7 @@ export default {
     hours: "timer",
     minutes: "minutter",
     seconds: "sekunder",
-    "thank-you": "Tusen takk"
+    "thank-you": "Tusen takk",
   },
   home: {
     title: "Velkommen",
