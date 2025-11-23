@@ -16,6 +16,7 @@ export default {
     hours: "hours",
     minutes: "minutes",
     seconds: "seconds",
+    "thank-you": "Thank you"
   },
   home: {
     title: "Welcome",
@@ -161,6 +162,10 @@ export default {
   pictures: {
     title: "Pictures of us",
     subtitle: "Here are pictures of us throughout the years.",
+  },
+  "thank-you": {
+    title: "Thank you for celebrating this day with us!",
+    subtitle: "Here are some memories from the night.",
   },
   seating: {
     title: "Table seating",
