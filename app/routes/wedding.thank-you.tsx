@@ -1,4 +1,4 @@
-import { Typography } from "~/components/Typography";
+import { useRef, useState } from "react";
 import { CloudflareContext } from "~/middleware/bindings";
 import { createBlobSas } from "~/utils/azure.server";
 
@@ -6,6 +6,7 @@ import type { Route } from "./+types/wedding.thank-you";
 import { PageTitle } from "~/components/PageTitle";
 import { getBackLink, getNextLink, useLinks } from "~/hooks/useLinks";
 import { useTranslation } from "react-i18next";
+import { ImageLightbox } from "~/components/ImageLightbox";
 
 const expireInMin = 10;
 const expireInMs = expireInMin * 60 * 1000;
@@ -25,16 +26,6 @@ export const loader = async ({ context }: Route.LoaderArgs) => {
   const xmlText = await getBlobsInFolderXml(blobSasUrl, "edited");
   const files = getFileNamesFromXml(xmlText);
 
-  const { blobSasUrl: firstImageUrl } = await createBlobSas({
-    accountKey: env.AZURE_BLOB_KEY,
-    accountName: env.AZURE_BLOB_NAME,
-    containerName: "wedding",
-    blobName: files[0]!,
-    permissions: "r", // create, no overwrite
-    expiresOn: new Date(new Date().valueOf() + expireInMs),
-    protocol: "https",
-  })
-
   return {
     containerSAS: blobSasUrl,
     files,
@@ -43,7 +34,7 @@ export const loader = async ({ context }: Route.LoaderArgs) => {
       accountName: env.AZURE_BLOB_NAME,
       containerName: "wedding",
       blobName,
-      permissions: "r", // create, no overwrite
+      permissions: "r",
       expiresOn: new Date(new Date().valueOf() + expireInMs),
       protocol: "https",
     })))
@@ -94,15 +85,57 @@ const getFileNamesFromXml = (xmlText: string) => {
 export default function Pictures({ loaderData: { images } }: Route.ComponentProps) {
   const links = useLinks();
   const { t } = useTranslation("thank-you");
-  return <div>
-    <PageTitle
-      title={t("title")}
-      backLink={getBackLink("thank-you", links)}
-      nextLink={getNextLink("thank-you", links)}
-      subtitle={[t("subtitle")]}
-    />
-    <div className="grid grid-cols-3 gap-2">
-      {images.map(src => <img loading="lazy" src={src.blobSasUrl} />)}
+  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  const dialogRef = useRef<HTMLDialogElement>(null);
+
+  const openLightbox = (index: number) => {
+    setSelectedIndex(index);
+    dialogRef.current?.showModal();
+  };
+
+  const closeLightbox = () => {
+    dialogRef.current?.close();
+  };
+
+  const navigateToImage = (index: number) => {
+    setSelectedIndex(index);
+  };
+
+  const imageUrls = images.map(img => img.blobSasUrl);
+
+  return (
+    <div>
+      <PageTitle
+        title={t("title")}
+        backLink={getBackLink("thank-you", links)}
+        nextLink={getNextLink("thank-you", links)}
+        subtitle={[t("subtitle")]}
+      />
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-2 md:gap-3">
+        {images.map((src, index) => (
+          <button
+            key={index}
+            onClick={() => openLightbox(index)}
+            className="relative aspect-square overflow-hidden rounded-md hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 cursor-pointer"
+            aria-label={`Open image ${index + 1}`}
+          >
+            <img
+              loading="lazy"
+              src={src.blobSasUrl}
+              alt={`Gallery image ${index + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
+
+      <ImageLightbox
+        images={imageUrls}
+        currentIndex={selectedIndex}
+        onClose={closeLightbox}
+        onNavigate={navigateToImage}
+        dialogRef={dialogRef}
+      />
     </div>
-  </div>
+  );
 }
