@@ -15,7 +15,7 @@ const expireInMs = expireInMin * 60 * 1000;
 export const loader = async ({ context }: Route.LoaderArgs) => {
   const { env } = context.get(CloudflareContext);
 
-  const { blobSasUrl } = await createBlobSas({
+  const containerSAS = await createBlobSas({
     accountKey: env.AZURE_BLOB_KEY,
     accountName: env.AZURE_BLOB_NAME,
     containerName: "wedding",
@@ -24,7 +24,7 @@ export const loader = async ({ context }: Route.LoaderArgs) => {
     protocol: "https",
   });
   return {
-    containerSAS: blobSasUrl,
+    containerSAS,
     expiresAt: Date.now() + expireInMs,
   };
 };
@@ -91,7 +91,7 @@ export default function Pictures({ loaderData }: Route.ComponentProps) {
           Velg filer
         </Button>
         {uploadProgess &&
-        uploadProgess.total !== uploadProgess.success + uploadProgess.failed ? (
+          uploadProgess.total !== uploadProgess.success + uploadProgess.failed ? (
           <div className="block">
             <svg
               aria-hidden="true"

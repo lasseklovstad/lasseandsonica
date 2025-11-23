@@ -132,9 +132,7 @@ const createBlobSas = async (input: SASinput) => {
 
   storageUri.search = queryParams;
 
-  return {
-    blobSasUrl: storageUri.toString(),
-  };
+  return storageUri.toString()
 };
 
 export { createBlobSas };

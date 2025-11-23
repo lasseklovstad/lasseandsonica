@@ -165,7 +165,7 @@ export default {
   },
   "thank-you": {
     title: "Tusen takk for at du var med å feiret oss!",
-    subtitle: "HHer er noen minner fra kvelden.",
+    subtitle: "Her er noen minner fra kvelden.",
   },
   seating: {
     title: "Bordplassering",

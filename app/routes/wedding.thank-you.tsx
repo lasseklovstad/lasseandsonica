@@ -14,7 +14,7 @@ const expireInMs = expireInMin * 60 * 1000;
 export const loader = async ({ context }: Route.LoaderArgs) => {
   const { env } = context.get(CloudflareContext);
 
-  const { blobSasUrl } = await createBlobSas({
+  const containerSas = await createBlobSas({
     accountKey: env.AZURE_BLOB_KEY,
     accountName: env.AZURE_BLOB_NAME,
     containerName: "wedding",
@@ -23,21 +23,43 @@ export const loader = async ({ context }: Route.LoaderArgs) => {
     protocol: "https",
   });
 
-  const xmlText = await getBlobsInFolderXml(blobSasUrl, "edited");
-  const files = getFileNamesFromXml(xmlText);
+  const xmlText400 = await getBlobsInFolderXml(containerSas, "edited_400");
+  const files400 = getFileNamesFromXml(xmlText400);
+  const xmlText1200 = await getBlobsInFolderXml(containerSas, "edited_1200");
+  const files1200 = getFileNamesFromXml(xmlText1200);
+
+  const images400 = await Promise.all(files400.map(blobName => createBlobSas({
+    accountKey: env.AZURE_BLOB_KEY,
+    accountName: env.AZURE_BLOB_NAME,
+    containerName: "wedding",
+    blobName,
+    permissions: "r",
+    expiresOn: new Date(new Date().valueOf() + expireInMs),
+    protocol: "https",
+  })))
+
+  const images1200 = await Promise.all(files1200.map(blobName => createBlobSas({
+    accountKey: env.AZURE_BLOB_KEY,
+    accountName: env.AZURE_BLOB_NAME,
+    containerName: "wedding",
+    blobName,
+    permissions: "r",
+    expiresOn: new Date(new Date().valueOf() + expireInMs),
+    protocol: "https",
+  })))
 
   return {
-    containerSAS: blobSasUrl,
-    files,
-    images: await Promise.all(files.map(blobName => createBlobSas({
-      accountKey: env.AZURE_BLOB_KEY,
-      accountName: env.AZURE_BLOB_NAME,
-      containerName: "wedding",
-      blobName,
-      permissions: "r",
-      expiresOn: new Date(new Date().valueOf() + expireInMs),
-      protocol: "https",
-    })))
+    images: images400.map(small => {
+      const smallPathname = new URL(small).pathname.replace("edited_400", "")
+      const large = images1200.find(largeImageUrl => {
+        const largePathName = new URL(largeImageUrl).pathname.replace("edited_1200", "")
+        return smallPathname === largePathName
+      })
+      if (!large) {
+        throw new Error("couldn't fined image " + small)
+      }
+      return { large, small }
+    })
   };
 };
 
@@ -101,8 +123,6 @@ export default function Pictures({ loaderData: { images } }: Route.ComponentProp
     setSelectedIndex(index);
   };
 
-  const imageUrls = images.map(img => img.blobSasUrl);
-
   return (
     <div>
       <PageTitle
@@ -121,7 +141,7 @@ export default function Pictures({ loaderData: { images } }: Route.ComponentProp
           >
             <img
               loading="lazy"
-              src={src.blobSasUrl}
+              src={src.small}
               alt={`Gallery image ${index + 1}`}
               className="w-full h-full object-cover"
             />
@@ -130,7 +150,7 @@ export default function Pictures({ loaderData: { images } }: Route.ComponentProp
       </div>
 
       <ImageLightbox
-        images={imageUrls}
+        images={images.map((image) => image.large)}
         currentIndex={selectedIndex}
         onClose={closeLightbox}
         onNavigate={navigateToImage}
