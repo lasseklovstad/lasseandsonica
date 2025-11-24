@@ -72,6 +72,15 @@ export const loader = async ({ context }: Route.LoaderArgs) => {
       }
       return { large, small };
     }),
+    video: await createBlobSas({
+      accountKey: env.AZURE_BLOB_KEY,
+      accountName: env.AZURE_BLOB_NAME,
+      containerName: "wedding",
+      blobName: "video.mp4",
+      permissions: "r",
+      expiresOn: new Date(new Date().valueOf() + expireInMs),
+      protocol: "https",
+    }),
   };
 };
 
@@ -117,7 +126,7 @@ const getFileNamesFromXml = (xmlText: string) => {
 };
 
 export default function Pictures({
-  loaderData: { images },
+  loaderData: { images, video },
 }: Route.ComponentProps) {
   const links = useLinks();
   const { t } = useTranslation("thank-you");
@@ -139,6 +148,7 @@ export default function Pictures({
 
   return (
     <div>
+      <video src={video} controls />
       <PageTitle
         title={t("title")}
         backLink={getBackLink("thank-you", links)}
