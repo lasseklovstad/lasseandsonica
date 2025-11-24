@@ -18,6 +18,7 @@ export default {
     hours: "timer",
     minutes: "minutter",
     seconds: "sekunder",
+    "thank-you": "Tusen takk",
   },
   home: {
     title: "Velkommen",
@@ -161,6 +162,10 @@ export default {
   pictures: {
     title: "Bilder av oss",
     subtitle: "Her ser du bilder av oss gjennom tidene.",
+  },
+  "thank-you": {
+    title: "Tusen takk for at du var med å feiret oss!",
+    subtitle: "Her er noen minner fra kvelden.",
   },
   seating: {
     title: "Bordplassering",

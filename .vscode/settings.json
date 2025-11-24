@@ -1,3 +1,11 @@
 {
-    "eslint.useFlatConfig": true
+    "eslint.useFlatConfig": true,
+    "eslint.enable": true,
+    "eslint.format.enable": true,
+    "editor.quickSuggestions": {
+        "strings": "on"
+    },
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": "explicit"
+    }
 }
