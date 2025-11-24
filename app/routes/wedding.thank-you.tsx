@@ -9,7 +9,7 @@ import { createBlobSas } from "~/utils/azure.server";
 
 import type { Route } from "./+types/wedding.thank-you";
 
-const expireInMin = 60;
+const expireInMin = 60 * 12;
 const expireInMs = expireInMin * 60 * 1000;
 
 export const loader = async ({ context }: Route.LoaderArgs) => {
@@ -76,7 +76,16 @@ export const loader = async ({ context }: Route.LoaderArgs) => {
       accountKey: env.AZURE_BLOB_KEY,
       accountName: env.AZURE_BLOB_NAME,
       containerName: "wedding",
-      blobName: "video.mp4",
+      blobName: "wedding-highlights.mp4",
+      permissions: "r",
+      expiresOn: new Date(new Date().valueOf() + expireInMs),
+      protocol: "https",
+    }),
+    videoPoster: await createBlobSas({
+      accountKey: env.AZURE_BLOB_KEY,
+      accountName: env.AZURE_BLOB_NAME,
+      containerName: "wedding",
+      blobName: "edited_1200/AW5A898400998876.webp",
       permissions: "r",
       expiresOn: new Date(new Date().valueOf() + expireInMs),
       protocol: "https",
@@ -126,7 +135,7 @@ const getFileNamesFromXml = (xmlText: string) => {
 };
 
 export default function Pictures({
-  loaderData: { images, video },
+  loaderData: { images, video, videoPoster },
 }: Route.ComponentProps) {
   const links = useLinks();
   const { t } = useTranslation("thank-you");
@@ -147,13 +156,19 @@ export default function Pictures({
   };
 
   return (
-    <div>
-      <video src={video} controls />
+    <div className="flex flex-col gap-4">
       <PageTitle
         title={t("title")}
         backLink={getBackLink("thank-you", links)}
         nextLink={getNextLink("thank-you", links)}
         subtitle={[t("subtitle")]}
+      />
+      <video
+        src={video}
+        controls
+        poster={videoPoster}
+        preload="metadata"
+        className="rounded-md"
       />
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4 md:gap-3 lg:grid-cols-5 xl:grid-cols-6">
         {images.map((src, index) => (
